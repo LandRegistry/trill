@@ -1,0 +1,145 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Edit Trill Skills{% endblock %}
+
+{% block navbar %}   
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Trill</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li> <a href="/">Home</a></li>
+        <li><a href="/view">View skills</a></li>
+        <li class="active"><a href="/edit">Edit Skills</a></li>
+        <li><a href="/admin">Some stuff for administrator</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Trill role group - Developer</h2>
+    <h3>Skill Group - IS Developer</h3>
+<form class="form-horizontal" role="form">
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">Delphi</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Delphi" id="DelphiBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Delphi" id="DelphiTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Delphi" id="DelphiExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">C++</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="C++" id="C++Beginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="C++" id="C++Trained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="C++" id="C++Expert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Python</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Python" id="PythonBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Python" id="PythonTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Python" id="PythonExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Ruby</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Ruby" id="RubyBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Ruby" id="RubyTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Ruby" id="RubyExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Perl</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Perl" id="PerlBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Perl" id="PerlTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Perl" id="PerlExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+    <h3>Skill Group - GDS Developer</h3>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Produce bug free code</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Produce bug free code" id="Produce bug free codeBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Produce bug free code" id="Produce bug free codeTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Produce bug free code" id="Produce bug free codeExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">Unit Test</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Unit Test" id="Unit TestBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Unit Test" id="Unit TestTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Unit Test" id="Unit TestExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Documentation</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Documentation" id="DocumentationBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Documentation" id="DocumentationTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Documentation" id="DocumentationExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Communication</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Communication" id="CommunicationBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Communication" id="CommunicationTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Communication" id="CommunicationExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<h3>Skill group - System knowledge</h3>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">CORA</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="CORA" id="CORABeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="CORA" id="CORATrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="CORA" id="CORAExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Mapping</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Mapping" id="MappingBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Mapping" id="MappingTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Mapping" id="MappingExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+<div class="form-group">
+    <label class="col-sm-2 control-label">Portal</label>
+    <div class="col-sm-10">
+        <label class="radio-inline"> <input type="radio" name="Portal" id="PortalBeginner" value="Beginner"> Beginner </label>
+        <label class="radio-inline"> <input type="radio" name="Portal" id="PortalTrained" value="Trained"> Trained </label>
+        <label class="radio-inline"> <input type="radio" name="Portal" id="PortalExpert" value="Expert"> Expert </label>
+    </div>
+</div>
+    
+</form>
+</div>
+{% endblock %}
+
+</body>
+</html>

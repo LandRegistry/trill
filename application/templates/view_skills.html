@@ -1,0 +1,50 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}View Trill Skills{% endblock %}
+
+{% block navbar %}   
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Trill</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li> <a href="/">Home</a></li>
+        <li class="active"><a href="/view">View skills</a></li>
+        <li><a href="/edit">Edit Skills</a></li>
+        <li><a href="/admin">Some stuff for administrator</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Trill role group - Service Desk</h2>
+    <h3>Skill Group - IS Developer</h3>
+    <ul class="list-group">
+        <li class="list-group-item">Delphi</li>
+        <li class="list-group-item">C++</li>
+        <li class="list-group-item">Python</li>
+        <li class="list-group-item">Ruby</li>
+        <li class="list-group-item">Perl</li>
+      </ul>
+    <h3>Skill Group - GDS Developer</h3>
+      <ul class="list-group">
+        <li class="list-group-item">Produce bug free code</li>
+        <li class="list-group-item">Unit testing</li>
+        <li class="list-group-item">Documentation</li>
+        <li class="list-group-item">Communication</li>
+      </ul>
+    <h3>Skill group - System knowledge</h3>
+      <ul class="list-group">
+        <li class="list-group-item">CORA</li>
+        <li class="list-group-item">Mapping</li>
+        <li class="list-group-item">Portal</li>
+      </ul>
+</div>
+{% endblock %}
+
+</body>
+</html>
