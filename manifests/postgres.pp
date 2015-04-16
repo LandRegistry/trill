@@ -55,13 +55,13 @@ postgresql::server::role { 'root':
   superuser => true,
 }
 
-postgresql::server::database_grant { 'grant vagrant access to system of record':
+postgresql::server::database_grant { 'grant vagrant access to trill':
   privilege => 'ALL',
   db        => 'trill',
   role      => 'vagrant',
 }
 
-postgresql::server::database_grant { 'grant root access to system of record':
+postgresql::server::database_grant { 'grant root access to trill':
   privilege => 'ALL',
   db        => 'trill',
   role      => 'root',
