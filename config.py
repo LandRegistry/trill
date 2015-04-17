@@ -7,9 +7,9 @@ class Config(object):
 class DevelopmentConfig(Config):
     # format is dialect+driver://username:password@host:port/database
     # Uncomment the line below when the DB is up and running
-    #SQLALCHEMY_DATABASE_URI = 'postgresql://trill:trill@localhost/trill'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://trill:@0.0.0.0:5432/trill'
     DEBUG = True
-    
+
 class UnitTestConfig(Config):
     # Uncomment the line below when the DB is up and running
     SQLALCHEMY_DATABASE_URI = ''
