@@ -62,4 +62,4 @@ target/
 #IntelliJ
 *.iml
 
-.DS_Store
+*.DS_Store

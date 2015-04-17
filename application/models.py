@@ -21,7 +21,6 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(80))
     surname = db.Column(db.String(80))
-    surname2 = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
     managerfirstname = db.Column(db.String(80))
     managersurname = db.Column(db.String(80))
