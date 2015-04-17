@@ -14,11 +14,11 @@ try:
     con = psycopg2.connect("dbname='trill' user='vagrant'")
     cur = con.cursor()
 
-    usercsv = open('/home/vagrant/trill/users.csv', 'r')
+    usercsv = open('/home/vagrant/trill/database-setup/load/users.csv', 'r')
     cur.execute("DELETE FROM users")
     cur.copy_from(usercsv, 'users', sep=',')
 
-    jobtitlescsv = open('/home/vagrant/trill/jobtitles.csv', 'r')
+    jobtitlescsv = open('/home/vagrant/trill/database-setup/load/jobtitles.csv', 'r')
     cur.execute("DELETE FROM job_titles")
     cur.copy_from(jobtitlescsv, 'job_titles', sep=',')
 

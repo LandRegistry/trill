@@ -1,14 +1,11 @@
-#from application import app, db
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-
 
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://trill:@0.0.0.0:5432/trill"
-#app.config['SQLALCHEMY_DATABASE_URI']
 db = SQLAlchemy(app)
 
 
@@ -113,6 +110,8 @@ class UserSKill(db.Model):
 
     def __repr__(self):
         return '<User_Skill %r>' % self.age
+
+
 
 if __name__ == '__main__':
     manager.run()
