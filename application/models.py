@@ -1,25 +1,27 @@
-from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
+#from flask import Flask
+#from flask.ext.sqlalchemy import SQLAlchemy
 
-from flask.ext.script import Manager
-from flask.ext.migrate import Migrate, MigrateCommand
+#from flask.ext.script import Manager
+#from flask.ext.migrate import Migrate, MigrateCommand
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://trill:@0.0.0.0:5432/trill"
-db = SQLAlchemy(app)
+#app = Flask(__name__)
+#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://trill:@0.0.0.0:5432/trill"
+#db = SQLAlchemy(app)
 
 
-migrate = Migrate(app, db)
+#migrate = Migrate(app, db)
 
-manager = Manager(app)
-manager.add_command('db', MigrateCommand)
-
+#manager = Manager(app)
+#manager.add_command('db', MigrateCommand)
+from sqlalchemy import Column, Integer, String
+from application import db
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(80))
     surname = db.Column(db.String(80))
+    surname2 = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
     managerfirstname = db.Column(db.String(80))
     managersurname = db.Column(db.String(80))
@@ -113,8 +115,8 @@ class UserSKill(db.Model):
 
 
 
-if __name__ == '__main__':
-    manager.run()
+#if __name__ == '__main__':
+#    manager.run()
 
 
 
