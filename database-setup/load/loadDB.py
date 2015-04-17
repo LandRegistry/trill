@@ -22,9 +22,17 @@ try:
     cur.execute("DELETE FROM job_titles")
     cur.copy_from(jobtitlescsv, 'job_titles', sep=',')
 
-    #skillscsv = open('/home/vagrant/trill/skills.csv', 'r')
-    #cur.execute("DELETE FROM skills")
-    #cur.copy_from(skillscsv, 'skills', sep=',')
+    trillrolegroupscsv = open('/home/vagrant/trill/database-setup/load/TrillRoleGroups.csv', 'r')
+    cur.execute("DELETE FROM trill_role_groups")
+    cur.copy_from(trillrolegroupscsv, 'trill_role_groups', sep=',')
+
+    skillgroupscsv = open('/home/vagrant/trill/database-setup/load/SkillGroups.csv', 'r')
+    cur.execute("DELETE FROM skill_groups")
+    cur.copy_from(skillgroupscsv, 'skill_groups', sep=',')
+
+    skillscsv = open('/home/vagrant/trill/database-setup/load/Skills.csv', 'r')
+    cur.execute("DELETE FROM skills")
+    cur.copy_from(skillscsv, 'skills', sep=',')
 
     con.commit()
 

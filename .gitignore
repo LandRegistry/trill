@@ -61,3 +61,5 @@ target/
 
 #IntelliJ
 *.iml
+
+*.DS_Store
