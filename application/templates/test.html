@@ -3,12 +3,17 @@
 
 {% block content %}
 <div class="container">
-    <h3>Hello 'Specified user' - Your GDS skills are -</h3>
+    <h3>Hello '{{user_name}}'</h3>
+    <h3>Your current role is '{{trill_role}}'</h3>
+    <h3>Your GDS skills for are: </h3>
+    <p></p>
       <ul class="list-group">
-        <li class="list-group-item">Produce bug free code</li>
-        <li class="list-group-item">Unit testing</li>
-        <li class="list-group-item">Documentation</li>
-        <li class="list-group-item">Communication</li>
+          {% for groups in group_list %}
+          <h4>{{groups.name}}</h4>
+            {% for skills in groups.skill_list %}
+            <li class="list-group-item">{{skills}}</li>
+            {% endfor %}
+          {% endfor %}
       </ul>
 </div>
 {% endblock %}
