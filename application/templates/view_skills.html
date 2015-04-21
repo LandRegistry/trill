@@ -2,47 +2,55 @@
 {% block title %}View Trill Skills{% endblock %}
 
 {% block navbar %}   
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Trill</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li> <a href="/">Home</a></li>
-        <li class="active"><a href="/view">View skills</a></li>
-        <li><a href="/edit">Edit Skills</a></li>
-        <li><a href="/admin">Some stuff for administrator</a></li>
+  <div class='navbar navbar-default navbar-static-top'>
+    <div class='container'>
+      <a href='/home' class='navbar-brand'>Training and Skills</a>
+
+      <ul class='nav navbar-nav navbar-right'>
+        <li class='active'><a href='/view'>View skills</a></li>
+        <li><a href='/edit'>Edit Skills</a></li>
+        <li><a href='/admin'>Some stuff for administrator</a></li>
       </ul>
     </div>
   </div>
-</nav>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-  <h2>Trill role group - Service Desk</h2>
-    <h3>Skill Group - IS Developer</h3>
-    <ul class="list-group">
-        <li class="list-group-item">Delphi</li>
-        <li class="list-group-item">C++</li>
-        <li class="list-group-item">Python</li>
-        <li class="list-group-item">Ruby</li>
-        <li class="list-group-item">Perl</li>
-      </ul>
-    <h3>Skill Group - GDS Developer</h3>
-      <ul class="list-group">
-        <li class="list-group-item">Produce bug free code</li>
-        <li class="list-group-item">Unit testing</li>
-        <li class="list-group-item">Documentation</li>
-        <li class="list-group-item">Communication</li>
-      </ul>
-    <h3>Skill group - System knowledge</h3>
-      <ul class="list-group">
-        <li class="list-group-item">CORA</li>
-        <li class="list-group-item">Mapping</li>
-        <li class="list-group-item">Portal</li>
-      </ul>
+    <div class= 'row'>
+        <div class='col-md-3 well well-lg'>
+            <img src='images/blankFace1.jpg' alt='Your picture' />
+            <h3>Your profile</h3>
+            <p>Name: {{user_name}}</p>
+            <p>Role: {{trill_role}}</p>
+            <p>Job Title: {{job_title}}</p>
+            <p>Line Manager: {{line_manager}}</p>
+        </div>
+
+        <div class='col-md-9'>
+            <h3>Your GDS skills are: </h3>
+
+            <div class="accordion" id="accordion2">
+                {% for group in group_list %}  
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{group.n}}">{{group.name}}</a>
+                        </div>
+                        <div id="{{group.n}}" class="accordion-body collapse">
+                            {% for skill in group.skill_list %}
+                            <div class="list-group">
+                                <a class="list-group-item"> {{skill}}</a>
+                            </div>            
+                            {% endfor %} 
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
