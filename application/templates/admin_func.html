@@ -2,21 +2,17 @@
 {% block title %}Trill Admin Page{% endblock %}
 
 {% block navbar %}   
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Trill</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/view">View skills</a></li>
-        <li><a href="/edit">Edit Skills</a></li>
-        <li class="active"><a href="/admin">Some stuff for administrator</a></li>
+  <div class='navbar navbar-default navbar-static-top'>
+    <div class='container'>
+      <a href='/home' class='navbar-brand'>Training and Skills</a>
+
+      <ul class='nav navbar-nav navbar-right'>
+        <li><a href='/view'>View skills</a></li>
+        <li><a href='/edit'>Edit Skills</a></li>
+        <li class='active'><a href='/admin'>Some stuff for administrator</a></li>
       </ul>
     </div>
   </div>
-</nav>
 {% endblock %}
 
 {% block content %}

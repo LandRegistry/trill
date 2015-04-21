@@ -17,6 +17,8 @@ group_list = []
 
 user_name = 'Alex Blewett'
 trill_role = 'Developer'
+job_title = 'Front end web developer'
+line_manager = 'Marc McCoy'
 
 data = Skill_group('Skill Group 1 - code', 1)
 data.Add_skill('Develop code', 'produce bug free code')
@@ -43,7 +45,7 @@ def welcome():
 
 @app.route('/view')
 def view_skills():
-    return render_template('view_skills.html', user_name = user_name, trill_role = trill_role, group_list = group_list)
+    return render_template('view_skills.html', user_name = user_name, trill_role = trill_role, group_list = group_list, job_title = job_title, line_manager = line_manager)
 
 @app.route('/edit')
 def edit_skills():
