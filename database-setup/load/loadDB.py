@@ -10,9 +10,22 @@ con = None
 
 try:
 
+
+
     #connect to Trill data base as a super user
     con = psycopg2.connect("dbname='trill' user='vagrant'")
     cur = con.cursor()
+
+    '''
+    cur.execute("DELETE FROM user_skills")
+    cur.execute("DELETE FROM user_jobs")
+    cur.execute("DELETE FROM skill_titles")
+    cur.execute("DELETE FROM skill_groups")
+    cur.execute("DELETE FROM trill_role_groups")
+    cur.execute("DELETE FROM job_titles")
+    cur.execute("DELETE FROM users")
+    '''
+
 
     usercsv = open('/home/vagrant/trill/database-setup/load/users.csv', 'r')
     cur.execute("DELETE FROM users")
@@ -30,9 +43,18 @@ try:
     cur.execute("DELETE FROM skill_groups")
     cur.copy_from(skillgroupscsv, 'skill_groups', sep=',')
 
-    skillscsv = open('/home/vagrant/trill/database-setup/load/Skills.csv', 'r')
-    cur.execute("DELETE FROM skills")
-    cur.copy_from(skillscsv, 'skills', sep=',')
+    skilltitlescsv = open('/home/vagrant/trill/database-setup/load/SkillTitles.csv', 'r')
+    cur.execute("DELETE FROM skill_titles")
+    cur.copy_from(skilltitlescsv, 'skill_titles', sep=',')
+
+    userjobscsv = open('/home/vagrant/trill/database-setup/load/UserJobs.csv', 'r')
+    cur.execute("DELETE FROM user_jobs")
+    cur.copy_from(userjobscsv, 'user_jobs', sep=',')
+
+    userskillscsv = open('/home/vagrant/trill/database-setup/load/UserSkills.csv', 'r')
+    cur.execute("DELETE FROM user_skills")
+    cur.copy_from(userskillscsv, 'user_skills', sep=',')
+
 
     con.commit()
 
