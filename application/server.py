@@ -59,5 +59,6 @@ def admin_func():
 @app.route('/')
 def test_skills():
     return render_template('view_skills_proto.html', user_name = user_name, trill_role = trill_role, group_list = group_list)
+    return 'ok', 200
 
 
