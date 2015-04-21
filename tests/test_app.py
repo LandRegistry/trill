@@ -1,6 +1,6 @@
 import unittest
 import os
-from application import app
+from application.server import app
 
 class TestSequenceFunctions(unittest.TestCase):
 
@@ -13,4 +13,4 @@ class TestSequenceFunctions(unittest.TestCase):
 
 
     def test_server_message(self):
-        self.assertEqual((self.app.get('/')).data.decode("utf-8"), "Everything is OK")
+        self.assertTrue('ok',(self.app.get('/')).data.decode("utf-8"))
