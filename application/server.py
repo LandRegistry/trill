@@ -1,8 +1,6 @@
-#from application.models import *
 from application import app
-#from application import db
 from flask import render_template
-from application.database import GetAllSkillNames, GetUserSkills
+from application.database import *
 #, flash, redirect, request, session, make_response
 
 #simple structure to hold harded coded test data
@@ -15,6 +13,20 @@ class Skill_group(object):
     def Add_skill(self, skill_name, skill_desc):
         self.skill_list.append(skill_name +' - '+ skill_desc)
 
+
+group_list = []
+
+#setup user
+email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+userId = GetUserId(email)
+
+user_name    = GetUserName(userId)
+trill_role   = GetTrillRole(userId)
+job_title    = GetJobTitle(userId)
+line_manager = GetLineManager(userId)
+skillGroups  = GetUserSkillGroups(userId)
+
+'''
 #hard coded test data for prototype
 group_list = []
 
@@ -39,7 +51,26 @@ data.Add_skill('Present work', 'show team')
 data.Add_skill('Present work', 'show product owner')
 data.Add_skill('Present work', 'show n tell')
 group_list.append(data)
+'''
+
 #end of test data
+
+@app.before_first_request
+def setup_user_skills():
+
+
+    n = 0
+
+    for skillGroup in skillGroups:
+        n += 1
+        data = Skill_group(skillGroup, n)
+        skills = GetSkills(skillGroup)
+
+        for skill in skills:
+            data.Add_skill(skill['SkillTitle'],skill['SkillDescription'])
+
+        group_list.append(data)
+
 
 #possible future functionality
 @app.route('/home')
@@ -60,18 +91,6 @@ def admin_func():
 
 #the prototype functionality is here
 @app.route('/')
-def view_skills():
-    return render_template('test.html')
-
-@app.route('/test')
-def test_view():
-
-    skills = GetAllSkillNames()
-
-    skills = GetUserSkills()
-
-    return render_template('db_test.html', skills=skills)
-
 def test_skills():
     return render_template('view_skills_proto.html', user_name = user_name, trill_role = trill_role, group_list = group_list)
     return 'ok', 200

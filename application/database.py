@@ -6,32 +6,66 @@ def GetAllSkillNames():
     skills = []
 
     for instance in db.session.query(Skill).order_by(Skill.id):
-        #skills = skills + instance.skillname + str(instance.skill_group_id) + '\n'
-        skills.append(instance.skillname)
+        skills.append(instance.skillcode)
 
     return skills
 
-def GetUserSkills():
+def GetUserId(email):
 
+    for instance in db.session.query(User).filter(User.email == email):
+        id = instance.id
 
-    '''q = db.session.query(User).join(TrillRoleGroup).filter(TrillRoleGroup.groupname == 'ServiceDesk').\
-                    all()'''
+    return id
 
+def GetUserName(id):
 
-    '''
-    q = db.session.query(JobTitle).join(TrillRoleGroup).\
-                    filter(TrillRoleGroup.groupname == 'ServiceDesk').\
-                    all() '''
+    for instance in db.session.query(User).filter(User.id == id):
+        userName = instance.firstname + " " + instance.surname
 
-    '''
-    q = db.session.query(UserJob).filter(UserJob.job_title_id == JobTitle.id).\
-                    filter(JobTitle.id == TrillRoleGroup.id).\
-                    filter(TrillRoleGroup.groupname == 'ServiceDesk').\
-                    all()
-                    '''
+    return userName
 
-    q = db.session.query(User).join(UserSKill).\
-                    filter(UserSKill.user_id == '1').\
-                    all()
+def GetTrillRole(id):
 
-    return q
+    for instance in db.session.query(TrillRoleGroup).join(JobTitle, UserJob, User).filter(User.id == id):
+        trillRole = instance.groupname
+
+    return trillRole
+
+def GetJobTitle(id):
+
+    for instance in db.session.query(JobTitle).join(UserJob, User).filter(User.id == id):
+        jobTitle = instance.title
+
+    return jobTitle
+
+def GetLineManager(id):
+
+    for instance in db.session.query(User).filter(User.id == id):
+        lineManager = instance.managerfirstname + ' ' + instance.managersurname
+
+    return lineManager
+
+def GetUserSkillGroups(id):
+
+    skillGroups = []
+
+    for instance in db.session.query(SkillGroup).join(TrillRoleGroup, JobTitle, UserJob, User).filter(User.id == id):
+        skillGroups.append(instance.skillgroupname)
+
+    return skillGroups
+
+def GetSkills(skillgroupname):
+
+    skillTitles = []
+
+    for instance in db.session.query(SkillTitle).join(SkillGroup).filter(SkillGroup.skillgroupname == skillgroupname):
+        skillTitles.append(instance.skilltitlename)
+
+    skills = []
+
+    for skillTitle in skillTitles:
+
+        for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
+            skills.append({'SkillTitle':skillTitle,'SkillDescription':instance.skilldescription})
+
+    return skills

@@ -78,10 +78,11 @@ class Skill(db.Model):
     skill_title_id = db.Column(db.Integer, db.ForeignKey('skill_titles.id'))
 
     def __init__(self, title):
-        self.skillname = skillname
+        self.skillcode = skillcode
+        self.skilldescription = skilldescription
 
     def __repr__(self):
-        return '<Skill %r>' % self.skillname
+        return '<Skill %r>' % self.skillcode
 
 class UserJob(db.Model):
     __tablename__ = 'user_jobs'
