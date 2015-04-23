@@ -1,6 +1,7 @@
 from application.models import *
 from application import db
 
+'''
 def GetAllSkillNames():
 
     skills = []
@@ -9,7 +10,7 @@ def GetAllSkillNames():
         skills.append(instance.skillcode)
 
     return skills
-
+'''
 def GetUserId(email):
 
     for instance in db.session.query(User).filter(User.email == email):
