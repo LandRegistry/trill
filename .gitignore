@@ -63,3 +63,8 @@ target/
 *.iml
 
 *.DS_Store
+
+# RBEnv and Bundler
+.rbenv/
+vendor/ruby
+.bundle
