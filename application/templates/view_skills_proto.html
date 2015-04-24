@@ -3,23 +3,33 @@
 
 {% block content %}
 <div class="container">
-    <h3>Hello '{{user_name}}'</h3>
-    <h3>Your current role is '{{trill_role}}'</h3>
+    <h3>Hello '{{user_obj.name}}'</h3>
+    <h3>Your current role is '{{user_obj.trill_role}}'</h3>
     <h3>Your GDS skills are: </h3>
     
     <div class="accordion" id="accordion2">
-        {% for group in group_list %}  
+        {% for group in user_obj.group_list %}  
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title">
+                    <h3 class="panel-title">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{group.n}}">{{group.name}}</a>
                 </div>
                 <div id="{{group.n}}" class="accordion-body collapse">
-                    {% for skill in group.skill_list %}
+                    {% for skill_title in group.title_list %}
+                    
                     <div class="list-group">
-                        <a class="list-group-item"> {{skill}}</a>
-                    </div>            
+                        {% for skill in skill_title.skill_list %}
+                        <a href="#" class="list-group-item">
+                            
+                            <h5 class="list-group-item-heading">{{skill_title.name}}</h4>
+                                                     
+                            <p class="list-group-item-text">{{skill}}</p>
+                            
+                        </a>
+                        {% endfor %}
+                    </div> 
+                    
                     {% endfor %} 
                 </div>
             </div>

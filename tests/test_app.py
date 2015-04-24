@@ -22,10 +22,12 @@ class TestSequenceFunctions(unittest.TestCase):
     @mock.patch('application.database.GetJobTitle')
     @mock.patch('application.database.GetLineManager')
     @mock.patch('application.database.GetUserSkillGroups')
+    @mock.patch('application.database.GetSkillTitles')
     @mock.patch('application.database.GetSkills')
-    def test_server_code(self, mockgetskills,mockgetuserskillgroups,mockgetlinemanager, mockgetjobtitle,mockgettrillrole, mockgetusername, mockgetuserid):
+    def test_server_code(self, mockgetskills,mockgetskilltitles,mockgetuserskillgroups,mockgetlinemanager, mockgetjobtitle,mockgettrillrole, mockgetusername, mockgetuserid):
 
         mockgetskills.side_effect = self.do_nothing
+        mockgetskilltitles.side_effect = self.do_nothing
         mockgetuserskillgroups.side_effect = self.do_nothing
         mockgetlinemanager.side_effect = self.do_nothing
         mockgetjobtitle.side_effect = self.do_nothing
