@@ -18,14 +18,27 @@ vagrant up
 ```
 vagrant ssh
 ```
+###Setup database tables
 
-###Run the dummy app:
+```
+source environment.sh
+python3 manage.py db init
+python3 manage.py db migrate
+python3 manage.py db upgrade
+```
+
+###Load tables with test data
+
+```
+python3 /home/vagrant/trill/database-setup/load/loadDB.py
+```
+###Run the app:
 
 ```
 python3 run.py
 ```
 
-Hitting 'localhost:5000' on the browser should give you a page that says 'Everything is OK'.
+Hitting 'localhost:5000' on the browser should give you the GDS skills page.
 
 ###Run unit tests for the app:
 
