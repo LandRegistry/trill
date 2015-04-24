@@ -1,49 +1,91 @@
 {% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link href="{{url_for('.static', filename='main.css')}}" rel='stylesheet'>
+{% endblock %}
+
 {% block title %}View Trill Skills{% endblock %}
 
 {% block navbar %}   
-  <div class='navbar navbar-default navbar-static-top'>
+<div class='navbar navbar-default navbar-static-top'>
     <div class='container'>
-      <a href='/home' class='navbar-brand'>Training and Skills</a>
+        <div class='navbar-header'>
+            <a href='/home' class='navbar-brand'>Trill - Training and Skills</a>
 
-      <ul class='nav navbar-nav navbar-right'>
-        <li class='active'><a href='/view'>View skills</a></li>
-        <li><a href='/edit'>Edit Skills</a></li>
-        <li><a href='/admin'>Some stuff for administrator</a></li>
-      </ul>
+            <button type='button' class='navbar-toggle'
+                    data-toggle='collapse'
+                    data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigaton</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+        </div>
+        
+        <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
+            <li>
+                <a href='/skills' data-target='#' data-toggle='dropdown'>Skills<span class='caret'></span></a>
+                <ul class='dropdown-menu'>
+                    <li><a href='/record'>Record Skills</a></li>
+                    <li><a href='/export'>Export Skills</a></li>
+                    <li class='divider'></li>
+                    <li><a href='/add_skill'>Add Skills</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href='/training' data-target='#' data-toggle='dropdown'>Training<span class='caret'></span></a>
+                <ul class='dropdown-menu'>
+                    <li><a href='/book'>Book Course</a></li>
+                    <li><a href='/bookings'>My Bookings</a></li>
+                    <li class='divider'></li>
+                    <li><a href='/add_course'>Add Courses</a></li>
+                </ul>
+            </li>
+            <li><a href='/resource'>Resource</a></li>
+            <li><a href='/profile'>Profile</a></li>
+            <li><a href='/edit'>About</a></li>
+        </ul>
     </div>
-  </div>
+</div>
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class= 'row'>
-        <div class='col-md-3 well well-lg'>
-            <img src='images/blankFace1.jpg' alt='Your picture' />
+        <div class='col-md-3 well well-lg text-center'>
             <h3>Your profile</h3>
-            <p>Name: {{user_name}}</p>
-            <p>Role: {{trill_role}}</p>
-            <p>Job Title: {{job_title}}</p>
-            <p>Line Manager: {{line_manager}}</p>
+            <img src='static/images/blankFace1.jpg' alt='Your picture' />           
+            <p>Name: {{user_obj.name}}</p>
+            <p>Role: {{user_obj.trill_role}}</p>
+            <p>Job Title: {{user_obj.job_title}}</p>
+            <p>Line Manager: {{user_obj.line_manager}}</p>
         </div>
 
         <div class='col-md-9'>
-            <h3>Your GDS skills are: </h3>
+            <!--<h3>Your GDS skills are: </h3>-->
 
             <div class="accordion" id="accordion2">
-                {% for group in group_list %}  
+                {% for group in user_obj.group_list %}  
                 <div class="panel-group" id="accordion">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default"><!--Put each skill group in a box-->
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{group.n}}">{{group.name}}</a>
                         </div>
                         <div id="{{group.n}}" class="accordion-body collapse">
-                            {% for skill in group.skill_list %}
+                            
+                            {% for skill_title in group.title_list %}
                             <div class="list-group">
-                                <a class="list-group-item"> {{skill}}</a>
-                            </div>            
+                                {% for skill in skill_title.skill_list %}
+                                <a href="#" class="list-group-item">
+                                    <h5 class="list-group-item-heading">{{skill_title.name}}</h4>
+                                    <p class="list-group-item-text">{{skill}}</p>
+                                </a>
+                                {% endfor %} 
+                            </div>          
                             {% endfor %} 
+                             
                         </div>
                     </div>
                 </div>

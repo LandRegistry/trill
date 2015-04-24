@@ -14,7 +14,6 @@ def GetAllSkillNames():
 def GetUserId(email):
 
     id = ''
-
     for instance in db.session.query(User).filter(User.email == email):
         id = instance.id
 
@@ -65,18 +64,20 @@ def GetUserSkillGroups(id):
 
     return skillGroups
 
-def GetSkills(skillgroupname):
+def GetSkillTitles(skillgroupname):
 
     skillTitles = []
 
     for instance in db.session.query(SkillTitle).join(SkillGroup).filter(SkillGroup.skillgroupname == skillgroupname):
-        skillTitles.append(instance.skilltitlename)
+        skillTitles.append(instance.skilltitlename)   
+        
+    return skillTitles
+
+def GetSkills(skillTitle):
 
     skills = []
-
-    for skillTitle in skillTitles:
-
-        for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
-            skills.append({'SkillTitle':skillTitle,'SkillDescription':instance.skilldescription})
+    print (skillTitle)
+    for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
+        skills.append(instance.skilldescription)
 
     return skills
