@@ -1,18 +1,3 @@
-#from flask import Flask
-#from flask.ext.sqlalchemy import SQLAlchemy
-
-#from flask.ext.script import Manager
-#from flask.ext.migrate import Migrate, MigrateCommand
-
-#app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://trill:@0.0.0.0:5432/trill"
-#db = SQLAlchemy(app)
-
-
-#migrate = Migrate(app, db)
-
-#manager = Manager(app)
-#manager.add_command('db', MigrateCommand)
 from sqlalchemy import Column, Integer, String
 from application import db
 
@@ -41,6 +26,7 @@ class JobTitle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), unique=True)
 
+
     def __init__(self, title):
         self.title = title
 
@@ -52,6 +38,7 @@ class TrillRoleGroup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     groupname = db.Column(db.String(80), unique=True)
     job_title_id = db.Column(db.Integer, db.ForeignKey('job_titles.id'))
+
 
     def __init__(self, title):
         self.groupname = groupname
@@ -71,17 +58,31 @@ class SkillGroup(db.Model):
     def __repr__(self):
         return '<Skill_Group %r>' % self.skillgroupname
 
-class Skill(db.Model):
-    __tablename__ = 'skills'
+class SkillTitle(db.Model):
+    __tablename__ = 'skill_titles'
     id = db.Column(db.Integer, primary_key=True)
-    skillname = db.Column(db.String(80), unique=True)
+    skilltitlename = db.Column(db.String(80), unique=True)
     skill_group_id = db.Column(db.Integer, db.ForeignKey('skill_groups.id'))
 
     def __init__(self, title):
-        self.skillname = skillname
+        self.skilltitlename = skilltitlename
 
     def __repr__(self):
-        return '<Skill %r>' % self.skillname
+        return '<Skill_Title %r>' % self.skilltitlename
+
+class Skill(db.Model):
+    __tablename__ = 'skills'
+    id = db.Column(db.Integer, primary_key=True)
+    skillcode = db.Column(db.String(80), unique=True)
+    skilldescription = db.Column(db.String(200))
+    skill_title_id = db.Column(db.Integer, db.ForeignKey('skill_titles.id'))
+
+    def __init__(self, title):
+        self.skillcode = skillcode
+        self.skilldescription = skilldescription
+
+    def __repr__(self):
+        return '<Skill %r>' % self.skillcode
 
 class UserJob(db.Model):
     __tablename__ = 'user_jobs'
@@ -98,12 +99,14 @@ class UserJob(db.Model):
     def __repr__(self):
         return '<User_Job %r>' % self.startdate
 
-class UserSKill(db.Model):
+class UserSkill(db.Model):
     __tablename__ = 'user_skills'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+    competence = db.Column(db.String(20))
     age = db.Column(db.Date)
+    confidence = db.Column(db.String(20))
 
 
     def __init__(self, title):
@@ -111,29 +114,3 @@ class UserSKill(db.Model):
 
     def __repr__(self):
         return '<User_Skill %r>' % self.age
-
-
-
-#if __name__ == '__main__':
-#    manager.run()
-
-
-
-'''db.drop_all()
-db.create_all()
-admin = User('Simon','Allis', 'simon.allis@example.com','Bev', 'Boon')
-guest = User('Jim','Brown', 'jim.brown@example.com','Bev', 'Boon')
-
-db.session.add(admin)
-db.session.add(guest)
-db.session.commit()
-
-
-
-users = User.query.all()
-print users
-
-admin = User.query.filter_by(surname='Brown').first()
-print admin
-
-db.session.close() '''

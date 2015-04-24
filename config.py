@@ -12,5 +12,5 @@ class DevelopmentConfig(Config):
 
 class UnitTestConfig(Config):
     # Uncomment the line below when the DB is up and running
-    SQLALCHEMY_DATABASE_URI = ''
+    #SQLALCHEMY_DATABASE_URI = ''
     DEBUG = True
