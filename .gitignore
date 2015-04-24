@@ -62,7 +62,7 @@ target/
 #IntelliJ
 *.iml
 
-*.DS_Store
+.DS_Store
 
 # RBEnv and Bundler
 .rbenv/
