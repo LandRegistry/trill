@@ -6,27 +6,35 @@ from application import db, database
 
 class TestSequenceFunctions(unittest.TestCase):
 
-    @mock.patch('application.database.GetUserId')
-    def setUp(self,mockgetuserid):
-        mockgetuserid.side_effect = return_id
+    def setUp(self):
         app.config.from_object(os.environ.get('SETTINGS'))
-        #app.config["TESTING"] = True
         db.create_all()
         self.app = app
         self.app = app.test_client()
 
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
 
-    def test_server_code(self):
+    def do_nothing(self, *args):
+        return ''
+
+    @mock.patch('application.database.GetUserId')
+    @mock.patch('application.database.GetUserName')
+    @mock.patch('application.database.GetTrillRole')
+    @mock.patch('application.database.GetJobTitle')
+    @mock.patch('application.database.GetLineManager')
+    @mock.patch('application.database.GetUserSkillGroups')
+    @mock.patch('application.database.GetSkills')
+    def test_server_code(self, mockgetskills,mockgetuserskillgroups,mockgetlinemanager, mockgetjobtitle,mockgettrillrole, mockgetusername, mockgetuserid):
+
+        mockgetskills.side_effect = self.do_nothing
+        mockgetuserskillgroups.side_effect = self.do_nothing
+        mockgetlinemanager.side_effect = self.do_nothing
+        mockgetjobtitle.side_effect = self.do_nothing
+        mockgettrillrole.side_effect = self.do_nothing
+        mockgetusername.side_effect = self.do_nothing
+        mockgetuserid.side_effect = self.do_nothing
+
         self.assertEqual((self.app.get('/')).status, '200 OK')
 
 
     def test_server_message(self):
         self.assertTrue('ok',(self.app.get('/')).data.decode("utf-8"))
-
-
-
-    def return_id(self, *args):
-        return 1

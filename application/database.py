@@ -13,12 +13,16 @@ def GetAllSkillNames():
 '''
 def GetUserId(email):
 
+    id = ''
+
     for instance in db.session.query(User).filter(User.email == email):
         id = instance.id
 
     return id
 
 def GetUserName(id):
+
+    userName = ''
 
     for instance in db.session.query(User).filter(User.id == id):
         userName = instance.firstname + " " + instance.surname
@@ -27,6 +31,8 @@ def GetUserName(id):
 
 def GetTrillRole(id):
 
+    trillRole = ''
+
     for instance in db.session.query(TrillRoleGroup).join(JobTitle, UserJob, User).filter(User.id == id):
         trillRole = instance.groupname
 
@@ -34,12 +40,16 @@ def GetTrillRole(id):
 
 def GetJobTitle(id):
 
+    jobTitle = ''
+
     for instance in db.session.query(JobTitle).join(UserJob, User).filter(User.id == id):
         jobTitle = instance.title
 
     return jobTitle
 
 def GetLineManager(id):
+
+    lineManager = ''
 
     for instance in db.session.query(User).filter(User.id == id):
         lineManager = instance.managerfirstname + ' ' + instance.managersurname
