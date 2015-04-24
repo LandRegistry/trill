@@ -90,7 +90,6 @@ def test_skills():
         line_manager = GetLineManager(userId)
         skillGroups  = GetUserSkillGroups(userId)
 
-
         n = 0
 
         for skillGroup in skillGroups:
