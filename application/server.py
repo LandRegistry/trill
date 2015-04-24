@@ -1,18 +1,41 @@
 from application import app
-from flask import render_template
-#, flash, redirect, request, session, make_response
+from flask import render_template, redirect, url_for, session, request
+from .forms import LoginForm, SigninForm
+from flask.ext.login import LoginManager, login_user, logout_user 
+from flask.ext.login import current_user, login_required
 
-#simple structure to hold harded coded test data
+#simple structure to hold harded coded pretend DB test data
 class User(object):
-    def __init__(self, name, line_manager, job_title, trill_role):
-        self.name = name
+    def __init__(self, user_name, password, first_name, last_name, line_manager, job_title, trill_role, active):
+        self.id = id
+        self.user_name = user_name
+        self.password = password
+        self.first_name = first_name
+        self.last_name = last_name
         self.line_manager = line_manager
         self.job_title = job_title
         self.trill_role = trill_role
+        self.active = active
         self.group_list = []
         
     def Add_skill_group(self, skill_group):
         self.group_list.append(skill_group)
+        
+    def Add_user_cred(self, user_name, password):
+        self.user_name = user_name
+        self.password = password
+        
+    def is_authenticated(self):
+        return True
+    
+    def is_active(self):
+        return self.active
+    
+    def is_anonymous(self):
+        return False
+    
+    def get_id(self):
+        return str(self.id)
         
 class Skill_group(object):
     def __init__(self, name, n):
@@ -32,12 +55,17 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 #end of data structure
 
-#hard coded test data for prototype
-user_name = 'Alex Blewett'
+#hard coded test data for prototype (a pretend database)
+first_name = 'Alex'
+last_name = 'Blewett'
+user_name = 'alex@home'
+password = '123456'
 trill_role = 'Developer'
 job_title = 'Front end web developer'
 line_manager = 'Marc McCoy'
-user = User(user_name, line_manager, job_title, trill_role)
+active = None
+user = User(user_name, password, first_name, last_name, line_manager, job_title, trill_role, active)
+#user.Add_user_cred(user_name, password)
 
 skill_group_name = 'Skill Group 1 - code'
 skill_group = Skill_group(skill_group_name, 1)
@@ -85,25 +113,83 @@ user.Add_skill_group(skill_group)
 
 #possible future functionality
 @app.route('/home')
-def welcome():
+def home():
     return render_template('welcome.html')
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+
+@app.route('/signout')
+def signout():
+    session.pop('signed')
+    session.pop('username')
+    logout_user()
+    return redirect(url_for('home'))
+
 @app.route('/record')
-def view_skills():
+@login_required
+def record():
     return render_template('view_skills.html', user_obj = user)
 
 @app.route('/edit')
+@login_required
 def edit_skills():
     return render_template('edit_skills.html')
 
 @app.route('/admin')
+@login_required
 def admin_func():
     return render_template('admin_func.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm
+    return render_template('login.html', signin_form = form)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = '/signin'
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
+    if request.method=='POST':
+        if current_user is not None and current_user.is_authenticated():
+            return redirect(url_for('index'))
+        form = SigninForm(request.form)
+        if form.validate():
+            if user_name == form.username.data:
+                if password == form.password.data:
+                    user = User(user_name, password, first_name, last_name, line_manager, job_title, trill_role, active)
+                    login_user(user, remember = form.remember_me.data)
+                    session['signed'] = True
+                    session['username'] = user.user_name
+                    if session.get('next'):                
+                        next_page = session.get('next')
+                        session.pop('next')
+                        return redirect(next_page)  
+                    else:
+                        return redirect(url_for('home'))
+                else:
+                    form.password.errors.append('Passwod did not match')
+                    return render_template('signinpage.html',  signinpage_form = form)
+            else:
+                form.username.errors.append('Username not found')
+                return render_template('signinpage.html',  signinpage_form = form)
+            
+        return render_template('signinpage.html',  signinpage_form = form)
+    else:
+        session['next'] = request.args.get('next')
+        return render_template('signinpage.html', signinpage_form = SigninForm())
 #end of future functionality
 
 #the prototype functionality is here
 @app.route('/')
-def test_skills():
+def test_skills():   
     return render_template('view_skills_proto.html', user_obj = user)
     return 'ok', 200
 

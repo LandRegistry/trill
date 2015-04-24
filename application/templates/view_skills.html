@@ -44,7 +44,7 @@
             </li>
             <li><a href='/resource'>Resource</a></li>
             <li><a href='/profile'>Profile</a></li>
-            <li><a href='/edit'>About</a></li>
+            <li><a href='/about'>About</a></li>
         </ul>
     </div>
 </div>
@@ -56,10 +56,12 @@
         <div class='col-md-3 well well-lg text-center'>
             <h3>Your profile</h3>
             <img src='static/images/blankFace1.jpg' alt='Your picture' />           
+            <div class = 'row top7'>
             <p>Name: {{user_obj.name}}</p>
             <p>Role: {{user_obj.trill_role}}</p>
             <p>Job Title: {{user_obj.job_title}}</p>
             <p>Line Manager: {{user_obj.line_manager}}</p>
+            </div>
         </div>
 
         <div class='col-md-9'>
@@ -76,14 +78,79 @@
                         <div id="{{group.n}}" class="accordion-body collapse">
                             
                             {% for skill_title in group.title_list %}
-                            <div class="list-group">
+                            <div class="list-group"> <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a href="#" class="list-group-item">
                                     <h5 class="list-group-item-heading">{{skill_title.name}}</h4>
                                     <p class="list-group-item-text">{{skill}}</p>
+                                    
+                                    <!--<div class="alert alert-info">
+                                        <div class="form-inline">
+                                            <label class="control-label">
+                                                What is your proficency level?
+                                            </label>
+                                            <label class="radio">
+                                                <input value="1" type="radio">None
+                                            </label>
+                                            <label class="radio">
+                                                <input value="2" type="radio">Basic
+                                            </label>
+                                            <label class="radio">
+                                                <input value="3" type="radio">Average
+                                            </label>
+                                            <label class="radio">
+                                                <input value="4" type="radio">Expert
+                                            </label>
+                                        </div>
+                                    </div>-->
+                                    <div class = 'well well-sm'>
+                                        <div class = 'container row top7'>
+                                            <label class="control-label">
+                                                    Proficency level
+                                                </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}1" 
+                                                 value="option1" checked> None
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}2" 
+                                                 value="option2"> Basic
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}3" 
+                                                 value="option3"> Medium
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}4" 
+                                                 value="option4"> Expert
+                                           </label>
+                                        </div>
+
+                                        <div class = 'container row top7'>
+                                            <label class="control-label">
+                                                    Confidence level
+                                                </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}1" 
+                                                 value="option1" checked> None
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}2" 
+                                                 value="option2"> Low
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}3" 
+                                                 value="option3"> Medium
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}4" 
+                                                 value="option4"> High
+                                           </label>
+                                        </div>
+                                    </div>
                                 </a>
                                 {% endfor %} 
-                            </div>          
+                            </div>       
                             {% endfor %} 
                              
                         </div>
