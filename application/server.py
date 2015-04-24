@@ -33,8 +33,6 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 #end of data structure
 
-#setup user
-email = 'Maranda.Caron@landregistry.gsi.gov.uk'
 
 #possible future functionality
 '''@app.route('/home')
@@ -57,6 +55,9 @@ def admin_func():
 #the prototype functionality is here
 @app.route('/')
 def test_skills():
+    #setup a pretend user as we are bypassing the login process for now
+    email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    
     #get the user
     userId = GetUserId(email)
     

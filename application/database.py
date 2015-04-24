@@ -14,7 +14,6 @@ def GetAllSkillNames():
 def GetUserId(email):
 
     id = ''
-
     for instance in db.session.query(User).filter(User.email == email):
         id = instance.id
 
