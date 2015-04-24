@@ -1,5 +1,6 @@
 from application import app
-from flask import render_template
+from flask import render_template,redirect
+from application.database import *
 #, flash, redirect, request, session, make_response
 
 #simple structure to hold harded coded test data
@@ -12,11 +13,23 @@ class Skill_group(object):
     def Add_skill(self, skill_name, skill_desc):
         self.skill_list.append(skill_name +' - '+ skill_desc)
 
+#setup user
+email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+
+user_name = ''
+trill_role = ''
+job_title = ''
+line_manager = ''
+skillGroups  = ''
+group_list = []
+
+
+'''
 #hard coded test data for prototype
 group_list = []
 
 user_name = 'Alex Blewett'
-trill_role = 'Developer'
+trill_role = 'De
 job_title = 'Front end web developer'
 line_manager = 'Marc McCoy'
 
@@ -36,7 +49,10 @@ data.Add_skill('Present work', 'show team')
 data.Add_skill('Present work', 'show product owner')
 data.Add_skill('Present work', 'show n tell')
 group_list.append(data)
+'''
+
 #end of test data
+
 
 #possible future functionality
 @app.route('/home')
@@ -58,7 +74,33 @@ def admin_func():
 #the prototype functionality is here
 @app.route('/')
 def test_skills():
+
+    global user_name
+    global trill_role
+    global job_title
+    global line_manager
+    global skillGroups
+
+    if not group_list:
+        userId = GetUserId(email)
+
+        user_name    = GetUserName(userId)
+        trill_role   = GetTrillRole(userId)
+        job_title    = GetJobTitle(userId)
+        line_manager = GetLineManager(userId)
+        skillGroups  = GetUserSkillGroups(userId)
+
+        n = 0
+
+        for skillGroup in skillGroups:
+            n += 1
+            data = Skill_group(skillGroup, n)
+            skills = GetSkills(skillGroup)
+
+            for skill in skills:
+                data.Add_skill(skill['SkillTitle'],skill['SkillDescription'])
+
+            group_list.append(data)
+
     return render_template('view_skills_proto.html', user_name = user_name, trill_role = trill_role, group_list = group_list)
     return 'ok', 200
-
-
