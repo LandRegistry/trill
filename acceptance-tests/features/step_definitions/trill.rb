@@ -1,17 +1,7 @@
 Given(/^I am a User$/) do
   pending # Write code here that turns the phrase above into concrete actions
-  #Get a connection to a database. 
-  #Add Forename & Surname to db.
-  #Add any other data required by the db.
-  #Do we need to clean up afterwards.
-end
-
-Given(/^I have a Role$/) do
-  pending # Write code here that turns the phrase above into concrete actions
   #Get a connection to a database.
-  #Ensure Forename & Surname exists on db.
-  #Add role is added to db.
-  #Ensure role is linked to forename/surname
+  #Add Forename & Surname, role and skills to db.
   #Add any other data required by the db.
   #Do we need to clean up afterwards.
 end
@@ -22,23 +12,6 @@ Given(/^I do not have a Role$/) do
   #Can role be gibberish?
 end
 
-Given(/^I have Skills$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-  #Get a connection to a database.
-  #Ensure role exists on db.
-  #Add skill to db.
-  #Ensure skill is linked to role.
-  #Add any other data required by the db.
-  #Do we need to clean up afterwards?
-end
-
-Given(/^I am on my Trill homepage$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-  #URL for homepage is required?
-  #What provisioning is required?
-  #Identify object on homepage to prove test correct.
-end
-
 
 
 When(/^I login into Trill$/) do
@@ -46,16 +19,17 @@ When(/^I login into Trill$/) do
   #NFA - Poss Sprint 2
 end
 
-When(/^I click on a GDS skill group$/) do
+When(/^I click on a collapsed GDS skill group$/) do
   pending # Write code here that turns the phrase above into concrete actions
   #How do we identify the object ie: Is there a tag?
-  #Can we find text or can we find attributes for text?
+  #How do we identify it has collapsed ie: can we no longer find text on page?
+  #Can we find attributes for the object?
 end
 
 When(/^I click on an expanded GDS skill group$/) do
   pending # Write code here that turns the phrase above into concrete actions
   #How do we identify the object ie: Is there a tag?
-  #How do we identify it has collapsed ie: can we no longer find text on page?
+  #How do we identify it has expanded ie: can we find text on page?
   #Can we find attributes for the object?
 end
 
