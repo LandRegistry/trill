@@ -25,12 +25,18 @@ class Skill_group(object):
         self.title_list.append(skill_title)
         
 class Skill_title(object):
-    def __init__(self, name):
+    def __init__(self, name, n):
         self.name = name
+        self.n = n
         self.skill_list = []
 
     def Add_skill(self, skill_desc):
         self.skill_list.append(skill_desc)
+        
+class Skill_desc(object):
+    def __init__(self, name, n):
+        self.n = n
+        self.name = name
 #end of data structure
 
 
@@ -78,19 +84,22 @@ def test_skills():
         n += 1
         skill_group = Skill_group(skillGroup, n)
         skillTitles = GetSkillTitles(skillGroup)
-
+        t = 0
         #loop through the skill titles to get the skill descriptions and add to skill title
         for skillTitle in skillTitles:
-            skill_title = Skill_title(skillTitle)
+            t += 1
+            skill_title = Skill_title(skillTitle, t)
             skills = GetSkills(skillTitle)
-            
+            s = 0
             #add the skill data, title, and groups
             for skill in skills:
-                skill_title.Add_skill(skill)
+                s += 1
+                skill_desc = Skill_desc(skill, s)
+                skill_title.Add_skill(skill_desc)
 
             skill_group.Add_skill_title(skill_title)
         user.Add_skill_group(skill_group)
         
     #send the user object to the template
-    return render_template('view_skills_proto.html', user_obj = user)
+    return render_template('view_skills_proto.html', user_obj = user, i=0, j=0)
     return 'ok', 200
