@@ -130,8 +130,44 @@ def signout():
     return redirect(url_for('home'))
 
 @app.route('/record')
-@login_required
+#@login_required
 def record():
+    #setup a pretend user as we are bypassing the login process for now
+    email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    
+    #get the user
+    userId = GetUserId(email)
+    
+    #populate the basic user data in the user object
+    user_name    = GetUserName(userId)
+    trill_role   = GetTrillRole(userId)
+    job_title    = GetJobTitle(userId)
+    line_manager = GetLineManager(userId)
+
+    user = User(userId, user_name, line_manager, job_title, trill_role)
+    
+    #Get Skill group based on user
+    skillGroups  = GetUserSkillGroups(userId)
+    n = 0
+
+    #loop through the skill groups to get the skill titles and add to user skill groups
+    for skillGroup in skillGroups:
+        n += 1
+        skill_group = Skill_group(skillGroup, n)
+        skillTitles = GetSkillTitles(skillGroup)
+
+        #loop through the skill titles to get the skill descriptions and add to skill title
+        for skillTitle in skillTitles:
+            skill_title = Skill_title(skillTitle)
+            skills = GetSkills(skillTitle)
+            
+            #add the skill data, title, and groups
+            for skill in skills:
+                skill_title.Add_skill(skill)
+
+            skill_group.Add_skill_title(skill_title)
+        user.Add_skill_group(skill_group)    
+
     return render_template('view_skills.html', user_obj = user)
 
 @app.route('/edit')
