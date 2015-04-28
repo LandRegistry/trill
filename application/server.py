@@ -101,5 +101,5 @@ def test_skills():
         user.Add_skill_group(skill_group)
         
     #send the user object to the template
-    return render_template('view_skills_proto.html', user_obj = user, i=0, j=0)
+    return render_template('view_skills_proto.html', user_obj = user)
     return 'ok', 200
