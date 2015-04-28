@@ -55,6 +55,7 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 #end of data structure
 
+'''<<<<<<< HEAD
 #hard coded test data for prototype (a pretend database)
 first_name = 'Alex'
 last_name = 'Blewett'
@@ -108,7 +109,7 @@ skill_title.Add_skill('show product owner')
 skill_title.Add_skill('show n tell')
 skill_group.Add_skill_title(skill_title)
 
-user.Add_skill_group(skill_group)
+user.Add_skill_group(skill_group)'''
 #end of test data
 
 #possible future functionality
@@ -162,21 +163,29 @@ def signin():
             return redirect(url_for('index'))
         form = SigninForm(request.form)
         if form.validate():
-            if user_name == form.username.data:
-                if password == form.password.data:
-                    user = User(user_name, password, first_name, last_name, line_manager, job_title, trill_role, active)
-                    login_user(user, remember = form.remember_me.data)
-                    session['signed'] = True
-                    session['username'] = user.user_name
-                    if session.get('next'):                
-                        next_page = session.get('next')
-                        session.pop('next')
-                        return redirect(next_page)  
-                    else:
-                        return redirect(url_for('home'))
+            user_name = form.username.data
+            userId = GetUserId(user_name)
+            print (userId)
+            if userId != '':
+                name         = GetUserName(userId)
+                trill_role   = GetTrillRole(userId)
+                job_title    = GetJobTitle(userId)
+                line_manager = GetLineManager(userId)
+                active = None
+                user = User(userId, name, line_manager, job_title, trill_role, active)
+
+                login_user(userId, remember = form.remember_me.data)
+                session['signed'] = True
+                session['username'] = userId
+                if session.get('next'):                
+                    next_page = session.get('next')
+                    session.pop('next')
+                    return redirect(next_page)  
                 else:
+                    return redirect(url_for('home'))
+                '''else:
                     form.password.errors.append('Passwod did not match')
-                    return render_template('signinpage.html',  signinpage_form = form)
+                    return render_template('signinpage.html',  signinpage_form = form)'''
             else:
                 form.username.errors.append('Username not found')
                 return render_template('signinpage.html',  signinpage_form = form)
@@ -189,8 +198,43 @@ def signin():
 
 #the prototype functionality is here
 @app.route('/')
-def test_skills():   
+def test_skills():
+    #setup a pretend user as we are bypassing the login process for now
+    email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    
+    #get the user
+    userId = GetUserId(email)
+    
+    #populate the basic user data in the user object
+    user_name    = GetUserName(userId)
+    trill_role   = GetTrillRole(userId)
+    job_title    = GetJobTitle(userId)
+    line_manager = GetLineManager(userId)
+
+    user = User(userId, user_name, line_manager, job_title, trill_role)
+    
+    #Get Skill group based on user
+    skillGroups  = GetUserSkillGroups(userId)
+    n = 0
+
+    #loop through the skill groups to get the skill titles and add to user skill groups
+    for skillGroup in skillGroups:
+        n += 1
+        skill_group = Skill_group(skillGroup, n)
+        skillTitles = GetSkillTitles(skillGroup)
+
+        #loop through the skill titles to get the skill descriptions and add to skill title
+        for skillTitle in skillTitles:
+            skill_title = Skill_title(skillTitle)
+            skills = GetSkills(skillTitle)
+            
+            #add the skill data, title, and groups
+            for skill in skills:
+                skill_title.Add_skill(skill)
+
+            skill_group.Add_skill_title(skill_title)
+        user.Add_skill_group(skill_group)
+        
+    #send the user object to the template
     return render_template('view_skills_proto.html', user_obj = user)
     return 'ok', 200
-
-
