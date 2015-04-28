@@ -161,20 +161,25 @@ def record():
         n += 1
         skill_group = Skill_group(skillGroup, n)
         skillTitles = GetSkillTitles(skillGroup)
-
+        t = 0
         #loop through the skill titles to get the skill descriptions and add to skill title
         for skillTitle in skillTitles:
-            skill_title = Skill_title(skillTitle)
+            t += 1
+            skill_title = Skill_title(skillTitle, t)
             skills = GetSkills(skillTitle)
-            
+            s = 0
             #add the skill data, title, and groups
             for skill in skills:
-                skill_title.Add_skill(skill)
+                s += 1
+                skill_desc = Skill_desc(skill, s)
+                skill_title.Add_skill(skill_desc)
 
             skill_group.Add_skill_title(skill_title)
-        user.Add_skill_group(skill_group)    
-
+        user.Add_skill_group(skill_group)
+        
+    #send the user object to the template
     return render_template('view_skills.html', user_obj = user)
+    return 'ok', 200
 
 @app.route('/edit')
 @login_required
