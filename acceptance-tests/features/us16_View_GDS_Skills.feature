@@ -42,7 +42,7 @@ Then I can see my GDS Skills Title
 
 #The 3 skill groups relevant to the Service Desk should be displayed in boxes one on top of the other
 @US16 @GDSskills @Trill
-Scenario: View Skill Boxes
+Scenario: View GDS Skill Boxes
 Given I am a User
 And I am logged into Trill
 When I am on my Trill homepage
@@ -51,7 +51,7 @@ Then I can see my relevant GDS Skill groups
 
 #Clicking a skill group box should expand a list of all the skills in that group
 @US16 @GDSskills @Trill @TrillRegress
-Scenario: Expand Skill Boxes
+Scenario: Expand GDS Skill Boxes
 Given I am a User
 And I am logged into Trill
 When I am on my Trill homepage
@@ -62,7 +62,7 @@ And I can see the additional skill group information relevant to my role
 
 #Clicking an expanded skill group box should collapse it
 @US16 @GDSskills @Trill
-Scenario: Collapse Skill Boxes
+Scenario: Collapse GDS Skill Boxes
 Given I am a User
 And I am logged into Trill
 When I am on my Trill homepage
