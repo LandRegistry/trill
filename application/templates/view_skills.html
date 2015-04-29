@@ -57,10 +57,10 @@
             <h3>Your profile</h3>
             <img src='static/images/blankFace1.jpg' alt='Your picture' />           
             <div class = 'row top7'>
-            <p>Name: {{user_obj.name}}</p>
-            <p>Role: {{user_obj.trill_role}}</p>
-            <p>Job Title: {{user_obj.job_title}}</p>
-            <p>Line Manager: {{user_obj.line_manager}}</p>
+            <p id="name"> Name: {{user_obj.name}}</p>
+            <p id="trill-role">Role: {{user_obj.trill_role}}</p>
+            <p id="job-title">Job Title: {{user_obj.job_title}}</p>
+            <p id="line-manager">Line Manager: {{user_obj.line_manager}}</p>
             </div>
         </div>
 
@@ -72,7 +72,7 @@
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default"><!--Put each skill group in a box-->
                         <div class="panel-heading">
-                            <h4 class="panel-title">
+                            <h4 id="skill-group{{group.n}}" class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{group.n}}">{{group.name}}</a>
                         </div>
                         <div id="{{group.n}}" class="accordion-body collapse">
@@ -81,8 +81,8 @@
                             <div class="list-group"> <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a href="#" class="list-group-item">
-                                    <h5 class="list-group-item-heading">{{skill_title.name}}</h4>
-                                    <p class="list-group-item-text">{{skill}}</p>
+                                    <h5 id="skill-title{{group.n}}-{{skill_title.n}}" class="list-group-item-heading">{{skill_title.name}}</h4>
+                                    <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.name}}</p>
                                     
                                     <!--<div class="alert alert-info">
                                         <div class="form-inline">

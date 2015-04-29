@@ -3,15 +3,14 @@ from flask import render_template, redirect, url_for, session, request
 from .forms import LoginForm, SigninForm
 from flask.ext.login import LoginManager, login_user, logout_user 
 from flask.ext.login import current_user, login_required
+from application.database import *
 
 #simple structure to hold harded coded pretend DB test data
 class User(object):
-    def __init__(self, user_name, password, first_name, last_name, line_manager, job_title, trill_role, active):
-        self.id = id
+    def __init__(self, user_name, password, name, line_manager, job_title, trill_role, active):
         self.user_name = user_name
         self.password = password
-        self.first_name = first_name
-        self.last_name = last_name
+        self.name = name
         self.line_manager = line_manager
         self.job_title = job_title
         self.trill_role = trill_role
@@ -29,13 +28,13 @@ class User(object):
         return True
     
     def is_active(self):
-        return self.active
+        return True
     
     def is_anonymous(self):
         return False
     
     def get_id(self):
-        return str(self.id)
+        return self.user_name
         
 class Skill_group(object):
     def __init__(self, name, n):
@@ -60,6 +59,7 @@ class Skill_desc(object):
         self.n = n
         self.name = name
 #end of data structure
+
 
 '''<<<<<<< HEAD
 #hard coded test data for prototype (a pretend database)
@@ -136,7 +136,7 @@ def signout():
     return redirect(url_for('home'))
 
 @app.route('/record')
-#@login_required
+@login_required
 def record():
     #setup a pretend user as we are bypassing the login process for now
     email = 'Maranda.Caron@landregistry.gsi.gov.uk'
@@ -145,12 +145,14 @@ def record():
     userId = GetUserId(email)
     
     #populate the basic user data in the user object
-    user_name    = GetUserName(userId)
+    password = '123456'
+    name    = GetUserName(userId)
     trill_role   = GetTrillRole(userId)
     job_title    = GetJobTitle(userId)
     line_manager = GetLineManager(userId)
+    active = None
 
-    user = User(userId, user_name, line_manager, job_title, trill_role)
+    user = User(userId, password, name, line_manager, job_title, trill_role, active)
     
     #Get Skill group based on user
     skillGroups  = GetUserSkillGroups(userId)
@@ -199,9 +201,22 @@ def login():
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = '/signin'
+
 @login_manager.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+def user_loader(user_name):
+    #get the user
+    userId = GetUserId(user_name)
+    
+    #populate the basic user data in the user object
+    password = '123456'
+    name    = GetUserName(userId)
+    trill_role   = GetTrillRole(userId)
+    job_title    = GetJobTitle(userId)
+    line_manager = GetLineManager(userId)
+    active = True
+
+    user = User(userId, password, name, line_manager, job_title, trill_role, active)
+    return user
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -212,16 +227,21 @@ def signin():
         if form.validate():
             user_name = form.username.data
             userId = GetUserId(user_name)
-            print (userId)
-            if userId != '':
-                name         = GetUserName(userId)
-                trill_role   = GetTrillRole(userId)
-                job_title    = GetJobTitle(userId)
-                line_manager = GetLineManager(userId)
-                active = None
-                user = User(userId, name, line_manager, job_title, trill_role, active)
+    
+            #populate the basic user data in the user object
+            password = '123456'
+            name    = GetUserName(userId)
+            trill_role   = GetTrillRole(userId)
+            job_title    = GetJobTitle(userId)
+            line_manager = GetLineManager(userId)
+            active = True
 
-                login_user(userId, remember = form.remember_me.data)
+            user = User(user_name, password, name, line_manager, job_title, trill_role, active)
+            
+            remember = form.remember_me.data
+            print (userId, user_name)
+            if userId != '':
+                login_user(user, remember)
                 session['signed'] = True
                 session['username'] = userId
                 if session.get('next'):                
