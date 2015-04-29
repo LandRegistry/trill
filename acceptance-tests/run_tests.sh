@@ -6,7 +6,7 @@ rm -rf sshot*
 
 source ../environment.sh
 
-../bundle install
+bundle install
 
 if [ -z "$1" ]
   then
