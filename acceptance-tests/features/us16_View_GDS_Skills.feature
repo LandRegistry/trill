@@ -56,19 +56,19 @@ Given I am a User
 And I am logged into Trill
 When I am on my Trill homepage
 And I click on a collapsed GDS skill group
-Then the skill group will expand
-And I can see the additional skill group information relevant to my role
+#Then the skill group will expand
+Then I can see the additional skill group information relevant to my role
 
 
 #Clicking an expanded skill group box should collapse it
-@US16 @GDSskills @Trill
-Scenario: Collapse GDS Skill Boxes
-Given I am a User
-And I am logged into Trill
-When I am on my Trill homepage
-And I click on an expanded GDS skill group
-Then the skill group will collapse
-And I will not see the additional skill group information relevant to my role
+#@US16 @GDSskills @Trill
+#Scenario: Collapse GDS Skill Boxes
+#Given I am a User
+#And I am logged into Trill
+#When I am on my Trill homepage
+#And I click on an expanded GDS skill group
+#Then the skill group will collapse
+#And I will not see the additional skill group information relevant to my role
 
 #All data/names/skills on the page should come from the database
 #@US16 cover this behaviour
