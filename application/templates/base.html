@@ -45,8 +45,7 @@
             {% if session['signed'] %}
             <li><a href='/profile' data-target='#' data-toggle='dropdown'>Signed in as {{ session['username'] }}<span class='caret'></span></a>
             <ul class='dropdown-menu'>
-                <li><a href="/{{session['username']}}">Your bio</a></li>
-                <li><a href="{{ url_for('profile') }}">Settings..</a></li>
+                <li><a href="{{ url_for('profile') }}">Your profile settings</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ url_for('signout') }}">Logout</a></li>
             </ul>

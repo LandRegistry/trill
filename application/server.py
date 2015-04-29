@@ -61,88 +61,19 @@ class Skill_desc(object):
 #end of data structure
 
 
-'''<<<<<<< HEAD
-#hard coded test data for prototype (a pretend database)
-first_name = 'Alex'
-last_name = 'Blewett'
-user_name = 'alex@home'
-password = '123456'
-trill_role = 'Developer'
-job_title = 'Front end web developer'
-line_manager = 'Marc McCoy'
-active = None
-user = User(user_name, password, first_name, last_name, line_manager, job_title, trill_role, active)
-#user.Add_user_cred(user_name, password)
-
-skill_group_name = 'Skill Group 1 - code'
-skill_group = Skill_group(skill_group_name, 1)
-
-skill_title = Skill_title('Develop code')
-skill_title.Add_skill('produce bug free code')
-skill_title.Add_skill('unit test code')
-skill_group.Add_skill_title(skill_title)
-
-skill_title = Skill_title('Design code')
-skill_title.Add_skill('Model objects')
-skill_title.Add_skill('Review design')
-skill_group.Add_skill_title(skill_title)
-
-user.Add_skill_group(skill_group)
-
-skill_group_name = 'Skill Group 2 - agile'
-skill_group = Skill_group(skill_group_name, 2)
-
-skill_title = Skill_title('Plan work')
-skill_title.Add_skill('work in agile')
-skill_title.Add_skill('attend stand up')
-skill_title.Add_skill('attend planning meeting')
-skill_group.Add_skill_title(skill_title)
-
-skill_title = Skill_title('Do scrum')
-skill_title.Add_skill('estimate story points')
-skill_title.Add_skill('feedback during retrospective')
-skill_title.Add_skill('do other srum stuff')
-skill_group.Add_skill_title(skill_title)
-
-user.Add_skill_group(skill_group)
-
-skill_group_name = 'Skill Group 3 - deliver'
-skill_group = Skill_group(skill_group_name, 3)
-
-skill_title = Skill_title('Present work')
-skill_title.Add_skill('show team')
-skill_title.Add_skill('show product owner')
-skill_title.Add_skill('show n tell')
-skill_group.Add_skill_title(skill_title)
-
-user.Add_skill_group(skill_group)'''
-#end of test data
-
 #possible future functionality
 @app.route('/home')
 def home():
     return render_template('welcome.html')
 
-@app.route('/profile')
-@login_required
-def profile():
-    return render_template('profile.html')
-
-@app.route('/signout')
-def signout():
-    session.pop('signed')
-    session.pop('username')
-    logout_user()
-    return redirect(url_for('home'))
-
 @app.route('/record')
 @login_required
 def record():
     #setup a pretend user as we are bypassing the login process for now
-    email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
     
     #get the user
-    userId = GetUserId(email)
+    userId = GetUserId(session['username'])
     
     #populate the basic user data in the user object
     password = '123456'
@@ -183,20 +114,45 @@ def record():
     return render_template('view_skills.html', user_obj = user)
     return 'ok', 200
 
-@app.route('/edit')
+@app.route('/export')
 @login_required
-def edit_skills():
-    return render_template('edit_skills.html')
+def export_skills():
+    return render_template('export_skills.html')
 
-@app.route('/admin')
+@app.route('/add_skill')
 @login_required
-def admin_func():
-    return render_template('admin_func.html')
+def add_skill():
+    return render_template('add_skill.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/book')
+@login_required
+def book():
+    return render_template('book.html')
+
+@app.route('/bookings')
+@login_required
+def bookings():
+    return render_template('bookings.html')
+
+@app.route('/add_course')
+@login_required
+def add_course():
+    return render_template('add_course.html')
+
+@app.route('/resource')
+@login_required
+def resource():
+    return render_template('resource.html')
+
+@app.route('/about')
+@login_required
+def about():
+    return render_template('about.html')
+
+'''@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm
-    return render_template('login.html', signin_form = form)
+    return render_template('login.html', signin_form = form)'''
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -226,24 +182,26 @@ def signin():
         form = SigninForm(request.form)
         if form.validate():
             user_name = form.username.data
+            password = form.password.data
             userId = GetUserId(user_name)
-    
-            #populate the basic user data in the user object
-            password = '123456'
-            name    = GetUserName(userId)
-            trill_role   = GetTrillRole(userId)
-            job_title    = GetJobTitle(userId)
-            line_manager = GetLineManager(userId)
-            active = True
 
-            user = User(user_name, password, name, line_manager, job_title, trill_role, active)
-            
-            remember = form.remember_me.data
-            print (userId, user_name)
+            #print (userId, user_name)
             if userId != '':
+                #populate the basic user data in the user object
+                name    = GetUserName(userId)
+                trill_role   = GetTrillRole(userId)
+                job_title    = GetJobTitle(userId)
+                line_manager = GetLineManager(userId)
+                active = True
+
+                user = User(user_name, password, name, line_manager, job_title, trill_role, active)
+
+                remember = form.remember_me.data
+                
                 login_user(user, remember)
                 session['signed'] = True
-                session['username'] = userId
+                session['userId'] = userId
+                session['username'] = user_name
                 if session.get('next'):                
                     next_page = session.get('next')
                     session.pop('next')
@@ -251,7 +209,7 @@ def signin():
                 else:
                     return redirect(url_for('home'))
                 '''else:
-                    form.password.errors.append('Passwod did not match')
+                    form.password.errors.append('Password did not match')
                     return render_template('signinpage.html',  signinpage_form = form)'''
             else:
                 form.username.errors.append('Username not found')
@@ -261,6 +219,19 @@ def signin():
     else:
         session['next'] = request.args.get('next')
         return render_template('signinpage.html', signinpage_form = SigninForm())
+    
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+
+@app.route('/signout')
+@login_required
+def signout():
+    session.pop('signed')
+    session.pop('username')
+    logout_user()
+    return redirect(url_for('home'))
 #end of future functionality
 
 #the prototype functionality is here
@@ -271,14 +242,16 @@ def test_skills():
     
     #get the user
     userId = GetUserId(email)
+    password = '12334556'
     
     #populate the basic user data in the user object
     user_name    = GetUserName(userId)
     trill_role   = GetTrillRole(userId)
     job_title    = GetJobTitle(userId)
     line_manager = GetLineManager(userId)
+    active = None
 
-    user = User(userId, user_name, line_manager, job_title, trill_role)
+    user = User(email, password, user_name, line_manager, job_title, trill_role, None)
     
     #Get Skill group based on user
     skillGroups  = GetUserSkillGroups(userId)
