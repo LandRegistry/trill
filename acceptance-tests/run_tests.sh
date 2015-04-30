@@ -5,12 +5,13 @@ set -e
 rm -rf sshot*
 
 source ../environment.sh
+source ../environment_test.sh
 
 bundle install
 
 if [ -z "$1" ]
   then
-    bundle exec cucumber --tags ~@wip
+    cucumber --tags ~@wip
   else
-    bundle exec cucumber $@
+    cucumber $@
 fi
