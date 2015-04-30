@@ -1,9 +1,10 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
 from .forms import LoginForm, SigninForm
-from flask.ext.login import LoginManager, login_user, logout_user 
+from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
+from application.login import valid_user
 
 #simple structure to hold harded coded pretend DB test data
 class User(object):
@@ -17,44 +18,44 @@ class User(object):
         self.trill_role = ''
         self.active = None
         self.group_list = []
-        
+
     def Add_skill_group(self, skill_group):
         self.group_list.append(skill_group)
-        
+
     def Add_user_cred(self, user_name, password):
         self.user_name = user_name
         self.password = password
-        
+
     def Add_user_data(self, name, line_manager, job_title, trill_role):
         self.name = name
         self.line_manager = line_manager
         self.job_title = job_title
         self.trill_role = trill_role
-    
+
     def Set_active(self, active):
         self.active = active
-        
+
     def is_authenticated(self):
         return True
-    
+
     def is_active(self):
         return True
-    
+
     def is_anonymous(self):
         return False
-    
+
     def get_id(self):
         return self.user_id
-        
+
 class Skill_group(object):
     def __init__(self, name, n):
         self.name = name
         self.n = n
         self.title_list = []
-        
+
     def Add_skill_title(self, skill_title):
         self.title_list.append(skill_title)
-        
+
 class Skill_title(object):
     def __init__(self, name, n):
         self.name = name
@@ -63,7 +64,7 @@ class Skill_title(object):
 
     def Add_skill(self, skill_desc):
         self.skill_list.append(skill_desc)
-        
+
 class Skill_desc(object):
     def __init__(self, name, n):
         self.n = n
@@ -79,7 +80,7 @@ def index():
 def signin():
     #setup a pretend user as we are bypassing the login process for now
     #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
-    
+
     if request.method=='POST':
         if current_user is not None and current_user.is_authenticated():
             return redirect(url_for('home'))
@@ -88,19 +89,19 @@ def signin():
             email = form.username.data
             password = form.password.data
             remember = form.remember_me.data
-            
+
             userId = GetUserId(email)
 
-            if userId != '':
-                user = User(userId, email)              
+            if valid_user(email, password):
+                user = User(userId, email)
                 login_user(user, remember)
                 session['signed'] = True
                 session['userId'] = userId
                 session['username'] = email
-                if session.get('next'):                
+                if session.get('next'):
                     next_page = session.get('next')
                     session.pop('next')
-                    return redirect(next_page)  
+                    return redirect(next_page)
                 else:
                     return redirect(url_for('home'))
                 '''else:
@@ -109,12 +110,12 @@ def signin():
             else:
                 form.username.errors.append('Username not found')
                 return render_template('signinpage.html',  signinpage_form = form)
-            
+
         return render_template('signinpage.html',  signinpage_form = form)
     else:
         session['next'] = request.args.get('next')
         return render_template('signinpage.html', signinpage_form = SigninForm())
-    
+
 @app.route('/profile')
 @login_required
 def profile():
@@ -142,7 +143,7 @@ def user_loader(userId):
     #get the user
     email = GetEmail(userId)
     user = User(userId, email)
-    
+
     user.Set_active(True)
     return user
 
@@ -155,21 +156,21 @@ def home():
 def record():
     #setup a pretend user as we are bypassing the login process for now
     #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
-    
+
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
     user = User(userId, email)
-    
+
     #populate the basic user data in the user object
     password = '123456'
     name    = GetUserName(userId)
     trill_role   = GetTrillRole(userId)
     job_title    = GetJobTitle(userId)
     line_manager = GetLineManager(userId)
-    
+
     user.Add_user_data(name, line_manager, job_title, trill_role)
-    
+
     #Get Skill group based on user
     skillGroups  = GetUserSkillGroups(userId)
     n = 0
@@ -194,7 +195,7 @@ def record():
 
             skill_group.Add_skill_title(skill_title)
         user.Add_skill_group(skill_group)
-        
+
     #send the user object to the template
     return render_template('view_skills.html', user_obj = user)
     return 'ok', 200

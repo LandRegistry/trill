@@ -1,5 +1,6 @@
 from application.models import *
 from application import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 '''
 def GetAllSkillNames():
@@ -20,11 +21,10 @@ def GetUserId(email):
     return id
 
 def GetEmail(id):
-    
-    email = ''
 
+    email = ''
     for instance in db.session.query(User).filter(User.id == id):
-        email = instance.email
+        id = instance.email
 
     return email
 
@@ -78,8 +78,8 @@ def GetSkillTitles(skillgroupname):
     skillTitles = []
 
     for instance in db.session.query(SkillTitle).join(SkillGroup).filter(SkillGroup.skillgroupname == skillgroupname):
-        skillTitles.append(instance.skilltitlename)   
-        
+        skillTitles.append(instance.skilltitlename)
+
     return skillTitles
 
 def GetSkills(skillTitle):
@@ -90,3 +90,17 @@ def GetSkills(skillTitle):
         skills.append(instance.skilldescription)
 
     return skills
+
+def GetUserPwHash(id):
+    #pwHash = generate_password_hash('Simon')
+
+    pwHash = 'pbkdf2:sha1:1000$KTR3h1rv$bb04f6ecfce7ba15878dcdd83d513724500f0a49'
+
+    print (pwHash)
+    '''
+    pwHash = ''
+    for instance in db.session.query(User).filter(User.id == id):
+         pwHash = instance.email
+
+    '''
+    return pwHash

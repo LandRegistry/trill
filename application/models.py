@@ -9,6 +9,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True)
     managerfirstname = db.Column(db.String(80))
     managersurname = db.Column(db.String(80))
+    pwhash = db.Column(db.String(80))
 
     def __init__(self, firstname, surname, email, managerfirstname, managersurname):
         self.firstname = firstname
