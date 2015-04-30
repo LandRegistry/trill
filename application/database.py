@@ -85,7 +85,7 @@ def GetSkillTitles(skillgroupname):
 def GetSkills(skillTitle):
 
     skills = []
-    print (skillTitle)
+    #print (skillTitle)
     for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
         skills.append(instance.skilldescription)
 
