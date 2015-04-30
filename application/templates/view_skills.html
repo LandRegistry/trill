@@ -61,19 +61,19 @@
                                                     Proficency level
                                                 </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}1" 
+                                              <input type="radio" name="prof_radio-{{skill_title.name}}-{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|1" 
                                                  value="option1" checked> None
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}2" 
+                                              <input type="radio" name="prof_radio-{{skill_title.name}}-{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|2" 
                                                  value="option2"> Basic
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}3" 
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|3" 
                                                  value="option3"> Medium
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill}}" id="prof_radio_{{skill_title.name}}_{{skill}}4" 
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|4" 
                                                  value="option4"> Expert
                                            </label>
                                         </div>
@@ -83,19 +83,19 @@
                                                     Confidence level
                                                 </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}1" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|1" 
                                                  value="option1" checked> None
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}2" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|2" 
                                                  value="option2"> Low
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}3" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|3" 
                                                  value="option3"> Medium
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill}}" id="conf_radio_{{skill_title.name}}_{{skill}}4" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|4" 
                                                  value="option4"> High
                                            </label>
                                         </div>
@@ -114,6 +114,20 @@
     </div>
 </div>
 {% endblock %}
+    
+{% block scripts %}
+    {{super()}}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
 
-</body>
-</html>
+$('input:radio').change(
+    function(){
+        
+        $.post("/record", {'name1':$(this).attr("id")} );
+    }
+);          
+
+});
+</script>
+{% endblock %}

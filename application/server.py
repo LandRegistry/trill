@@ -150,19 +150,44 @@ def user_loader(userId):
 def home():
     return render_template('welcome.html')
 
-@app.route('/record')
+@app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
     #setup a pretend user as we are bypassing the login process for now
     #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
-    
+    if request.method == "POST":
+        #returns the radio button value as a | separated string
+        choice = request.form       
+        string_0 = (choice['name1'])
+        
+        #decode the skill type - prof_radio = proficency, prof_conf = confidence
+        end1 = string_0.find('|')
+        skill_type = (string_0[0:end1])
+        
+        #decode the skill title
+        string_1 = string_0[end1+1:]
+        end2 = string_1.find('|')
+        skill_title = string_1[0:end2]                    
+        
+        #decode the skill description
+        string_2 = string_1[end2+1:]
+        end3 = string_2.find('|')
+        skill_desc = string_2[0:end3]
+        
+        #decode the skill value
+        string_3 = string_2[end3+1:]
+        skill_value = string_3
+        
+        print (skill_type, skill_title, skill_desc, skill_value)
+
+        
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
     user = User(userId, email)
     
     #populate the basic user data in the user object
-    password = '123456'
+    #password = '123456'
     name    = GetUserName(userId)
     trill_role   = GetTrillRole(userId)
     job_title    = GetJobTitle(userId)
@@ -237,11 +262,3 @@ def about():
 def tour():
     return render_template('tour.html')
 
-@app.route('/radio')
-def radio():
-    return render_template('radio_proto.html')
-
-@app.route('/radio_response')
-def radio_response():
-    choice = request.form['choice1']
-    print (choice)
