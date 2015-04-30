@@ -27,5 +27,5 @@ echo "Installing Bundler"
   rbenv rehash
 
 echo "Installing Ruby Gems"
-  bundle install --path vendor
+  bundle install
   rbenv rehash

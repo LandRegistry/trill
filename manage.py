@@ -5,7 +5,8 @@ import os
 from application import app, db
 from application.models import *
 
-app.config.from_object(os.environ.get('SETTINGS'))
+#app.config.from_object(os.environ.get('SETTINGS'))
+from config import CONFIG_DICT
 
 migrate = Migrate(app, db)
 manager = Manager(app)

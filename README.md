@@ -35,7 +35,7 @@ python3 /home/vagrant/trill/database-setup/load/loadDB.py
 ###Run the app:
 
 ```
-python3 run.py
+source run_dev.sh
 ```
 
 Hitting 'localhost:5000' on the browser should give you the GDS skills page.
