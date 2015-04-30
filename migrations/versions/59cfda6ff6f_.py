@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: 4fdbfff098
+Revision ID: 59cfda6ff6f
 Revises: None
-Create Date: 2015-04-24 14:37:37.694264
+Create Date: 2015-04-30 11:25:54.562263
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '4fdbfff098'
+revision = '59cfda6ff6f'
 down_revision = None
 
 from alembic import op
@@ -32,6 +32,14 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
+    op.create_table('trill_role_groups',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('groupname', sa.String(length=80), nullable=True),
+    sa.Column('job_title_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['job_title_id'], ['job_titles.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('groupname')
+    )
     op.create_table('user_jobs',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -41,14 +49,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['job_title_id'], ['job_titles.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('trill_role_groups',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('groupname', sa.String(length=80), nullable=True),
-    sa.Column('job_title_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['job_title_id'], ['job_titles.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('groupname')
     )
     op.create_table('skill_groups',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -95,8 +95,8 @@ def downgrade():
     op.drop_table('skills')
     op.drop_table('skill_titles')
     op.drop_table('skill_groups')
-    op.drop_table('trill_role_groups')
     op.drop_table('user_jobs')
+    op.drop_table('trill_role_groups')
     op.drop_table('users')
     op.drop_table('job_titles')
     ### end Alembic commands ###
