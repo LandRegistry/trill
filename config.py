@@ -1,18 +1,31 @@
 import os
 
-WTF_CSRF_ENABLED = True
-SECRET_KEY = 'you-will-never-guess'
+secret_key = os.environ['APPLICATION_SECRET_KEY']
+sqlalchemy_database_uri = os.environ['SQLALCHEMY_DATABASE_URI']
 
-class Config(object):
-    DEBUG = False
+CONFIG_DICT = {
+    'DEBUG': False,
+    'SECRET_KEY': secret_key,
+    'SQLALCHEMY_DATABASE_URI': sqlalchemy_database_uri,
+}
+
+settings = os.environ.get('SETTINGS')
+
+if settings == 'development':
+    CONFIG_DICT['DEBUG'] = True
+elif settings == 'test':
+    CONFIG_DICT['DEBUG'] = True
+
+#class Config(object):
+#    DEBUG = False
     # LOGGING_PATH = os.getenv('LOGGING_PATH', 'python_logging/logging.yaml')
 
-class DevelopmentConfig(Config):
+#class DevelopmentConfig(Config):
     # format is dialect+driver://username:password@host:port/database
-    SQLALCHEMY_DATABASE_URI = 'postgresql://trill:@0.0.0.0:5432/trill'
-    DEBUG = True
+#    SQLALCHEMY_DATABASE_URI = 'postgresql://trill:@0.0.0.0:5432/trill'
+#    DEBUG = True
 
-class UnitTestConfig(Config):
+#class UnitTestConfig(Config):
     # Uncomment the line below when the DB is up and running
     #SQLALCHEMY_DATABASE_URI = ''
-    DEBUG = True
+#    DEBUG = True
