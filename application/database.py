@@ -19,6 +19,15 @@ def GetUserId(email):
 
     return id
 
+def GetEmail(id):
+    
+    email = ''
+
+    for instance in db.session.query(User).filter(User.id == id):
+        email = instance.email
+
+    return email
+
 def GetUserName(id):
 
     userName = ''
