@@ -11,12 +11,13 @@ class User(db.Model):
     managersurname = db.Column(db.String(80))
     pwhash = db.Column(db.String(80))
 
-    def __init__(self, firstname, surname, email, managerfirstname, managersurname):
+    def __init__(self, firstname, surname, email, managerfirstname, managersurname, pwhash):
         self.firstname = firstname
         self.surname = surname
         self.email = email
         self.managerfirstname = managerfirstname
         self.managersurname = managersurname
+        self.pwhash = pwhash
 
     def __repr__(self):
         return '<User %r>' % self.surname

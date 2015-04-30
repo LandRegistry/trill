@@ -94,13 +94,13 @@ def GetSkills(skillTitle):
 def GetUserPwHash(id):
     #pwHash = generate_password_hash('Simon')
 
-    pwHash = 'pbkdf2:sha1:1000$KTR3h1rv$bb04f6ecfce7ba15878dcdd83d513724500f0a49'
+    #pwHash = 'pbkdf2:sha1:1000$KTR3h1rv$bb04f6ecfce7ba15878dcdd83d513724500f0a49'
 
-    print (pwHash)
-    '''
+    #print (pwHash)
+
     pwHash = ''
     for instance in db.session.query(User).filter(User.id == id):
-         pwHash = instance.email
+         pwHash = instance.pwhash
 
-    '''
+
     return pwHash
