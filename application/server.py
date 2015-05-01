@@ -108,7 +108,7 @@ def signin():
                     form.password.errors.append('Password did not match')
                     return render_template('signinpage.html',  signinpage_form = form)'''
             else:
-                form.username.errors.append('Username not found')
+                form.username.errors.append('Username or password incorrect')
                 return render_template('signinpage.html',  signinpage_form = form)
 
         return render_template('signinpage.html',  signinpage_form = form)
