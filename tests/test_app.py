@@ -1,23 +1,21 @@
 import unittest
-import os
 import mock
+from application import server
 from application.server import app
-from application import db, database
 
 from config import CONFIG_DICT
 
 class TestSequenceFunctions(unittest.TestCase):
 
     def setUp(self):
-#        app.config.from_object(os.environ.get('SETTINGS'))
         app.config.update(CONFIG_DICT)
-        db.create_all()
         self.app = app
         self.app = app.test_client()
 
 
     def do_nothing(self, *args):
-        return ''
+        pass
+
 
     @mock.patch('application.database.GetUserId')
     @mock.patch('application.database.GetUserName')
