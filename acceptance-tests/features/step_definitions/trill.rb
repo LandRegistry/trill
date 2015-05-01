@@ -1,18 +1,3 @@
-require 'capybara'
-require 'capybara/dsl'
-#require 'rspec'
-
-include Capybara::DSL
-
-Capybara.app_host = 'localhost:4567'
-Capybara.default_selector = :css
-Capybara.default_driver = :selenium
-
-Capybara.register_driver :selenium do |app|
-Capybara::Selenium::Driver.new(app, :browser => :firefox)
-end
-
-
 Given(/^I am a User$/) do
   #pending # Write code here that turns the phrase above into concrete actions
   #no step to implement in this sprint (dog 28/4/15)
@@ -152,7 +137,7 @@ Then(/^I will not see the additional skill group information relevant to my role
   #get the additional GDS Skills Group text,
   #put it into a var, check against our known value
   #page.should have_no_content?('application.server.Skill_desc object')
-  
+
 #  content = page.body.text
 #  if content.include?('application.server.Skill_desc object')
 #    raise "my GDS skills group are is visible"
