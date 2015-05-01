@@ -92,11 +92,6 @@ def GetSkills(skillTitle):
     return skills
 
 def GetUserPwHash(id):
-    #pwHash = generate_password_hash('Simon')
-
-    #pwHash = 'pbkdf2:sha1:1000$KTR3h1rv$bb04f6ecfce7ba15878dcdd83d513724500f0a49'
-
-    #print (pwHash)
 
     pwHash = ''
     for instance in db.session.query(User).filter(User.id == id):
@@ -104,3 +99,15 @@ def GetUserPwHash(id):
 
 
     return pwHash
+
+def SetUserSkillProficiency(id,level):
+
+    success = False
+
+    db.session.query(UserSkill).update().\
+        where(UserSkill.user_id == id).\
+        values(proficiency = level)
+
+    db.session.commit()
+
+    return success

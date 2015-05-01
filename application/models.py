@@ -106,9 +106,9 @@ class UserSkill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
-    competence = db.Column(db.String(20))
+    proficiency = db.Column(db.Integer)
+    confidence = db.Column(db.Integer)
     age = db.Column(db.Date)
-    confidence = db.Column(db.String(20))
 
 
     def __init__(self, title):

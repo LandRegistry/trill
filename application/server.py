@@ -154,6 +154,12 @@ def home():
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
+
+    #get the user
+    email = (session['username'])
+    userId = GetUserId(email)
+    user = User(userId, email)
+
     #setup a pretend user as we are bypassing the login process for now
     #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
     if request.method == "POST":
@@ -178,6 +184,16 @@ def record():
         #decode the skill value
         string_3 = string_2[end3+1:]
         skill_value = string_3
+
+
+        if skill_type == 'prof_radio':
+
+            SetUserSkillProficiency(userId,skill_value)
+
+        elif skill_type == 'conf_radio':
+
+            SetUserSkillConfidence(userId,skill_value)
+
 
         print (skill_type, skill_title, skill_desc, skill_value)
 
