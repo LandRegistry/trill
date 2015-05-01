@@ -20,6 +20,14 @@ def GetUserId(email):
 
     return id
 
+def GetSkillId(code):
+
+    id = ''
+    for instance in db.session.query(Skill).filter(Skill.skillcode == code):
+        id = instance.id
+
+    return id
+
 def GetEmail(id):
 
     email = ''
@@ -85,9 +93,10 @@ def GetSkillTitles(skillgroupname):
 def GetSkills(skillTitle):
 
     skills = []
-    #print (skillTitle)
+
     for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
-        skills.append(instance.skilldescription)
+        #skills.append(instance.skillcode + ' ' + instance.skilldescription)
+        skills.append(instance)
 
     return skills
 
@@ -100,14 +109,36 @@ def GetUserPwHash(id):
 
     return pwHash
 
-def SetUserSkillProficiency(id,level):
+def SetUserSkillProficiency(userId,skillId,level):
 
     success = False
 
-    db.session.query(UserSkill).update().\
-        where(UserSkill.user_id == id).\
-        values(proficiency = level)
+    try:
+        for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+            instance.proficiency = level
 
-    db.session.commit()
+        db.session.commit()
+        success = True
+
+    except:
+
+        success = False
+
+    return success
+
+def SetUserSkillConfidence(userId,skillId,level):
+
+    success = False
+
+    try:
+        for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+            instance.confidence = level
+
+        db.session.commit()
+        success = True
+
+    except:
+
+        success = False
 
     return success

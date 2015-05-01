@@ -66,9 +66,10 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 
 class Skill_desc(object):
-    def __init__(self, name, n):
+    def __init__(self, code, name, n):
         self.n = n
         self.name = name
+        self.code = code
 #end of data structure
 
 
@@ -176,27 +177,32 @@ def record():
         end2 = string_1.find('|')
         skill_title = string_1[0:end2]
 
-        #decode the skill description
+        #decode the skill code
         string_2 = string_1[end2+1:]
         end3 = string_2.find('|')
-        skill_desc = string_2[0:end3]
+        skill_code = string_2[0:end3]
+
+        #decode the skill description
+        string_3 = string_2[end3+1:]
+        end4 = string_3.find('|')
+        skill_desc = string_3[0:end4]
 
         #decode the skill value
-        string_3 = string_2[end3+1:]
-        skill_value = string_3
+        string_4 = string_3[end4+1:]
+        skill_value = string_4
+
+        skill_id = GetSkillId(skill_code)
 
 
         if skill_type == 'prof_radio':
 
-            SetUserSkillProficiency(userId,skill_value)
+            SetUserSkillProficiency(userId,skill_id,skill_value)
 
         elif skill_type == 'conf_radio':
 
-            SetUserSkillConfidence(userId,skill_value)
+            SetUserSkillConfidence(userId,skill_id,skill_value)
 
-
-        print (skill_type, skill_title, skill_desc, skill_value)
-
+        print (skill_type, skill_title, skill_code, skill_desc, skill_value)
 
 
     #get the user
@@ -232,7 +238,7 @@ def record():
             #add the skill data, title, and groups
             for skill in skills:
                 s += 1
-                skill_desc = Skill_desc(skill, s)
+                skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s)
                 skill_title.Add_skill(skill_desc)
 
             skill_group.Add_skill_title(skill_title)
