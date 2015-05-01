@@ -109,6 +109,25 @@ def GetUserPwHash(id):
 
     return pwHash
 
+def GetUserSkillProficiencyLevel(userId,skillId):
+
+    level = 1
+
+    for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+        level = instance.proficiency
+
+    return level
+
+def GetUserSkillConfidenceLevel(userId,skillId):
+
+    level = 1
+
+    for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+        level = instance.confidence
+
+    return level
+
+
 def SetUserSkillProficiency(userId,skillId,level):
 
     success = False

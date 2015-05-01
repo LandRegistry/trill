@@ -205,12 +205,6 @@ def record():
         print (skill_type, skill_title, skill_code, skill_desc, skill_value)
 
 
-    '''
-    #get the user
-    email = (session['username'])
-    userId = GetUserId(email)
-    user = User(userId, email)
-    '''
 
     #populate the basic user data in the user object
     #password = '123456'
