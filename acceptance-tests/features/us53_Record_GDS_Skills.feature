@@ -30,5 +30,5 @@ Given I am a User
 And I am logged into Trill
 When I record my skills
 And exit the application
-and I am logged into Trill
+And I am logged into Trill
 Then my skills will displayed
