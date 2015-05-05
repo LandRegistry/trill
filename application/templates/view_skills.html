@@ -7,7 +7,7 @@
     <div class= 'row'>
         <div class='col-md-3 well well-lg text-center'>
             <h3>Your profile</h3>
-            <img src='static/images/blankFace1.jpg' alt='Your picture' />           
+            <img src='static/images/blankFace1.jpg' alt='Your picture' />
             <div class = 'row top7'>
             <p id="name"> Name: {{user_obj.name}}</p>
             <p id="trill-role">Role: {{user_obj.trill_role}}</p>
@@ -20,7 +20,7 @@
             <!--<h3>Your GDS skills are: </h3>-->
 
             <div class="accordion" id="accordion2">
-                {% for group in user_obj.group_list %}  
+                {% for group in user_obj.group_list %}
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default"><!--Put each skill group in a box-->
                         <div class="panel-heading">
@@ -28,14 +28,14 @@
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{group.n}}">{{group.name}}</a>
                         </div>
                         <div id="{{group.n}}" class="accordion-body collapse">
-                            
+
                             {% for skill_title in group.title_list %}
                             <div class="list-group"> <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a href="#" class="list-group-item">
                                     <h5 id="skill-title{{group.n}}-{{skill_title.n}}" class="list-group-item-heading">{{skill_title.name}}</h4>
-                                    <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.name}}</p>
-                                    
+                                    <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}}</p>
+
                                     <!--<div class="alert alert-info">
                                         <div class="form-inline">
                                             <label class="control-label">
@@ -61,19 +61,19 @@
                                                     Proficency level
                                                 </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio-{{skill_title.name}}-{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|1" 
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|{{skill.name}}|1"
                                                  value="option1" checked> None
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio-{{skill_title.name}}-{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|2" 
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
                                                  value="option2"> Basic
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|3" 
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
                                                  value="option3"> Medium
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.name}}|4" 
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
                                                  value="option4"> Expert
                                            </label>
                                         </div>
@@ -83,38 +83,38 @@
                                                     Confidence level
                                                 </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|1" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|1"
                                                  value="option1" checked> None
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|2" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
                                                  value="option2"> Low
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|3" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
                                                  value="option3"> Medium
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.name}}|4" 
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
                                                  value="option4"> High
                                            </label>
                                         </div>
                                     </div>
                                 </a>
-                                {% endfor %} 
-                            </div>       
-                            {% endfor %} 
-                             
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
-                {% endfor %} 
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-    
+
 {% block scripts %}
     {{super()}}
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -123,10 +123,10 @@
 
 $('input:radio').change(
     function(){
-        
+
         $.post("/record", {'name1':$(this).attr("id")} );
     }
-);          
+);
 
 });
 </script>

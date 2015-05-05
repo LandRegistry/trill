@@ -9,13 +9,15 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True)
     managerfirstname = db.Column(db.String(80))
     managersurname = db.Column(db.String(80))
+    pwhash = db.Column(db.String(80))
 
-    def __init__(self, firstname, surname, email, managerfirstname, managersurname):
+    def __init__(self, firstname, surname, email, managerfirstname, managersurname, pwhash):
         self.firstname = firstname
         self.surname = surname
         self.email = email
         self.managerfirstname = managerfirstname
         self.managersurname = managersurname
+        self.pwhash = pwhash
 
     def __repr__(self):
         return '<User %r>' % self.surname
@@ -104,9 +106,9 @@ class UserSkill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
-    competence = db.Column(db.String(20))
+    proficiency = db.Column(db.Integer)
+    confidence = db.Column(db.Integer)
     age = db.Column(db.Date)
-    confidence = db.Column(db.String(20))
 
 
     def __init__(self, title):

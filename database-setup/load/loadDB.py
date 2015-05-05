@@ -28,7 +28,7 @@ try:
 
 
 
-    usercsv = open('/home/vagrant/trill/database-setup/load/users.csv', 'r')
+    usercsv = open('/home/vagrant/trill/database-setup/load/usershashed.csv', 'r')
     cur.copy_from(usercsv, 'users', sep=',')
 
 
