@@ -30,6 +30,7 @@ When(/^I click on a collapsed GDS skill group$/) do
   # the default state of the group box is collpased so a single click should
   # ensure the object is in the correct state for the reminder of the test
   click_link("Customer Focus")
+  click_link("Customer Focus")
 
 end
 
@@ -119,8 +120,8 @@ Then(/^I can see the additional skill group information relevant to my role$/) d
   #get the additional GDS Skills Group text,
   #put it into a var, check against our known value
   myAdditionalGDSskillsGroup = find(:xpath, ".//*[@id='skill-desc1-1-1']").text
-  if myAdditionalGDSskillsGroup.include?('application.server.Skill_desc object')
-    puts 'ok'
+  if myAdditionalGDSskillsGroup.include?('Description Customer_Focus1')
+    puts
   else
     puts 'my additional GDS skills group =' + myAdditionalGDSskillsGroup
     raise "my GDS skills group are not visible"
