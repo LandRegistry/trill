@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -e
+# Commented for the time being to prevent the entire shell session bombing out if
+# any of the called scripts/programs fail (MG 01/05/15)
+# set -e
 
 rm -rf sshot*
 
