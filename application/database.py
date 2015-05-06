@@ -1,5 +1,6 @@
 from application.models import *
 from application import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 '''
 def GetAllSkillNames():
@@ -18,6 +19,22 @@ def GetUserId(email):
         id = instance.id
 
     return id
+
+def GetSkillId(code):
+
+    id = ''
+    for instance in db.session.query(Skill).filter(Skill.skillcode == code):
+        id = instance.id
+
+    return id
+
+def GetEmail(id):
+
+    email = ''
+    for instance in db.session.query(User).filter(User.id == id):
+        id = instance.email
+
+    return email
 
 def GetUserName(id):
 
@@ -69,15 +86,78 @@ def GetSkillTitles(skillgroupname):
     skillTitles = []
 
     for instance in db.session.query(SkillTitle).join(SkillGroup).filter(SkillGroup.skillgroupname == skillgroupname):
-        skillTitles.append(instance.skilltitlename)   
-        
+        skillTitles.append(instance.skilltitlename)
+
     return skillTitles
 
 def GetSkills(skillTitle):
 
     skills = []
-    print (skillTitle)
+
     for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
-        skills.append(instance.skilldescription)
+        #skills.append(instance.skillcode + ' ' + instance.skilldescription)
+        skills.append(instance)
 
     return skills
+
+def GetUserPwHash(id):
+
+    pwHash = ''
+    for instance in db.session.query(User).filter(User.id == id):
+         pwHash = instance.pwhash
+
+
+    return pwHash
+
+def GetUserSkillProficiencyLevel(userId,skillId):
+
+    level = 1
+
+    for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+        level = instance.proficiency
+
+    return int(level)
+
+def GetUserSkillConfidenceLevel(userId,skillId):
+
+    level = 1
+
+    for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+        level = instance.confidence
+
+    return int(level)
+
+
+def SetUserSkillProficiency(userId,skillId,level):
+
+    success = False
+
+    try:
+        for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+            instance.proficiency = level
+
+        db.session.commit()
+        success = True
+
+    except:
+
+        success = False
+
+    return success
+
+def SetUserSkillConfidence(userId,skillId,level):
+
+    success = False
+
+    try:
+        for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+            instance.confidence = level
+
+        db.session.commit()
+        success = True
+
+    except:
+
+        success = False
+
+    return success

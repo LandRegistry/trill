@@ -1,100 +1,137 @@
-{% extends "bootstrap/base.html" %}
-
-{% block styles %}
-{{super()}}
-<link href="{{url_for('.static', filename='main.css')}}" rel='stylesheet'>
-{% endblock %}
+{% extends "base.html" %}
 
 {% block title %}View Trill Skills{% endblock %}
 
-{% block navbar %}   
-<div class='navbar navbar-default navbar-static-top'>
-    <div class='container'>
-        <div class='navbar-header'>
-            <a href='/home' class='navbar-brand'>Trill - Training and Skills</a>
-
-            <button type='button' class='navbar-toggle'
-                    data-toggle='collapse'
-                    data-target='.navbar-collapse'>
-                <span class='sr-only'>Toggle navigaton</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
-        </div>
-        
-        <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
-            <li>
-                <a href='/skills' data-target='#' data-toggle='dropdown'>Skills<span class='caret'></span></a>
-                <ul class='dropdown-menu'>
-                    <li><a href='/record'>Record Skills</a></li>
-                    <li><a href='/export'>Export Skills</a></li>
-                    <li class='divider'></li>
-                    <li><a href='/add_skill'>Add Skills</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href='/training' data-target='#' data-toggle='dropdown'>Training<span class='caret'></span></a>
-                <ul class='dropdown-menu'>
-                    <li><a href='/book'>Book Course</a></li>
-                    <li><a href='/bookings'>My Bookings</a></li>
-                    <li class='divider'></li>
-                    <li><a href='/add_course'>Add Courses</a></li>
-                </ul>
-            </li>
-            <li><a href='/resource'>Resource</a></li>
-            <li><a href='/profile'>Profile</a></li>
-            <li><a href='/edit'>About</a></li>
-        </ul>
-    </div>
-</div>
-{% endblock %}
-
 {% block content %}
+<!--<div class="container">
+  <h3>Popover Example</h3>
+  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
+</div>-->
+
 <div class="container">
     <div class= 'row'>
         <div class='col-md-3 well well-lg text-center'>
             <h3>Your profile</h3>
-            <img src='static/images/blankFace1.jpg' alt='Your picture' />           
-            <p>Name: {{user_obj.name}}</p>
-            <p>Role: {{user_obj.trill_role}}</p>
-            <p>Job Title: {{user_obj.job_title}}</p>
-            <p>Line Manager: {{user_obj.line_manager}}</p>
+            <!--<img src='static/images/blankFace1.jpg' alt='Your picture' />-->
+            <div class = 'row top7'>
+            <p id="name"> Name: {{user_obj.name}}</p>
+            <p id="trill-role">Role: {{user_obj.trill_role}}</p>
+            <p id="job-title">Job Title: {{user_obj.job_title}}</p>
+            <p id="line-manager">Line Manager: {{user_obj.line_manager}}</p>
+            </div>
         </div>
+    
 
         <div class='col-md-9'>
-            <!--<h3>Your GDS skills are: </h3>-->
+            <h3>Your GDS skills are: </h3>
 
             <div class="accordion" id="accordion2">
-                {% for group in user_obj.group_list %}  
+                {% for group in user_obj.group_list %}
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default"><!--Put each skill group in a box-->
                         <div class="panel-heading">
-                            <h4 class="panel-title">
+                            <h4 id="skill-group{{group.n}}" class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{group.n}}">{{group.name}}</a>
                         </div>
                         <div id="{{group.n}}" class="accordion-body collapse">
-                            
+
                             {% for skill_title in group.title_list %}
-                            <div class="list-group">
+                            <div class="list-group"> <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a href="#" class="list-group-item">
-                                    <h5 class="list-group-item-heading">{{skill_title.name}}</h4>
-                                    <p class="list-group-item-text">{{skill}}</p>
+                                    <h5 id="skill-title{{group.n}}-{{skill_title.n}}" class="list-group-item-heading">{{skill_title.name}}</h4>
+                                    <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}}</p>
+
+                                    <!--<div class="alert alert-info">
+                                        <div class="form-inline">
+                                            <label class="control-label">
+                                                What is your proficency level?
+                                            </label>
+                                            <label class="radio">
+                                                <input value="1" type="radio">None
+                                            </label>
+                                            <label class="radio">
+                                                <input value="2" type="radio">Basic
+                                            </label>
+                                            <label class="radio">
+                                                <input value="3" type="radio">Average
+                                            </label>
+                                            <label class="radio">
+                                                <input value="4" type="radio">Expert
+                                            </label>
+                                        </div>
+                                    </div>-->
+                                    <div class = 'well well-sm'>
+                                        <div class = 'container row top7'>
+                                            <label class="control-label">
+                                                    Proficency level
+                                                </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|{{skill.name}}|1"
+                                                 value="option1" {% if 1 == skill.prof %}checked{% endif %}> None
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
+                                                 value="option2" {% if 2 == skill.prof %}checked{% endif %}> Basic
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" data-toggle="popover" data-content="Some content inside the popover" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
+                                                 value="option3" {% if 3 == skill.prof %}checked{% endif %}> Proficent
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
+                                                 value="option4" {% if 4 == skill.prof %}checked{% endif %}> Expert
+                                           </label>
+                                        </div>
+                                        
+                                        <div class = 'container row top7'>
+                                            <label class="control-label">
+                                                    Confidence level
+                                                </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|1"
+                                                 value="option1" {% if 1 == skill.conf %}checked {% endif %}> None
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
+                                                 value="option2" {% if 2 == skill.conf %}checked{% endif %}> Low
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
+                                                 value="option3" {% if 3 == skill.conf %}checked{% endif %}> Medium
+                                           </label>
+                                           <label class="checkbox-inline">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
+                                                 value="option4" {% if 4 == skill.conf %}checked{% endif %}> High
+                                           </label>
+                                        </div>
+                                    </div>
                                 </a>
-                                {% endfor %} 
-                            </div>          
-                            {% endfor %} 
-                             
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
-                {% endfor %} 
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
-</body>
-</html>
+{% block scripts %}
+{{super()}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('input:radio').change(
+            function(){
+                $.post("/record", {'name1':$(this).attr("id")} );
+            }
+        );
+    });
+</script>
+{% endblock %}
