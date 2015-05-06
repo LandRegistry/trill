@@ -160,7 +160,6 @@ def home():
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
-    print('record')
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
