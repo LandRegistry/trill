@@ -77,7 +77,8 @@ class Skill_desc(object):
 
 @app.route('/')
 def index():
-    return redirect(url_for('signin'))
+    #return redirect(url_for('signin'))
+    return render_template('hovertest.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -110,7 +111,8 @@ def signin():
                 else:
                     return redirect(url_for('record'))
             else:
-                form.password.errors.append('Username or password is incorrect')
+                #form.password.errors.append('Username or password is incorrect')
+                error = 'invalid'
                 return render_template('signinpage.html',  signinpage_form = form)
 
         return render_template('signinpage.html',  signinpage_form = form)
@@ -158,6 +160,7 @@ def home():
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
+    print('record')
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
@@ -240,7 +243,7 @@ def record():
                     skill_conf = GetUserSkillConfidenceLevel(userId, skill.id)
                     skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf)
                     skill_title.Add_skill(skill_desc)
-                    print(type(skill_desc.prof) is int, type(skill_desc.conf) is int)
+
                 skill_group.Add_skill_title(skill_title)
             user.Add_skill_group(skill_group)
 
