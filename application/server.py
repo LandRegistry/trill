@@ -86,34 +86,38 @@ def signin():
     #password = 'Rabbit'
 
     if request.method=='POST':
-        if current_user is not None and current_user.is_authenticated():
-            return redirect(url_for('home'))
+        if current_user and current_user.is_authenticated():
+            return redirect(url_for('record'))
         form = SigninForm(request.form)
         if form.validate():
             email = form.username.data
             password = form.password.data
-            remember = form.remember_me.data
+            #remember = form.remember_me.data
             userId = GetUserId(email)
 
             if valid_user(email, password):
                 user = User(userId, email)
-                login_user(user, remember)
+                name = GetUserName(userId)
+                login_user(user)
                 session['signed'] = True
                 session['userId'] = userId
                 session['username'] = email
+                session['name'] = name
                 if session.get('next'):
                     next_page = session.get('next')
                     session.pop('next')
                     return redirect(next_page)
                 else:
-                    return redirect(url_for('home'))
+                    return redirect(url_for('record'))
             else:
-                form.username.errors.append('Username or password incorrect')
+                form.password.errors.append('Username or password is incorrect')
                 return render_template('signinpage.html',  signinpage_form = form)
 
         return render_template('signinpage.html',  signinpage_form = form)
     else:
         session['next'] = request.args.get('next')
+        if current_user and current_user.is_authenticated():
+            return redirect(url_for('record'))
         return render_template('signinpage.html', signinpage_form = SigninForm())
 
 @app.route('/profile')
@@ -132,7 +136,7 @@ def signout():
     session.pop('userId')
     session.pop('username')
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('signin'))
 
 login_manager = LoginManager()
 login_manager.init_app(app)

@@ -12,7 +12,7 @@
     <div class= 'row'>
         <div class='col-md-3 well well-lg text-center'>
             <h3>Your profile</h3>
-            <img src='static/images/blankFace1.jpg' alt='Your picture' />
+            <!--<img src='static/images/blankFace1.jpg' alt='Your picture' />-->
             <div class = 'row top7'>
             <p id="name"> Name: {{user_obj.name}}</p>
             <p id="trill-role">Role: {{user_obj.trill_role}}</p>
@@ -23,7 +23,7 @@
     
 
         <div class='col-md-9'>
-            <!--<h3>Your GDS skills are: </h3>-->
+            <h3>Your GDS skills are: </h3>
 
             <div class="accordion" id="accordion2">
                 {% for group in user_obj.group_list %}
@@ -76,7 +76,7 @@
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" data-toggle="popover" data-content="Some content inside the popover" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
-                                                 value="option3" {% if 3 == skill.prof %}checked{% endif %}> Medium
+                                                 value="option3" {% if 3 == skill.prof %}checked{% endif %}> Proficent
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
