@@ -116,7 +116,7 @@ def GetUserSkillProficiencyLevel(userId,skillId):
     for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
         level = instance.proficiency
 
-    return level
+    return int(level)
 
 def GetUserSkillConfidenceLevel(userId,skillId):
 
@@ -125,7 +125,7 @@ def GetUserSkillConfidenceLevel(userId,skillId):
     for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
         level = instance.confidence
 
-    return level
+    return int(level)
 
 
 def SetUserSkillProficiency(userId,skillId,level):

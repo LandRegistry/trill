@@ -3,6 +3,11 @@
 {% block title %}View Trill Skills{% endblock %}
 
 {% block content %}
+<!--<div class="container">
+  <h3>Popover Example</h3>
+  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
+</div>-->
+
 <div class="container">
     <div class= 'row'>
         <div class='col-md-3 well well-lg text-center'>
@@ -15,6 +20,7 @@
             <p id="line-manager">Line Manager: {{user_obj.line_manager}}</p>
             </div>
         </div>
+    
 
         <div class='col-md-9'>
             <!--<h3>Your GDS skills are: </h3>-->
@@ -62,41 +68,41 @@
                                                 </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|{{skill.name}}|1"
-                                                 value="option1" checked> None
+                                                 value="option1" {% if 1 == skill.prof %}checked{% endif %}> None
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
-                                                 value="option2"> Basic
+                                                 value="option2" {% if 2 == skill.prof %}checked{% endif %}> Basic
                                            </label>
                                            <label class="checkbox-inline">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
-                                                 value="option3"> Medium
+                                              <input type="radio" data-toggle="popover" data-content="Some content inside the popover" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
+                                                 value="option3" {% if 3 == skill.prof %}checked{% endif %}> Medium
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
-                                                 value="option4"> Expert
+                                                 value="option4" {% if 4 == skill.prof %}checked{% endif %}> Expert
                                            </label>
                                         </div>
-
+                                        
                                         <div class = 'container row top7'>
                                             <label class="control-label">
                                                     Confidence level
                                                 </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|1"
-                                                 value="option1" checked> None
+                                                 value="option1" {% if 1 == skill.conf %}checked {% endif %}> None
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
-                                                 value="option2"> Low
+                                                 value="option2" {% if 2 == skill.conf %}checked{% endif %}> Low
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
-                                                 value="option3"> Medium
+                                                 value="option3" {% if 3 == skill.conf %}checked{% endif %}> Medium
                                            </label>
                                            <label class="checkbox-inline">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
-                                                 value="option4"> High
+                                                 value="option4" {% if 4 == skill.conf %}checked{% endif %}> High
                                            </label>
                                         </div>
                                     </div>
@@ -116,18 +122,16 @@
 {% endblock %}
 
 {% block scripts %}
-    {{super()}}
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(function(){
-
-$('input:radio').change(
-    function(){
-
-        $.post("/record", {'name1':$(this).attr("id")} );
-    }
-);
-
-});
+{{super()}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('input:radio').change(
+            function(){
+                $.post("/record", {'name1':$(this).attr("id")} );
+            }
+        );
+    });
 </script>
 {% endblock %}

@@ -66,10 +66,12 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 
 class Skill_desc(object):
-    def __init__(self, code, name, n):
+    def __init__(self, code, name, n, skill_prof, skill_conf):
         self.n = n
         self.name = name
         self.code = code
+        self.prof = skill_prof
+        self.conf = skill_conf
 #end of data structure
 
 
@@ -81,6 +83,7 @@ def index():
 def signin():
     #setup a pretend user as we are bypassing the login process for now
     #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    #password = 'Rabbit'
 
     if request.method=='POST':
         if current_user is not None and current_user.is_authenticated():
@@ -90,7 +93,6 @@ def signin():
             email = form.username.data
             password = form.password.data
             remember = form.remember_me.data
-
             userId = GetUserId(email)
 
             if valid_user(email, password):
@@ -105,9 +107,6 @@ def signin():
                     return redirect(next_page)
                 else:
                     return redirect(url_for('home'))
-                '''else:
-                    form.password.errors.append('Password did not match')
-                    return render_template('signinpage.html',  signinpage_form = form)'''
             else:
                 form.username.errors.append('Username or password incorrect')
                 return render_template('signinpage.html',  signinpage_form = form)
@@ -155,14 +154,10 @@ def home():
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
-
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
-    user = User(userId, email)
-
-    #setup a pretend user as we are bypassing the login process for now
-    #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    
     if request.method == "POST":
         #returns the radio button value as a | separated string
         choice = request.form
@@ -192,57 +187,62 @@ def record():
         skill_value = string_4
 
         skill_id = GetSkillId(skill_code)
-
-
+        
+        #save the skill values
         if skill_type == 'prof_radio':
-
-            SetUserSkillProficiency(userId,skill_id,skill_value)
+            res = SetUserSkillProficiency(userId,skill_id,skill_value)
 
         elif skill_type == 'conf_radio':
+            res = SetUserSkillConfidence(userId,skill_id,skill_value)
+        
+        return 'OK'
+    
+    if request.method == "GET":
 
-            SetUserSkillConfidence(userId,skill_id,skill_value)
+        user = User(userId, email)
 
-        print (skill_type, skill_title, skill_code, skill_desc, skill_value)
+        #setup a pretend user as we are bypassing the login process for now
+        #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
 
+        #populate the basic user data in the user object
+        name    = GetUserName(userId)
+        trill_role   = GetTrillRole(userId)
+        job_title    = GetJobTitle(userId)
+        line_manager = GetLineManager(userId)
 
+        user.Add_user_data(name, line_manager, job_title, trill_role)
 
-    #populate the basic user data in the user object
-    #password = '123456'
-    name    = GetUserName(userId)
-    trill_role   = GetTrillRole(userId)
-    job_title    = GetJobTitle(userId)
-    line_manager = GetLineManager(userId)
+        #Get Skill group based on user
+        skillGroups  = GetUserSkillGroups(userId)
+        n = 0
 
-    user.Add_user_data(name, line_manager, job_title, trill_role)
+        #loop through the skill groups to get the skill titles and add to user skill groups
+        for skillGroup in skillGroups:
+            n += 1
+            skill_group = Skill_group(skillGroup, n)
+            skillTitles = GetSkillTitles(skillGroup)
+            t = 0
+            #loop through the skill titles to get the skill descriptions and add to skill title
+            for skillTitle in skillTitles:
+                t += 1
+                skill_title = Skill_title(skillTitle, t)
+                skills = GetSkills(skillTitle)
+                s = 0
+                #add the skill data, title, and groups
+                for skill in skills:
+                    s += 1
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
+                    
+                    skill_conf = GetUserSkillConfidenceLevel(userId, skill.id)
+                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf)
+                    skill_title.Add_skill(skill_desc)
+                    print(type(skill_desc.prof) is int, type(skill_desc.conf) is int)
+                skill_group.Add_skill_title(skill_title)
+            user.Add_skill_group(skill_group)
 
-    #Get Skill group based on user
-    skillGroups  = GetUserSkillGroups(userId)
-    n = 0
-
-    #loop through the skill groups to get the skill titles and add to user skill groups
-    for skillGroup in skillGroups:
-        n += 1
-        skill_group = Skill_group(skillGroup, n)
-        skillTitles = GetSkillTitles(skillGroup)
-        t = 0
-        #loop through the skill titles to get the skill descriptions and add to skill title
-        for skillTitle in skillTitles:
-            t += 1
-            skill_title = Skill_title(skillTitle, t)
-            skills = GetSkills(skillTitle)
-            s = 0
-            #add the skill data, title, and groups
-            for skill in skills:
-                s += 1
-                skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s)
-                skill_title.Add_skill(skill_desc)
-
-            skill_group.Add_skill_title(skill_title)
-        user.Add_skill_group(skill_group)
-
-    #send the user object to the template
-    return render_template('view_skills.html', user_obj = user)
-    return 'ok', 200
+        #send the user object to the template
+        return render_template('view_skills.html', user_obj = user)
+    
 
 @app.route('/export')
 @login_required
