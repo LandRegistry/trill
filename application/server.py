@@ -97,7 +97,6 @@ def signin():
             userId = GetUserId(email)
             error = None
             if valid_user(email, password):
-                flash('You were logged in')
                 user = User(userId, email)
                 name = GetUserName(userId)
                 login_user(user)
