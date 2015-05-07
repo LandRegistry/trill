@@ -1,32 +1,41 @@
 Given(/^I am a User$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
-  #no step to implement in this sprint (dog 28/4/15)
-
+  # no step to implement in this sprint (dog 28/4/15)
+  # feels very front end driven - log in as 'x' and see 'y'
 end
 
 Given(/^I am logged into Trill$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
-  #no step to implement in this sprint (dog 28/4/15)
+  visit "http://localhost:5000/signin"
+  #puts 'on page'
+  fill_in('username', :with => 'Corene.Eggen@landregistry.gsi.gov.uk')
+  #puts 'on username'
+  fill_in('password', :with => 'Goat')
+  #puts 'on password'
+  first(:xpath, "//*[@id='login-button']").click
+  #puts 'clicked button'
 end
 
 
 When(/^I login into Trill$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   # login not part of this sprint, this step refelect the required
   # action as a place holder for the actual login story (dog 28/4/15)
-  visit "http://localhost:5000/"
+  visit "http://localhost:5000/signin"
+  #puts 'on page'
+  fill_in('username', :with => 'Corene.Eggen@landregistry.gsi.gov.uk')
+  #puts 'on username'
+  fill_in('password', :with => 'Goat')
+  #puts 'on password'
+  first(:xpath, "//*[@id='login-button']").click
+  #puts 'clicked button'
 
 end
 
 When(/^I am on my Trill homepage$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   # make do visit command - requires an environmental variable (dog )28/4/15
   visit "http://localhost:5000/"
 
 end
 
 When(/^I click on a collapsed GDS skill group$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   # the default state of the group box is collpased so a single click should
   # ensure the object is in the correct state for the reminder of the test
   click_link("Customer Focus")
@@ -35,7 +44,6 @@ When(/^I click on a collapsed GDS skill group$/) do
 end
 
 When(/^I click on an expanded GDS skill group$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   # the default state of the group box is collpased so a double click should
   # ensure the object is in the correct state for the reminder of the test
   click_link("Customer Focus")
@@ -45,14 +53,17 @@ end
 
 
 Then(/^I will go to my Trill homepage$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
-  # make do visit command - requires an environmental variable (dog )28/4/15
-  visit "http://localhost:5000/"
+  mySignedIn = find(:xpath, ".//*[@id='signed-in-as']").text
+  if mySignedIn.include?('Signed in as')
+    #puts 'ok'
+  else
+    puts 'my signed in information =' + mySignedIn
+    raise "I am not signed in"
+  end
 
 end
 
 Then(/^I can see my first name$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   #get the first name, put it into a var, check against our known value
   myFirstName = find(:xpath, ".//*[@id='user-name']").text
   if myFirstName != 'Hello ' + "'" +'Maranda Caron'+"'"
@@ -62,7 +73,6 @@ Then(/^I can see my first name$/) do
 end
 
 Then(/^I can see my surname$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   #get the last name, put it into a var, check against our known value
   myLastName = find(:xpath, ".//*[@id='user-name']").text
   if myLastName != 'Hello ' + "'" +'Maranda Caron'+"'"
@@ -72,7 +82,6 @@ Then(/^I can see my surname$/) do
 end
 
 Then(/^I can see my role$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   #get the user role, put it into a var, check against our known value
   myRole = find(:xpath, "//*[@id='trill-role']").text
   if myRole.include?("ServiceDesk")
@@ -84,7 +93,6 @@ Then(/^I can see my role$/) do
 end
 
 Then(/^I can see my GDS Skills Title$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   #get the GDS Skills Title, put it into a var, check against our known value
   myGDSskillsTitle = find(:xpath, ".//*[@id='skill-group1']/a").text
   if myGDSskillsTitle != 'Customer Focus'

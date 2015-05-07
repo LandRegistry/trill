@@ -24,7 +24,9 @@ html, body { height: 100%}
     text-align: center;
 }
 
-#center-panel {
+
+#center-panel 
+    {
     margin-left: 280px;
     background-color: #A4A9A6;
 }
