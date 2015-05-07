@@ -1,6 +1,6 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
-from .forms import LoginForm, SigninForm
+from .forms import SigninForm
 from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
@@ -78,11 +78,11 @@ class Skill_desc(object):
 @app.route('/')
 def index():
     #return redirect(url_for('signin'))
-    return render_template('hovertest.html')
+    return render_template('testpanel.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    #setup a pretend user as we are bypassing the login process for now
+    #a pretend user for testing
     #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
     #password = 'Rabbit'
 
@@ -95,7 +95,7 @@ def signin():
             password = form.password.data
             #remember = form.remember_me.data
             userId = GetUserId(email)
-
+            error = None
             if valid_user(email, password):
                 user = User(userId, email)
                 name = GetUserName(userId)
@@ -112,8 +112,8 @@ def signin():
                     return redirect(url_for('record'))
             else:
                 #form.password.errors.append('Username or password is incorrect')
-                error = 'invalid'
-                return render_template('signinpage.html',  signinpage_form = form)
+                error = 'Username or password is incorrect'
+                return render_template('signinpage.html',  signinpage_form = form, error=error)
 
         return render_template('signinpage.html',  signinpage_form = form)
     else:
@@ -127,9 +127,9 @@ def signin():
 def profile():
     return render_template('profile.html')
 
-@app.route('/forgot')
+'''@app.route('/forgot')
 def forgot():
-    return render_template('forgot.html')
+    return render_template('forgot.html')'''
 
 @app.route('/signout')
 @login_required
@@ -153,9 +153,9 @@ def user_loader(userId):
     user.Set_active(True)
     return user
 
-@app.route('/home')
+'''@app.route('/home')
 def home():
-    return render_template('welcome.html')
+    return render_template('welcome.html')'''
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
@@ -250,7 +250,7 @@ def record():
         return render_template('view_skills.html', user_obj = user)
     
 
-@app.route('/export')
+'''@app.route('/export')
 @login_required
 def export_skills():
     return render_template('export_skills.html')
@@ -286,4 +286,4 @@ def about():
 
 @app.route('/tour')
 def tour():
-    return render_template('tour.html')
+    return render_template('tour.html')'''

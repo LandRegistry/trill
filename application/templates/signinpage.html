@@ -3,7 +3,7 @@
 {% block title %}Log in to Trill{% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row top90">
     <div class="col-sm-2">
 
     </div>
@@ -22,14 +22,19 @@
                             <div class="form-group {% if signinpage_form.username.errors %} has-error {% endif %}">
                                 <!--{{signinpage_form.username.label}}-->
                                 {{signinpage_form.username(placeholder="Username", class="form-control")}}
-                                <p class="help-block">{{ signinpage_form.username.errors[0] }}</p>
+                                <p class="help-block" style="color:red">{{ signinpage_form.username.errors[0] }}</p>
                             </div>
                         </div>
                         <div class = 'row col-xs-8'>
                             <div class="form-group {% if signinpage_form.password.errors %} has-error {% endif %}">
                                 <!--{{signinpage_form.password.label}}-->
                                 {{ signinpage_form.password(placeholder="Password", class="form-control") }}
-                                <p class="help-block">{{ signinpage_form.password.errors[0] }}</p>
+                                
+                                {% if error %}
+                                <p class="help-block" style="color:red"> {{ error }}</font></p>
+                                {% else %}
+                                <p class="help-block" style="color:red">{{ signinpage_form.password.errors[0] }}</p>
+                                {% endif %}
                             </div>
                         </div>
                         <div class = 'form-inline row col-xs-6'>
