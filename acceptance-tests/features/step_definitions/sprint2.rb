@@ -34,11 +34,13 @@ When(/^the Trill application opens$/) do
     puts 'my signed in information =' + mySignedIn
     raise "This is not the log in screen"
   end
-
 end
 
 When(/^I select to log out record my skills$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  first(:xpath, "//*[@id='signed-in-as']").click
+  #puts 'click user in menu bar'
+  first(:xpath, "//*[@id='logout-dropdown']").click
+  #puts 'logout in the drop down menu'
 end
 
 When(/^I record my GDS skills$/) do
@@ -51,10 +53,9 @@ end
 
 
 Then(/^I will be on the Login page$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   myLoginPage = find(:xpath, ".//*[@id='password']").text
   if myLoginPage != 'Password'
-    puts 'on login page'
+    #puts 'on login page'
   else
     puts 'my login page text is GDS skills group =' + myLoginPage
     raise "not login page"
@@ -69,7 +70,13 @@ Then(/^I will see the error message Login incorrect$/) do
 end
 
 Then(/^I will be returned to the Trill Log In screen$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  myLoginPage = find(:xpath, ".//*[@id='password']").text
+  if myLoginPage != 'Password'
+    #puts 'on login page'
+  else
+    puts 'my login page text is GDS skills group =' + myLoginPage
+    raise "not login page"
+  end
 end
 
 Then(/^my GDS skills will be recorded$/) do
