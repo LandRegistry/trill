@@ -83,7 +83,7 @@ def index():
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     #a pretend user for testing
-    #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
+    #email = 'Maranda.Caron@land.gsi.gov.uk'
     #password = 'Rabbit'
 
     if request.method=='POST':
@@ -97,6 +97,7 @@ def signin():
             userId = GetUserId(email)
             error = None
             if valid_user(email, password):
+                flash('You were logged in')
                 user = User(userId, email)
                 name = GetUserName(userId)
                 login_user(user)

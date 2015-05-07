@@ -12,5 +12,14 @@ class TestSequenceFunctions(unittest.TestCase):
         self.app = app.test_client()
 
     def test_landing_page(self):
-        response = self.app.get('/')
+        response = self.app.get('/home')
+        self.assertEqual(response.status_code, 404)
+        
+    def test_signin_page(self):
+        response = self.app.get('/signin')
+        self.assertEqual(response.status_code, 200)
+        
+    def test_skill_page(self):
+        response = self.app.get('/record')
         self.assertEqual(response.status_code, 302)
+        
