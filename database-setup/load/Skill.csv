@@ -1,18 +1,66 @@
-1,1.0,Description Customer_Focus1.0,1
-2,1.1,Description Customer_Focus1.1,1
-3,1.2,Description Customer_Focus1.2,1
-4,1.3,Description Customer_Focus1.3,2
-5,1.4,Description Customer_Focus1.4,2
-6,1.5,Description Customer_Focus1.5,2
-7,1.6,Description Customer_Focus1.6,3
-8,1.7,Description Customer_Focus1.7,3
-9,1.8,Description Customer_Focus1.8,3
-10,2.0,Description Call_Handling2.0,4
-11,2.1,Description Call_Handling2.1,4
-12,2.2,Description Call_Handling2.2,4
-13,2.3,Description Call_Handling2.3,5
-14,2.4,Description Call_Handling2.4,5
-15,2.5,Description Call_Handling2.5,5
-16,2.6,Description Call_Handling2.6,6
-17,2.7,Description Call_Handling2.7,6
-18,2.8,Description Call_Handling2.8,6
+1,BDS.1.1,1,Understand the government's digital and technology transformation agenda and why the government is changing the way it does digital and technology projects.
+2,BDS.1.2,1,Be aware of what has happened so far with digital and technology transformation; including the launch of GOV.UK and adoption of the department 'exemplar' transformations. Recognise what this means for departments and agencies.
+3,BDS.1.3,1,Follow wider digital trends in the industry and how they may impact future government services for example; the significance of big data and  open source tools and Open Document Formats (ODF).
+4,BDS 1.4,1,Understand the stages through which services are created - from discovery; through to live - and understand how those services can be maintained over time until they are retired.
+5,BDS.1.5,1,Understand what we mean by 'digital take-up' and the techniques that can be used to increase it.
+6,BDS.1.6,1,Understand what we mean by 'digital inclusion' and 'assisted digital' and how we can help all the population use digital services in the future.
+7,BDS.2.1,2,Understand the shift from traditional methods of delivery in government to more agile methods.
+8,BDS.2.2,2,Understand that agile is a mindset (much wider than a set of tools and techniques) at the heart of which sits the concept that business people and developers must work closely together throughout the project.
+9,BDS.2.3,2,Be familiar with the principles in the Agile Manifesto and how they apply to products and services.
+10,BDS.2.4,2,Recognise that when working in an agile environment; teams need to keep focused on early and frequent delivery of outcomes that satisfy the business need.
+11,BDS.3.1,3,Work in multidisciplinary teams and be willing to support work that isn't part of your core role. Develop a shared understanding of each other's strengths and weaknesses to enable collaborative working.
+12,BDS.4.1,4,Have a strong understanding of how the design process must start with identifying and thinking about real user needs. Be familiar with how to determine user needs and measure how successfully they are met.
+13,BDS.4.2,4,Understand the value of user research and how it can best be used to understand user needs. Doing user research continuously helps teams to: 1. Concentrate on real user needs. 2. Design products and services which are prioritised based on user needs. 3. Iterate products and services in response to user feedback.
+14,BDS.4.3,4,Write user stories that detail user needs.
+15,BDS.5.1,5,Understand the GDS design principles and how they should underpin the creation of all products; services and digital interactions.
+16,BDS.6.1,6,Understand the 'Digital by Default' Service Standard and how it acts as a benchmark for the quality of government services.
+17,BDS.7.1,7,Understand that effective commercial management; including procurement where necessary; is important in delivering high quality services that improve continuously.
+18,BDS.7.2,7,Be aware of internal government procurement rules and EU procurement regulations. Understand the importance of following a robust supplier selection and evaluation process to minimise the risk of delivery delays.
+19,BDS.7.3,7,Consider the impacts of moving from large; long-term vendor contracts to multiple small and medium-sized enterprise (SME) vendors; as this is a big part of the government's transformation.
+20,BDS.7.4,7,Be aware of government procurement processes and frameworks available such as G-Cloud; Digital Services Framework and the Digital Marketplace.
+21,BDS.8.1,8,Understand open standards and open source technologies and the part they play in driving digital transformation and avoiding third party vendor 'lock-in'.
+22,BDS.9.1,9,Be aware of core security principles and be able to identify the security features that may need to be built into your service.
+23,BDS.9.2,9,Know who the security experts are within your organisation and how to contact them for consultation.
+24,BDS.10.1,10,Understand the implication of the overall Government Security Classification (GSC) approach and ensure that systems implementation take account of the GSC principles.
+25,BDS.10.2,10,Understand key principles of identity verification and how to employ the appropriate measures to assure a user's identity when they use government services.
+26,BDS.10.3,10,Be aware of the GOV.UK  Verify programme and understand how it can be utilised to meet the identity assurance needs of users; services and departments.
+27,BDS.11.1,11,Monitor the media activities of your department and GDS through online channels and social media. As a minimum you should track the names of your department and any associated ministers or high-profile staff members.
+28,BDS.11.2,11,Be engaged in online communities relevant to your field of work in order to support your work and improve your skills.
+29,BDS.11.3,11,Be aware of social media guidance for civil servants and remember three key things when engaging in social media as a civil servant: 1. Learn the rules of each social media space before engaging. 2. Abide by the Civil Service Code and ask for advice if you are not sure. 3. Remember an official account belongs to the Department not the individual.
+30,BDS.12.1,12,Communicate technical and agile concepts to non-technical people.
+31,AGI.1.1,13,Be familiar with structured programme and project management environments; such as 'waterfall' methods; but be able to retain 'agility' even in a non-agile environment. When applicable be able to apply the underpinning philosophy and principles of agile in a project situation.
+32,AGI.1.2,13,Remove blockers that hinder delivery; manage risks and dependencies within and between projects and teams.
+33,AGI.2.1,14,Work with the Product Manager to define the roadmap for any given product; breaking it down into iterations and helping to translate it into user stories.
+34,AGI.3.1,15,Deliver projects and products using the appropriate mix of agile project management methodologies.
+35,AGI.3.2,15,Use a wide range of agile frameworks; methodologies and tools and understand when to apply them such as: 1. Scrum. 2. Kanban. 3. Extreme programming. 4. Retrospectives. 5. Standups. 6. Iteration Reviews. 7. Iteration Planning. 8. Roadmap Planning. 9. Agile Workshops. 10. Agile and Lean tracking tools.
+36,AGI.4.1,16,Ensure quality is met by including the right people in the team during the 'alpha'   'beta' and 'live' phases and by ensuring each member of the team is responsible for defining and maintaining quality.
+37,AGI.5.1,17,Use agile tools and techniques (such as burndown charts; lead times; delivery rate) to track progress against delivery; current items in backlog; risks; issues and blockers in order to communicate project status to the team and stakeholders.
+38,AGI.6.1,18,Understand and focus the team on delivering value early and often iterating and continuously improving workflows where necessary.
+39,AGI.6.2,18,Drive continuous demonstrable improvements in the team and what is delivered based on data derived from actual delivery; such as: 1. Burn down and burn up charts. 2. Reducing bottlenecks. 3. Understanding velocity and delivery rates. 4. Cumulative flow diagrams. 5. Process control charts. 6. Work in progress limits. 7. Measures against project goals. 8. Outputs from retrospectives.
+40,AGI.7.1,19,Understand the concept of product backlogs and be able to assist the team in prioritising and refining user stories in the product backlog.
+41,AGI.8.1,20,Estimate iteratively and scope budgets with input from team members; stakeholders and delivery data and present it in an understandable format.
+42,AGI.9.1,21,Improve the performance of agile teams and projects through simplification and removal of duplication wherever possible.
+43,AGI.10.1,22,Bring people and views together to inform decision making.
+44,AGI.10.2,22,Weigh up risks against benefits and priorities to deliver.
+45,AGI.11.1,23,Communicate effectively and clearly even when under pressure and duress.
+46,AGI.11.2,23,Initiate and facilitate open communication between team members and stakeholders  creating a safe environment of transparency and openness.
+47,AGI.12.1,24,Engage confidently with stakeholders and communicate project information in a clear way  including when communicating difficult messages.
+48,AGI.13.1,25,Facilitate meetings and workshops with people from all levels of seniority  without bias.
+49,AGI.14.1,26,Communicate;  promote and coach the use of agile and lean methodologies to the team and relevant/interested stakeholders.
+50,AGI.15.1,27,Manage people and agile delivery to develop high-performing  self-motivated and collaborative teams.
+51,AGI.15.2,27,Matrix-manage multidisciplinary teams  offering leadership and support where needed.
+52,AGI.15.3,27,Lead the collaborative planning process; prioritising work that needs to be done against the capacity and capability of the team.
+53,AGI.16.1,28,Maintain a clear sense of direction and purpose for the team based on the project vision.
+54,AGI.16.2,28,Maintain a positive team mood and focus in difficult and challenging circumstances.
+55,OPMA.1.1,29,Understand how Operations Management supports front-end digital services and how digital skills in the 'Basic Digital Skills' skills group apply to Operations  such as being familiar with: Gov digital transformation agenda; user-centred design; agile delivery and open standards.
+56,OPMA.2.1,30,Understand how both on-premise and cloud servers work and the challenges of integrating them.
+57,OPMA.2.2,30,Have a strong understanding of cloud hosting services and the types available; in particular Platform; Infrastructure and Software As A Service (PaaS/ IaaS/ SaaS). Understand the government's 'Cloud First' policy  and why PaaS; IaaS; SaaS should be considered before other kinds of solutions.
+58,OPMA.3.1,31,Understand the activities of Service Management  to ensure 'run and maintain' of applications after they have been deployed by Development teams.
+59,OPMA.4.1,32,Ensure that appropriate identity and access management strategies are in place in proportion to Government classifications.
+60,OPMA.5.1,33,Engage with technical staff and suppliers to define the best system and platform configurations to achieve business objectives. Meet user needs and ensure configuration is always consistent;  auditable and versioned.
+61,OPMA.6.1,34,Demonstrate strong customer service skills  so that incidents are managed in a user-focussed way. In an agile environment  it is important that everyone in the team is able to confidently engage with users.
+62,OPMA.7.1,35,Define the configuration of networking in code. Automating the process such that configuration is always consistent; auditable and versioned.
+63,OPMA.8.1,36,Gather and report detailed performance data against key indicators and generate actionable improvements to the quality of services offered by the department.
+64,OPMA.9.1,37,Engage in the negotiations of Service Level and Operational Level Agreements with suppliers and stakeholders to ensure they are suitable for the service being developed.
+65,OPMA.10.1,38,Manage the email and collaboration platform in your department; including activities such as provisioning accounts; monitoring security (alongside security specialists) and capacity of systems and understand the cost implications of using the service.
+66,OPMA.11.1,39,Understand the financial position of the service. Plan and forecast  and recognise the impact of delivering the service on finance.
