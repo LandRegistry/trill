@@ -31,13 +31,11 @@ Then I will go to my Trill homepage
 @US11 @User @Login @Trill
 Scenario: Login Wrong Username
 Given I am a User
-And I use the wrong Username
-When I login into Trill
+When I login into Trill with the wrong Username
 Then I will see the error message Login incorrect
 
 @US11 @User @Login @Trill
 Scenario: Login Wrong Password
 Given I am a User
-And I use the wrong Password
-When I login into Trill
+When I login into Trill with the wrong Password
 Then I will see the error message Login incorrect

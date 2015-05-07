@@ -5,7 +5,7 @@
 <link href="{{url_for('.static', filename='main.css')}}" rel='stylesheet'>
 {% endblock %}
 
-{% block navbar %}   
+{% block navbar %}
 <div class='navbar navbar-default navbar-static-top'>
     <div class='container'>
         <div class='navbar-header'>
@@ -20,7 +20,7 @@
                 <span class='icon-bar'></span>
             </button>
         </div>
-        
+
         <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
             <li>
                 <!--<a href='/skills' data-target='#' data-toggle='dropdown'>Skills<span class='caret'></span></a>
@@ -43,14 +43,14 @@
            <!-- <li><a href='/resource'>Resource</a></li>
             <li><a href='/about'>About</a></li>-->
             {% if session['signed'] %}
-            <li><a href='/profile' data-target='#' data-toggle='dropdown'>Signed in as {{ session['name'] }}<span class='caret'></span></a>
+            <li><a href='/profile' id="signed-in-as" data-target='#' data-toggle='dropdown'>Signed in as {{ session['name'] }}<span class='caret'></span></a>
             <ul class='dropdown-menu'>
                 <!--<li><a href="{{ url_for('profile') }}">Your profile settings</a></li>
                 <li class="divider"></li>-->
                 <li><a href="{{ url_for('signout') }}">Logout</a></li>
             </ul>
             </li>
-            {% else %}  
+            {% else %}
             {% if not signinpage_form %}
             <li><a href='/signin'>login</a></li>
             {% endif %}
