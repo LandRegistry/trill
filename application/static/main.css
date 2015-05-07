@@ -16,7 +16,7 @@ html, body { height: 100%}
 #side-panel {
     position: fixed;
     float: left;
-    width: 240px;
+    width: 250px;
     padding: 10px 20px 10px 20px;
     height: 50%;
     background-color: #DFE0D9;
