@@ -15,7 +15,7 @@
         
         <div id="center-panel" class="container-fluid well">
             <h3>Your GDS skills are: </h3>
-            <div class="accordion row-fluid" id="accordion2">
+            <div class="accordion" id="accordion2">
                 
                 <div class="panel-group" id="accordion">
                     {% for group in user_obj.group_list %}
@@ -26,10 +26,10 @@
                                     <span class ="glyphicon glyphicon-chevron-down"></span> {{group.name}}</a>
                             </h4>
                         </div>
-                        <div id="{{group.n}}" class="panel-collapse collapse">
+                        <div id="{{group.n}}" class="panel-collapse collapse left300">
 
                             {% for skill_title in group.title_list %}
-                            <!--<div class="list-group">--> <!--slightly separates out different skill titles-->
+                            <!--<div class="list-group" <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a class="list-group-item">
                                     <h5 id="skill-title{{group.n}}-{{skill_title.n}}" class="list-group-item-heading">{{skill_title.name}}</h5>
@@ -83,7 +83,7 @@
                                     </div>
                                 </a>
                                 {% endfor %}
-                           <!-- </div>-->
+                           <!-- </div> -->
                             {% endfor %}
 
                         </div>

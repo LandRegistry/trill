@@ -11,14 +11,14 @@
 .top70 { margin-top:70px; }
 .top90 { margin-top:90px; }
 
-html, body { height: 100%}
+html, body { height: 90%}
 
 #side-panel {
     position: fixed;
     float: left;
     width: 250px;
     padding: 10px 20px 10px 20px;
-    height: 50%;
+    height: 40%;
     background-color: #DFE0D9;
     border-right: 1px solid #dddddd;
     text-align: center;
@@ -29,6 +29,7 @@ html, body { height: 100%}
     {
     margin-left: 280px;
     background-color: #A4A9A6;
+
 }
 #center-panel .row-fluid {overflow: auto;}
 #center-panel .large {height: 400px; padding: 10px; background-color: #5C595A}

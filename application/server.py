@@ -77,8 +77,8 @@ class Skill_desc(object):
 
 @app.route('/')
 def index():
-    #return redirect(url_for('signin'))
-    return render_template('testpanel.html')
+    return redirect(url_for('signin'))
+    #return render_template('testpanel.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
