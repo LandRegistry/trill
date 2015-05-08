@@ -26,9 +26,10 @@
                                     <span class ="glyphicon glyphicon-chevron-down"></span> {{group.name}}</a>
                             </h4>
                         </div>
-                        <div id="{{group.n}}" class="panel-collapse collapse left300">
+                        
+                        <div id="{{group.n}}" class="panel-collapse collapse">
 
-                            {% for skill_title in group.title_list %}
+                         {% for skill_title in group.title_list %}   
                             <!--<div class="list-group" <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a class="list-group-item">
@@ -36,7 +37,7 @@
                                     <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}}</p>
 
 
-                                    <div class = 'well well-sm'>
+                                    <div class = 'well well-sm row-fluid'>
                                         <div class = 'container row top7'>
                                             <label class="control-label col-xs-12 col-md-2">
                                                     Proficency level
@@ -84,9 +85,10 @@
                                 </a>
                                 {% endfor %}
                            <!-- </div> -->
-                            {% endfor %}
+                           {% endfor %} 
 
                         </div>
+                        
                     </div>
                     {% endfor %}
                 </div>
