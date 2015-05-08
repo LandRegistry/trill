@@ -14,3 +14,4 @@ class TestSequenceFunctions(unittest.TestCase):
     def test_landing_page(self):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 302)
+        self.assertTrue('/signin' in response.location)
