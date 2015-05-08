@@ -65,8 +65,10 @@ end
 
 Then(/^I can see my first name$/) do
   #get the first name, put it into a var, check against our known value
-  myFirstName = find(:xpath, ".//*[@id='user-name']").text
-  if myFirstName != 'Hello ' + "'" +'Maranda Caron'+"'"
+  myFirstName = find(:xpath, ".//*[@id='name']").text
+  if myFirstName.include?('Corene')
+    #puts 'found the first name'
+  else
     puts 'my first name =' + myFirstName
     raise "my first name does not match"
   end
@@ -74,8 +76,10 @@ end
 
 Then(/^I can see my surname$/) do
   #get the last name, put it into a var, check against our known value
-  myLastName = find(:xpath, ".//*[@id='user-name']").text
-  if myLastName != 'Hello ' + "'" +'Maranda Caron'+"'"
+  myLastName = find(:xpath, ".//*[@id='name']").text
+  if myLastName.include?('Eggen')
+    #puts 'found the last name'
+  else
     puts 'my last name =' + myLastName
     raise "my last name does not match"
   end
