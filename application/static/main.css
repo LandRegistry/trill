@@ -11,7 +11,7 @@
 .top70 { margin-top:70px; }
 .top90 { margin-top:90px; }
 
-html, body { height: 100%}
+html, body { height: 90%}
 
 #side-panel {
     position: fixed;

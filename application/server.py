@@ -77,8 +77,8 @@ class Skill_desc(object):
 
 @app.route('/')
 def index():
-    #return redirect(url_for('signin'))
-    return render_template('testpanel.html')
+    return redirect(url_for('home'))
+    #return render_template('testpanel.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -122,14 +122,12 @@ def signin():
             return redirect(url_for('record'))
         return render_template('signinpage.html', signinpage_form = SigninForm())
 
-@app.route('/profile')
+@app.route('/user')
 @login_required
-def profile():
-    return render_template('profile.html')
+def user():
+    return render_template('user.html')
 
-'''@app.route('/forgot')
-def forgot():
-    return render_template('forgot.html')'''
+
 
 @app.route('/signout')
 @login_required
@@ -138,7 +136,7 @@ def signout():
     session.pop('userId')
     session.pop('username')
     logout_user()
-    return redirect(url_for('signin'))
+    return redirect(url_for('home'))
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -153,9 +151,9 @@ def user_loader(userId):
     user.Set_active(True)
     return user
 
-'''@app.route('/home')
+@app.route('/home')
 def home():
-    return render_template('welcome.html')'''
+    return render_template('welcome.html')
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
@@ -249,8 +247,25 @@ def record():
         #send the user object to the template
         return render_template('view_skills.html', user_obj = user)
     
+@app.route('/resource')
+@login_required
+def resource():
+    return render_template('resource.html')
 
-'''@app.route('/export')
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+
+'''@app.route('/forgot')
+def forgot():
+    return render_template('forgot.html')
+
+@app.route('/export')
 @login_required
 def export_skills():
     return render_template('export_skills.html')
@@ -273,17 +288,8 @@ def bookings():
 @app.route('/add_course')
 @login_required
 def add_course():
-    return render_template('add_course.html')
+    return render_template('add_course.html')'''
 
-@app.route('/resource')
-@login_required
-def resource():
-    return render_template('resource.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/tour')
+'''@app.route('/tour')
 def tour():
     return render_template('tour.html')'''
