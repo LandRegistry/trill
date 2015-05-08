@@ -27,6 +27,7 @@ class JobTitle(db.Model):
     __tablename__ = 'job_titles'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), unique=True)
+    trill_role_group_id = db.Column(db.Integer, db.ForeignKey('trill_role_groups.id'))
 
 
     def __init__(self, title):
@@ -38,9 +39,7 @@ class JobTitle(db.Model):
 class TrillRoleGroup(db.Model):
     __tablename__ = 'trill_role_groups'
     id = db.Column(db.Integer, primary_key=True)
-    groupname = db.Column(db.String(80), unique=True)
-    job_title_id = db.Column(db.Integer, db.ForeignKey('job_titles.id'))
-
+    groupname = db.Column(db.String(80))
 
     def __init__(self, title):
         self.groupname = groupname
@@ -52,13 +51,22 @@ class SkillGroup(db.Model):
     __tablename__ = 'skill_groups'
     id = db.Column(db.Integer, primary_key=True)
     skillgroupname = db.Column(db.String(80), unique=True)
-    trill_role_group_id = db.Column(db.Integer, db.ForeignKey('trill_role_groups.id'))
+    skilltype = db.Column(db.Integer)
 
     def __init__(self, title):
         self.skillgroupname = skillgroupname
+        self.skilltype = skilltype
 
     def __repr__(self):
         return '<Skill_Group %r>' % self.skillgroupname
+
+class TrillRoleSkillGroup(db.Model):
+    __tablename__ = 'trill_role_skill_groups'
+    id = db.Column(db.Integer, primary_key=True)
+    trill_role_group_id = db.Column(db.Integer, db.ForeignKey('trill_role_groups.id'))
+    skill_group_id = db.Column(db.Integer, db.ForeignKey('skill_groups.id'))
+
+
 
 class SkillTitle(db.Model):
     __tablename__ = 'skill_titles'
@@ -76,7 +84,7 @@ class Skill(db.Model):
     __tablename__ = 'skills'
     id = db.Column(db.Integer, primary_key=True)
     skillcode = db.Column(db.String(80), unique=True)
-    skilldescription = db.Column(db.String(200))
+    skilldescription = db.Column(db.String)
     skill_title_id = db.Column(db.Integer, db.ForeignKey('skill_titles.id'))
 
     def __init__(self, title):

@@ -15,3 +15,12 @@ class TestSequenceFunctions(unittest.TestCase):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 302)
         self.assertTrue('/signin' in response.location)
+        
+    def test_signin_page(self):
+        response = self.app.get('/signin')
+        self.assertEqual(response.status_code, 200)
+        
+    def test_skill_page(self):
+        response = self.app.get('/record')
+        self.assertEqual(response.status_code, 302)
+

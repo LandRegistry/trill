@@ -1,10 +1,10 @@
 from werkzeug.security import generate_password_hash
 import csv
 
-ofile = open('usershashed.csv', 'w')
+ofile = open('/home/vagrant/trill/database-setup/load/usershashed.csv', 'w')
 usewriter = csv.writer(ofile,delimiter=',')
 
-with open('users.csv', 'r') as ifile:
+with open('/home/vagrant/trill/database-setup/load/users.csv', 'r') as ifile:
     userreader = csv.reader(ifile)
     for row in userreader:
         print(', '.join(row))
