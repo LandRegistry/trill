@@ -185,12 +185,12 @@ def record():
 
         #decode the skill description
         string_3 = string_2[end3+1:]
-        end4 = string_3.find('|')
-        skill_desc = string_3[0:end4]
+        #end4 = string_3.find('|')
+        skill_value = string_3
 
         #decode the skill value
-        string_4 = string_3[end4+1:]
-        skill_value = string_4
+        #string_4 = string_3[end4+1:]
+        #skill_value = string_4
 
         skill_id = GetSkillId(skill_code)
         
