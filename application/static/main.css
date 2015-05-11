@@ -18,7 +18,7 @@ html, body { height: 90%}
     float: left;
     width: 250px;
     padding: 10px 20px 10px 20px;
-    height: 50%;
+    height: 60%;
     background-color: #DFE0D9;
     border-right: 1px solid #dddddd;
     text-align: center;
@@ -29,6 +29,7 @@ html, body { height: 90%}
     {
     margin-left: 280px;
     background-color: #A4A9A6;
+
 }
 #center-panel .row-fluid {overflow: auto;}
 #center-panel .large {height: 400px; padding: 10px; background-color: #5C595A}

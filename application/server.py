@@ -17,10 +17,14 @@ class User(object):
         self.job_title = ''
         self.trill_role = ''
         self.active = None
-        self.group_list = []
+        self.gds_list = []
+        self.is_list = []
+        
+    def Add_gds_skill_group(self, skill_group):
+        self.gds_list.append(skill_group)
 
-    def Add_skill_group(self, skill_group):
-        self.group_list.append(skill_group)
+    def Add_is_skill_group(self, skill_group):
+        self.is_list.append(skill_group)
 
     def Add_user_cred(self, user_name, password):
         self.user_name = user_name
@@ -66,12 +70,13 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 
 class Skill_desc(object):
-    def __init__(self, code, name, n, skill_prof, skill_conf):
+    def __init__(self, code, name, n, skill_prof, skill_conf, skill_age):
         self.n = n
         self.name = name
         self.code = code
         self.prof = skill_prof
         self.conf = skill_conf
+        self.age = skill_age
 #end of data structure
 
 
@@ -127,8 +132,6 @@ def signin():
 def user():
     return render_template('user.html')
 
-
-
 @app.route('/signout')
 @login_required
 def signout():
@@ -167,7 +170,7 @@ def record():
         choice = request.form
         string_0 = (choice['name1'])
 
-        #decode the skill type - prof_radio = proficency, prof_conf = confidence
+        #decode the skill type - prof_radio = proficency, conf_radio = confidence, age_radio = age
         end1 = string_0.find('|')
         skill_type = (string_0[0:end1])
 
@@ -194,10 +197,13 @@ def record():
         
         #save the skill values
         if skill_type == 'prof_radio':
-            res = SetUserSkillProficiency(userId,skill_id,skill_value)
+            res = SetUserSkillProficiency(userId, skill_id, skill_value)
 
         elif skill_type == 'conf_radio':
-            res = SetUserSkillConfidence(userId,skill_id,skill_value)
+            res = SetUserSkillConfidence(userId, skill_id, skill_value)
+            
+        elif skill_type == 'age_radio':
+            res = SetUserSkillAge(userId, skill_id, skill_value)
         
         return 'OK'
     
@@ -217,11 +223,11 @@ def record():
         user.Add_user_data(name, line_manager, job_title, trill_role)
 
         #Get Skill group based on user
-        skillGroups  = GetUserSkillGroups(userId)
+        GDSskillGroups  = GetUserSkillGroups(userId, 1)
         n = 0
 
         #loop through the skill groups to get the skill titles and add to user skill groups
-        for skillGroup in skillGroups:
+        for skillGroup in GDSskillGroups:
             n += 1
             skill_group = Skill_group(skillGroup, n)
             skillTitles = GetSkillTitles(skillGroup)
@@ -235,14 +241,40 @@ def record():
                 #add the skill data, title, and groups
                 for skill in skills:
                     s += 1
-                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
-                    
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)                   
                     skill_conf = GetUserSkillConfidenceLevel(userId, skill.id)
-                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf)
+                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf, 0)
                     skill_title.Add_skill(skill_desc)
 
                 skill_group.Add_skill_title(skill_title)
-            user.Add_skill_group(skill_group)
+            user.Add_gds_skill_group(skill_group)
+            
+        #Get Skill group based on user
+        ISskillGroups  = GetUserSkillGroups(userId, 2)
+        n = 0
+
+        #loop through the skill groups to get the skill titles and add to user skill groups
+        for skillGroup in ISskillGroups:
+            n += 1
+            skill_group = Skill_group(skillGroup, n)
+            skillTitles = GetSkillTitles(skillGroup)
+            t = 0
+            #loop through the skill titles to get the skill descriptions and add to skill title
+            for skillTitle in skillTitles:
+                t += 1
+                skill_title = Skill_title(skillTitle, t)
+                skills = GetSkills(skillTitle)
+                s = 0
+                #add the skill data, title, and groups
+                for skill in skills:
+                    s += 1
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)                   
+                    skill_age = GetUserSkillAgeLevel(userId, skill.id)
+                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
+                    skill_title.Add_skill(skill_desc)
+
+                skill_group.Add_skill_title(skill_title)
+            user.Add_is_skill_group(skill_group)
 
         #send the user object to the template
         return render_template('view_skills.html', user_obj = user)
