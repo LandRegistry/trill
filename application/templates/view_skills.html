@@ -42,20 +42,20 @@
                                             <label class="control-label col-xs-12 col-md-2">
                                                     Proficency level
                                                 </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - None" data-trigger="hover" data-content="The user is utterly inept at this skill">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|{{skill.name}}|1"
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - None" data-trigger="hover" data-content="The user has very low ability with this skill">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.prof %}checked{% endif %}> None
                                            </label>
                                            <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Basic" data-trigger="hover" data-content="The user has limited ability at this skill">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|2"
                                                  value="option2" {% if 2 == skill.prof %}checked{% endif %}> Basic
                                            </label>
                                            <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Proficent" data-trigger="hover" data-content="The user has an medium level of ability at this skill" >
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|3"
                                                  value="option3" {% if 3 == skill.prof %}checked{% endif %}> Proficent
                                            </label>
                                            <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Expert" data-trigger="hover" data-content="The user has an incredibly high ability at this skill">
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|4"
                                                  value="option4" {% if 4 == skill.prof %}checked{% endif %}> Expert
                                            </label>
                                         </div>
@@ -65,19 +65,19 @@
                                                     Confidence level
                                                 </label>
                                            <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - None" data-trigger="hover" data-content="The user has no confidence in their ability at this skill">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|1"
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.conf %}checked {% endif %}> None
                                            </label>
                                            <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Low" data-trigger="hover" data-content="The user has a very small level of confidence in their ability at this skill">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|2"
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|2"
                                                  value="option2" {% if 2 == skill.conf %}checked{% endif %}> Low
                                            </label>
                                            <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Medium" data-trigger="hover" data-content="The user has a medium level confidence in their ability at this skill">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|3"
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|3"
                                                  value="option3" {% if 3 == skill.conf %}checked{% endif %}> Medium
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - High" data-trigger="hover" data-content="The user is over confident in their ability at this skill">
-                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|{{skill.name}}|4"
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - High" data-trigger="hover" data-content="The user has a very high confident in their ability at this skill">
+                                              <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|4"
                                                  value="option4" {% if 4 == skill.conf %}checked{% endif %}> High
                                            </label>
                                         </div>
