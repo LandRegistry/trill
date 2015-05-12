@@ -3,6 +3,6 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $dir
 
-source ./environment.sh
+source ./environment_test.sh
 
 py.test --cov application tests --cov-report term-missing
