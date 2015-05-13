@@ -1,11 +1,12 @@
 Given(/^I click on the trill link$/) do
   # no trill link as of yet so will use a visit to the sign in page
-  visit "http://localhost:5000/signin"
+  # TRILL_APPLICATION_URL is source from the support/env.rb file
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
 end
 
 
 When(/^I login into Trill with the wrong Username$/) do
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
   fill_in('username', :with => 'Corene.Test@land.gsi.gov.uk')
   #puts 'on username'
@@ -16,7 +17,7 @@ When(/^I login into Trill with the wrong Username$/) do
 end
 
 When(/^I login into Trill with the wrong Password$/) do
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
@@ -102,7 +103,7 @@ Then(/^my GDS skills will be recorded$/) do
   #puts 'click user in menu bar'
   first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   # log in
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
@@ -133,7 +134,7 @@ Then(/^my GDS skills will displayed$/) do
   #puts 'click user in menu bar'
   first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   # log in
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
@@ -160,7 +161,7 @@ Then(/^I will see all my recorded GDS skills$/) do
   #puts 'click user in menu bar'
   first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   # log in
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'

@@ -4,7 +4,7 @@ Given(/^I am a User$/) do
 end
 
 Given(/^I am logged into Trill$/) do
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
@@ -18,7 +18,7 @@ end
 When(/^I login into Trill$/) do
   # login not part of this sprint, this step refelect the required
   # action as a place holder for the actual login story (dog 28/4/15)
-  visit "http://localhost:5000/signin"
+  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
@@ -31,7 +31,7 @@ end
 
 When(/^I am on my Trill homepage$/) do
   # make do visit command - requires an environmental variable (dog )28/4/15
-  visit "http://localhost:5000/"
+  visit "#{($TRILL_APPLICATION_URL)}/"
 
 end
 
