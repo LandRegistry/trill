@@ -80,12 +80,11 @@ class Skill_desc(object):
 #end of data structure
 
 
-'''@app.route('/')
+@app.route('/')
 def index():
-    return redirect(url_for('home'))'''
+    return redirect(url_for('signin'))
     #return render_template('testpanel.html')
 
-@app.route('/')
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     #a pretend user for testing
@@ -200,13 +199,13 @@ def record():
         #save the skill values
         if skill_type == 'prof_radio':
             res = SetUserSkillProficiency(userId, skill_id, skill_value)
-
+            print (userId, skill_id, skill_value)
         elif skill_type == 'conf_radio':
             res = SetUserSkillConfidence(userId, skill_id, skill_value)
-            
+            print (userId, skill_id, skill_value)
         elif skill_type == 'age_radio':
             res = SetUserSkillAge(userId, skill_id, skill_value)
-        
+            print (userId, skill_id, skill_value)
         return 'OK'
     
     if request.method == "GET":
