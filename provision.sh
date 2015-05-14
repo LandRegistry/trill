@@ -15,7 +15,7 @@ echo "Refreshing Yum Cache"
 yum makecache
 
 echo "Installing Development Tools"
-yum install -y gcc openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel ruby-devel rubygems
+yum install -y gcc openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel ruby-devel rubygems httpd httpd-devel
 
 echo "Installing Puppet Ruby Gems"
 gem install --no-ri --no-rdoc puppet -v 3.7.5
