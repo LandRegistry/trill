@@ -72,14 +72,15 @@ def GetLineManager(id):
 
     return lineManager
 
-def GetUserSkillGroups(id):
+def GetUserSkillGroups(id, skilltype):
 
     skillGroups = []
 
-    for instance in db.session.query(SkillGroup).join(TrillRoleSkillGroup,TrillRoleGroup, JobTitle, UserJob, User).filter(User.id == id):
+    for instance in db.session.query(SkillGroup).join(TrillRoleSkillGroup,TrillRoleGroup, JobTitle, UserJob, User).filter(User.id == id, SkillGroup.skilltype == skilltype):
         skillGroups.append(instance.skillgroupname)
 
     return skillGroups
+
 
 def GetSkillTitles(skillgroupname):
 
@@ -127,6 +128,15 @@ def GetUserSkillConfidenceLevel(userId,skillId):
 
     return int(level)
 
+def GetUserSkillAgeLevel(userId,skillId):
+
+    level = 1
+
+    for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+        level = instance.age
+
+    return int(level)
+
 
 def SetUserSkillProficiency(userId,skillId,level):
 
@@ -152,6 +162,23 @@ def SetUserSkillConfidence(userId,skillId,level):
     try:
         for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
             instance.confidence = level
+
+        db.session.commit()
+        success = True
+
+    except:
+
+        success = False
+
+    return success
+
+def SetUserSkillAge(userId,skillId,level):
+
+    success = False
+
+    try:
+        for instance in db.session.query(UserSkill).filter(UserSkill.user_id == userId, UserSkill.skill_id == skillId):
+            instance.age = level
 
         db.session.commit()
         success = True

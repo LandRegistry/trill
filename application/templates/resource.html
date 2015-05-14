@@ -2,11 +2,100 @@
 
 {% block title %}Find your resource{% endblock %}
 
-{% block content %}
-<div class="container">
-  <h4>Gives a line or task manager the ability to find a skill or person</h4>
+{% block content %} 
+<div class= 'row top70'>
+    <div class="dropdown col-md-offset-1 col-md-2">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Skill category
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">GDS Skill</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">IS Skill</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">IS Knowledge</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown col-md-offset-1 col-md-2">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">Skill name
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delphi</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mapping</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cora</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Python</a></li>
+        </ul>
+    </div>  
+</div>
+
+<div class= 'row top70'>
+    <div class="dropdown col-md-offset-1 col-md-2">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="true">Skill category
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">GDS Skill</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">IS Skill</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">IS Knowledge</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown col-md-offset-1 col-md-2">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-expanded="true">Skill name
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delphi</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mapping</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cora</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Python</a></li>
+        </ul>
+    </div>  
+</div>
+
+<div class= 'row top70'>
+    <div class="dropdown col-md-offset-1 col-md-2">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-expanded="true">Skill category
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu5">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">GDS Skill</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">IS Skill</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">IS Knowledge</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown col-md-offset-1 col-md-2">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-expanded="true">Skill name
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu6">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delphi</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mapping</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cora</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Python</a></li>
+        </ul>
+    </div>  
 </div>
 {% endblock %}
+
+{% block scripts %}
+{{super()}} 
+<script type="text/javascript">
+    $(function(){
+        $(".dropdown-menu li > a").click(
+            function(){
+                $.post("/resource", {'name1':$(this).text()} );
+            }
+        );
+    });
+</script>
+{% endblock %}
+
+$('#dropDownId :selected').text();
 
 </body>
 </html>
