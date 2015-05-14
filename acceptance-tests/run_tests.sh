@@ -7,7 +7,6 @@
 rm -rf sshot*
 
 source ../environment.sh
-source ../environment_test.sh
 
 bundle install
 
