@@ -80,11 +80,12 @@ class Skill_desc(object):
 #end of data structure
 
 
-@app.route('/')
+'''@app.route('/')
 def index():
-    return redirect(url_for('home'))
+    return redirect(url_for('home'))'''
     #return render_template('testpanel.html')
 
+@app.route('/')
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     #a pretend user for testing
@@ -139,7 +140,7 @@ def signout():
     session.pop('userId')
     session.pop('username')
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('signin'))
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -154,9 +155,9 @@ def user_loader(userId):
     user.Set_active(True)
     return user
 
-@app.route('/home')
+'''@app.route('/home')
 def home():
-    return render_template('welcome.html')
+    return render_template('welcome.html')'''
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
@@ -166,10 +167,11 @@ def record():
     userId = GetUserId(email)
     
     if request.method == "POST":
+        print ('post')
         #returns the radio button value as a | separated string
         choice = request.form
         string_0 = (choice['name1'])
-
+        print (string_0)
         #decode the skill type - prof_radio = proficency, conf_radio = confidence, age_radio = age
         end1 = string_0.find('|')
         skill_type = (string_0[0:end1])
@@ -279,10 +281,29 @@ def record():
         #send the user object to the template
         return render_template('view_skills.html', user_obj = user)
     
-@app.route('/resource')
+@app.route('/resource', methods=['GET', 'POST'])
 @login_required
 def resource():
-    return render_template('resource.html')
+
+    '''if request.method == "POST":
+        print ('post')
+        #returns the radio button value as a | separated string
+        choice = request.form
+        print (choice['name1'])
+        return 'OK'
+        
+    if request.method == "GET":
+        print ('get')
+        return render_template('resource.html', user_obj = user)'''
+
+'''@app.route('/test')
+@login_required
+def test():
+    print('start')
+    string_0 = 'Fail'
+    choice = request.form
+    print(choice['state'])
+    print(string_0)'''
 
 @app.route('/about')
 def about():

@@ -9,7 +9,7 @@
 <div class='navbar navbar-inverse navbar-fixed-top'>
     <div class='container'>
         <div class='navbar-header'>
-            <a href='/home' class='navbar-brand'>Trill - Training and Skills</a>
+            <a href='/' class='navbar-brand'>Trill - Training and Skills</a>
             {% if not signinpage_form %}
             <button type='button' class='navbar-toggle'
                     data-toggle='collapse'
@@ -41,13 +41,13 @@
                     <li><a href='/add_course'>Add Courses</a></li>
                 </ul>
             </li>-->
-            <li><a href='/resource'>Resource</a></li>
+            <!--<li><a href='/resource'>Resource</a></li>-->
             <!--<li><a href='/about'>About</a></li>-->
             {% if session['signed'] %}
             <li><a href='/user' id="signed-in-as" data-target='#' data-toggle='dropdown'>Signed in as {{ session['name'] }}<span class='caret'></span></a>
             <ul class='dropdown-menu'>
-                <li><a href="{{ url_for('profile') }}">Your profile settings</a></li>
-                <li class="divider"></li>
+                <!--<li><a href="{{ url_for('profile') }}">Your profile settings</a></li>
+                <li class="divider"></li>-->
                 <li><a id="logout-dropdown" href="{{ url_for('signout') }}">Logout</a></li>
             </ul>
             </li>

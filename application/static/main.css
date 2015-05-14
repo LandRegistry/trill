@@ -31,5 +31,12 @@ html, body { height: 90%}
     background-color: #A4A9A6;
 
 }
+
+#inner-panel
+    {
+    overflow:auto;
+    padding: inherit;
+    }
+
 #center-panel .row-fluid {overflow: auto;}
 #center-panel .large {height: 400px; padding: 10px; background-color: #5C595A}
