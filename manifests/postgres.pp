@@ -1,8 +1,8 @@
 # Install PostgreSQL 9.3 server from the PGDG repository
-class {'postgresql::globals':
-  manage_package_repo => true,
-  version => '9.3',
-}
+#class {'postgresql::globals':
+#  manage_package_repo => true,
+#  version => '9.3',
+#}
 
 class { 'postgresql::server':
   listen_addresses => '*',
