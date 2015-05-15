@@ -101,6 +101,76 @@ def GetSkills(skillTitle):
 
     return skills
 
+def GetSkillCategs():
+    skill_categs = []
+    
+    skill_categs.append('Skills')
+    skill_categs.append('Knowledge')
+    #skill_categs.append('GDS')
+    
+    return skill_categs
+
+def GetSkillforCategory(category):
+    skills = []
+    if category == ('Skills'):
+        skills.append('delphi')
+        skills.append('python')
+        skills.append('ruby')
+    if category == ('Knowledge'):
+        skills.append('mapping')
+        skills.append('cora')
+        skills.append('portal')  
+    return skills
+
+def GetusersWithOneSkill(skill):
+    users = []
+    if skill == 'delphi':
+        users.append('tom')
+        users.append('jerry')
+    if skill == 'python':
+        users.append('fred')
+        users.append('barney')
+    if skill == 'ruby':
+        users.append('mickey')
+        users.append('donald')
+    
+    if skill == 'mapping':
+        users.append('anton')
+        users.append('clark')
+    if skill == 'cora':
+        users.append('simone')
+        users.append('dick')
+    if skill == 'portal':
+        users.append('ginny')
+        users.append('sid')
+    return users
+
+def GetusersWithTwoSkills(skill1, skill2):
+    users = []
+    if skill1 == 'delphi' and skill2 == 'mapping':
+        users.append('tom')
+        users.append('anton')
+    
+    if skill1 == 'python' and skill2 == 'portal':
+        users.append('anton')
+    
+    if skill1 == 'mapping' and skill2 == 'cora':        
+        users.append('clark')
+        users.append('simone')
+        users.append('dick')
+
+    return users
+
+def GetusersWithThreeSkills(skill1, skill2, skill3):
+    users = []
+    if skill1 == 'delphi' and skill2 == 'mapping' and skill3 == 'ruby':
+        users.append('tom')
+    
+    if skill1 == 'python' and skill2 == 'portal' and skill3 == 'cora':
+        users.append('anton')
+
+    return users
+
 def GetUserPwHash(id):
 
     pwHash = ''
