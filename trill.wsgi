@@ -4,14 +4,14 @@ import logging
 import site
 
 ## Path to Python virtual environment
-site.addsitedir('/opt/rh/python33/root/lib/python3.3/site-packages')
-# site.addsitedir('/var/www/trill/lib/python3.3/site-packages')
+#site.addsitedir('/opt/rh/python33/root/lib/python3.3/site-packages')
+site.addsitedir('/var/www/trill/lib/python3.3/site-packages')
 
 logging.basicConfig(stream=sys.stderr)
 
 ##Virtualenv Settings
-#activate_this = '/var/www/trill/bin/activate_this.py'
-#exec(open(activate_this).read())
+activate_this = '/var/www/trill/bin/activate_this.py'
+exec(open(activate_this).read())
 
 ##Replace the standard out
 sys.stdout = sys.stderr
