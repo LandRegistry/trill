@@ -4,13 +4,15 @@ Given(/^I am a User$/) do
 end
 
 Given(/^I am logged into Trill$/) do
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+  trill_login()
+
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
-  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Goat')
+#  fill_in('password', :with => 'Goat')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
 end
 
@@ -18,13 +20,16 @@ end
 When(/^I login into Trill$/) do
   # login not part of this sprint, this step refelect the required
   # action as a place holder for the actual login story (dog 28/4/15)
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+  trill_login()
+
+
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
-  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Goat')
+#  fill_in('password', :with => 'Goat')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
 
 end
@@ -89,7 +94,7 @@ Then(/^I can see my role$/) do
   #get the user role, put it into a var, check against our known value
   myRole = find(:xpath, "//*[@id='trill-role']").text
   if myRole.include?("Service Desk")
-    puts 'my role = ok  ' + myRole
+    #puts 'my role = ok  ' + myRole
   else
     puts 'my role = ' + myRole
     raise "my role does not match"
@@ -98,7 +103,7 @@ end
 
 Then(/^I can see my GDS Skills Title$/) do
   #get the GDS Skills Title, put it into a var, check against our known value
-  myGDSskillsTitle = find(:xpath, ".//*[@id='skill-group1']/a").text
+  myGDSskillsTitle = find(:xpath, ".//*[@id='GDS-skill-group1']/a").text
   if myGDSskillsTitle != 'Basic Digital Skills'
     puts 'my GDS skills title =' + myGDSskillsTitle
     raise "my GDS skills title does not match"
@@ -108,7 +113,7 @@ end
 Then(/^I can see my relevant GDS Skill groups$/) do
   #pending # Write code here that turns the phrase above into concrete actions
   #get the GDS Skills Group, put it into a var, check against our known value
-  myGDSskillsGroup = find(:xpath, ".//*[@id='skill-group2']/a").text
+  myGDSskillsGroup = find(:xpath, ".//*[@id='GDS-skill-group2']/a").text
   if myGDSskillsGroup != 'Agile Delivery'
     puts 'my GDS skills group =' + myGDSskillsGroup
     raise "my GDS skills group does not match"
@@ -133,7 +138,7 @@ Then(/^I can see the additional skill group information relevant to my role$/) d
   #put it into a var, check against our known value
   myAdditionalGDSskillsGroup = find(:xpath, ".//*[@id='skill-desc1-1-1']").text
   if myAdditionalGDSskillsGroup.include?('BDS.1.1 Understand the government')
-    puts
+    #puts
   else
     puts 'my additional GDS skills group =' + myAdditionalGDSskillsGroup
     raise "my GDS skills group are not visible"
