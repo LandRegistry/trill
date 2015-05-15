@@ -6,24 +6,32 @@ end
 
 
 When(/^I login into Trill with the wrong Username$/) do
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+  username = 'Corene.Test@land.gsi.gov.uk'
+  password = 'Goat'
+  trill_bad_login(username, password)
+
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
-  fill_in('username', :with => 'Corene.Test@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Test@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Goat')
+#  fill_in('password', :with => 'Goat')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
 end
 
 When(/^I login into Trill with the wrong Password$/) do
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+  username = 'Corene.Eggen@land.gsi.gov.uk'
+  password = 'Banana'
+  trill_bad_login(username, password)
+
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   #puts 'on page'
-  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Banana')
+#  fill_in('password', :with => 'Banana')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
 end
 
@@ -38,15 +46,17 @@ When(/^the Trill application opens$/) do
 end
 
 When(/^I select to log out record my skills$/) do
-  first(:xpath, "//*[@id='signed-in-as']").click
+  trill_logout()
+
+#  first(:xpath, "//*[@id='signed-in-as']").click
   #puts 'click user in menu bar'
-  first(:xpath, "//*[@id='logout-dropdown']").click
+#  first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
 end
 
 When(/^I record my GDS skills$/) do
   # open the list of skills
-  first(:xpath, ".//*[@id='skill-group1']/a").click
+  first(:xpath, ".//*[@id='GDS-skill-group1']/a").click
   # click on one of the radio buttons to create a start datum
   first(:xpath, "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|2']").click
   # click another one of the radio buttons, this will be the test value
@@ -59,10 +69,12 @@ When(/^I record my GDS skills$/) do
 end
 
 When(/^exit the application$/) do
+  trill_logout()
+
   # log out
-  first(:xpath, "//*[@id='signed-in-as']").click
+#  first(:xpath, "//*[@id='signed-in-as']").click
   #puts 'click user in menu bar'
-  first(:xpath, "//*[@id='logout-dropdown']").click
+#  first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
 end
 
@@ -97,27 +109,27 @@ end
 Then(/^my GDS skills will be recorded$/) do
   # exit the application and log in again, the skill select
   # should match the last skill update that was recorded
+  trill_logout()
+  trill_login()
 
   # log out
-  first(:xpath, "//*[@id='signed-in-as']").click
+#  first(:xpath, "//*[@id='signed-in-as']").click
   #puts 'click user in menu bar'
-  first(:xpath, "//*[@id='logout-dropdown']").click
+#  first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   # log in
-  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Goat')
+#  fill_in('password', :with => 'Goat')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
-  first(:xpath, "//*[@id='skill-group1']/a").click
+  first(:xpath, "//*[@id='GDS-skill-group1']/a").click
 
   # check whether the last updated skill is the samelick another one of the radio buttons, this will be the test valu
   # the coed below finds the value that matches being a radio button and being checked
   # puts find('.//input[@name="prof_radio_Customer is king_1.0_Description Customer_Focus1.0" and @checked]').value
-
-
 
 
  if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
@@ -129,21 +141,26 @@ Then(/^my GDS skills will be recorded$/) do
 end
 
 Then(/^my GDS skills will displayed$/) do
+  trill_logout()
+  trill_login()
+
+
+
   # log out
-  first(:xpath, "//*[@id='signed-in-as']").click
+#  first(:xpath, "//*[@id='signed-in-as']").click
   #puts 'click user in menu bar'
-  first(:xpath, "//*[@id='logout-dropdown']").click
+#  first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   # log in
-  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Goat')
+#  fill_in('password', :with => 'Goat')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
 
-  first(:xpath, "//*[@id='skill-group1']/a").click
+  first(:xpath, "//*[@id='GDS-skill-group1']/a").click
 
   # check whether the last updated skill is the samelick another one of the radio buttons, this will be the test valu
   # the coed below finds the value that matches being a radio button and being checked
@@ -157,19 +174,23 @@ Then(/^my GDS skills will displayed$/) do
 end
 
 Then(/^I will see all my recorded GDS skills$/) do
-  first(:xpath, "//*[@id='signed-in-as']").click
+  trill_logout()
+  trill_login()
+
+
+#  first(:xpath, "//*[@id='signed-in-as']").click
   #puts 'click user in menu bar'
-  first(:xpath, "//*[@id='logout-dropdown']").click
+#  first(:xpath, "//*[@id='logout-dropdown']").click
   #puts 'logout in the drop down menu'
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+#  visit "#{($TRILL_APPLICATION_URL)}/signin"
   # log in
-  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
+#  fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
-  fill_in('password', :with => 'Goat')
+#  fill_in('password', :with => 'Goat')
   #puts 'on password'
-  first(:xpath, "//*[@id='login-button']").click
+#  first(:xpath, "//*[@id='login-button']").click
   #puts 'clicked button'
-  first(:xpath, "//*[@id='skill-group1']/a").click
+  first(:xpath, "//*[@id='GDS-skill-group1']/a").click
 
   # check whether the last updated skill is the samelick another one of the radio buttons, this will be the test valu
   # the coed below finds the value that matches being a radio button and being checked
