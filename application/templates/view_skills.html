@@ -2,7 +2,7 @@
 
 {% block title %}Welcome to Trill{% endblock %}
 
-{% block content %}  
+{% block content %}
 <div class="container">
     <div class= 'row top70'>
         <div id="side-panel" class="container-fluid well">
@@ -12,11 +12,11 @@
             <h5 id="job-title">Job Title: {{user_obj.job_title}}</h5>
             <h5 id="line-manager">Line Manager: {{user_obj.line_manager}}</h5>
         </div>
-        
+
         <div id='center-panel'class="container-fluid well">
             <h3>Your GDS skills are: </h3>
             <div class="accordion" id="accordion2">
-                
+
                 <div class="panel-group" id="accordion">
                     {% for group in user_obj.gds_list %}
                     <div class="panel panel-default"><!--Put each skill group in a box-->
@@ -26,10 +26,10 @@
                                     <span class ="glyphicon glyphicon-chevron-down"></span> {{group.name}}</a>
                             </h4>
                         </div>
-                        
+
                         <div id="GDS{{group.n}}" class="panel-collapse collapse">
 
-                         {% for skill_title in group.title_list %}   
+                         {% for skill_title in group.title_list %}
                             <!--<div class="list-group" <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a class="list-group-item">
@@ -42,43 +42,43 @@
                                             <label class="control-label col-xs-12 col-md-2">
                                                     Proficiency level
                                                 </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - None" data-trigger="hover" data-content="The user has very low ability with this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - None" data-trigger="hover" data-content="No knowledge or skills">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.prof %}checked{% endif %}> None
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Basic" data-trigger="hover" data-content="The user has limited ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Basic" data-trigger="hover" data-content="Knowledge & skills are basic, concepts understood but often seeks guidance, has been taught but still consolidating">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|2"
                                                  value="option2" {% if 2 == skill.prof %}checked{% endif %}> Basic
                                            </label>
 
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Proficient" data-trigger="hover" data-content="The user has an medium level of ability at this skill" >
-                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|3"
-
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Proficient" data-trigger="hover" data-content="Has knowledge & skills and comfortable to work on own, good understanding of the concepts, seeks guidance occasionally">
+                                              <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|3"
                                                  value="option3" {% if 3 == skill.prof %}checked{% endif %}> Proficent
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Expert" data-trigger="hover" data-content="The user has an incredibly high ability at this skill">
+
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Expert" data-trigger="hover" data-content="Has knowledge & skills, deep understanding of the concepts, happy to work on own and is able to teach others. Bit of a guru!">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|4"
                                                  value="option4" {% if 4 == skill.prof %}checked{% endif %}> Expert
                                            </label>
                                         </div>
-                                        
+
                                         <div class = 'container row top7'>
                                             <label class="control-label col-xs-12 col-md-2">
                                                     Confidence level
                                                 </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - None" data-trigger="hover" data-content="The user has no confidence in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - None" data-trigger="hover" data-content="No confidence or knowledge on this">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.conf %}checked {% endif %}> None
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Low" data-trigger="hover" data-content="The user has a very small level of confidence in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Low" data-trigger="hover" data-content="Some confidence but doesn't feel completely happy doing this alone, would seek support">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|2"
                                                  value="option2" {% if 2 == skill.conf %}checked{% endif %}> Low
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Medium" data-trigger="hover" data-content="The user has a medium level confidence in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Medium" data-trigger="hover" data-content="Could do this alone in the majority of cases, feels mainly positive, maybe some uncertainty or support needed">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|3"
                                                  value="option3" {% if 3 == skill.conf %}checked{% endif %}> Medium
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - High" data-trigger="hover" data-content="The user has a very high confident in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - High" data-trigger="hover" data-content="Very confident in carrying out this task or behaviour, very positive, no feelings of uncertainty or nervousness">
                                               <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|4"
                                                  value="option4" {% if 4 == skill.conf %}checked{% endif %}> High
                                            </label>
@@ -87,22 +87,22 @@
                                 </a>
                                 {% endfor %}
                            <!-- </div> -->
-                           {% endfor %} 
+                           {% endfor %}
 
                         </div>
-                        
+
                     </div>
                     {% endfor %}
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
 
-        
+
         <div id="center-panel" class="container-fluid well">
             <h3>Your IS skills are: </h3>
             <div class="accordion" id="accordion2">
-                
+
                 <div class="panel-group" id="accordion">
                     {% for group in user_obj.is_list %}
                     <div class="panel panel-default"><!--Put each skill group in a box-->
@@ -112,10 +112,10 @@
                                     <span class ="glyphicon glyphicon-chevron-down"></span> {{group.name}}</a>
                             </h4>
                         </div>
-                        
+
                         <div id="IS{{group.n}}" class="panel-collapse collapse">
 
-                         {% for skill_title in group.title_list %}   
+                         {% for skill_title in group.title_list %}
                             <!--<div class="list-group" <!--slightly separates out different skill titles-->
                                 {% for skill in skill_title.skill_list %}
                                 <a class="list-group-item">
@@ -128,68 +128,68 @@
                                             <label class="control-label col-xs-12 col-md-2">
                                                     Proficiency level
                                                 </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - None" data-trigger="hover" data-content="The user is utterly inept at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - None" data-trigger="hover" data-content="No knowledge or skills">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.prof %}checked{% endif %}> None
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Basic" data-trigger="hover" data-content="The user has limited ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Basic" data-trigger="hover" data-content="Knowledge & skills are basic, can use but often seeks guidance, has been taught but still consolidating">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|2"
                                                  value="option2" {% if 2 == skill.prof %}checked{% endif %}> Basic
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Proficent" data-trigger="hover" data-content="The user has an medium level of ability at this skill" >
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Proficent" data-trigger="hover" data-content="Has knowledge & skills and comfortable to work on own, seeking guidance occasionally" >
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|3"
                                                  value="option3" {% if 3 == skill.prof %}checked{% endif %}> Proficent
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Expert" data-trigger="hover" data-content="The user has an incredibly high ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficency level - Expert" data-trigger="hover" data-content="Has knowledge & skills, happy to work on own and is able to teach others. Bit of a guru!">
                                               <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|4"
                                                  value="option4" {% if 4 == skill.prof %}checked{% endif %}> Expert
                                            </label>
                                         </div>
-                                        
+
                                         <div class = 'container row top7'>
                                             <label class="control-label col-xs-12 col-md-2">
                                                     Age level
                                                 </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - None" data-trigger="hover" data-content="The user has no confidence in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - None" data-trigger="hover" data-content="No knowledge or skills">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.age %}checked {% endif %}> None
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - Low" data-trigger="hover" data-content="The user has a very small level of confidence in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - Low" data-trigger="hover" data-content="Would need to refresh knowledge and practice the relevant skills">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|2"
-                                                 value="option2" {% if 2 == skill.age %}checked{% endif %}> Low
+                                                 value="option2" {% if 2 == skill.age %}checked{% endif %}> Greater than 12 months
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - Medium" data-trigger="hover" data-content="The user has a medium level confidence in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - Medium" data-trigger="hover" data-content="I used this skill in the last year, still fairly fresh in my mind, some skill refresh maybe needed">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|3"
-                                                 value="option3" {% if 3 == skill.age %}checked{% endif %}> Medium
+                                                 value="option3" {% if 3 == skill.age %}checked{% endif %}> 6-12 months
                                            </label>
-                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - High" data-trigger="hover" data-content="The user is over confident in their ability at this skill">
+                                           <label class="checkbox-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - High" data-trigger="hover" data-content="Used this skill very recently, I can hit the ground running!">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|4"
-                                                 value="option4" {% if 4 == skill.age %}checked{% endif %}> High
+                                                 value="option4" {% if 4 == skill.age %}checked{% endif %}> 0-6 months
                                            </label>
                                         </div>
                                     </div>
                                 </a>
                                 {% endfor %}
                            <!-- </div> -->
-                           {% endfor %} 
+                           {% endfor %}
 
                         </div>
-                        
+
                     </div>
                     {% endfor %}
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
-{{super()}} 
+{{super()}}
 <script>
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover({animation: true, delay: {show: 2000, hide: 200}});   
+    $('[data-toggle="popover"]').popover({animation: true, delay: {show: 2000, hide: 200}});
 });
 
 $('.collapse').on('shown.bs.collapse', function(){
@@ -197,9 +197,9 @@ $(this).parent().find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-
 }).on('hidden.bs.collapse', function(){
 $(this).parent().find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
 });
- 
+
 </script>
-   
+
 
 <script type="text/javascript">
     $(function(){
