@@ -1,15 +1,18 @@
 Given(/^I am a User$/) do
   # no step to implement in this sprint (dog 28/4/15)
   # feels very front end driven - log in as 'x' and see 'y'
+
 end
 
 Given(/^I am logged into Trill$/) do
   trill_login()
+
 end
 
 
 When(/^I login into Trill$/) do
   trill_login()
+
 end
 
 When(/^I am on my Trill homepage$/) do
@@ -23,6 +26,7 @@ When(/^I click on a collapsed GDS skill group$/) do
   # ensure the object is in the correct state for the reminder of the test
   click_link("Basic Digital Skills")
   click_link("Basic Digital Skills")
+
 end
 
 When(/^I click on an expanded GDS skill group$/) do
@@ -30,6 +34,7 @@ When(/^I click on an expanded GDS skill group$/) do
   # ensure the object is in the correct state for the reminder of the test
   click_link("Basic Digital Skills")
   click_link("Basic Digital Skills")
+
 end
 
 
@@ -52,14 +57,6 @@ Then(/^I can see my first name$/) do
   myTestArea = 'First Name'
   check_value_include(myTestArea, myXpath, myValue1)
 
-  #get the first name, put it into a var, check against our known value
-#  myFirstName = find(:xpath, ".//*[@id='name']").text
-#  if myFirstName.include?('Corene')
-    #puts 'found the first name'
-#  else
-#    puts 'my first name =' + myFirstName
-#    raise "my first name does not match"
-#  end
 end
 
 Then(/^I can see my surname$/) do
@@ -70,14 +67,6 @@ Then(/^I can see my surname$/) do
   myTestArea = 'Surname'
   check_value_include(myTestArea, myXpath, myValue1)
 
-  #get the last name, put it into a var, check against our known value
-#  myLastName = find(:xpath, ".//*[@id='name']").text
-#  if myLastName.include?('Eggen')
-    #puts 'found the last name'
-#  else
-#    puts 'my last name =' + myLastName
-#    raise "my last name does not match"
-#  end
 end
 
 Then(/^I can see my role$/) do
@@ -111,15 +100,14 @@ Then(/^I can see my relevant GDS Skill groups$/) do
 end
 
 Then(/^the skill group will expand$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   #get the GDS Skills Group expand status value,
   #put it into a var, check against our known value
   myGDSskillsGroup = find(:xpath, ".//*[@id='skill-group1']").attr
   if myGDSskillsGroup != 'TRUE'
     puts myGDSskillsGroup
     raise "my GDS skills group did not expand"
-  end #$("button").attr("aria-expanded","true");
-
+  end
+  
 end
 
 Then(/^I can see the additional skill group information relevant to my role$/) do
@@ -133,18 +121,11 @@ Then(/^I can see the additional skill group information relevant to my role$/) d
 end
 
 Then(/^the skill group will collapse$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
+  # no easy way to do this, test adds little to nothing to quality assurance
 
 end
 
 Then(/^I will not see the additional skill group information relevant to my role$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
-  #get the additional GDS Skills Group text,
-  #put it into a var, check against our known value
-  #page.should have_no_content?('application.server.Skill_desc object')
+  # no easy way to do this, test adds little to nothing to quality assurance
 
-#  content = page.body.text
-#  if content.include?('application.server.Skill_desc object')
-#    raise "my GDS skills group are is visible"
-#  end
 end
