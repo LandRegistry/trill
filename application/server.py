@@ -19,7 +19,7 @@ class User(object):
         self.active = None
         self.gds_list = []
         self.is_list = []
-        
+
     def Add_gds_skill_group(self, skill_group):
         self.gds_list.append(skill_group)
 
@@ -164,7 +164,7 @@ def record():
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
-    
+
     if request.method == "POST":
         print ('post')
         #returns the radio button value as a | separated string
@@ -195,19 +195,19 @@ def record():
         #skill_value = string_4
 
         skill_id = GetSkillId(skill_code)
-        
+
         #save the skill values
         if skill_type == 'prof_radio':
             res = SetUserSkillProficiency(userId, skill_id, skill_value)
-            print (userId, skill_id, skill_value)
+            #print (userId, skill_id, skill_value)
         elif skill_type == 'conf_radio':
             res = SetUserSkillConfidence(userId, skill_id, skill_value)
-            print (userId, skill_id, skill_value)
+            #print (userId, skill_id, skill_value)
         elif skill_type == 'age_radio':
             res = SetUserSkillAge(userId, skill_id, skill_value)
-            print (userId, skill_id, skill_value)
+            #print (userId, skill_id, skill_value)
         return 'OK'
-    
+
     if request.method == "GET":
 
         user = User(userId, email)
@@ -242,14 +242,14 @@ def record():
                 #add the skill data, title, and groups
                 for skill in skills:
                     s += 1
-                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)                   
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_conf = GetUserSkillConfidenceLevel(userId, skill.id)
                     skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf, 0)
                     skill_title.Add_skill(skill_desc)
 
                 skill_group.Add_skill_title(skill_title)
             user.Add_gds_skill_group(skill_group)
-            
+
         #Get Skill group based on user
         ISskillGroups  = GetUserSkillGroups(userId, 2)
         n = 0
@@ -269,7 +269,7 @@ def record():
                 #add the skill data, title, and groups
                 for skill in skills:
                     s += 1
-                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)                   
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_age = GetUserSkillAgeLevel(userId, skill.id)
                     skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
                     skill_title.Add_skill(skill_desc)
@@ -279,7 +279,7 @@ def record():
 
         #send the user object to the template
         return render_template('view_skills.html', user_obj = user)
-    
+
 @app.route('/resource', methods=['GET', 'POST'])
 @login_required
 def resource():
@@ -290,7 +290,7 @@ def resource():
         choice = request.form
         print (choice['name1'])
         return 'OK'
-        
+
     if request.method == "GET":
         print ('get')
         return render_template('resource.html', user_obj = user)'''
