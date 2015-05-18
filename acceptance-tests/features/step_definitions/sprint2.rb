@@ -50,36 +50,21 @@ end
 
 
 Then(/^I will be on the Login page$/) do
-  #puts "Log in to orange Trill"
+  # check that the page has the text associated with being on the log in page
   assert page.has_content?("Log in to Trill")
-
-#  myLoginPage = find(:xpath, ".//*[@id='password']").text
-#  if myLoginPage != 'Password'
-    #puts 'on login page'
-#  else
-#    puts 'my login page text is GDS skills group =' + myLoginPage
-#    raise "not login page"
-#  end
 
 end
 
 Then(/^I will see the error message Login incorrect$/) do
+  # check that the page has the Username or password is incorrect text associated
+  # with an incorrect log in attempt
   assert page.has_content?("Username or password is incorrect")
 
 end
 
 Then(/^I will be returned to the Trill Log In screen$/) do
-
-  #puts "Log in to banana Trill"
+  # check that the page has the text associated with being on the log in page
   assert page.has_content?("Log in to Trill")
-
-#  myLoginPage = find(:xpath, ".//*[@id='password']").text
-#  if myLoginPage != 'Password'
-    #puts 'on login page'
-#  else
-#    puts 'my login page text is GDS skills group =' + myLoginPage
-#    raise "not login page"
-#  end
 
 end
 
