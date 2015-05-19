@@ -2,7 +2,7 @@
 
 {% block title %}Find your resource{% endblock %}
 
-{% block content %} 
+{% block content %}
 <div class= 'row top70'>
     <div class='container well'>
         <div class="top30 dropdown col-md-6">
@@ -23,9 +23,9 @@
                     {% endfor %}
                 </select>
                 <noscript><input type="submit" value="Submit"></noscript>
-            </form>    
+            </form>
         </div>
-    
+
         <div class="top30 dropdown col-md-6">
             <form>
                 <select class='dropdown-toggle' name='categ2' onclick='this.form.submit()'>
@@ -44,7 +44,7 @@
                     {% endfor %}
                 </select>
                 <noscript><input type="submit" value="Submit"></noscript>
-            </form>    
+            </form>
         </div>
 
         <div class="top30 dropdown col-md-6">
@@ -65,16 +65,74 @@
                     {% endfor %}
                 </select>
                 <noscript><input type="submit" value="Submit"></noscript>
-            </form>    
+            </form>
         </div>
     </div>
-        
+
     <div class='container well'>
-        {% for user in users %}
-        <p>{{user}}</p>
-        {% endfor %}
-    </div>
+     <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Legend</th>
+           <th>Skill\Knowledge</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+
+            {% if skill_value1 %}
+                  <th>A</th>
+                  <th>{{skill_value1}}</th>
+              </tr>
+              {% if skill_value2 %}
+                <tr>
+                  <th>B</th>
+                  <th>{{skill_value2}}</th>
+                </tr>
+                {% if skill_value3 %}
+                  <tr>
+                    <th>C</th>
+                    <th>{{skill_value3}}</th>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+
+       </tbody>
+     </table>
+
+   </div>
+
+   <div class='container well'>
+       <table class="table table-hover">
+         <thead>
+           <tr>
+             <th>Firstname</th>
+             <th>Surname</th>
+
+             {% if skill_value1 %}
+               <th>A</th>
+               {% if skill_value2 %}
+                 <th>B</th>
+                 {% if skill_value3 %}
+                   <th>C</th>
+                 {% endif %}
+               {% endif %}
+             {% endif %}
+
+
+           </tr>
+         </thead>
+         <tbody>
+           {% for user in users %}
+             <tr>
+               <td>{{user.firstname}}</td>
+               <td>{{user.surname}}</td>
+               <td>{{user.proficiency_a}}</td>
+             </tr>
+           {% endfor %}
+         </tbody>
+       </table>
+   </div>
 </div>
 {% endblock %}
-
-

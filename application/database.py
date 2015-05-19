@@ -2,6 +2,10 @@ from application.models import *
 from application import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
+SKILL_TYPE_GDS = 1
+SKILL_TYPE_SKILL = 2
+SKILL_TYPE_KNOWLEDGE= 3
+
 '''
 def GetAllSkillNames():
 
@@ -103,15 +107,26 @@ def GetSkills(skillTitle):
 
 def GetSkillCategs():
     skill_categs = []
-    
+
     skill_categs.append('Skills')
     skill_categs.append('Knowledge')
     #skill_categs.append('GDS')
-    
+
     return skill_categs
 
 def GetSkillforCategory(category):
     skills = []
+
+    if category == ('Skills'):
+        for instance in db.session.query(Skill).order_by(Skill.skillcode).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_SKILL):
+            #skills.append(instance)
+            skills.append(str(instance.id) + " - " + instance.skilldescription)
+    if category == ('Knowledge'):
+        for instance in db.session.query(Skill).order_by(Skill.skillcode).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_KNOWLEDGE):
+            #skills.append(instance)
+            skills.append(str(instance.id) + " - " + instance.skilldescription)
+
+    '''
     if category == ('Skills'):
         skills.append('delphi')
         skills.append('python')
@@ -119,11 +134,29 @@ def GetSkillforCategory(category):
     if category == ('Knowledge'):
         skills.append('mapping')
         skills.append('cora')
-        skills.append('portal')  
+        skills.append('portal')
+    '''
     return skills
 
 def GetusersWithOneSkill(skill):
     users = []
+
+    #get skill_id from passed in composite code and skill
+    raw_skill = skill.split(' - ')
+    print (raw_skill[0])
+    skill_id = raw_skill[0]
+
+    for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill_id):
+        #users.append(instance)
+        user ={}
+        proficiency = GetUserSkillProficiencyLevel(instance.id,skill_id)
+
+        if proficiency > 1:
+            user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency})
+            users.append(user)
+
+
+    '''
     if skill == 'delphi':
         users.append('tom')
         users.append('jerry')
@@ -133,7 +166,7 @@ def GetusersWithOneSkill(skill):
     if skill == 'ruby':
         users.append('mickey')
         users.append('donald')
-    
+
     if skill == 'mapping':
         users.append('anton')
         users.append('clark')
@@ -143,21 +176,46 @@ def GetusersWithOneSkill(skill):
     if skill == 'portal':
         users.append('ginny')
         users.append('sid')
+    '''
     return users
 
 def GetusersWithTwoSkills(skill1, skill2):
     users = []
+
+    '''
+    #get skill_id from passed in composite code and skill
+    raw_skill1 = skill1.split(' - ')
+    print (raw_skill1[0])
+    skill1_id = raw_skill1[0]
+
+    raw_skill2 = skill2.split(' - ')
+    print (raw_skill2[0])
+    skill2_id = raw_skill2[0]
+
+    for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill1_id):
+        #users.append(instance)
+        user ={}
+        proficiency = GetUserSkillProficiencyLevel(instance.id,skill1_id)
+
+        if proficiency > 1:
+            for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(_and(Skill.id == skill2_id, )):
+
+        user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency': proficiency})
+        users.append(user)
+
+
     if skill1 == 'delphi' and skill2 == 'mapping':
         users.append('tom')
         users.append('anton')
-    
+
     if skill1 == 'python' and skill2 == 'portal':
         users.append('anton')
-    
-    if skill1 == 'mapping' and skill2 == 'cora':        
+
+    if skill1 == 'mapping' and skill2 == 'cora':
         users.append('clark')
         users.append('simone')
         users.append('dick')
+    '''
 
     return users
 
@@ -165,7 +223,7 @@ def GetusersWithThreeSkills(skill1, skill2, skill3):
     users = []
     if skill1 == 'delphi' and skill2 == 'mapping' and skill3 == 'ruby':
         users.append('tom')
-    
+
     if skill1 == 'python' and skill2 == 'portal' and skill3 == 'cora':
         users.append('anton')
 

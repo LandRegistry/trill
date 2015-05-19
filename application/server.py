@@ -19,7 +19,7 @@ class User(object):
         self.active = None
         self.gds_list = []
         self.is_list = []
-        
+
     def Add_gds_skill_group(self, skill_group):
         self.gds_list.append(skill_group)
 
@@ -77,14 +77,15 @@ class Skill_desc(object):
         self.prof = skill_prof
         self.conf = skill_conf
         self.age = skill_age
-        
+
 class Skill_report(object):
     def __init__(self):
         self.skills1 = []
         self.skills2 = []
         self.skills3 = []
         self.categs = GetSkillCategs()
-    
+
+
 #end of data structure
 skill_report = Skill_report()
 users = ''
@@ -94,6 +95,7 @@ categ_value3 = ''
 skill_value1 = ''
 skill_value2 = ''
 skill_value3 = ''
+
 
 @app.route('/')
 def index():
@@ -179,13 +181,13 @@ def record():
     #get the user
     email = (session['username'])
     userId = GetUserId(email)
-    
+
     if request.method == "POST":
-        
+
         #returns the radio button value as a | separated string
         choice = request.form
         string_0 = (choice['name1'])
-        
+
         #decode the skill type - prof_radio = proficency, conf_radio = confidence, age_radio = age
         end1 = string_0.find('|')
         skill_type = (string_0[0:end1])
@@ -210,19 +212,19 @@ def record():
         #skill_value = string_4
 
         skill_id = GetSkillId(skill_code)
-        
+
         #save the skill values
         if skill_type == 'prof_radio':
             res = SetUserSkillProficiency(userId, skill_id, skill_value)
-
+            #print (userId, skill_id, skill_value)
         elif skill_type == 'conf_radio':
             res = SetUserSkillConfidence(userId, skill_id, skill_value)
-            
+            #print (userId, skill_id, skill_value)
         elif skill_type == 'age_radio':
             res = SetUserSkillAge(userId, skill_id, skill_value)
-        
+            #print (userId, skill_id, skill_value)
         return 'OK'
-    
+
     if request.method == "GET":
 
         user = User(userId, email)
@@ -257,14 +259,14 @@ def record():
                 #add the skill data, title, and groups
                 for skill in skills:
                     s += 1
-                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)                   
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_conf = GetUserSkillConfidenceLevel(userId, skill.id)
                     skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf, 0)
                     skill_title.Add_skill(skill_desc)
 
                 skill_group.Add_skill_title(skill_title)
             user.Add_gds_skill_group(skill_group)
-            
+
         #Get Skill group based on user
         ISskillGroups  = GetUserSkillGroups(userId, 2)
         n = 0
@@ -284,7 +286,7 @@ def record():
                 #add the skill data, title, and groups
                 for skill in skills:
                     s += 1
-                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)                   
+                    skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_age = GetUserSkillAgeLevel(userId, skill.id)
                     skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
                     skill_title.Add_skill(skill_desc)
@@ -294,6 +296,7 @@ def record():
 
         #send the user object to the template
         return render_template('view_skills.html', user_obj = user)
+
 
 @app.route('/resource')
 @login_required
@@ -309,7 +312,7 @@ def resource():
     global skill_value1
     global skill_value2
     global skill_value3
-    
+
     #process if category box 1 in hit
     if 'categ1' in request.args:
         #get the value selected
@@ -325,7 +328,10 @@ def resource():
             skill1 = ''
             skill2 = ''
             users = ''
-    
+            skill_value1 =''
+            skill_value2 =''
+            skill_value3 =''
+
     #process the next category box, so on...
     elif 'categ2' in request.args:
         categ_value2 = request.args['categ2']
@@ -333,30 +339,36 @@ def resource():
             skill_report.skills2 = GetSkillforCategory(categ_value2)
             skill_report.skills3.clear()
             skill2 = ''
-        
+            skill_report.skills3.clear()
+            skill_value3 =''
+
     elif 'categ3' in request.args:
         categ_value3 = request.args['categ3']
         if categ_value3 in skill_report.categs:
             skill_report.skills3 = GetSkillforCategory(categ_value3)
-    
+
     #process the first skills box hit
     elif 'skill1' in request.args:
         #get the value selected
         skill_value1 = request.args['skill1']
+        print(skill_value1)
+
         #check the value selected is in the skills list
         if skill_value1 in skill_report.skills1:
+
             #populate the user list with user who have this skill from the database
             users = GetusersWithOneSkill(skill_value1)
+
             #remember this choice so it can be used in the next search
             skill1 = skill_value1
-    
+
     #process the next skill box...
     elif 'skill2' in request.args:
         skill_value2 = request.args['skill2']
         if skill_value2 in skill_report.skills2:
             users = GetusersWithTwoSkills(skill1, skill_value2)
             skill2 = skill_value2
-        
+
     elif 'skill3' in request.args:
         skill_value3 = request.args['skill3']
         if skill_value3 in skill_report.skills3:
@@ -370,10 +382,10 @@ def resource():
         skill2 = ''
         users = ''
         print ('refresh')
-    
+
     #render the template
     return render_template('resourcetest.html', skill_report = skill_report, categ_value1 = categ_value1, skill_value1 = skill_value1, categ_value2 = categ_value2, skill_value2 = skill_value2, categ_value3 = categ_value3, skill_value3 = skill_value3, users = users)
-        
+
 
 @app.route('/about')
 def about():
