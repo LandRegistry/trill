@@ -345,3 +345,7 @@ def add_course():
 '''@app.route('/tour')
 def tour():
     return render_template('tour.html')'''
+
+@app.route('/health')
+def health():
+    return 'OK'
