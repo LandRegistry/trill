@@ -3,8 +3,10 @@
 
 import psycopg2
 import sys
+import os
 
-
+APPLICATION_FILEPATH = os.getenv('TRILL_APPLICATION_FILEPATH','/vagrant/home/trill')
+IMPORT_FILES_PATH = APPLICATION_FILEPATH + '/database-setup/load'
 
 con = None
 
@@ -30,38 +32,34 @@ try:
     cur.execute("DELETE FROM users")
 
 
-
-
-
-
-    usercsv = open('/home/vagrant/trill/database-setup/load/usershashed.csv', 'r')
+    usercsv = open(IMPORT_FILES_PATH + '/usershashed.csv', 'r')
     cur.copy_from(usercsv, 'users', sep=',')
 
-    trillrolegroupscsv = open('/home/vagrant/trill/database-setup/load/TrillRoleGroups.csv', 'r')
+    trillrolegroupscsv = open(IMPORT_FILES_PATH + '/TrillRoleGroups.csv', 'r')
     cur.copy_from(trillrolegroupscsv, 'trill_role_groups', sep=',')
 
 
-    jobtitlescsv = open('/home/vagrant/trill/database-setup/load/jobtitles.csv', 'r')
+    jobtitlescsv = open(IMPORT_FILES_PATH + '/jobtitles.csv', 'r')
     cur.copy_from(jobtitlescsv, 'job_titles', sep=',')
 
 
-    skillgroupscsv = open('/home/vagrant/trill/database-setup/load/SkillGroups.csv', 'r')
+    skillgroupscsv = open(IMPORT_FILES_PATH + '/SkillGroups.csv', 'r')
     cur.copy_from(skillgroupscsv, 'skill_groups', sep=',')
 
 
-    skilltitlescsv = open('/home/vagrant/trill/database-setup/load/SkillTitles.csv', 'r')
+    skilltitlescsv = open(IMPORT_FILES_PATH + '/SkillTitles.csv', 'r')
     cur.copy_from(skilltitlescsv, 'skill_titles', sep=',')
 
-    skillscsv = open('/home/vagrant/trill/database-setup/load/Skill.csv', 'r')
+    skillscsv = open(IMPORT_FILES_PATH + '/Skill.csv', 'r')
     cur.copy_from(skillscsv, 'skills', sep=',')
 
-    userjobscsv = open('/home/vagrant/trill/database-setup/load/UserJobs.csv', 'r')
+    userjobscsv = open(IMPORT_FILES_PATH + '/UserJobs.csv', 'r')
     cur.copy_from(userjobscsv, 'user_jobs', sep=',')
 
-    userskillscsv = open('/home/vagrant/trill/database-setup/load/UserSkills.csv', 'r')
+    userskillscsv = open(IMPORT_FILES_PATH + '/UserSkills.csv', 'r')
     cur.copy_from(userskillscsv, 'user_skills', sep=',')
 
-    trillroleskillgroupscsv = open('/home/vagrant/trill/database-setup/load/TrillRoleSkillGroups.csv', 'r')
+    trillroleskillgroupscsv = open(IMPORT_FILES_PATH + '/TrillRoleSkillGroups.csv', 'r')
     cur.copy_from(trillroleskillgroupscsv, 'trill_role_skill_groups', sep=',')
 
     con.commit()
