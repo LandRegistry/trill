@@ -6,16 +6,6 @@ SKILL_TYPE_GDS = 1
 SKILL_TYPE_SKILL = 2
 SKILL_TYPE_KNOWLEDGE= 3
 
-'''
-def GetAllSkillNames():
-
-    skills = []
-
-    for instance in db.session.query(Skill).order_by(Skill.id):
-        skills.append(instance.skillcode)
-
-    return skills
-'''
 def GetUserId(email):
 
     id = ''
@@ -100,7 +90,6 @@ def GetSkills(skillTitle):
     skills = []
 
     for instance in db.session.query(Skill).join(SkillTitle).filter(SkillTitle.skilltitlename == skillTitle):
-        #skills.append(instance.skillcode + ' ' + instance.skilldescription)
         skills.append(instance)
 
     return skills
@@ -121,21 +110,12 @@ def GetSkillforCategory(category):
         for instance in db.session.query(Skill).order_by(Skill.skillcode).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_SKILL):
             #skills.append(instance)
             skills.append(str(instance.id) + " - " + instance.skilldescription)
+
     if category == ('Knowledge'):
         for instance in db.session.query(Skill).order_by(Skill.skillcode).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_KNOWLEDGE):
             #skills.append(instance)
             skills.append(str(instance.id) + " - " + instance.skilldescription)
 
-    '''
-    if category == ('Skills'):
-        skills.append('delphi')
-        skills.append('python')
-        skills.append('ruby')
-    if category == ('Knowledge'):
-        skills.append('mapping')
-        skills.append('cora')
-        skills.append('portal')
-    '''
     return skills
 
 def GetusersWithOneSkill(skill):
@@ -143,7 +123,6 @@ def GetusersWithOneSkill(skill):
 
     #get skill_id from passed in composite code and skill
     raw_skill = skill.split(' - ')
-    print (raw_skill[0])
     skill_id = raw_skill[0]
 
     for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill_id):
@@ -155,77 +134,63 @@ def GetusersWithOneSkill(skill):
             user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency})
             users.append(user)
 
-
-    '''
-    if skill == 'delphi':
-        users.append('tom')
-        users.append('jerry')
-    if skill == 'python':
-        users.append('fred')
-        users.append('barney')
-    if skill == 'ruby':
-        users.append('mickey')
-        users.append('donald')
-
-    if skill == 'mapping':
-        users.append('anton')
-        users.append('clark')
-    if skill == 'cora':
-        users.append('simone')
-        users.append('dick')
-    if skill == 'portal':
-        users.append('ginny')
-        users.append('sid')
-    '''
     return users
 
 def GetusersWithTwoSkills(skill1, skill2):
     users = []
 
-    '''
+
     #get skill_id from passed in composite code and skill
     raw_skill1 = skill1.split(' - ')
-    print (raw_skill1[0])
     skill1_id = raw_skill1[0]
 
     raw_skill2 = skill2.split(' - ')
-    print (raw_skill2[0])
     skill2_id = raw_skill2[0]
 
     for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill1_id):
         #users.append(instance)
         user ={}
-        proficiency = GetUserSkillProficiencyLevel(instance.id,skill1_id)
+        proficiency_a = GetUserSkillProficiencyLevel(instance.id,skill1_id)
 
-        if proficiency > 1:
-            for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(_and(Skill.id == skill2_id, )):
+        for instance2 in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill2_id, User.id == instance.id):
+            proficiency_b = GetUserSkillProficiencyLevel(instance2.id,skill2_id)
 
-        user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency': proficiency})
-        users.append(user)
-
-
-    if skill1 == 'delphi' and skill2 == 'mapping':
-        users.append('tom')
-        users.append('anton')
-
-    if skill1 == 'python' and skill2 == 'portal':
-        users.append('anton')
-
-    if skill1 == 'mapping' and skill2 == 'cora':
-        users.append('clark')
-        users.append('simone')
-        users.append('dick')
-    '''
+            if (proficiency_a > 1) or (proficiency_b > 1):
+                user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency_a, 'proficiency_b': proficiency_b})
+                users.append(user)
 
     return users
 
 def GetusersWithThreeSkills(skill1, skill2, skill3):
     users = []
-    if skill1 == 'delphi' and skill2 == 'mapping' and skill3 == 'ruby':
-        users.append('tom')
 
-    if skill1 == 'python' and skill2 == 'portal' and skill3 == 'cora':
-        users.append('anton')
+
+    #get skill_id from passed in composite code and skill
+    raw_skill1 = skill1.split(' - ')
+    skill1_id = raw_skill1[0]
+
+    raw_skill2 = skill2.split(' - ')
+    skill2_id = raw_skill2[0]
+
+    raw_skill3 = skill3.split(' - ')
+    skill3_id = raw_skill3[0]
+
+    for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill1_id):
+        #users.append(instance)
+        user ={}
+        proficiency_a = GetUserSkillProficiencyLevel(instance.id,skill1_id)
+
+
+        for instance2 in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill2_id, User.id == instance.id):
+            proficiency_b = GetUserSkillProficiencyLevel(instance2.id,skill2_id)
+
+            for instance3 in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill3_id, User.id == instance2.id):
+                proficiency_c = GetUserSkillProficiencyLevel(instance3.id,skill3_id)
+
+                if (proficiency_a > 1) or (proficiency_b > 1) or (proficiency_c > 1):
+
+                          user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency_a, 'proficiency_b': proficiency_b, 'proficiency_c': proficiency_c})
+                          users.append(user)
 
     return users
 

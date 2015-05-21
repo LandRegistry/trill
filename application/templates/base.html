@@ -5,7 +5,7 @@
 <link href="{{url_for('.static', filename='main.css')}}" rel='stylesheet'>
 {% endblock %}
 
-{% block navbar %}   
+{% block navbar %}
 <div class='navbar navbar-inverse navbar-fixed-top'>
     <div class='container'>
         <div class='navbar-header'>
@@ -41,7 +41,7 @@
                     <li><a href='/add_course'>Add Courses</a></li>
                 </ul>
             </li>-->
-            <li><a href='/resource'>Resource</a></li>
+            <li><a href='/resource?state=New'>Resource</a></li>
             <!--<li><a href='/about'>About</a></li>-->
             {% if session['signed'] %}
             <li><a href='/user' id="signed-in-as" data-target='#' data-toggle='dropdown'>Signed in as {{ session['name'] }}<span class='caret'></span></a>

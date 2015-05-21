@@ -313,6 +313,16 @@ def resource():
     global skill_value2
     global skill_value3
 
+    #clear categ and skill values if new state
+    if 'state' in request.args:
+        categ_value1 = ''
+        categ_value2 = ''
+        categ_value3 = ''
+        skill_value1 =''
+        skill_value2 =''
+        skill_value3 =''
+
+
     #process if category box 1 in hit
     if 'categ1' in request.args:
         #get the value selected
