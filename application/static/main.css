@@ -25,7 +25,7 @@ html, body { height: 90%}
 }
 
 
-#center-panel 
+#center-panel
     {
     margin-left: 280px;
     background-color: #A4A9A6;
@@ -40,3 +40,19 @@ html, body { height: 90%}
 
 #center-panel .row-fluid {overflow: auto;}
 #center-panel .large {height: 400px; padding: 10px; background-color: #5C595A}
+
+.dropdown-toggle {
+    overflow: hidden;
+    padding-right: 24px /* Optional for caret */;
+    text-align: left;
+    text-overflow: ellipsis;
+    width: 90%;
+}
+
+#categ1, #categ2, #categ3 {
+  overflow: hidden;
+  padding-right: 24px /* Optional for caret */;
+  text-align: left;
+  text-overflow: ellipsis;
+  width: 25%;
+}

@@ -394,7 +394,7 @@ def resource():
         print ('refresh')
 
     #render the template
-    return render_template('resourcetest.html', skill_report = skill_report, categ_value1 = categ_value1, skill_value1 = skill_value1, categ_value2 = categ_value2, skill_value2 = skill_value2, categ_value3 = categ_value3, skill_value3 = skill_value3, users = users)
+    return render_template('resource.html', skill_report = skill_report, categ_value1 = categ_value1, skill_value1 = skill_value1, categ_value2 = categ_value2, skill_value2 = skill_value2, categ_value3 = categ_value3, skill_value3 = skill_value3, users = users)
 
 
 @app.route('/about')
