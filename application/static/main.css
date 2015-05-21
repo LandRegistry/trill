@@ -46,7 +46,7 @@ html, body { height: 90%}
     padding-right: 24px /* Optional for caret */;
     text-align: left;
     text-overflow: ellipsis;
-    width: 90%;
+    width: 75%;
 }
 
 #categ1, #categ2, #categ3 {
@@ -56,3 +56,10 @@ html, body { height: 90%}
   text-overflow: ellipsis;
   width: 25%;
 }
+
+#container1 {
+  padding-top: 3%;
+}
+
+.bodycontainer { max-height: 285px; width: 100%; margin: 0; overflow-y: auto; }
+.table-scrollable { margin: 0; padding: 0; }

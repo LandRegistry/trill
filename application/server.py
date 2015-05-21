@@ -350,6 +350,7 @@ def resource():
             skill_report.skills3.clear()
             skill2 = ''
             skill_report.skills3.clear()
+            skill_value2 =''
             skill_value3 =''
 
     elif 'categ3' in request.args:
