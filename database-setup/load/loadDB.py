@@ -5,7 +5,7 @@ import psycopg2
 import sys
 import os
 
-APPLICATION_FILEPATH = os.getenv('TRILL_APPLICATION_FILEPATH','/vagrant/home/trill')
+APPLICATION_FILEPATH = os.getenv('TRILL_APPLICATION_FILEPATH','/home/vagrant/trill')
 IMPORT_FILES_PATH = APPLICATION_FILEPATH + '/database-setup/load'
 
 con = None
