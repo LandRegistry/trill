@@ -176,8 +176,6 @@ def GetusersWithThreeSkills(skill1, skill2, skill3):
     skill3_id = raw_skill3[0]
 
     for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill1_id):
-        #users.append(instance)
-        user ={}
         proficiency_a = GetUserSkillProficiencyLevel(instance.id,skill1_id)
 
 
@@ -189,8 +187,9 @@ def GetusersWithThreeSkills(skill1, skill2, skill3):
 
                 if (proficiency_a > 1) or (proficiency_b > 1) or (proficiency_c > 1):
 
-                          user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency_a -1), 'proficiency_b': (proficiency_b -1), 'proficiency_c': (proficiency_c -1)})
-                          users.append(user)
+                      user ={}
+                      user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency_a -1), 'proficiency_b': (proficiency_b -1), 'proficiency_c': (proficiency_c -1)})
+                      users.append(user)
 
     return users
 
