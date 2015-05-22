@@ -70,4 +70,4 @@ vendor/ruby
 .bundle
 
 # Data not to be saved in Git
-database-setup/private
+database-setup/live

@@ -318,9 +318,9 @@ def resource():
         categ_value1 = ''
         categ_value2 = ''
         categ_value3 = ''
-        skill_value1 =''
-        skill_value2 =''
-        skill_value3 =''
+        skill_value1 = ''
+        skill_value2 = ''
+        skill_value3 = ''
 
 
     #process if category box 1 in hit
@@ -337,6 +337,7 @@ def resource():
             skill_report.skills3.clear()
             skill1 = ''
             skill2 = ''
+            skill3 = ''
             users = ''
             skill_value1 =''
             skill_value2 =''
@@ -349,6 +350,7 @@ def resource():
             skill_report.skills2 = GetSkillforCategory(categ_value2)
             skill_report.skills3.clear()
             skill2 = ''
+            skill3 = ''
             skill_report.skills3.clear()
             skill_value2 =''
             skill_value3 =''
@@ -372,6 +374,9 @@ def resource():
 
             #remember this choice so it can be used in the next search
             skill1 = skill_value1
+            skill_value2 = ''
+            skill_value3 = ''
+
 
     #process the next skill box...
     elif 'skill2' in request.args:
@@ -379,6 +384,7 @@ def resource():
         if skill_value2 in skill_report.skills2:
             users = GetusersWithTwoSkills(skill1, skill_value2)
             skill2 = skill_value2
+            skill_value3 = ''
 
     elif 'skill3' in request.args:
         skill_value3 = request.args['skill3']
