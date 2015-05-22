@@ -321,6 +321,10 @@ def resource():
         skill_value1 = ''
         skill_value2 = ''
         skill_value3 = ''
+        skill1 = ''
+        skill2 = ''
+        skill3 = ''
+        users = ''
 
 
     #process if category box 1 in hit
@@ -342,6 +346,8 @@ def resource():
             skill_value1 =''
             skill_value2 =''
             skill_value3 =''
+            categ_value2 = ''
+            categ_value3 = ''
 
     #process the next category box, so on...
     elif 'categ2' in request.args:
@@ -349,11 +355,11 @@ def resource():
         if categ_value2 in skill_report.categs:
             skill_report.skills2 = GetSkillforCategory(categ_value2)
             skill_report.skills3.clear()
-            skill2 = ''
             skill3 = ''
-            skill_report.skills3.clear()
             skill_value2 =''
             skill_value3 =''
+            categ_value3 = ''
+
 
     elif 'categ3' in request.args:
         categ_value3 = request.args['categ3']
@@ -376,6 +382,8 @@ def resource():
             skill1 = skill_value1
             skill_value2 = ''
             skill_value3 = ''
+            categ_value2 = ''
+            categ_value3 = ''
 
 
     #process the next skill box...
@@ -385,6 +393,7 @@ def resource():
             users = GetusersWithTwoSkills(skill1, skill_value2)
             skill2 = skill_value2
             skill_value3 = ''
+            categ_value3 = ''
 
     elif 'skill3' in request.args:
         skill_value3 = request.args['skill3']

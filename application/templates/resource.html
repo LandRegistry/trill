@@ -60,7 +60,7 @@
                       <noscript><input type="submit" value="Submit"></noscript>
                   </form>
               </div>
-              {% if categ_value2 %}
+              {% if categ_value3 %}
               <div class="top30 dropdown col-md-6">
                   <form>
                       <select class='dropdown-toggle' name='skill3' onclick='this.form.submit()'>
@@ -77,6 +77,16 @@
         {% endif %}
     {% endif %}
   </div>
+
+<!--  <p>skill_value1 {{skill_value1}}</p>
+  <p>skill_value2 {{skill_value2}}</p>
+  <p>skill_value3 {{skill_value3}}</p>
+
+  <p>categ_value1 {{categ_value1}}</p>
+  <p>categ_value2 {{categ_value2}}</p>
+  <p>categ_value3 {{categ_value3}}</p> -->
+
+
 
   {% if skill_value1 %}
     <div class='container well well-main'>
@@ -106,33 +116,24 @@
 
 
    <div class='container well'>
-     <div class="bodycontainer scrollable">
-       <table class="table table-hover table-scrollable">
-         <thead>
-           <tr>
-            {% if users %}
-             {% if skill_value1 %}
-             <th>Name</th>
-               <th>A</th>
-               {% if skill_value2 %}
-                 <th>B</th>
-                 {% if skill_value3 %}
-                   <th>C</th>
-                 {% endif %}
-               {% endif %}
-               {% endif %}
-
-             {% else %}
-
-                <th>No results to display</th>
-
-             {% endif %}
-
-           </tr>
-         </thead>
-
-         <tbody>
-           {% if users %}
+     {% if users %}
+       <div class="bodycontainer scrollable">
+         <table class="table table-hover table-scrollable">
+           <thead>
+              <tr>
+              {% if skill_value1 %}
+              <th>Name</th>
+              <th>A</th>
+                {% if skill_value2 %}
+                  <th>B</th>
+                  {% if skill_value3 %}
+                    <th>C</th>
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+              </tr>
+           </thead>
+           <tbody>
              {% for user in users %}
                <tr>
                  {% if skill_value1 %}
@@ -147,10 +148,12 @@
                  {% endif %}
                </tr>
              {% endfor %}
-           {% endif %}
-         </tbody>
-       </table>
-   </div>
+           </tbody>
+         </table>
+     </div>
+   {% else %}
+     <h5>No results to display</h5>
+   {% endif %}
  </div>
 
 {% endblock %}
