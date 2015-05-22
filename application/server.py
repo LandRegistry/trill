@@ -1,12 +1,12 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
-from .forms import SigninForm
+from .forms import SigninForm, ReportForm
 from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
 from application.login import valid_user
 
-#simple structure to hold harded coded pretend DB test data
+#structure to hold DB data
 class User(object):
     def __init__(self, user_id, email):
         self.user_id = user_id
@@ -77,7 +77,24 @@ class Skill_desc(object):
         self.prof = skill_prof
         self.conf = skill_conf
         self.age = skill_age
+
+class Skill_report(object):
+    def __init__(self):
+        self.skills1 = []
+        self.skills2 = []
+        self.skills3 = []
+        self.categs = GetSkillCategs()
+
+
 #end of data structure
+skill_report = Skill_report()
+users = ''
+categ_value1 = ''
+categ_value2 = ''
+categ_value3 = ''
+skill_value1 = ''
+skill_value2 = ''
+skill_value3 = ''
 
 
 @app.route('/')
@@ -166,11 +183,11 @@ def record():
     userId = GetUserId(email)
 
     if request.method == "POST":
-        print ('post')
+
         #returns the radio button value as a | separated string
         choice = request.form
         string_0 = (choice['name1'])
-        print (string_0)
+
         #decode the skill type - prof_radio = proficency, conf_radio = confidence, age_radio = age
         end1 = string_0.find('|')
         skill_type = (string_0[0:end1])
@@ -280,29 +297,112 @@ def record():
         #send the user object to the template
         return render_template('view_skills.html', user_obj = user)
 
-@app.route('/resource', methods=['GET', 'POST'])
+
+@app.route('/resource')
 @login_required
 def resource():
+    #declare some global variables
+    global skill_report
+    global skill1
+    global skill2
+    global users
+    global categ_value1
+    global categ_value2
+    global categ_value3
+    global skill_value1
+    global skill_value2
+    global skill_value3
 
-    '''if request.method == "POST":
-        print ('post')
-        #returns the radio button value as a | separated string
-        choice = request.form
-        print (choice['name1'])
-        return 'OK'
+    #clear categ and skill values if new state
+    if 'state' in request.args:
+        categ_value1 = ''
+        categ_value2 = ''
+        categ_value3 = ''
+        skill_value1 = ''
+        skill_value2 = ''
+        skill_value3 = ''
 
-    if request.method == "GET":
-        print ('get')
-        return render_template('resource.html', user_obj = user)'''
 
-'''@app.route('/test')
-@login_required
-def test():
-    print('start')
-    string_0 = 'Fail'
-    choice = request.form
-    print(choice['state'])
-    print(string_0)'''
+    #process if category box 1 in hit
+    if 'categ1' in request.args:
+        #get the value selected
+        categ_value1 = request.args['categ1']
+        #check the value selected is in the category list
+        if categ_value1 in skill_report.categs:
+            #populate the first skills list with skills for that category from the database
+            skill_report.skills1 = GetSkillforCategory(categ_value1)
+            #assumption made that if the first category box is hit, a new search is happening
+            #so clear out other data
+            skill_report.skills2.clear()
+            skill_report.skills3.clear()
+            skill1 = ''
+            skill2 = ''
+            skill3 = ''
+            users = ''
+            skill_value1 =''
+            skill_value2 =''
+            skill_value3 =''
+
+    #process the next category box, so on...
+    elif 'categ2' in request.args:
+        categ_value2 = request.args['categ2']
+        if categ_value2 in skill_report.categs:
+            skill_report.skills2 = GetSkillforCategory(categ_value2)
+            skill_report.skills3.clear()
+            skill2 = ''
+            skill3 = ''
+            skill_report.skills3.clear()
+            skill_value2 =''
+            skill_value3 =''
+
+    elif 'categ3' in request.args:
+        categ_value3 = request.args['categ3']
+        if categ_value3 in skill_report.categs:
+            skill_report.skills3 = GetSkillforCategory(categ_value3)
+
+    #process the first skills box hit
+    elif 'skill1' in request.args:
+        #get the value selected
+        skill_value1 = request.args['skill1']
+        print(skill_value1)
+
+        #check the value selected is in the skills list
+        if skill_value1 in skill_report.skills1:
+
+            #populate the user list with user who have this skill from the database
+            users = GetusersWithOneSkill(skill_value1)
+
+            #remember this choice so it can be used in the next search
+            skill1 = skill_value1
+            skill_value2 = ''
+            skill_value3 = ''
+
+
+    #process the next skill box...
+    elif 'skill2' in request.args:
+        skill_value2 = request.args['skill2']
+        if skill_value2 in skill_report.skills2:
+            users = GetusersWithTwoSkills(skill1, skill_value2)
+            skill2 = skill_value2
+            skill_value3 = ''
+
+    elif 'skill3' in request.args:
+        skill_value3 = request.args['skill3']
+        if skill_value3 in skill_report.skills3:
+            users = GetusersWithThreeSkills(skill1, skill2, skill_value3)
+    else:
+        #nothing has been selected, clear the data
+        skill_report.skills1.clear()
+        skill_report.skills2.clear()
+        skill_report.skills3.clear()
+        skill1 = ''
+        skill2 = ''
+        users = ''
+        print ('refresh')
+
+    #render the template
+    return render_template('resource.html', skill_report = skill_report, categ_value1 = categ_value1, skill_value1 = skill_value1, categ_value2 = categ_value2, skill_value2 = skill_value2, categ_value3 = categ_value3, skill_value3 = skill_value3, users = users)
+
 
 @app.route('/about')
 def about():
