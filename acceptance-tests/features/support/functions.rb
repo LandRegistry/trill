@@ -70,7 +70,7 @@ def check_value_match(myTestArea, myXpath, myValue1)
   myTextToTest = find(:xpath, myXpath).text
   if myTextToTest != myValue1
     puts 'my value = *' + myTextToTest + '* test area = *' + myTestArea
-    raise "my test vaue does not match" + myTestArea
+    raise "my test value does not match" + myTestArea
   end
 end
 
@@ -82,6 +82,6 @@ def check_value_include(myTestArea, myXpath, myValue1)
   #  puts 'passing - my value =' + myTextToTest + ' test area = ' + myTestArea
   else
     puts 'my value = *' + myTextToTest + '* test area = *' + myTestArea
-    raise "my test vaue does not match" + myTestArea
+    raise "my test value does not match" + myTestArea
   end
 end
