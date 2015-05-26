@@ -8,7 +8,7 @@ And I select a Skill known to be held as Expert
 And I select a Skill known to be held as Proficient
 And I select Knowledge known to be held as Basic
 And I select the reporting tool
-When I generate a report
+When I generate a report expecting results
 Then I will see a results for the selected Expert Skill
 And I will see a results for the selected Proficient Skill
 And I will see a results for the selected Basic Knowledge
@@ -20,5 +20,5 @@ And I am logged into Trill
 And I select Skill known to be held as None
 And I select Knowledge known to be held as None
 And I select the reporting tool
-When I generate a report
+When I generate a report expecting no results
 Then I will see a message stating that no results were found for the search

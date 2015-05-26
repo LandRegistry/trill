@@ -18,7 +18,7 @@
       {% if categ_value1 %}
           <div class="top30 dropdown col-md-6">
               <form>
-                  <select class='dropdown-toggle' name='skill1'  onclick='this.form.submit()'>
+                  <select id='skill1' class='dropdown-toggle' name='skill1'  onclick='this.form.submit()'>
                       {% for skill in skill_report.skills1 %}
                       <option {% if skill in skill_value1 %}selected{% endif %} style="width: 350px;">{{skill}}</option>
                       {% endfor %}
@@ -41,7 +41,7 @@
               {% if categ_value2 %}
               <div class="top30 dropdown col-md-6">
                   <form>
-                      <select class='dropdown-toggle' name='skill2' onclick='this.form.submit()'>
+                      <select id='skill2' class='dropdown-toggle' name='skill2' onclick='this.form.submit()'>
                           {% for skill in skill_report.skills2 %}
                           <option {% if skill in skill_value2 %}selected{% endif %}>{{skill}}</option>
                           {% endfor %}
@@ -63,7 +63,7 @@
               {% if categ_value3 %}
               <div class="top30 dropdown col-md-6">
                   <form>
-                      <select class='dropdown-toggle' name='skill3' onclick='this.form.submit()'>
+                      <select id='skill3' class='dropdown-toggle' name='skill3' onclick='this.form.submit()'>
                           {% for skill in skill_report.skills3 %}
                           <option {% if skill in skill_value3 %}selected{% endif %}>{{skill}}</option>
                           {% endfor %}
