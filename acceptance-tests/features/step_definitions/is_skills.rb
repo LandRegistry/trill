@@ -1,33 +1,25 @@
 Given(/^I select a Skill known to be held as Expert$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-
   # reuse the create_skill(mySkillgroup, myValue1, myValue2)
-  #  mySkillgroup = ".//*[@id='IS-skill-group1']/a"
-  #  myValue1 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|1']"
-  #  myValue2 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|4']"
-  #  create_skill(mySkillgroup, myValue1, myValue2)
+  mySkillgroup = ".//*[@id='IS-skill-group1']/a"
+  myValue1 = "//*[@id='prof_radio||CSRK.1.1|1']"
+  myValue2 = "//*[@id='prof_radio|xxxxxxxxxxxxxxxxxxxxxxxx|CSRK.1.1|4']"
+  create_skill(mySkillgroup, myValue1, myValue2)
 
 end
 
 Given(/^I select a Skill known to be held as Proficient$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-
   # reuse the create_skill(mySkillgroup, myValue1, myValue2)
-  #  mySkillgroup = ".//*[@id='IS-skill-group1']/a"
-  #  myValue1 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|1']"
-  #  myValue2 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|3']"
-  #  create_skill(mySkillgroup, myValue1, myValue2)
+  mySkillgroup = ".//*[@id='IS-skill-group1']/a"
+  myValue1 = "//*[@id='prof_radio||CSRK.2.1|1']"
+  myValue2 = "//*[@id='prof_radio|fdssfdfdsdfs|CSRK.2.1|3']"
 
 end
 
 Given(/^I select Skill known to be held as None$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-
   # reuse the create_skill(mySkillgroup, myValue1, myValue2)
-  #  mySkillgroup = ".//*[@id='IS-skill-group1']/a"
-  #  myValue1 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|4']"
-  #  myValue2 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|1']"
-  #  create_skill(mySkillgroup, myValue1, myValue2)
+  mySkillgroup = ".//*[@id='IS-skill-group1']/a"
+  myValue1 = "//*[@id='prof_radio||CSRK.3.1|1']"
+  myValue2 = "//*[@id='prof_radio|fgg|CSRK.3.1|2']"
 
 end
 
@@ -38,6 +30,7 @@ When(/^I record my IS skills$/) do
   # this should ensure that an action is recorded
   # call the create skill function that will create a var for value of the
   # skill radio button that was selected
+
   mySkillgroup = ".//*[@id='IS-skill-group1']/a"
   myValue1 = "//*[@id='prof_radio||CSRK.1.1|1']"
   myValue2 = "//*[@id='prof_radio|xxxxxxxxxxxxxxxxxxxxxxxx|CSRK.1.1|4']"
