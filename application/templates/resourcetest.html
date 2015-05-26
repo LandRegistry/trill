@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Find your resource{% endblock %}
+
+{% block content %}
+<div class= 'row top70'>
+    <div class='container well'>
+        <div class="top30 dropdown col-md-6">
+            <form>
+                <select class='dropdown-toggle' name='categ1' onclick='this.form.submit()'>
+                    {% for categ in skill_report.categs %}
+                    <option {% if categ in categ_value1 %}selected{% endif %}>{{categ}}</option>
+                    {% endfor %}
+                </select>
+                <noscript><input type="submit" value="Submit"></noscript>
+            </form>
+        </div>
+
+      {% if categ_value1 %}
+          <div class="top30 dropdown col-md-6">
+              <form>
+                  <select class='dropdown-toggle' name='skill1' onclick='this.form.submit()'>
+                      {% for skill in skill_report.skills1 %}
+                      <option {% if skill in skill_value1 %}selected{% endif %}>{{skill}}</option>
+                      {% endfor %}
+                  </select>
+                  <noscript><input type="submit" value="Submit"></noscript>
+              </form>
+          </div>
+
+          {% if skill_value1 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select class='dropdown-toggle' name='categ2' onclick='this.form.submit()'>
+                          {% for categ in skill_report.categs %}
+                          <option {% if categ in categ_value2 %}selected{% endif %}>{{categ}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              {% if categ_value1 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select class='dropdown-toggle' name='skill2' onclick='this.form.submit()'>
+                          {% for skill in skill_report.skills2 %}
+                          <option {% if skill in skill_value2 %}selected{% endif %}>{{skill}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              {% if skill_value2 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select class='dropdown-toggle' name='categ3' onclick='this.form.submit()'>
+                          {% for categ in skill_report.categs %}
+                          <option {% if categ in categ_value3 %}selected{% endif %}>{{categ}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select class='dropdown-toggle' name='skill3' onclick='this.form.submit()'>
+                          {% for skill in skill_report.skills3 %}
+                          <option {% if skill in skill_value3 %}selected{% endif %}>{{skill}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+
+            {% endif %}
+          {% endif %}
+        {% endif %}
+    {% endif %}
+  </div>
+
+    <div class='container well'>
+     <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Legend</th>
+           <th>Skill\Knowledge</th>
+         </tr>
+       </thead>
+       <tbody>
+
+            {% if skill_value1 %}
+              <tr>
+                  <th>A</th>
+                  <th>{{skill_value1}}</th>
+              </tr>
+              {% if skill_value2 %}
+                <tr>
+                  <th>B</th>
+                  <th>{{skill_value2}}</th>
+                </tr>
+                {% if skill_value3 %}
+                  <tr>
+                    <th>C</th>
+                    <th>{{skill_value3}}</th>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+
+       </tbody>
+     </table>
+
+   </div>
+
+   <div class='container well'>
+       <table class="table table-hover">
+         <thead>
+           <tr>
+             {% if users %}
+
+             <th>Name</th>
+               <th>A</th>
+               {% if skill_value2 %}
+                 <th>B</th>
+                 {% if skill_value3 %}
+                   <th>C</th>
+                 {% endif %}
+               {% endif %}
+
+             {% else %}
+
+                    <th>No results to display</th>
+
+             {% endif %}
+
+           </tr>
+         </thead>
+         <tbody>
+           {% if users %}
+             {% for user in users %}
+               <tr>
+                 <td>{{user.firstname}} {{user.surname}}</td>
+                 <td>{{user.proficiency_a}}</td>
+                 <td>{{user.proficiency_b}}</td>
+                 {% if skill_value3 %}
+                    <td>{{user.proficiency_c}}</td>
+                 {% endif %}
+               </tr>
+             {% endfor %}
+           {% endif %}
+         </tbody>
+       </table>
+   </div>
+</div>
+{% endblock %}

@@ -1,3 +1,69 @@
 .features .glyphicon {
     font-size: 32px;
 }
+
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.top15 { margin-top:15px; }
+.top17 { margin-top:17px; }
+.top30 { margin-top:30px; }
+.top70 { margin-top:70px; }
+.top90 { margin-top:90px; }
+
+html, body { height: 90%}
+
+#side-panel {
+    position: fixed;
+    float: left;
+    width: 250px;
+    padding: 10px 20px 10px 20px;
+    height: 60%;
+    background-color: #DFE0D9;
+    border-right: 1px solid #dddddd;
+    text-align: center;
+}
+
+
+#center-panel
+    {
+    margin-left: 280px;
+    background-color: #A4A9A6;
+
+}
+
+#inner-panel
+    {
+    overflow:auto;
+    padding: inherit;
+    }
+
+#center-panel .row-fluid {overflow: auto;}
+#center-panel .large {height: 400px; padding: 10px; background-color: #5C595A}
+
+.dropdown-toggle {
+    overflow: hidden;
+    padding-right: 24px /* Optional for caret */;
+    text-align: left;
+    text-overflow: ellipsis;
+    width: 75%;
+}
+
+#categ1, #categ2, #categ3 {
+  overflow: hidden;
+  padding-right: 24px /* Optional for caret */;
+  text-align: left;
+  text-overflow: ellipsis;
+  width: 25%;
+}
+
+#container1 {
+  padding-top: 3%;
+}
+
+.bodycontainer { max-height: 285px; width: 100%; margin: 0; overflow-y: auto; }
+.table-scrollable { margin: 0; padding: 0; }
+
+option {
+  width: 400px;
+  }

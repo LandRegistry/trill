@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Find your resource{% endblock %}
+
+{% block content %}
+    <div id='container1' class='container well'>
+        <div class="top30 dropdown col-md-6">
+            <form>
+                <select id='categ1'class='dropdown-toggle' name='categ1' onclick='this.form.submit()'>
+                    {% for categ in skill_report.categs %}
+                    <option {% if categ in categ_value1 %}selected{% endif %}>{{categ}}</option>
+                    {% endfor %}
+                </select>
+                <noscript><input type="submit" value="Submit"></noscript>
+            </form>
+        </div>
+
+      {% if categ_value1 %}
+          <div class="top30 dropdown col-md-6">
+              <form>
+                  <select id='skill1' class='dropdown-toggle' name='skill1'  onclick='this.form.submit()'>
+                      {% for skill in skill_report.skills1 %}
+                      <option {% if skill in skill_value1 %}selected{% endif %} style="width: 350px;">{{skill}}</option>
+                      {% endfor %}
+                  </select>
+                  <noscript><input type="submit" value="Submit"></noscript>
+              </form>
+          </div>
+
+          {% if skill_value1 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select id='categ2' class='dropdown-toggle' name='categ2' onclick='this.form.submit()'>
+                          {% for categ in skill_report.categs %}
+                          <option {% if categ in categ_value2 %}selected{% endif %}>{{categ}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              {% if categ_value2 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select id='skill2' class='dropdown-toggle' name='skill2' onclick='this.form.submit()'>
+                          {% for skill in skill_report.skills2 %}
+                          <option {% if skill in skill_value2 %}selected{% endif %}>{{skill}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              {% if skill_value2 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select id='categ3' class='dropdown-toggle' name='categ3' onclick='this.form.submit()'>
+                          {% for categ in skill_report.categs %}
+                          <option {% if categ in categ_value3 %}selected{% endif %}>{{categ}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              {% if categ_value3 %}
+              <div class="top30 dropdown col-md-6">
+                  <form>
+                      <select id='skill3' class='dropdown-toggle' name='skill3' onclick='this.form.submit()'>
+                          {% for skill in skill_report.skills3 %}
+                          <option {% if skill in skill_value3 %}selected{% endif %}>{{skill}}</option>
+                          {% endfor %}
+                      </select>
+                      <noscript><input type="submit" value="Submit"></noscript>
+                  </form>
+              </div>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+    {% endif %}
+  </div>
+
+<!--  <p>skill_value1 {{skill_value1}}</p>
+  <p>skill_value2 {{skill_value2}}</p>
+  <p>skill_value3 {{skill_value3}}</p>
+
+  <p>categ_value1 {{categ_value1}}</p>
+  <p>categ_value2 {{categ_value2}}</p>
+  <p>categ_value3 {{categ_value3}}</p> -->
+
+
+
+  {% if skill_value1 %}
+    <div class='container well well-main'>
+      <div class='row'>
+        <div class="col-xs-1"><strong>Legend</strong></div>
+        <div class="col-xs-11"><strong>Selected attribute</strong></div>
+      </div>
+
+      <div class='row'>
+        <div class="col-xs-1"><strong>A</strong></div>
+        <div class="col-xs-11">{{skill_value1}}</div>
+      </div>
+        {% if skill_value2 %}
+          <div class='row'>
+            <div class="col-xs-1"><strong>B</strong></div>
+            <div class="col-xs-11">{{skill_value2}}</div>
+          </div>
+          {% if skill_value3 %}
+            <div class='row'>
+              <div class="col-xs-1"><strong>C</strong></div>
+              <div class="col-xs-11">{{skill_value3}}</div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+
+   <div class='container well'>
+     {% if users %}
+       <div class="bodycontainer scrollable">
+         <table class="table table-hover table-scrollable">
+           <thead>
+              <tr>
+              {% if skill_value1 %}
+              <th>Name</th>
+              <th>A</th>
+                {% if skill_value2 %}
+                  <th>B</th>
+                  {% if skill_value3 %}
+                    <th>C</th>
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+              </tr>
+           </thead>
+           <tbody>
+             {% for user in users %}
+               <tr>
+                 {% if skill_value1 %}
+                   <td>{{user.firstname}} {{user.surname}}</td>
+                   <td>{{user.proficiency_a}}</td>
+                 {% endif %}
+                 {% if skill_value2 %}
+                    <td>{{user.proficiency_b}}</td>
+                 {% endif %}
+                 {% if skill_value3 %}
+                    <td>{{user.proficiency_c}}</td>
+                 {% endif %}
+               </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+     </div>
+   {% else %}
+     <h5>No results to display</h5>
+   {% endif %}
+ </div>
+
+{% endblock %}

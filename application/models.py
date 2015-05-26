@@ -9,13 +9,15 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True)
     managerfirstname = db.Column(db.String(80))
     managersurname = db.Column(db.String(80))
+    pwhash = db.Column(db.String(80))
 
-    def __init__(self, firstname, surname, email, managerfirstname, managersurname):
+    def __init__(self, firstname, surname, email, managerfirstname, managersurname, pwhash):
         self.firstname = firstname
         self.surname = surname
         self.email = email
         self.managerfirstname = managerfirstname
         self.managersurname = managersurname
+        self.pwhash = pwhash
 
     def __repr__(self):
         return '<User %r>' % self.surname
@@ -25,6 +27,7 @@ class JobTitle(db.Model):
     __tablename__ = 'job_titles'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), unique=True)
+    trill_role_group_id = db.Column(db.Integer, db.ForeignKey('trill_role_groups.id'))
 
 
     def __init__(self, title):
@@ -36,9 +39,7 @@ class JobTitle(db.Model):
 class TrillRoleGroup(db.Model):
     __tablename__ = 'trill_role_groups'
     id = db.Column(db.Integer, primary_key=True)
-    groupname = db.Column(db.String(80), unique=True)
-    job_title_id = db.Column(db.Integer, db.ForeignKey('job_titles.id'))
-
+    groupname = db.Column(db.String(80))
 
     def __init__(self, title):
         self.groupname = groupname
@@ -50,13 +51,22 @@ class SkillGroup(db.Model):
     __tablename__ = 'skill_groups'
     id = db.Column(db.Integer, primary_key=True)
     skillgroupname = db.Column(db.String(80), unique=True)
-    trill_role_group_id = db.Column(db.Integer, db.ForeignKey('trill_role_groups.id'))
+    skilltype = db.Column(db.Integer)
 
     def __init__(self, title):
         self.skillgroupname = skillgroupname
+        self.skilltype = skilltype
 
     def __repr__(self):
         return '<Skill_Group %r>' % self.skillgroupname
+
+class TrillRoleSkillGroup(db.Model):
+    __tablename__ = 'trill_role_skill_groups'
+    id = db.Column(db.Integer, primary_key=True)
+    trill_role_group_id = db.Column(db.Integer, db.ForeignKey('trill_role_groups.id'))
+    skill_group_id = db.Column(db.Integer, db.ForeignKey('skill_groups.id'))
+
+
 
 class SkillTitle(db.Model):
     __tablename__ = 'skill_titles'
@@ -74,7 +84,7 @@ class Skill(db.Model):
     __tablename__ = 'skills'
     id = db.Column(db.Integer, primary_key=True)
     skillcode = db.Column(db.String(80), unique=True)
-    skilldescription = db.Column(db.String(200))
+    skilldescription = db.Column(db.String)
     skill_title_id = db.Column(db.Integer, db.ForeignKey('skill_titles.id'))
 
     def __init__(self, title):
@@ -104,9 +114,10 @@ class UserSkill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
-    competence = db.Column(db.String(20))
-    age = db.Column(db.Date)
-    confidence = db.Column(db.String(20))
+    proficiency = db.Column(db.Integer)
+    confidence = db.Column(db.Integer)
+    age = db.Column(db.Integer)
+
 
 
     def __init__(self, title):

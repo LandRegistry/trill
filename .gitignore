@@ -68,3 +68,6 @@ target/
 .rbenv/
 vendor/ruby
 .bundle
+
+# Data not to be saved in Git
+database-setup/live

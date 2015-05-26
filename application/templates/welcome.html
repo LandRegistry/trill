@@ -1,69 +1,24 @@
-{% extends "bootstrap/base.html" %}
-
-{% block styles %}
-{{super()}}
-<link href="{{url_for('.static', filename='main.css')}}" rel='stylesheet'>
-{% endblock %}
+{% extends "base.html" %}
 
 {% block title %}Welcome to Trill{% endblock %}
 
-{% block navbar %}   
-<div class='navbar navbar-default navbar-static-top'>
-    <div class='container'>
-        <div class='navbar-header'>
-            <a href='/home' class='navbar-brand'>Trill - Training and Skills</a>
-
-            <button type='button' class='navbar-toggle'
-                    data-toggle='collapse'
-                    data-target='.navbar-collapse'>
-                <span class='sr-only'>Toggle navigaton</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
-        </div>
-        
-        <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
-            <li>
-                <a href='/skills' data-target='#' data-toggle='dropdown'>Skills<span class='caret'></span></a>
-                <ul class='dropdown-menu'>
-                    <li><a href='/record'>Record Skills</a></li>
-                    <li><a href='/export'>Export Skills</a></li>
-                    <li class='divider'></li>
-                    <li><a href='/add_skill'>Add Skills</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href='/training' data-target='#' data-toggle='dropdown'>Training<span class='caret'></span></a>
-                <ul class='dropdown-menu'>
-                    <li><a href='/book'>Book Course</a></li>
-                    <li><a href='/bookings'>My Bookings</a></li>
-                    <li class='divider'></li>
-                    <li><a href='/add_course'>Add Courses</a></li>
-                </ul>
-            </li>
-            <li><a href='/resource'>Resource</a></li>
-            <li><a href='/profile'>Profile</a></li>
-            <li><a href='/edit'>About</a></li>
-        </ul>
-    </div>
-</div>
-{% endblock %}
-
 {% block content %}   
-<div class="container">
+<div class="container top70">
     <div class='row well well-lg'>
-        <div class='col-md-6'>
-            <h2>The new way to record your training and skills</h2>
+        <div class='col-lg-6 col-md-7'>
+            <h2>Welcome to Trill</h2>
+            <h3>The new way to record your training and skills</h3>
             <p class='lead'>Start recording your achievements today!</p>
-            <a href='/tour' role='button' class='btn btn-lg btn-default'>Take the Tour</a>
+            <!--<a href='/tour' role='button' class='btn btn-lg btn-default'>Take the Tour</a>-->
             <a href='/record' role='button' class='btn btn-lg btn-primary'>Record Skills</a>
         </div>
-        <div class='col-md-6 visible-md'>
-            <img src='static/images/learning.jpg' alt='Learning' width='435' height='290'/>
+        <div class='col-md-5 visible-md'>
+            <img src='static/images/school.jpg' alt='Learning' width='375' height='260'/>
+            <!--<img src='static/images/learning.jpg' alt='Learning' width='435' height='290'/>-->
         </div>
         <div class='col-lg-6 visible-lg'>
-            <img src='static/images/learning.jpg' alt='Learning' width='548' height='366'/>
+            <img src='static/images/school.jpg' alt='Learning' width='540' height='350'/>
+            <!--<img src='static/images/learning.jpg' alt='Learning' width='548' height='366'/>-->
         </div>
     </div>
 </div>
@@ -80,7 +35,7 @@
         <div class='col-sm-4 col-xs-6'>
             <i class='glyphicon glyphicon-tasks'></i>
             <h3>Find the right resource for your project</h3>
-            <p>Even if you are looking for an obscure skill our searching tool will make the process fast and simple to find that RIGHT person</p>
+            <p>Even if you are looking for an obscure skill our searching tool will make it fast and simple to find the RIGHT person</p>
         </div>
 
         <div class='col-sm-4 col-xs-6'>
