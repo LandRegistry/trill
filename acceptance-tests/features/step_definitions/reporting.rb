@@ -6,27 +6,33 @@ end
 
 
 When(/^I generate a report expecting results$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
   # the report is generated once an entry is slected in the 'skill description'
+  # select the skill type - Skill or Knowledge
+  # select the skill description
 
-  first(:xpath, "//*[@id='categ1']").click
-  first(:xpath, "//*[@id='categ1']").select("Skills")
-  first(:xpath, "//*[@id='skill1']").click
-  first(:xpath, "//*[@id='skill1']").select("67 - question and answer site for professional and enthusiast programmers. It's 100% free")
-  first(:xpath, "//*[@id='skill1']").click
+  myXpath = "//*[@id='categ1']"
+  mySkill = "Skills"
+  select_skill(myXpath, mySkill)
 
-  first(:xpath, "//*[@id='categ2']").click
-  first(:xpath, "//*[@id='categ2']").select("Skills")
-  first(:xpath, "//*[@id='skill2']").click
-  first(:xpath, "//*[@id='skill2']").select("68 - question and answer site for professional and enthusiast programmers. It's 100% free")
-  first(:xpath, "//*[@id='skill2']").click
+  myXpath = "//*[@id='skill1']"
+  myDescription = "67 - question and answer site for professional and enthusiast programmers. It's 100% free"
+  select_skill_description(myXpath, myDescription)
 
-  first(:xpath, "//*[@id='categ3']").click
-  first(:xpath, "//*[@id='categ3']").select("Knowledge")
-  first(:xpath, "//*[@id='categ3']").click
-  first(:xpath, "//*[@id='skill3']").click
-  first(:xpath, "//*[@id='skill3']").select("121 - question and answer site for professional and enthusiast programmers. It's 100% free")
-  first(:xpath, "//*[@id='skill3']").click
+  myXpath = "//*[@id='categ2']"
+  mySkill = "Skills"
+  select_skill(myXpath, mySkill)
+
+  myXpath = "//*[@id='skill2']"
+  myDescription = "68 - question and answer site for professional and enthusiast programmers. It's 100% free"
+  select_skill_description(myXpath, myDescription)
+
+  myXpath = "//*[@id='categ3']"
+  mySkill = "Knowledge"
+  select_skill(myXpath, mySkill)
+
+  myXpath = "//*[@id='skill3']"
+  myDescription = "121 - question and answer site for professional and enthusiast programmers. It's 100% free"
+  select_skill_description(myXpath, myDescription)
 
   # uncomment he row below to cause an error which produces an evidence screenshot
   # first(:xpath, "//*[@id='categ111']").click
@@ -34,33 +40,38 @@ When(/^I generate a report expecting results$/) do
 end
 
 When(/^I generate a report expecting no results$/) do
-  #pending # Write code here that turns the phrase above into concrete actions
+  # the report is generated once an entry is slected in the 'skill description'
+  # select the skill type - Skill or Knowledge
+  # select the skill description
+  
+  myXpath = "//*[@id='categ1']"
+  mySkill = "Skills"
+  select_skill(myXpath, mySkill)
 
-  first(:xpath, "//*[@id='categ1']").click
-  first(:xpath, "//*[@id='categ1']").select("Knowledge")
-  first(:xpath, "//*[@id='skill1']").click
-  first(:xpath, "//*[@id='skill1']").select("96 - question and answer site for professional and enthusiast programmers. It's 100% free")
-  first(:xpath, "//*[@id='skill1']").click
+  myXpath = "//*[@id='skill1']"
+  myDescription = "96 - question and answer site for professional and enthusiast programmers. It's 100% free"
+  select_skill_description(myXpath, myDescription)
 
+  myXpath = "//*[@id='categ2']"
+  mySkill = "Skills"
+  select_skill(myXpath, mySkill)
 
-  first(:xpath, "//*[@id='categ2']").click
-  first(:xpath, "//*[@id='categ2']").select("Skills")
-  first(:xpath, "//*[@id='skill2']").click
-  first(:xpath, "//*[@id='skill2']").select("102 - question and answer site for professional and enthusiast programmers. It's 100% free")
-  first(:xpath, "//*[@id='skill2']").click
+  myXpath = "//*[@id='skill2']"
+  myDescription = "102 - question and answer site for professional and enthusiast programmers. It's 100% free"
+  select_skill_description(myXpath, myDescription)
 
-  first(:xpath, "//*[@id='categ3']").click
-  first(:xpath, "//*[@id='categ3']").select("Knowledge")
-  first(:xpath, "//*[@id='categ3']").click
-  first(:xpath, "//*[@id='skill3']").click
-  first(:xpath, "//*[@id='skill3']").select("130 - question and answer site for professional and enthusiast programmers. It's 100% free")
-  first(:xpath, "//*[@id='skill3']").click
+  myXpath = "//*[@id='categ3']"
+  mySkill = "Knowledge"
+  select_skill(myXpath, mySkill)
+
+  myXpath = "//*[@id='skill3']"
+  myDescription = "130 - question and answer site for professional and enthusiast programmers. It's 100% free"
+  select_skill_description(myXpath, myDescription)
 
   # uncomment he row below to cause an error which produces an evidence screenshot
   # first(:xpath, "//*[@id='categ111']").click
 
 end
-
 
 
 Then(/^I will see a results for the selected Expert Skill$/) do
