@@ -73,6 +73,8 @@ def GetUserSkillGroups(id, skilltype):
     for instance in db.session.query(SkillGroup).join(TrillRoleSkillGroup,TrillRoleGroup, JobTitle, UserJob, User).filter(User.id == id, SkillGroup.skilltype == skilltype):
         skillGroups.append(instance.skillgroupname)
 
+        print(skillGroups)
+
     return skillGroups
 
 
