@@ -137,14 +137,14 @@
              {% for user in users %}
                <tr>
                  {% if skill_value1 %}
-                   <td>{{user.firstname}} {{user.surname}}</td>
-                   <td>{{user.proficiency_a}}</td>
+                   <td id = '{{user.id}}'>{{user.firstname}} {{user.surname}}</td>
+                   <td id = '{{user.id}}|a'>{{user.proficiency_a}}</td>
                  {% endif %}
                  {% if skill_value2 %}
-                    <td>{{user.proficiency_b}}</td>
+                    <td id = '{{user.id}}|b'>{{user.proficiency_b}}</td>
                  {% endif %}
                  {% if skill_value3 %}
-                    <td>{{user.proficiency_c}}</td>
+                    <td id = '{{user.id}}|c'>{{user.proficiency_c}}</td>
                  {% endif %}
                </tr>
              {% endfor %}

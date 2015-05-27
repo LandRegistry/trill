@@ -133,7 +133,7 @@ def GetusersWithOneSkill(skill):
         proficiency = GetUserSkillProficiencyLevel(instance.id,skill_id)
 
         if proficiency > 1:
-            user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency - 1)})
+            user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency - 1)})
             users.append(user)
 
     return users
@@ -158,7 +158,7 @@ def GetusersWithTwoSkills(skill1, skill2):
             proficiency_b = GetUserSkillProficiencyLevel(instance2.id,skill2_id)
 
             if (proficiency_a > 1) or (proficiency_b > 1):
-                user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency_a -1), 'proficiency_b': (proficiency_b -1)})
+                user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency_a -1), 'proficiency_b': (proficiency_b -1)})
                 users.append(user)
 
     return users
@@ -190,7 +190,7 @@ def GetusersWithThreeSkills(skill1, skill2, skill3):
                 if (proficiency_a > 1) or (proficiency_b > 1) or (proficiency_c > 1):
 
                       user ={}
-                      user.update({'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency_a -1), 'proficiency_b': (proficiency_b -1), 'proficiency_c': (proficiency_c -1)})
+                      user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': (proficiency_a -1), 'proficiency_b': (proficiency_b -1), 'proficiency_c': (proficiency_c -1)})
                       users.append(user)
 
     return users
