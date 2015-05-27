@@ -29,6 +29,7 @@ html, body { height: 90%}
     {
     margin-left: 280px;
     background-color: #A4A9A6;
+    overflow: hidden;
 
 }
 
@@ -76,3 +77,8 @@ html, body { height: 90%}
 option {
   width: 400px;
   }
+
+.columns label.radio-inline, .columns label.checkbox-inline {
+    min-width: 10px;
+    vertical-align: top;
+    width: 12%; }
