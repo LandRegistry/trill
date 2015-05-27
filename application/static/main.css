@@ -29,6 +29,7 @@ html, body { height: 90%}
     {
     margin-left: 280px;
     background-color: #A4A9A6;
+    overflow: hidden;
 
 }
 
@@ -54,11 +55,20 @@ html, body { height: 90%}
   padding-right: 24px /* Optional for caret */;
   text-align: left;
   text-overflow: ellipsis;
-  width: 25%;
+  width: 35%;
 }
 
 #container1 {
   padding-top: 3%;
+  background-color: #A4A9A6;
+}
+
+#container2 {
+  background-color: #A4A9A6;
+}
+
+#container3 {
+  background-color: #DFE0D9;
 }
 
 .bodycontainer { max-height: 285px; width: 100%; margin: 0; overflow-y: auto; }
@@ -67,3 +77,8 @@ html, body { height: 90%}
 option {
   width: 400px;
   }
+
+.columns label.radio-inline, .columns label.checkbox-inline {
+    min-width: 10px;
+    vertical-align: top;
+    width: 12%; }
