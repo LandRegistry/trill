@@ -59,6 +59,15 @@ html, body { height: 90%}
 
 #container1 {
   padding-top: 3%;
+  background-color: #A4A9A6;
+}
+
+#container2 {
+  background-color: #A4A9A6;
+}
+
+#container3 {
+  background-color: #DFE0D9;
 }
 
 .bodycontainer { max-height: 285px; width: 100%; margin: 0; overflow-y: auto; }
