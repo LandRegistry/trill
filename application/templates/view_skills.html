@@ -154,22 +154,22 @@
 
                                         <div class = 'container row top7'>
                                             <label class="control-label col-xs-12 col-md-2">
-                                                    Age level
+                                                    Skill used within
                                                 </label>
                                             <div class="col-md-10 columns">
-                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - None" data-trigger="hover" data-content="No knowledge or skills">
+                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - None" data-trigger="hover" data-content="No knowledge or skills">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|1"
                                                  value="option1" {% if 1 == skill.age %}checked {% endif %}> None
                                            </label>
-                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - Low" data-trigger="hover" data-content="Would need to refresh knowledge and practice the relevant skills">
+                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 12+ months" data-trigger="hover" data-content="Would need to refresh knowledge and practice the relevant skills">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|2"
                                                  value="option2" {% if 2 == skill.age %}checked{% endif %}> 12+ months
                                            </label>
-                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - Medium" data-trigger="hover" data-content="I used this skill in the last year, still fairly fresh in my mind, some skill refresh maybe needed">
+                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 6-12 months" data-trigger="hover" data-content="I used this skill in the last year, still fairly fresh in my mind, some skill refresh maybe needed">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|3"
                                                  value="option3" {% if 3 == skill.age %}checked{% endif %}> 6-12 months
                                            </label>
-                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Age level - High" data-trigger="hover" data-content="Used this skill very recently, I can hit the ground running!">
+                                           <label class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 0-6 months" data-trigger="hover" data-content="Used this skill very recently, I can hit the ground running!">
                                               <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|4"
                                                  value="option4" {% if 4 == skill.age %}checked{% endif %}> 0-6 months
                                            </label>
