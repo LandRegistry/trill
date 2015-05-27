@@ -3,8 +3,9 @@
 {% block title %}Find your resource{% endblock %}
 
 {% block content %}
+<div class = 'top70'>
     <div id='container1' class='container well'>
-        <div class="top30 dropdown col-md-6">
+        <div class="dropdown col-md-6">
             <form>
                 <select id='categ1'class='dropdown-toggle form-control' name='categ1' onchange='this.form.submit()'>
                     {% for categ in skill_report.categs %}
@@ -16,7 +17,7 @@
         </div>
 
       {% if categ_value1 %}
-          <div class="top30 dropdown col-md-6">
+          <div class="dropdown col-md-6">
               <form>
                   <select id='skill1' class='dropdown-toggle form-control' name='skill1'  onchange='this.form.submit()'>
                       {% for skill in skill_report.skills1 %}
@@ -155,5 +156,6 @@
      <h5>No results to display</h5>
    {% endif %}
  </div>
+</div>
 
 {% endblock %}
