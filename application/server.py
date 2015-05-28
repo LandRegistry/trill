@@ -99,7 +99,7 @@ skill_value3 = ''
 
 @app.route('/')
 def index():
-    return redirect(url_for('signin'))
+    return redirect(url_for('home'))
     #return render_template('testpanel.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
