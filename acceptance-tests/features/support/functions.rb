@@ -88,6 +88,7 @@ end
 
 def select_skill(myXpath, mySkill)
   #select skill or knowledge from the skill group dropdown
+  sleep(1)
   first(:xpath, myXpath).click
   first(:xpath, myXpath).select(mySkill)
   first(:xpath, myXpath).click
@@ -96,8 +97,30 @@ end
 
 def select_skill_description(myXpath, myDescription)
   #select skill or knowledge from the skill group dropdown
+  sleep(1)
   first(:xpath, myXpath).click
   first(:xpath, myXpath).select(myDescription)
   first(:xpath, myXpath).click
+
+end
+
+
+def check_report_result(myResultXpath, mySkillValue)
+  # find the name associated with the first row on the resource report, check it matches our value
+  # check the value held in the first column of the first row of the report matches our expected value
+  myReportName = find(:xpath, ".//*[@id='1']").text
+  if myReportName == "Corene Eggen"
+    #check the value
+    mySkillValueToTest = find(:xpath, myResultXpath).text
+    if mySkillValueToTest == mySkillValue
+      #puts 'found skill'
+    else
+      # mismatch of proficiency value
+      raise "my expected return result should be expert - test value does not match =*" + mySkillValueToTest + "*"
+    end
+  else
+    # mismatch of name
+    raise "my reporting test value name does not match Corene Eggen, it is *" + myReportName + "*"
+  end
 
 end
