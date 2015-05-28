@@ -110,7 +110,7 @@ def signin():
 
     if request.method=='POST':
         if current_user and current_user.is_authenticated():
-            return redirect(url_for('record'))
+            return redirect(url_for('home'))
         form = SigninForm(request.form)
         if form.validate():
             email = form.username.data
