@@ -7,7 +7,7 @@
     <div id='container1' class='container well'>
         <div class="dropdown col-md-6">
             <form>
-                <select id='categ1'class='dropdown-toggle form-control' name='categ1' onchange='this.form.submit()'>
+                <select id='categ1' class='dropdown-toggle form-control' name='categ1' onchange='this.form.submit()'>
                     <option selected disabled>Skill category</option>
                     {% for categ in skill_report.categs %}
                     <option {% if categ in categ_value1 %}selected{% endif %}>{{categ}}</option>
