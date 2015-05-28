@@ -22,3 +22,14 @@ And I select Knowledge known to be held as None
 And I select the reporting tool
 When I generate a report expecting no results
 Then I will see a message stating that no results were found for the search
+
+@US62 @Manager @Report @Trill
+Scenario: Mixed Results Search
+Given I am a Manager
+And I am logged into Trill
+And I select a Skill known to be held as Expert
+And I select Knowledge known to be held as None
+And I select the reporting tool
+When I generate a report expecting mixed results
+Then I will see a results for the selected Expert Skill
+And I will see a results for the selected None Skill
