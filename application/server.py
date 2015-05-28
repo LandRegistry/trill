@@ -171,9 +171,9 @@ def user_loader(userId):
     user.Set_active(True)
     return user
 
-'''@app.route('/home')
+@app.route('/home')
 def home():
-    return render_template('welcome.html')'''
+    return render_template('welcome.html')
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
