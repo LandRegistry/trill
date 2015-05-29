@@ -6,7 +6,7 @@ end
 Given(/^I click on the trill link$/) do
   # no trill link as of yet so will use a visit to the sign in page
   # TRILL_APPLICATION_URL is source from the support/env.rb file
-  visit "#{($TRILL_APPLICATION_URL)}/signin"
+  visit "#{($TRILL_APPLICATION_URL)}"
 
 end
 
@@ -18,7 +18,7 @@ end
 
 When(/^I am on my Trill homepage$/) do
   # make do visit command - requires an environmental variable (dog )28/4/15
-  visit "#{($TRILL_APPLICATION_URL)}/"
+  visit "#{($TRILL_APPLICATION_URL)}"
 
 end
 
@@ -115,4 +115,8 @@ Then(/^I can see my role$/) do
   myTestArea = 'GDS Role'
   check_value_include(myTestArea, myXpath, myValue1)
 
+end
+
+Then(/^I will go to the landing page$/) do
+  pending # Write code here that turns the phrase above into concrete actions
 end
