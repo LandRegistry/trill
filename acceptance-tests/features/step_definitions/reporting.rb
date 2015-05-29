@@ -108,6 +108,7 @@ end
 
 Then(/^I will see a results for the selected Proficient Skill$/) do
   #pending # Write code here that turns the phrase above into concrete actions
+#  myResultXpath = ".//*[@id='1|b']"
   myResultXpath = ".//*[@id='1|b']"
   mySkillValue = 'Proficient'
   check_report_result(myResultXpath, mySkillValue)
