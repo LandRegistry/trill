@@ -397,7 +397,6 @@ def resource():
     elif 'skill1' in request.args:
         #get the value selected
         skill_value1 = request.args['skill1']
-        print(skill_value1)
 
         #check the value selected is in the skills list
         if skill_value1 in skill_report.skills1:
