@@ -1,0 +1,9 @@
+delete from user_jobs;
+delete from job_titles;
+delete from user_skills;
+delete from trill_role_skill_groups;
+delete from trill_role_groups;
+delete from users;
+delete from skills;
+delete from skill_titles;
+delete from skill_groups;
