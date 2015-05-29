@@ -71,7 +71,7 @@ class TrillRoleSkillGroup(db.Model):
 class SkillTitle(db.Model):
     __tablename__ = 'skill_titles'
     id = db.Column(db.Integer, primary_key=True)
-    skilltitlename = db.Column(db.String(80), unique=True)
+    skilltitlename = db.Column(db.String(240), unique=True)
     skill_group_id = db.Column(db.Integer, db.ForeignKey('skill_groups.id'))
 
     def __init__(self, title):
@@ -125,3 +125,33 @@ class UserSkill(db.Model):
 
     def __repr__(self):
         return '<User_Skill %r>' % self.age
+
+# These classes are not used within the application itself but represents the data
+# staging tables for the People-Role-Job Title and Skill-Skill Title-Skill Group mapping
+
+class PeopleRoleStage(db.Model):
+    __tablename__ = 'people_role_stage'
+    firstname = db.Column(db.String(80))
+    surname = db.Column(db.String(80))
+    email = db.Column(db.String(120), unique=True)
+    trill_role_group =  db.Column(db.String(80))
+    managerfirstname = db.Column(db.String(80))
+    managersurname = db.Column(db.String(80))
+    job_title = db.Column(db.String(80))
+    encrypted_passwd = db.Column(db.String)
+    id = db.Column(db.Integer, primary_key=True)
+
+class SkillMappings(db.Model):
+    __tablename__ = 'skill_mapping_stage'
+    skilltype = db.Column(db.String(10))
+    skillgroup = db.Column(db.String(80))
+    skilltitlename = db.Column(db.String(240))
+    skilldescription = db.Column(db.String)
+    skillcode = db.Column(db.String(80))
+    id = db.Column(db.Integer, primary_key=True)
+
+class SkillRoleMapping(db.Model):
+    __tablename__ = 'skill_role_stage'
+    trill_role_group = db.Column(db.String(80))
+    skillgroup = db.Column(db.String(80))
+    id = db.Column(db.Integer, primary_key=True)
