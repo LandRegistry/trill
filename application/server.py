@@ -110,7 +110,7 @@ def signin():
 
     if request.method=='POST':
         if current_user and current_user.is_authenticated():
-            return redirect(url_for('record'))
+            return redirect(url_for('home'))
         form = SigninForm(request.form)
         if form.validate():
             email = form.username.data
@@ -131,7 +131,7 @@ def signin():
                     session.pop('next')
                     return redirect(next_page)
                 else:
-                    return redirect(url_for('record'))
+                    return redirect(url_for('home'))
             else:
                 #form.password.errors.append('Username or password is incorrect')
                 error = 'Username or password is incorrect'
@@ -141,7 +141,7 @@ def signin():
     else:
         session['next'] = request.args.get('next')
         if current_user and current_user.is_authenticated():
-            return redirect(url_for('record'))
+            return redirect(url_for('home'))
         return render_template('signinpage.html', signinpage_form = SigninForm())
 
 @app.route('/user')
