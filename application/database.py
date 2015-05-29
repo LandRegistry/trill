@@ -177,26 +177,26 @@ def GetUsersWithCertainSkills(skill_id,number_of_skills,position):
         if proficiency_value > 1:
 
             if number_of_skills == ONE_SKILL:
-                user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency})
+                user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname.lstrip(), 'proficiency_a': proficiency})
                 users.append(user)
 
             elif number_of_skills == TWO_SKILLS:
 
                 if position == FIRST_POSITION:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY})
+                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname.lstrip(), 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY})
                 else:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency})
+                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname.lstrip(), 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency})
 
                 users.append(user)
 
             elif number_of_skills == THREE_SKILLS:
 
                 if position == FIRST_POSITION:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': DEFAULT_PROFICIENCY})
+                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname.lstrip(), 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': DEFAULT_PROFICIENCY})
                 elif position == SECOND_POSITION:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency, 'proficiency_c': DEFAULT_PROFICIENCY})
+                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname.lstrip(), 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency, 'proficiency_c': DEFAULT_PROFICIENCY})
                 else:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': proficiency})
+                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname.lstrip(), 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': proficiency})
 
                 users.append(user)
 
