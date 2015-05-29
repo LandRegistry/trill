@@ -135,7 +135,7 @@ def ExtractSkillId(skill):
 
     #get skill_id from passed in composite code and skill
     raw_skill = skill.split(' - ')
-    skill_id = raw_skill[0]
+    skill_id = int(raw_skill[0])
 
     return skill_id
 
