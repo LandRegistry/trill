@@ -156,7 +156,7 @@ def signout():
     session.pop('userId')
     session.pop('username')
     logout_user()
-    return redirect(url_for('signin'))
+    return redirect(url_for('home'))
 
 login_manager = LoginManager()
 login_manager.init_app(app)
