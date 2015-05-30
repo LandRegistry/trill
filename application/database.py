@@ -167,7 +167,7 @@ def GetUsersInASingleList(users_origin,users_x):
 def GetUsersWithCertainSkills(skill_id,number_of_skills,position):
     users = []
 
-    for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill_id):
+    for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill_id,UserSkill > 1):
         user ={}
         proficiency_value = GetUserSkillProficiencyLevel(instance.id,skill_id)
         proficiency = DecodeProf(proficiency_value)
