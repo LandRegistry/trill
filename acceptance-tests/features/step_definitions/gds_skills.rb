@@ -78,8 +78,6 @@ end
 Then(/^my GDS skills will be recorded$/) do
   # exit the application and log in again, the skill select
   # should match the last skill update that was recorded
-  trill_logout()
-  trill_login()
 
   first(:xpath, "//*[@id='GDS-skill-group1']/a").click
 
@@ -97,8 +95,6 @@ Then(/^my GDS skills will be recorded$/) do
 end
 
 Then(/^my GDS skills will displayed$/) do
-  trill_logout()
-  trill_login()
 
   first(:xpath, "//*[@id='GDS-skill-group1']/a").click
 
