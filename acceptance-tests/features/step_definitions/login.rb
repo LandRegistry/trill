@@ -191,3 +191,10 @@ Then(/^my login details will be shown$/) do
   #pending # Write code here that turns the phrase above into concrete actions
   assert page.has_content?("Signed in as")
 end
+
+Then(/^I will be returned to the Home Page$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  assert page.has_content?("Welcome to Trill")
+  assert page.has_content?("Login")
+
+end
