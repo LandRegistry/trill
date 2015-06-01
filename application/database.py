@@ -2,6 +2,8 @@ from application.models import *
 from application import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from operator import itemgetter
+import sys
+import datetime
 
 SKILL_TYPE_GDS = 1
 SKILL_TYPE_SKILL = 2
@@ -11,11 +13,11 @@ ONE_SKILL = 1
 TWO_SKILLS = 2
 THREE_SKILLS = 3
 
-FIRST_POSITION = 1
-SECOND_POSITION = 2
-THIRD_POSITION = 3
 
 DEFAULT_PROFICIENCY = 'None'
+
+users_a = []
+users_b = []
 
 def GetUserId(email):
 
@@ -164,67 +166,53 @@ def GetUsersInASingleList(users_origin,users_x):
 
     return users
 
-def GetUsersWithCertainSkills(skill_id,number_of_skills,position):
+def GetUsersWithCertainSkills(skill_id,number_of_skills):
     users = []
 
-    for instance in db.session.query(User).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill_id,UserSkill > 1):
+    for instance in db.session.query(User, UserSkill).order_by(User.surname).join(UserSkill,Skill).filter(Skill.id == skill_id,UserSkill.proficiency > 1):
         user ={}
-        proficiency_value = GetUserSkillProficiencyLevel(instance.id,skill_id)
-        proficiency = DecodeProf(proficiency_value)
+        proficiency = DecodeProf(instance.UserSkill.proficiency)
 
-        if proficiency_value > 1:
+        if number_of_skills == ONE_SKILL:
+            user.update({'id': instance.User.id, 'firstname': instance.User.firstname,'surname': instance.User.surname, 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': DEFAULT_PROFICIENCY})
+            users.append(user)
 
-            if number_of_skills == ONE_SKILL:
-                user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency})
-                users.append(user)
+        elif number_of_skills == TWO_SKILLS:
+            user.update({'id': instance.User.id, 'firstname': instance.User.firstname,'surname': instance.User.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency, 'proficiency_c': DEFAULT_PROFICIENCY})
+            users.append(user)
 
-            elif number_of_skills == TWO_SKILLS:
-
-                if position == FIRST_POSITION:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY})
-                else:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency})
-
-                users.append(user)
-
-            elif number_of_skills == THREE_SKILLS:
-
-                if position == FIRST_POSITION:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': proficiency, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': DEFAULT_PROFICIENCY})
-                elif position == SECOND_POSITION:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': proficiency, 'proficiency_c': DEFAULT_PROFICIENCY})
-                else:
-                    user.update({'id': instance.id, 'firstname': instance.firstname,'surname': instance.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': proficiency})
-
-                users.append(user)
+        elif number_of_skills == THREE_SKILLS:
+            user.update({'id': instance.User.id, 'firstname': instance.User.firstname,'surname': instance.User.surname, 'proficiency_a': DEFAULT_PROFICIENCY, 'proficiency_b': DEFAULT_PROFICIENCY, 'proficiency_c': proficiency})
+            users.append(user)
 
     return users
 
 def GetusersWithOneSkill(skill):
-    users = []
+    global users_a
+    global users_b
+
+    users_a = []
+    users_b = []
 
     skill_id = ExtractSkillId(skill)
 
-    users = GetUsersWithCertainSkills(skill_id,ONE_SKILL,FIRST_POSITION)
+    users_a = GetUsersWithCertainSkills(skill_id,ONE_SKILL)
 
     #sort result by surname
-    users = sorted(users, key=itemgetter('surname'))
+    users_a = sorted(users_a, key=itemgetter('surname'))
 
-    return users
+    return users_a
 
 def GetusersWithTwoSkills(skill1, skill2):
-    users_a = []
+    global users_b
+
     users_b = []
     users = []
 
-    skill1_id  = ExtractSkillId(skill1)
     skill2_id  = ExtractSkillId(skill2)
 
-    #get list of users with skill 1
-    users_a = GetUsersWithCertainSkills(skill1_id,TWO_SKILLS,FIRST_POSITION)
-
     #get list of users with skill 2
-    users_b = GetUsersWithCertainSkills(skill2_id,TWO_SKILLS,SECOND_POSITION)
+    users_b = GetUsersWithCertainSkills(skill2_id,TWO_SKILLS)
 
 
     #if list a contains users in list b update that user item
@@ -233,34 +221,25 @@ def GetusersWithTwoSkills(skill1, skill2):
             if user_a["id"] == user_b["id"]:
                 user_a.update({'proficiency_b': user_b["proficiency_b"]})
                 users.append(user_a)
+                continue
 
     users = GetUsersInASingleList(users, users_a)
     users = GetUsersInASingleList(users, users_b)
 
     #sort result by surname
     users = sorted(users, key=itemgetter('surname'))
+    users_b = users
 
     return users
 
 def GetusersWithThreeSkills(skill1, skill2, skill3):
-    users_a = []
-    users_b = []
     users_c = []
     users = []
 
-
-    skill1_id  = ExtractSkillId(skill1)
-    skill2_id  = ExtractSkillId(skill2)
     skill3_id  = ExtractSkillId(skill3)
 
-    #get list of users with skill 1
-    users_a = GetUsersWithCertainSkills(skill1_id,THREE_SKILLS,FIRST_POSITION)
-
-    #get list of users with skill 2
-    users_b = GetUsersWithCertainSkills(skill2_id,THREE_SKILLS,SECOND_POSITION)
-
     #get list of users with skill 3
-    users_c = GetUsersWithCertainSkills(skill3_id,THREE_SKILLS,THIRD_POSITION)
+    users_c = GetUsersWithCertainSkills(skill3_id,THREE_SKILLS)
 
     #for users in both a & b lists
     for user_a in users_a:
@@ -269,6 +248,7 @@ def GetusersWithThreeSkills(skill1, skill2, skill3):
                 user = {}
                 user.update({'id': user_a['id'], 'firstname': user_a['firstname'],'surname': user_a['surname'], 'proficiency_a': user_a["proficiency_a"],'proficiency_b': user_b["proficiency_b"],'proficiency_c': DEFAULT_PROFICIENCY})
                 users.append(user)
+                continue
 
     #add any a only users
     users = GetUsersInASingleList(users, users_a)
@@ -281,6 +261,7 @@ def GetusersWithThreeSkills(skill1, skill2, skill3):
         for user_c in users_c:
             if user["id"] == user_c["id"]:
                 user.update({'proficiency_c': user_c["proficiency_c"]})
+                continue
 
     #add any c only users
     users = GetUsersInASingleList(users, users_c)
