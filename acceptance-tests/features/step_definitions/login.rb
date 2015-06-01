@@ -1,4 +1,7 @@
 Given(/^I am logged into Trill$/) do
+  visit "#{($TRILL_APPLICATION_URL)}"
+  assert page.has_content?("Welcome to Trill")
+  first(:xpath, "//*[@id='Login']").click
   trill_login()
 
 end
@@ -9,6 +12,29 @@ Given(/^I click on the trill link$/) do
   visit "#{($TRILL_APPLICATION_URL)}"
 
 end
+
+
+Given(/^I am on the Home Page$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  visit "#{($TRILL_APPLICATION_URL)}"
+  assert page.has_content?("Welcome to Trill")
+
+end
+
+Given(/^I select Login$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  first(:xpath, "//*[@id='Login']").click
+
+end
+
+Given(/^I am on my Home Page$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  visit "#{($TRILL_APPLICATION_URL)}"
+  assert page.has_content?("Corene")
+end
+
+
+
 
 
 When(/^I login into Trill$/) do
@@ -53,6 +79,20 @@ end
 
 When(/^exit the application$/) do
   trill_logout()
+
+end
+
+
+When(/^I select Skills$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+
+  first(:xpath, "//*[@id='Skills']").click
+
+end
+
+Then(/^I will go to Skills Page$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  assert page.has_content?("Your GDS skills are")
 
 end
 

@@ -8,4 +8,4 @@
 # The ENV[] are defined as system variables.
 #
 
-$TRILL_APPLICATION_URL = (ENV['TRILL_APPLICATION_URL'] || 'http://localhost:5000/signin')
+$TRILL_APPLICATION_URL = (ENV['TRILL_APPLICATION_URL'] || 'http://localhost:5000' || 'http://localhost:5000/home')
