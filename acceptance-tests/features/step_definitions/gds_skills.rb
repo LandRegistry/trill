@@ -115,8 +115,8 @@ Then(/^my GDS skills will displayed$/) do
 end
 
 Then(/^I will see all my recorded GDS skills$/) do
-  trill_logout()
-  trill_login()
+#  trill_logout()
+#  trill_login()
 
   mySkillclass = 'GDS Skills'
   mySkillgroup = "//*[@id='GDS-skill-group1']/a"
