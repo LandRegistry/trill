@@ -1,11 +1,12 @@
 Feature: Login Trill
 # Acceptance Criteria
-# - First screen displayed to users will be the Login screen
+# - First screen displayed to users will be the Login screen (out of date 1/6/15)
 @US11 @User @Login @Trill
 Scenario: Access Trill
 Given I click on the trill link
 When the Trill application opens
-Then I will be on the Login page
+Then I will be on the Home Page
+And the Login option will be available
 
 #No need to worry about the service being unavailable (Discussed at 3 amigos - 24/4/15).
 # - Username and password must be entered to access the system on the Login screen
@@ -23,19 +24,21 @@ Then I will be on the Login page
 # - If correct password supplied then access to the Trill system is granted
 @US11 @User @Login @Trill
 Scenario: Login Second Time
-Given I am a User
-When I login into Trill
-Then I will go to my Trill homepage
+Given I am already logged in 
+And I click on the trill link
+When the Trill application opens
+Then I will be on the Home Page
+And my login details will be shown
 
 # - If username or password is entered then display the error message 'Login incorrect'
 @US11 @User @Login @Trill
 Scenario: Login Wrong Username
 Given I am a User
 When I login into Trill with the wrong Username
-Then I will see the error message Login incorrect
+Then I will see the error message ‘Login incorrect’
 
 @US11 @User @Login @Trill
 Scenario: Login Wrong Password
 Given I am a User
 When I login into Trill with the wrong Password
-Then I will see the error message Login incorrect
+Then I will see the error message ‘Login incorrect’

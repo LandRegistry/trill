@@ -27,7 +27,7 @@
                 <a href='/skills' data-target='#' data-toggle='dropdown'>Skills<span class='caret'></span></a>
                 <ul class='dropdown-menu'>-->
             {% if not signinpage_form %}
-            <li><a href="{{ url_for('record') }}">Skills</a></li>
+            <li><a href="{{ url_for('record') }}" id="Skills">Skills</a></li>
             <li><a href='/resource?state=New' id="Resource">Resource</a></li>
             {% endif %}
                    <!-- <li><a href='/export'>Export Skills</a></li>
@@ -55,7 +55,7 @@
             </li>
             {% else %}
             {% if not signinpage_form %}
-            <li><a href='/signin'>Login</a></li>
+            <li><a href='/signin' id="Login">Login</a></li>
             {% endif %}
 
             {% endif %}

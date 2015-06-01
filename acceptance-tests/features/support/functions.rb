@@ -1,6 +1,6 @@
 # log in using known user
 def trill_login()
-  visit "#{($TRILL_APPLICATION_URL)}"
+  #visit "#{($TRILL_APPLICATION_URL)}"
   #puts 'on page'
   fill_in('username', :with => 'Corene.Eggen@land.gsi.gov.uk')
   #puts 'on username'
@@ -14,7 +14,7 @@ end
 
 # try to log in using either an incorrct username or password passed in as a var
 def trill_bad_login(username, password)
-  visit "#{($TRILL_APPLICATION_URL)}"
+  #visit "#{($TRILL_APPLICATION_URL)}"
   #puts 'on page'
   fill_in('username', :with => username)
   #puts 'on username'
