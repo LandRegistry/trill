@@ -34,7 +34,14 @@ Given(/^I am on my Home Page$/) do
 end
 
 
+Given(/^I am already logged in$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  visit "#{($TRILL_APPLICATION_URL)}"
+  assert page.has_content?("Login")
+  first(:xpath, "//*[@id='Login']").click
+  trill_login()
 
+end
 
 
 When(/^I login into Trill$/) do
@@ -65,10 +72,12 @@ end
 When(/^the Trill application opens$/) do
   # pass the xpath, the epected value and the area under test
   # the check_value_include function will check then pass or raise
-  myXpath = ".//*[@id='login-button']"
-  myValue1 = 'Log In'
-  myTestArea = 'Login open application'
-  check_value_include(myTestArea, myXpath, myValue1)
+#  myXpath = ".//*[@id='login-button']"
+#  myValue1 = 'Log In'
+#  myTestArea = 'Login open application'
+#  check_value_include(myTestArea, myXpath, myValue1)
+
+  assert page.has_content?("Welcome to Trill")
 
 end
 
@@ -157,6 +166,17 @@ Then(/^I can see my role$/) do
 
 end
 
-Then(/^I will go to the landing page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I will be on the Home Page$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  assert page.has_content?("Welcome to Trill")
+end
+
+Then(/^the Login option will be available$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  assert page.has_content?("Login")
+end
+
+Then(/^my login details will be shown$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  assert page.has_content?("Signed in as")
 end

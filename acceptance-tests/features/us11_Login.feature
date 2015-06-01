@@ -24,21 +24,23 @@ And the Login option will be available
 # - If correct password supplied then access to the Trill system is granted
 @US11 @User @Login @Trill
 Scenario: Login Second Time
-Given I am already logged in 
-And I click on the trill link
-When the Trill application opens
-Then I will be on the Home Page
-And my login details will be shown
+Given I am already logged in
+When I am on the Home Page
+Then my login details will be shown
 
 # - If username or password is entered then display the error message 'Login incorrect'
 @US11 @User @Login @Trill
 Scenario: Login Wrong Username
 Given I am a User
+And I am on the Home Page
+And I select Login
 When I login into Trill with the wrong Username
-Then I will see the error message ‘Login incorrect’
+Then I will see the error message Login incorrect
 
 @US11 @User @Login @Trill
 Scenario: Login Wrong Password
 Given I am a User
+And I am on the Home Page
+And I select Login
 When I login into Trill with the wrong Password
-Then I will see the error message ‘Login incorrect’
+Then I will see the error message Login incorrect
