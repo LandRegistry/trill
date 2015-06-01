@@ -21,14 +21,20 @@ Feature: Record GDS Skills
 Scenario: Record GDS Skills
 Given I am a User
 And I am logged into Trill
+And I select Skills
 When I record my GDS skills
+And exit the application
+And I log back into Trill
+And I select Skills
 Then my GDS skills will be recorded
 
 @US53 @User @GDS @Trill
 Scenario: Record GDS Skills
 Given I am a User
 And I am logged into Trill
+And I select Skills
 When I record my GDS skills
 And exit the application
-And I am logged into Trill
+And I log back into Trill
+And I select Skills
 Then my GDS skills will displayed
