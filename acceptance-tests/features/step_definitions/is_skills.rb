@@ -44,10 +44,6 @@ end
 
 
 Then(/^my IS skills will displayed$/) do
- # log out of the application then log back into the application to refresh everything
-  trill_logout()
-  trill_login()
-
   # call the check_skill function that compares currently recorded radio var
   # with the one created in the create_skill function
   # the mySkillclass var is used to provide a helpful error message if things go bang
