@@ -1,10 +1,12 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
-from .forms import SigninForm, ReportForm
+from .forms import SigninForm, ReportForm, ExistingUser, ResetPassword, ResetPasswordSubmit
 from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
 from application.login import valid_user
+from itsdangerous import (TimedJSONWebSignatureSerializer
+                          as Serializer, BadSignature, SignatureExpired)
 
 #structure to hold DB data
 class User(object):
@@ -448,11 +450,50 @@ def about():
 def profile():
     return render_template('profile.html')
 
-'''@app.route('/forgot')
-def forgot():
-    return render_template('forgot.html')
+@app.route('/reset_password', methods=('GET', 'POST',))
+def reset_password():
+    token = request.args.get('token',None)
+    form = ResetPassword(request.form) #form
+    if form.validate_on_submit():
+        email = form.email.data
+        user = User.query.filter_by(email=email).first()
+        if user:
+            token = user.get_token()
+            print (token)
+    return render_template('forgot.html', form=form)
 
-@app.route('/export')
+
+'''@app.route('/forgot', methods=['GET', 'POST'])
+def forgot():
+    #a pretend user for testing
+    #email = 'Maranda.Caron@land.gsi.gov.uk'
+    #password = 'Rabbit'
+
+    if request.method=='POST':
+        form = ForgotForm(request.form)
+        if form.validate():
+            email = form.username.data
+
+            userId = GetUserId(email)
+            error = None
+            if valid_email(email):
+                user = User(userId, email)
+                name = GetUserName(userId)
+                send_email(email)
+                
+            else:
+                #form.password.errors.append('Username or password is incorrect')
+                error = 'Username is incorrect'
+                return render_template('forgot.html',  ForgotForm = form, error=error)
+
+        return render_template('forgot.html',  forgotpage_form = form)
+    else:
+        if current_user and current_user.is_authenticated():
+            return redirect(url_for('home'))
+        return render_template('forgot.html', forgotpage_form = ForgotForm())'''
+
+
+'''@app.route('/export')
 @login_required
 def export_skills():
     return render_template('export_skills.html')
