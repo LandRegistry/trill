@@ -6,6 +6,7 @@ from wtforms import TextField, PasswordField, validators, HiddenField, SelectFie
 from wtforms import TextAreaField, BooleanField
 from wtforms.validators import Required, EqualTo, Optional
 from wtforms.validators import Length, Email
+from application.database import *
 
 '''class LoginForm(Form):
     user_name = StringField('user_name', validators=[DataRequired()])
@@ -26,22 +27,9 @@ class ReportForm(Form):
     categ3 = SelectField()
     skill3 = SelectField()
     
-class ExistingUser(object):
-    def __init__(self, message="Email doesn't exists"):
-        self.message = message
+class EmailForm(Form):
+    email = TextField('Username', validators=[Required(), Email()])
 
-    def __call__(self, form, field):
-        if not User.query.filter_by(email=field.data).first():
-            raise ValidationError(self.message)
-
-reset_rules = [validators.Required(),
-          validators.Email(),
-          ExistingUser(message='Email address is not available')
-         ]
-
-class ResetPassword(Form):
-    email = TextField('Email', validators=reset_rules)
-
-class ResetPasswordSubmit(Form):
-    password = PasswordField('Password', validators=[Required(),validators.Length(max=100, message=(u'edit_password'))])
-    confirm = PasswordField('Confirm Password')
+class PasswordForm(Form):
+    password = PasswordField('Password', validators=[Required(), EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Confirm', validators=[Required()])

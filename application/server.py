@@ -1,12 +1,11 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
-from .forms import SigninForm, ReportForm, ExistingUser, ResetPassword, ResetPasswordSubmit
+from .forms import SigninForm, ReportForm, EmailForm, PasswordForm
 from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
-from application.login import valid_user
-from itsdangerous import (TimedJSONWebSignatureSerializer
-                          as Serializer, BadSignature, SignatureExpired)
+from application.login import valid_user, ts, create_hash
+from application.email import send_email
 
 #structure to hold DB data
 class User(object):
@@ -450,47 +449,53 @@ def about():
 def profile():
     return render_template('profile.html')
 
-@app.route('/reset_password', methods=('GET', 'POST',))
-def reset_password():
-    token = request.args.get('token',None)
-    form = ResetPassword(request.form) #form
+@app.route('/reset', methods=["GET", "POST"])
+def reset():
+    form = EmailForm()
     if form.validate_on_submit():
         email = form.email.data
-        user = User.query.filter_by(email=email).first()
-        if user:
-            token = user.get_token()
-            print (token)
-    return render_template('forgot.html', form=form)
+        userId = GetUserId(email)
+        #print (email, userId)
+        if userId:
+            subject = "Password reset requested"
+
+            token = ts.dumps(email, salt='recover-key')
+
+            recover_url = url_for(
+                'reset_with_token',
+                token=token,
+                _external=True)
+
+            html = render_template(
+                'email_text_forgot.html',
+                url=recover_url)
+
+            send_email(email, subject, html)
+            print (recover_url)
+
+            return redirect(url_for('index'))
+    return render_template('confirm_email.html', form=form)
 
 
-'''@app.route('/forgot', methods=['GET', 'POST'])
-def forgot():
-    #a pretend user for testing
-    #email = 'Maranda.Caron@land.gsi.gov.uk'
-    #password = 'Rabbit'
+@app.route('/reset/<token>', methods=["GET", "POST"])
+def reset_with_token(token):
+    try:
+        email = ts.loads(token, salt="recover-key", max_age=86400)
+    except:
+        abort(404)
 
-    if request.method=='POST':
-        form = ForgotForm(request.form)
-        if form.validate():
-            email = form.username.data
+    form = PasswordForm()
 
-            userId = GetUserId(email)
-            error = None
-            if valid_email(email):
-                user = User(userId, email)
-                name = GetUserName(userId)
-                send_email(email)
-                
-            else:
-                #form.password.errors.append('Username or password is incorrect')
-                error = 'Username is incorrect'
-                return render_template('forgot.html',  ForgotForm = form, error=error)
+    if form.validate_on_submit():
+        userId = GetUserId(email)
 
-        return render_template('forgot.html',  forgotpage_form = form)
-    else:
-        if current_user and current_user.is_authenticated():
-            return redirect(url_for('home'))
-        return render_template('forgot.html', forgotpage_form = ForgotForm())'''
+        pwhash = create_hash(form.password.data)
+        
+        ChangePassword(userId, pwhash)
+
+        return redirect(url_for('signin'))
+
+    return render_template('change_password.html', form=form, token=token)
 
 
 '''@app.route('/export')

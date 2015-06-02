@@ -15,6 +15,8 @@ if settings == 'development':
     CONFIG_DICT['DEBUG'] = True
 elif settings == 'test':
     CONFIG_DICT['DEBUG'] = True
+    
+
 
 #class Config(object):
 #    DEBUG = False
