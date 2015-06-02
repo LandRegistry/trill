@@ -114,7 +114,7 @@ def signin():
             return redirect(url_for('home'))
         form = SigninForm(request.form)
         if form.validate():
-            email = form.username.data
+            email = form.username.data.lower()
             password = form.password.data
             #remember = form.remember_me.data
             userId = GetUserId(email)
@@ -444,7 +444,7 @@ def profile():
 def reset():
     form = EmailForm()
     if form.validate_on_submit():
-        email = form.email.data
+        email = form.email.data.lower()
         userId = GetUserId(email)
         #print (email, userId)
         if userId:
