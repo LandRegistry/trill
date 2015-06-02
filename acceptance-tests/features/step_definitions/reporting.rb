@@ -15,7 +15,7 @@ When(/^I generate a report expecting results$/) do
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill1']"
-  myDescription = "67 - TEST DATA - please leave. !@£$%^&*()_+=-~``.<>/{}[]¡€#¢∞§¶•ªº–≠"
+  myDescription = "67 - TEST DATA - please leave. !@£%^&*()_+=-~``.<>/\{}[]"
   sleep (1)
   select_skill_description(myXpath, myDescription)
 
@@ -94,7 +94,7 @@ When(/^I generate a report expecting mixed results$/) do
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill1']"
-  myDescription = "67 - TEST DATA - please leave. !@£$%^&*()_+=-~``.<>/{}[]¡€#¢∞§¶•ªº–≠"
+  myDescription = "67 - TEST DATA - please leave. !@£%^&*()_+=-~``.<>/\{}[]"
   sleep (1)
   select_skill_description(myXpath, myDescription)
 
