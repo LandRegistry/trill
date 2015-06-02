@@ -1,6 +1,6 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
-from .forms import SigninForm, ReportForm, EmailForm, PasswordForm
+from .forms import SigninForm, EmailForm, PasswordForm
 from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
@@ -208,10 +208,6 @@ def record():
         #end4 = string_3.find('|')
         skill_value = string_3
 
-        #decode the skill value
-        #string_4 = string_3[end4+1:]
-        #skill_value = string_4
-
         skill_id = GetSkillId(skill_code)
 
         #save the skill values
@@ -229,9 +225,6 @@ def record():
     if request.method == "GET":
 
         user = User(userId, email)
-
-        #setup a pretend user as we are bypassing the login process for now
-        #email = 'Maranda.Caron@landregistry.gsi.gov.uk'
 
         #populate the basic user data in the user object
         name    = GetUserName(userId)
@@ -412,7 +405,6 @@ def resource():
             categ_value2 = ''
             categ_value3 = ''
 
-
     #process the next skill box...
     elif 'skill2' in request.args:
         skill_value2 = request.args['skill2']
@@ -438,7 +430,6 @@ def resource():
 
     #render the template
     return render_template('resource.html', skill_report = skill_report, categ_value1 = categ_value1, skill_value1 = skill_value1, categ_value2 = categ_value2, skill_value2 = skill_value2, categ_value3 = categ_value3, skill_value3 = skill_value3, users = users)
-
 
 @app.route('/about')
 def about():
@@ -496,36 +487,6 @@ def reset_with_token(token):
         return redirect(url_for('signin'))
 
     return render_template('change_password.html', form=form, token=token)
-
-
-'''@app.route('/export')
-@login_required
-def export_skills():
-    return render_template('export_skills.html')
-
-@app.route('/add_skill')
-@login_required
-def add_skill():
-    return render_template('add_skill.html')
-
-@app.route('/book')
-@login_required
-def book():
-    return render_template('book.html')
-
-@app.route('/bookings')
-@login_required
-def bookings():
-    return render_template('bookings.html')
-
-@app.route('/add_course')
-@login_required
-def add_course():
-    return render_template('add_course.html')'''
-
-'''@app.route('/tour')
-def tour():
-    return render_template('tour.html')'''
 
 @app.route('/health')
 def health():

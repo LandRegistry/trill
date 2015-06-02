@@ -17,11 +17,14 @@ Feature: Edit IS Skills
 # - All data/names/skills on the page should come from the database
 # - must mirror gds data display wise
 
+
 @US21 @US42 @User @IS @Trill
 Scenario: Record IS Skills
 Given I am a User
 And I am logged into Trill
+And I select Skills
 When I record my IS skills
 And exit the application
-And I am logged into Trill
-Then my IS skills will displayed 
+And I log back into Trill
+And I select Skills
+Then my IS skills will displayed

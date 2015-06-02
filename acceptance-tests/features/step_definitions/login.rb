@@ -94,10 +94,21 @@ end
 
 When(/^I select Skills$/) do
   #pending # Write code here that turns the phrase above into concrete actions
-
   first(:xpath, "//*[@id='Skills']").click
 
 end
+
+
+
+When(/^I log back into Trill$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  first(:xpath, "//*[@id='Login']").click
+  trill_login()
+  assert page.has_content?("Signed in as")
+
+end
+
+
 
 Then(/^I will go to Skills Page$/) do
   #pending # Write code here that turns the phrase above into concrete actions
@@ -179,4 +190,11 @@ end
 Then(/^my login details will be shown$/) do
   #pending # Write code here that turns the phrase above into concrete actions
   assert page.has_content?("Signed in as")
+end
+
+Then(/^I will be returned to the Home Page$/) do
+  #pending # Write code here that turns the phrase above into concrete actions
+  assert page.has_content?("Welcome to Trill")
+  assert page.has_content?("Login")
+
 end

@@ -12,6 +12,9 @@ Given(/^I select a Skill known to be held as Proficient$/) do
   mySkillgroup = ".//*[@id='IS-skill-group1']/a"
   myValue1 = "//*[@id='prof_radio||CSRK.2.1|1']"
   myValue2 = "//*[@id='prof_radio|fdssfdfdsdfs|CSRK.2.1|3']"
+  create_skill(mySkillgroup, myValue1, myValue2)
+  # uncomment he row below to cause an error which produces an evidence screenshot
+  #first(:xpath, "//*[@id='categ111']").click
 
 end
 
@@ -20,7 +23,7 @@ Given(/^I select Skill known to be held as None$/) do
   mySkillgroup = ".//*[@id='IS-skill-group1']/a"
   myValue1 = "//*[@id='prof_radio||CSRK.3.1|1']"
   myValue2 = "//*[@id='prof_radio|fgg|CSRK.3.1|2']"
-
+  create_skill(mySkillgroup, myValue1, myValue2)
 end
 
 
@@ -38,16 +41,8 @@ When(/^I record my IS skills$/) do
 
 end
 
-When(/^I record my IS Systems skills$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
 
 Then(/^my IS skills will displayed$/) do
- # log out of the application then log back into the application to refresh everything
-  trill_logout()
-  trill_login()
-
   # call the check_skill function that compares currently recorded radio var
   # with the one created in the create_skill function
   # the mySkillclass var is used to provide a helpful error message if things go bang
@@ -58,10 +53,5 @@ Then(/^my IS skills will displayed$/) do
   mySkillgroup = "//*[@id='IS-skill-group1']/a"
   myValue1 = './/input[@name="prof_radio_xxxxxxxxxxxxxxxxxxxxxxxx_CSRK.1.1" and @checked]'
   check_skill(mySkillclass, mySkillgroup, myValue1)
-
-end
-
-Then(/^my IS Systems skills will displayed$/) do
-  pending # Write code here that turns the phrase above into concrete actions
 
 end
