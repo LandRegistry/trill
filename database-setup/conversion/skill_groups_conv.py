@@ -30,7 +30,9 @@ try:
                 datarow['skilltype'] = 2
             elif datarow['skilltype']  == 'ISK':
                 datarow['skilltype'] = 3
-    
+            datarow['skillgroup'] = datarow['skillgroup'].replace('  ',' ').strip()
+            datarow['skilltitlename'] = datarow['skilltitlename'].strip()
+            datarow['skilldescription'] = datarow['skilldescription'].replace('  ',' ').strip()
             cur.execute(stmt, datarow)
             ln += 1
 
