@@ -470,8 +470,8 @@ def reset():
                 'email_text_forgot.html',
                 url=recover_url)
 
-            send_email(email, subject, html)
-            print (recover_url)
+            #send_email(email, subject, html)
+            print ('Please use the following reset password link:', recover_url)
 
             return redirect(url_for('index'))
     return render_template('confirm_email.html', form=form)

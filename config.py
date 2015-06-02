@@ -16,7 +16,18 @@ if settings == 'development':
 elif settings == 'test':
     CONFIG_DICT['DEBUG'] = True
     
+# email server
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USE_SSL = False
+#MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+#MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+MAIL_USERNAME = 'trill.robot@gmail.com'
+MAIL_PASSWORD = 'honeybadger001'
 
+# administrator list
+ADMINS = ['trill.robot@gmail.com']
 
 #class Config(object):
 #    DEBUG = False
