@@ -9,7 +9,9 @@ Feature: Edit IS Systems Skill
 Scenario: Record IS System Skills
 Given I am a User
 And I am logged into Trill
+And I select Skills
 When I record my IS Systems skills
 And exit the application
 And I am logged into Trill
+And I select Skills
 Then my IS Systems skills will displayed
