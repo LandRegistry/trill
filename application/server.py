@@ -478,10 +478,13 @@ def reset_with_token(token):
     form = PasswordForm()
 
     if form.validate_on_submit():
+        #we have the email, get the user id
         userId = GetUserId(email)
-
+        
+        #create the hash 
         pwhash = create_hash(form.password.data)
         
+        #database funtion to update password
         ChangePassword(userId, pwhash)
 
         return redirect(url_for('signin'))
