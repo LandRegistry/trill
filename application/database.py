@@ -358,3 +358,19 @@ def SetUserSkillAge(userId,skillId,level):
         success = False
 
     return success
+
+def ChangePassword(userId, pwhash):
+    
+    success = False
+    
+    try:
+        for instance in db.session.query(User).filter(User.id == userId):
+            instance.pwhash = pwhash
+
+        db.session.commit()
+        success = True
+
+    except:
+
+        success = False
+    

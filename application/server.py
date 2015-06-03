@@ -1,10 +1,11 @@
 from application import app
 from flask import render_template, redirect, url_for, session, request
-from .forms import SigninForm
+from .forms import SigninForm, EmailForm, PasswordForm
 from flask.ext.login import LoginManager, login_user, logout_user
 from flask.ext.login import current_user, login_required
 from application.database import *
-from application.login import valid_user
+from application.login import valid_user, ts, create_hash
+from application.email import send_email
 
 #structure to hold DB data
 class User(object):
@@ -113,7 +114,7 @@ def signin():
             return redirect(url_for('home'))
         form = SigninForm(request.form)
         if form.validate():
-            email = form.username.data
+            email = form.username.data.lower()
             password = form.password.data
             #remember = form.remember_me.data
             userId = GetUserId(email)
@@ -438,6 +439,54 @@ def about():
 @login_required
 def profile():
     return render_template('profile.html')
+
+@app.route('/reset', methods=["GET", "POST"])
+def reset():
+    form = EmailForm()
+    if form.validate_on_submit():
+        email = form.email.data.lower()
+        userId = GetUserId(email)
+        #print (email, userId)
+        if userId:
+            subject = "Password reset requested"
+
+            token = ts.dumps(email, salt='recover-key')
+
+            recover_url = url_for(
+                'reset_with_token',
+                token=token,
+                _external=True)
+
+            html = render_template(
+                'email_text_forgot.html',
+                url=recover_url)
+
+            #send_email(email, subject, html)
+            print ('Please use the following reset password link:', recover_url)
+
+            return redirect(url_for('index'))
+    return render_template('confirm_email.html', form=form)
+
+
+@app.route('/reset/<token>', methods=["GET", "POST"])
+def reset_with_token(token):
+    try:
+        email = ts.loads(token, salt="recover-key", max_age=86400)
+    except:
+        abort(404)
+
+    form = PasswordForm()
+
+    if form.validate_on_submit():
+        userId = GetUserId(email)
+
+        pwhash = create_hash(form.password.data)
+        
+        ChangePassword(userId, pwhash)
+
+        return redirect(url_for('signin'))
+
+    return render_template('change_password.html', form=form, token=token)
 
 @app.route('/health')
 def health():

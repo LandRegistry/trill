@@ -70,3 +70,6 @@ DEPENDENCIES
   selenium-webdriver (= 2.45.0)
   test-unit (= 3.0.9)
   w3c_validators (= 1.2.0)
+
+BUNDLED WITH
+   1.10.2
