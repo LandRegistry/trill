@@ -45,8 +45,8 @@
                 </ul>
             </li>-->
             <!--<li><a href='/about'>About</a></li>-->
-            {% if session['signed'] %}
-            <li><a href='/user' id="signed-in-as" data-target='#' data-toggle='dropdown'>Signed in as {{ session['name'] }}<span class='caret'></span></a>
+            {% if current_user.is_authenticated() %}
+            <li><a href='/user' id="signed-in-as" data-target='#' data-toggle='dropdown'>Signed in as {{ current_user.name }}<span class='caret'></span></a>
             <ul class='dropdown-menu'>
                 <!--<li><a href="{{ url_for('profile') }}">Your profile settings</a></li>
                 <li class="divider"></li>-->
