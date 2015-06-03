@@ -24,6 +24,8 @@ try:
     with open(IMPORT_FILES_PATH + '/role_group_live.csv', encoding='utf-8', errors='ignore') as csvfile:
         r = csv.DictReader(csvfile, dialect='excel', fieldnames=("trill_role_group","skillgroup"))
         for datarow in r:
+            datarow['trill_role_group'] = datarow['trill_role_group'].strip()
+            datarow['skillgroup'] = datarow['skillgroup'].replace('  ',' ').strip()
             cur.execute(stmt, datarow)
             ln += 1
 

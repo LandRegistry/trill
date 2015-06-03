@@ -111,7 +111,7 @@ def get_role_group_id(groupname):
     if id != None:
         return id[0]
     else:
-        print("Unable to create link - Role Group " + groupname + " not found in the database.")
+#        print("Unable to create link - Role Group " + groupname + " not found in the database.")
         return 0
 
 def get_skill_group_id(skillgroupname):
@@ -121,27 +121,33 @@ def get_skill_group_id(skillgroupname):
     if id != None:
         return id[0]
     else:
-        print("Unable to create link - Skill Group " + skillgroupname + " not found in the database.")
+#        print("Unable to create link - Skill Group " + skillgroupname + " not found in the database.")
         return 0
 
 def create_role_group_link(skill_group,role_group):
-    print("create_role_group_link - " + skill_group + " => " + role_group)
+    print("create_role_group_link() - " + skill_group + " => " + role_group)
     query_stmt = 'SELECT id FROM trill_role_skill_groups WHERE trill_role_group_id = %s AND skill_group_id = %s'
     insert_stmt = 'INSERT INTO trill_role_skill_groups (trill_role_group_id,skill_group_id) VALUES (%s,%s) RETURNING id'
     trill_role_group_id = get_role_group_id(role_group)
     skill_group_id = get_skill_group_id(skill_group)
-    if (trill_role_group_id == 0) or (skill_group_id == 0):
+#    if (trill_role_group_id == 0) or (skill_group_id == 0):
+#        return 0
+    if trill_role_group_id == 0:
+        print("create_role_group_link() - Role Group " + role_group + " not found in the database.")
+        print("create_role_group_link() - Attempting to create role group.")
+        trill_role_group_id = create_trill_role_group(role_group)
+    if skill_group_id == 0:
+        print("Unable to create link - Skill Group " + skill_group + " not found in the database.")
         return 0
-    else:
-        c2.execute(query_stmt,(trill_role_group_id, skill_group_id))
-        id = c2.fetchone()
-        if id != None:
-            print("create_role_group_link - link already exists.. skipping")
-            return 0
-        c2.execute(insert_stmt,(trill_role_group_id, skill_group_id))
-        id = c2.fetchone()
-        print("create_role_group_link() - link created")
-        return id[0]
+    c2.execute(query_stmt,(trill_role_group_id, skill_group_id))
+    id = c2.fetchone()
+    if id != None:
+        print("create_role_group_link() - link already exists.. skipping")
+        return 0
+    c2.execute(insert_stmt,(trill_role_group_id, skill_group_id))
+    id = c2.fetchone()
+    print("create_role_group_link() - link created")
+    return id[0]
 
 def process_people_role():
     print("*************************************************")
@@ -186,7 +192,7 @@ def process_skill_role_links():
     c1.execute("SELECT skillgroup,trill_role_group FROM skill_role_stage")
     for r1 in c1:
         print("-------------------------------------------------------------------")
-        print("Linking Skill Group <" + r1['skillgroup'] + "> => Role Group <" + r1['trill_role_group'] + " >")
+        print("Linking Skill Group <" + r1['skillgroup'] + "> => Role Group <" + r1['trill_role_group'] + ">")
         user_skill_id = create_role_group_link(r1['skillgroup'],r1['trill_role_group'])
         if user_skill_id > 0:
             print("Committing skill group/role link to the database")

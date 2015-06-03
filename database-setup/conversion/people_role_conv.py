@@ -33,6 +33,12 @@ try:
             # Remove manager details as per requirements
             datarow['managerfirstname'] = ''
             datarow['managersurname'] = ''
+            # Remove leading/trailing spaces in all other data items
+            datarow['firstname'] = datarow['firstname'].strip()
+            datarow['surname'] = datarow['surname'].strip()
+            datarow['email'] = datarow['email'].lower().strip()
+            datarow['trill_role_group'] = datarow['trill_role_group'].strip()
+            datarow['job_title'] = datarow['job_title'].strip()
             # Remove padding values if they exist in the file
             if None in datarow:
                 datarow.pop(None)
