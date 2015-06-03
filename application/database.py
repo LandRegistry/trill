@@ -36,10 +36,10 @@ def GetSkillId(code):
     return id
 
 def GetEmail(id):
-    print (id)
+
     email = ''
     for instance in db.session.query(User).filter(User.id == id):
-        id = instance.email
+        email = instance.email
 
     return email
 

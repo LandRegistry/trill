@@ -17,8 +17,9 @@ elif settings == 'test':
     CONFIG_DICT['DEBUG'] = True
     
 # email server
-MAIL_SERVER = 'smtp.gmail.com'
-MAIL_PORT = 587
+#ip address; mslookup CAS2010
+MAIL_SERVER = 'cas2010.diti.lr.net'
+MAIL_PORT = 25
 MAIL_USE_TLS = True
 MAIL_USE_SSL = False
 #MAIL_USERNAME = os.environ.get('MAIL_USERNAME')

@@ -50,7 +50,7 @@ class User(object):
         return False
 
     def get_id(self):
-        return self.user_id
+        return (str(self.user_id))
 
 class Skill_group(object):
     def __init__(self, name, n):
@@ -117,18 +117,18 @@ def signin():
             email = form.username.data.lower()
             password = form.password.data
             remember = form.remember_me.data
-            print (remember)
+            #print (remember)
             
             userId = GetUserId(email)
             error = None
             if valid_user(email, password):
                 user = User(userId, email)
                 name = GetUserName(userId)
-                login_user(user)
-                session['signed'] = True
-                session['userId'] = userId
-                session['username'] = email
-                session['name'] = name
+                login_user(user, remember = remember)
+                #session['signed'] = True
+                #session['userId'] = userId
+                #session['username'] = email
+                #session['name'] = name
                 if session.get('next'):
                     next_page = session.get('next')
                     session.pop('next')
@@ -155,9 +155,9 @@ def user():
 @app.route('/signout')
 @login_required
 def signout():
-    session.pop('signed')
-    session.pop('userId')
-    session.pop('username')
+    #session.pop('signed')
+    #session.pop('userId')
+    #session.pop('username')
     logout_user()
     return redirect(url_for('home'))
 
@@ -169,10 +169,10 @@ login_manager.login_view = '/signin'
 def user_loader(userId):
     #get the user
     
-    email = GetEmail(userId)
+    email = GetEmail(int(userId))
     print('user loader', userId, email)
     user = User(userId, email)
-    session['username'] = email
+    #session['username'] = email
     #print(session['username'])
     
     #populate the basic user data in the user object
@@ -188,16 +188,17 @@ def user_loader(userId):
 
 @app.route('/home')
 def home():
-    print ('home', current_user.name, current_user.email)
+    #print ('home', current_user.name, current_user.email)
     return render_template('welcome.html')
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
     #get the user
-    print ('record', current_user.email)
-    userId = GetUserId(current_user.email)
-    print (userId)
+    user = current_user
+    #print ('record', user.email, user.name, user.trill_role, user.job_title)
+    userId = GetUserId(user.email)
+    #print ('record', userId)
 
     if request.method == "POST":
 
@@ -240,15 +241,15 @@ def record():
 
     if request.method == "GET":
 
-        user = User(userId, email)
+        #user = User(userId, email)
 
         #populate the basic user data in the user object
-        name    = GetUserName(userId)
-        trill_role   = GetTrillRole(userId)
-        job_title    = GetJobTitle(userId)
-        line_manager = GetLineManager(userId)
+        #name    = GetUserName(userId)
+        #trill_role   = GetTrillRole(userId)
+        #job_title    = GetJobTitle(userId)
+        #line_manager = GetLineManager(userId)
 
-        user.Add_user_data(name, line_manager, job_title, trill_role)
+        #user.Add_user_data(name, line_manager, job_title, trill_role)
 
         #Get Skill group based on user
         GDSskillGroups  = GetUserSkillGroups(userId, 1)
