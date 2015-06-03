@@ -12,31 +12,38 @@ When(/^I generate a report expecting results$/) do
 
   myXpath = "//*[@id='categ1']"
   mySkill = "Skills"
+  sleep(10)
+  puts 'select skills1'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill1']"
   myDescription = "67 - TEST DATA - please leave. ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-  sleep (1)
+  sleep (10)
+  puts 'select skills 67'
   select_skill_description(myXpath, myDescription)
 
   myXpath = "//*[@id='categ2']"
   mySkill = "Skills"
-  sleep (1)
+  sleep (10)
+  puts 'select skills2'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill2']"
   myDescription = "68 - TEST DATA - please leave. 1234567890"
-  sleep (1)
+  sleep (10)
+  puts 'select skills 68'
   select_skill_description(myXpath, myDescription)
 
   myXpath = "//*[@id='categ3']"
   mySkill = "Knowledge"
-  sleep (1)
+  sleep (10)
+  puts 'select knowledge1'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill3']"
   myDescription = "121 - TEST DATA - please leave. This is test data. This is test data. This is test data. This is test data. This is test data. This is test data. This is test data."
-  sleep (1)
+  sleep (10)
+  puts 'select knowledge 121'
   select_skill_description(myXpath, myDescription)
 
   # uncomment he row below to cause an error which produces an evidence screenshot
@@ -51,32 +58,38 @@ When(/^I generate a report expecting no results$/) do
 
   myXpath = "//*[@id='categ1']"
   mySkill = "Skills"
-  sleep (1)
+  sleep (10)
+  puts 'select skills1'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill1']"
   myDescription = "96 - question and answer site for professional and enthusiast programmers. It's 100% free"
-  sleep (1)
+  sleep (10)
+  puts 'select skills 96'
   select_skill_description(myXpath, myDescription)
 
   myXpath = "//*[@id='categ2']"
   mySkill = "Skills"
-  sleep (1)
+  sleep (10)
+  puts 'select skills2'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill2']"
   myDescription = "102 - question and answer site for professional and enthusiast programmers. It's 100% free"
-  sleep (1)
+  sleep (10)
+  puts 'select skills 102'
   select_skill_description(myXpath, myDescription)
 
   myXpath = "//*[@id='categ3']"
   mySkill = "Knowledge"
-  sleep (1)
+  sleep (10)
+  puts 'select knowledge1'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill3']"
   myDescription = "130 - question and answer site for professional and enthusiast programmers. It's 100% free"
-  sleep (1)
+  sleep (10)
+  puts 'select knowledge 130'
   select_skill_description(myXpath, myDescription)
 
   # uncomment he row below to cause an error which produces an evidence screenshot
@@ -90,23 +103,27 @@ When(/^I generate a report expecting mixed results$/) do
   #pending # Write code here that turns the phrase above into concrete actions
   myXpath = "//*[@id='categ1']"
   mySkill = "Skills"
-  sleep (1)
+  sleep (10)
+  puts 'select skills1'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill1']"
   myDescription = "67 - TEST DATA - please leave. ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-  sleep (1)
+  sleep (10)
+  puts 'select skills 67'
   select_skill_description(myXpath, myDescription)
 
 
   myXpath = "//*[@id='categ2']"
   mySkill = "Knowledge"
-  sleep (1)
+  sleep (10)
+  puts 'select knowledge'
   select_skill(myXpath, mySkill)
 
   myXpath = "//*[@id='skill2']"
   myDescription = "130 - question and answer site for professional and enthusiast programmers. It's 100% free"
-  sleep (1)
+  sleep (10)
+  puts 'select knowledge 130'
   select_skill_description(myXpath, myDescription)
 
 
