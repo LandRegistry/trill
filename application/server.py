@@ -448,7 +448,7 @@ def reset():
         userId = GetUserId(email)
         #print (email, userId)
         if userId:
-            subject = "Password reset requested"
+            subject = "TRILL Password reset requested"
 
             token = ts.dumps(email, salt='recover-key')
 
@@ -465,6 +465,10 @@ def reset():
             print ('Please use the following reset password link:', recover_url)
 
             return redirect(url_for('index'))
+        else:
+            error = 'Not a valid email address'
+            return render_template('confirm_email.html', form = form, error=error)
+
     return render_template('confirm_email.html', form=form)
 
 
@@ -480,16 +484,16 @@ def reset_with_token(token):
     if form.validate_on_submit():
         #we have the email, get the user id
         userId = GetUserId(email)
-        
-        #create the hash 
-        pwhash = create_hash(form.password.data)
-        
-        #database funtion to update password
-        ChangePassword(userId, pwhash)
+        if userId:
+            #create the hash 
+            pwhash = create_hash(form.password.data)
 
-        return redirect(url_for('signin'))
+            #database funtion to update password
+            ChangePassword(userId, pwhash)
 
-    return render_template('change_password.html', form=form, token=token)
+            return redirect(url_for('signin'))
+
+    return render_template('change_password.html', form=form)
 
 @app.route('/health')
 def health():
