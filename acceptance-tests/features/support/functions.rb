@@ -39,10 +39,13 @@ end
 def create_skill(mySkillgroup, myValue1, myValue2)
   # open a list of skills
   first(:xpath, mySkillgroup).click
+  puts 'click dropdown'
   # set first skill level
   first(:xpath, myValue1).click
+  puts 'select skill'
   # set second skill level
   first(:xpath, myValue2).click
+  puts 'click on skill'
   # create a var to hold the selected radio button option to check against the returned result later
   @myRadioButton = find(myValue2).value
   #puts @myRadioButton
