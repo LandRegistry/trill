@@ -116,7 +116,9 @@ def signin():
         if form.validate():
             email = form.username.data.lower()
             password = form.password.data
-            #remember = form.remember_me.data
+            remember = form.remember_me.data
+            print (remember)
+            
             userId = GetUserId(email)
             error = None
             if valid_user(email, password):
@@ -166,22 +168,36 @@ login_manager.login_view = '/signin'
 @login_manager.user_loader
 def user_loader(userId):
     #get the user
+    
     email = GetEmail(userId)
+    print('user loader', userId, email)
     user = User(userId, email)
+    session['username'] = email
+    #print(session['username'])
+    
+    #populate the basic user data in the user object
+    name    = GetUserName(int(userId))
+    trill_role   = GetTrillRole(int(userId))
+    job_title    = GetJobTitle(int(userId))
+    line_manager = GetLineManager(int(userId))
+
+    user.Add_user_data(name, line_manager, job_title, trill_role)
 
     user.Set_active(True)
     return user
 
 @app.route('/home')
 def home():
+    print ('home', current_user.name, current_user.email)
     return render_template('welcome.html')
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
     #get the user
-    email = (session['username'])
+    print ('record', current_user.email)
     userId = GetUserId(email)
+    print (userId)
 
     if request.method == "POST":
 
@@ -446,7 +462,7 @@ def reset():
     if form.validate_on_submit():
         email = form.email.data.lower()
         userId = GetUserId(email)
-        #print (email, userId)
+
         if userId:
             subject = "Password reset requested"
 

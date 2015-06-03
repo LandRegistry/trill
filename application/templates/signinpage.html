@@ -15,32 +15,37 @@
                 <div class="col-sm-8">
                     <form class="form" action="{{url_for('signin')}}" method="POST" role="form">
                            {{ signinpage_form.hidden_tag() }}
-                        <div class="heading">
-                            <h3 class="form-heading">Log in to Trill</h4>
-                        </div>
-                        <div class = 'row col-xs-8'>
-                            <div class="form-group {% if signinpage_form.username.errors %} has-error {% endif %}">
-                                <!--{{signinpage_form.username.label}}-->
-                                {{signinpage_form.username(placeholder="Username", class="form-control")}}
-                                <p class="help-block" style="color:red">{{ signinpage_form.username.errors[0] }}</p>
+                        <div class = 'row'>
+                            <div class="heading">
+                                <h3 class="form-heading">Log in to Trill</h4>
+                            </div>
+                            <div class = 'row col-xs-8'>
+                                <div class="form-group {% if signinpage_form.username.errors %} has-error {% endif %}">
+                                    <!--{{signinpage_form.username.label}}-->
+                                    {{signinpage_form.username(placeholder="Username", class="form-control")}}
+                                    <p class="help-block" style="color:red">{{ signinpage_form.username.errors[0] }}</p>
+                                </div>
+                            </div>
+                            <div class = 'row col-xs-8'>
+                                <div class="form-group {% if signinpage_form.password.errors %} has-error {% endif %}">
+                                    <!--{{signinpage_form.password.label}}-->
+                                    {{ signinpage_form.password(placeholder="Password", class="form-control") }}
+
+                                    {% if error %}
+                                    <p class="help-block" style="color:red"> {{ error }}</font></p>
+                                    {% else %}
+                                    <p class="help-block" style="color:red">{{ signinpage_form.password.errors[0] }}</p>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                        <div class = 'row col-xs-8'>
-                            <div class="form-group {% if signinpage_form.password.errors %} has-error {% endif %}">
-                                <!--{{signinpage_form.password.label}}-->
-                                {{ signinpage_form.password(placeholder="Password", class="form-control") }}
-                                
-                                {% if error %}
-                                <p class="help-block" style="color:red"> {{ error }}</font></p>
-                                {% else %}
-                                <p class="help-block" style="color:red">{{ signinpage_form.password.errors[0] }}</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class = 'form-inline row col-xs-6'>
+                        <div class = 'form-inline row'>
                             <button id="login-button" type="submit" class="btn btn-primary">Log In</button>
 
-                                <a href='/reset'>Forgotten password</a>
+                            <label class="checkbox col-md-offset-1">
+                                {{signinpage_form.remember_me}} <a>Remember me</a>
+                            </label>
+                            <a class = 'col-md-offset-1' href='/reset'>Forgotten password</a>
 
                         </div>
                     </form>
