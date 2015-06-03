@@ -7,7 +7,7 @@ def send_email(to, subject, template):
         subject,
         recipients=[to],
         html=template,
-        sender='trill.robot@gmail.com'
+        sender='trill@landregistry.gsi.gov.uk'
     )
     print (msg)
     mail.send(msg)
