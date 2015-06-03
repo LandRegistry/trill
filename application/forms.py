@@ -8,8 +8,8 @@ from wtforms.validators import Required, EqualTo, Optional
 from wtforms.validators import Length, Email
 
 class SigninForm(Form):
-    username = TextField('Username', validators=[Required(),validators.Length(max=100, message=(u'Username'))])
-    password = PasswordField('Password', validators=[Required(),validators.Length(max=100, message=(u'Password'))])
+    username = TextField('Username', validators=[Required(),validators.Length(max=50, message=(u'Username too long'))])
+    password = PasswordField('Password', validators=[Required(),validators.Length(max=20, message=(u'Password too long'))])
     remember_me = BooleanField('Remember me', default = False)
     
 class EmailForm(Form):
