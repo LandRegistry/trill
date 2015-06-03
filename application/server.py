@@ -196,7 +196,7 @@ def home():
 def record():
     #get the user
     print ('record', current_user.email)
-    userId = GetUserId(email)
+    userId = GetUserId(current_user.email)
     print (userId)
 
     if request.method == "POST":
