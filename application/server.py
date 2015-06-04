@@ -455,7 +455,25 @@ def about():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    user = current_user
+    return render_template('profile.html', user_obj = user)
+
+@app.route('/change_password', methods=["GET", "POST"])
+@login_required
+def change_password():
+    form = PasswordForm()
+    if form.validate_on_submit():
+        #get the user
+        user = current_user
+        userId = GetUserId(user.email)
+        if userId:
+            #create the hash 
+            pwhash = create_hash(form.password.data)
+            #database funtion to update password
+            ChangePassword(userId, pwhash)
+            return redirect(url_for('profile'))
+
+    return render_template('change_password.html', form=form)
 
 @app.route('/reset', methods=["GET", "POST"])
 def reset():

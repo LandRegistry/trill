@@ -33,6 +33,14 @@ html, body { height: 90%}
 
 }
 
+#center-panel2
+    {
+    margin-left: 280px;
+    width 80%;
+    height: 60%;
+    overflow:auto;
+    }
+
 #inner-panel
     {
     overflow:auto;
