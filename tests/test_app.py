@@ -4,38 +4,9 @@ from application import server
 from application import database
 from application.server import app
 from application.models import *
-from application import db
+
 
 from config import CONFIG_DICT
-
-class mockFilter(object): #This is the ONE parameter constructor
-    def __init__(self):
-        self.user = {'id': 9, 'firstname': 'Ross','surname': 'Zeb'}
-        self._first = dynamicObject()
-
-    def first(self):
-        return self._first
-
-    def count(self):  #This is the needed Count method
-        return self.user
-
-class mockQuery(object): #This is the ONE parameter constructor
-    def __init__(self):
-        self._filter = mockFilter()
-
-    def filter(self, placeHolder):
-        return self._filter
-
-class mockSession(object):
-    def __init__(self):
-        self._query = mockQuery()
-        self.dirty = []
-
-    def flush(self):
-        pass
-
-    def query(self, placeHolder):
-        return self._query
 
 class TestSequenceFunctions(unittest.TestCase):
 
@@ -109,16 +80,6 @@ class TestSequenceFunctions(unittest.TestCase):
         return users_list
 
 
-
-
-
-    def get_id(self, *args):
-        session = mockSession()
-        session.query('').filter('')._id = 9
-        #instance = User('firstname', 'surname', 'email', 'managerfirstname', 'managersurname', 'pwhash')
-        print (session._id)
-
-        return session._id
     def do_nothing(self, *args):
         return ''
 
@@ -275,4 +236,3 @@ class TestSequenceFunctions(unittest.TestCase):
         {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 2},\
         {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 'None'}\
         ])
-    
