@@ -16,11 +16,11 @@
                     <form class="form" action="{{url_for('reset')}}" method="POST" role="form">
                            {{ form.hidden_tag() }}
                         <div class="heading">
-                            <h3 class="form-heading">Enter your email</h4>
+                            <h3 class="form-heading">Enter your email address</h4>
                         </div>
                         <div class = 'row col-xs-8'>
                             <div class="form-group {% if form.email.errors %} has-error {% endif %}">
-                                {{form.email(placeholder="Username", class="form-control")}}
+                                {{form.email(placeholder="Email address", class="form-control")}}
                                 <p class="help-block" style="color:red">{{ form.email.errors[0] }}</p>
                                 <p class="help-block" style="color:red"> {{ error }}</font></p>
                             </div>
