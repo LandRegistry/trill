@@ -46,33 +46,33 @@ class TestSequenceFunctions(unittest.TestCase):
 
         if list_selection == 1:
             users_list = [\
-            {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0},\
-            {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-            {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 0, 'proficiency_c': 0},\
-            {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0},\
-            {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-            {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0}\
+            {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+            {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+            {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+            {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+            {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+            {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'}\
             ]
 
         if list_selection == 2:
             users_list = [\
-            {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0},\
-            {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 0, 'proficiency_b': 3, 'proficiency_c': 0},\
-            {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0},\
-            {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 0, 'proficiency_b': 2, 'proficiency_c': 0},\
-            {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0},\
-            {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 0, 'proficiency_b': 2, 'proficiency_c': 0}\
+            {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'},\
+            {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 'None', 'proficiency_b': 3, 'proficiency_c': 'None'},\
+            {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'},\
+            {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 'None', 'proficiency_b': 2, 'proficiency_c': 'None'},\
+            {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'},\
+            {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 'None', 'proficiency_b': 2, 'proficiency_c': 'None'}\
             ]
 
         if list_selection == 3:
             users_list = [\
-            {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-            {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-            {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-            {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 2},\
-            {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 3},\
-            {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-            {'id': 99, 'firstname': 'Ben','surname': 'Hut', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 3}\
+            {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+            {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+            {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+            {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 2},\
+            {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 3},\
+            {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+            {'id': 99, 'firstname': 'Ben','surname': 'Hut', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 3}\
             ]
 
         return users_list
@@ -141,12 +141,12 @@ class TestSequenceFunctions(unittest.TestCase):
         mockgetuserswithcertainskills.side_effect = self.get_one_skill_list
         self.assertEqual(database.GetusersWithOneSkill("83 - VPR"),\
         [\
-        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0}\
+        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'}\
         ])
 
     @mock.patch('application.database.ExtractSkillId')
@@ -156,12 +156,12 @@ class TestSequenceFunctions(unittest.TestCase):
         mockgetuserswithcertainskills.side_effect = self.get_two_skills_list
         self.assertEqual(database.GetusersWithTwoSkills("83 - VPR","83 - VPR"),\
         [\
-        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 0, 'proficiency_b': 2, 'proficiency_c': 0},\
-        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 0, 'proficiency_b': 2, 'proficiency_c': 0},\
-        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 0, 'proficiency_b': 3, 'proficiency_c': 0},\
-        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0},\
-        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0},\
-        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0}\
+        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 'None', 'proficiency_b': 2, 'proficiency_c': 'None'},\
+        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 'None', 'proficiency_b': 2, 'proficiency_c': 'None'},\
+        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 'None', 'proficiency_b': 3, 'proficiency_c': 'None'},\
+        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'},\
+        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'},\
+        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'}\
         ])
 
 
@@ -173,12 +173,12 @@ class TestSequenceFunctions(unittest.TestCase):
         mockgetuserswithcertainskills.side_effect = self.do_nothing
         self.assertEqual(database.GetusersWithTwoSkills("83 - VPR","83 - VPR"),\
         [\
-        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 0, 'proficiency_c': 0}\
+        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 'None', 'proficiency_c': 'None'}\
         ])
 
     @mock.patch('application.database.ExtractSkillId')
@@ -189,14 +189,14 @@ class TestSequenceFunctions(unittest.TestCase):
         mockgetuserswithcertainskills.side_effect = self.get_two_skills_list
         self.assertEqual(database.GetusersWithTwoSkills("83 - VPR","83 - VPR"),\
         [\
-        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 0, 'proficiency_b': 2, 'proficiency_c': 0},\
-        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 2, 'proficiency_c': 0},\
-        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 3, 'proficiency_c': 0},\
-        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 0},\
-        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 0},\
-        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 0}\
+        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 'None', 'proficiency_b': 2, 'proficiency_c': 'None'},\
+        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 2, 'proficiency_c': 'None'},\
+        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 3, 'proficiency_c': 'None'},\
+        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 'None'},\
+        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 'None'},\
+        {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 'None'}\
         ])
 
 
@@ -208,13 +208,13 @@ class TestSequenceFunctions(unittest.TestCase):
         mockgetuserswithcertainskills.side_effect = self.get_three_skills_list
         self.assertEqual(database.GetusersWithThreeSkills("83 - VPR","83 - VPR","83 - VPR"),\
         [\
-        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 3},\
-        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-        {'id': 99, 'firstname': 'Ben','surname': 'Hut', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 3},\
-        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 4},\
-        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 2}\
+        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 3},\
+        {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+        {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+        {'id': 99, 'firstname': 'Ben','surname': 'Hut', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 3},\
+        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+        {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 4},\
+        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 2}\
         ])
 
     @mock.patch('application.database.ExtractSkillId')
@@ -226,13 +226,13 @@ class TestSequenceFunctions(unittest.TestCase):
         mockgetuserswithcertainskills.side_effect = self.get_three_skills_list
         self.assertEqual(database.GetusersWithThreeSkills("83 - VPR","83 - VPR","83 - VPR"),\
         [\
-        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 0, 'proficiency_b': 2, 'proficiency_c': 3},\
+        {'id': 22, 'firstname': 'Kate','surname': 'Alm', 'proficiency_a': 'None', 'proficiency_b': 2, 'proficiency_c': 3},\
         {'id': 16, 'firstname': 'Em','surname': 'Alx', 'proficiency_a': 3, 'proficiency_b': 2, 'proficiency_c': 4},\
         {'id': 12, 'firstname': 'James','surname': 'Doe', 'proficiency_a': 4, 'proficiency_b': 3, 'proficiency_c': 4},\
-        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 0},\
-        {'id': 99, 'firstname': 'Ben','surname': 'Hut', 'proficiency_a': 0, 'proficiency_b': 0, 'proficiency_c': 3},\
-        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 0, 'proficiency_c': 4},\
+        {'id': 15, 'firstname': 'Ness','surname': 'Hut', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 'None'},\
+        {'id': 99, 'firstname': 'Ben','surname': 'Hut', 'proficiency_a': 'None', 'proficiency_b': 'None', 'proficiency_c': 3},\
+        {'id': 11, 'firstname': 'Jane','surname': 'Jones', 'proficiency_a': 2, 'proficiency_b': 'None', 'proficiency_c': 4},\
         {'id': 13, 'firstname': 'Anniken','surname': 'Will', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 4},\
-        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 0, 'proficiency_b': 4, 'proficiency_c': 2},\
+        {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 2},\
         {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 'None'}\
         ])
