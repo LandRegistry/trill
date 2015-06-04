@@ -16,6 +16,6 @@ class EmailForm(Form):
     email = TextField('Username', validators=[Required(), Email()])
 
 class PasswordForm(Form):
-    password = PasswordField('Password', validators=[Required(), EqualTo('confirm', message='Passwords must match')])
+    password = PasswordField('Password', validators=[Required(), validators.Length(max=16, min=8, message=(u'Password must be within 8 and 16 characters long')), EqualTo('confirm', message='Passwords must match')])
     confirm = PasswordField('Confirm', validators=[Required()])
 
