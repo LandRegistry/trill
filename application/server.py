@@ -448,7 +448,7 @@ def reset():
         userId = GetUserId(email)
         #print (email, userId)
         if userId:
-            subject = "TRILL Password reset requested"
+            subject = "TRILL Password Reset Request"
 
             token = ts.dumps(email, salt='recover-key')
 

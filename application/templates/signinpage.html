@@ -21,7 +21,7 @@
                         <div class = 'row col-xs-8'>
                             <div class="form-group {% if signinpage_form.username.errors %} has-error {% endif %}">
                                 <!--{{signinpage_form.username.label}}-->
-                                {{signinpage_form.username(placeholder="Username", class="form-control")}}
+                                {{signinpage_form.username(placeholder="Email address", class="form-control")}}
                                 <p class="help-block" style="color:red">{{ signinpage_form.username.errors[0] }}</p>
                             </div>
                         </div>
