@@ -461,6 +461,7 @@ def profile():
 @app.route('/change_password', methods=["GET", "POST"])
 @login_required
 def change_password():
+    message = 'After pressing the submit a new password will be created. The next time you login you will need to use your new password.'
     form = PasswordForm()
     if form.validate_on_submit():
         #get the user
@@ -473,7 +474,7 @@ def change_password():
             ChangePassword(userId, pwhash)
             return redirect(url_for('profile'))
 
-    return render_template('change_password.html', form=form)
+    return render_template('change_password.html', form=form, instruct = message)
 
 @app.route('/reset', methods=["GET", "POST"])
 def reset():
@@ -517,7 +518,8 @@ def reset_with_token(token):
         email = ts.loads(token, salt="recover-key", max_age=86400)
     except:
         abort(404)
-
+    
+    message = 'After pressing the submit a new password will be created. You will be redirected to the login page where you can login using your new password.'
     form = PasswordForm()
 
     if form.validate_on_submit():
@@ -532,7 +534,7 @@ def reset_with_token(token):
 
             return redirect(url_for('signin'))
 
-    return render_template('change_password.html', form=form)
+    return render_template('change_password.html', form=form, instruct = message)
 
 @app.route('/health')
 def health():
