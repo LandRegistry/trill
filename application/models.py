@@ -41,7 +41,7 @@ class TrillRoleGroup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     groupname = db.Column(db.String(80))
 
-    def __init__(self, title):
+    def __init__(self, groupname):
         self.groupname = groupname
 
     def __repr__(self):
@@ -53,7 +53,7 @@ class SkillGroup(db.Model):
     skillgroupname = db.Column(db.String(80), unique=True)
     skilltype = db.Column(db.Integer)
 
-    def __init__(self, title):
+    def __init__(self, skillgroupname, skilltype):
         self.skillgroupname = skillgroupname
         self.skilltype = skilltype
 
@@ -74,7 +74,7 @@ class SkillTitle(db.Model):
     skilltitlename = db.Column(db.String(240), unique=True)
     skill_group_id = db.Column(db.Integer, db.ForeignKey('skill_groups.id'))
 
-    def __init__(self, title):
+    def __init__(self, skilltitlename):
         self.skilltitlename = skilltitlename
 
     def __repr__(self):
@@ -87,7 +87,7 @@ class Skill(db.Model):
     skilldescription = db.Column(db.String)
     skill_title_id = db.Column(db.Integer, db.ForeignKey('skill_titles.id'))
 
-    def __init__(self, title):
+    def __init__(self, skillcode, skilldescription):
         self.skillcode = skillcode
         self.skilldescription = skilldescription
 
@@ -102,7 +102,7 @@ class UserJob(db.Model):
     startdate = db.Column(db.Date)
     enddate = db.Column(db.Date)
 
-    def __init__(self, title):
+    def __init__(self, startdate, enddate):
         self.startdate = startdate
         self.enddate = enddate
 
@@ -120,8 +120,10 @@ class UserSkill(db.Model):
 
 
 
-    def __init__(self, title):
+    def __init__(self, age, proficiency, confidence):
         self.age = age
+        self.proficiency = proficiency
+        self.confidence = confidence
 
     def __repr__(self):
         return '<User_Skill %r>' % self.age

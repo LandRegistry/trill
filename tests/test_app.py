@@ -236,3 +236,70 @@ class TestSequenceFunctions(unittest.TestCase):
         {'id': 19, 'firstname': 'Jane','surname': 'Wlx', 'proficiency_a': 'None', 'proficiency_b': 4, 'proficiency_c': 2},\
         {'id': 9, 'firstname': 'Ross','surname': 'Zeb', 'proficiency_a': 3, 'proficiency_b': 4, 'proficiency_c': 'None'}\
         ])
+
+    #test database models
+    def test_User(self):
+        user = User('firstname', 'surname', 'email', 'managerfirstname', 'managersurname', 'pwhash')
+        self.assertEqual(user.firstname,'firstname')
+        self.assertEqual(user.surname,'surname')
+        self.assertEqual(user.email,'email')
+        self.assertEqual(user.managerfirstname,'managerfirstname')
+        self.assertEqual(user.managersurname,'managersurname')
+        self.assertEqual(user.pwhash,'pwhash')
+
+        test = repr(User('firstname', 'surname', 'email', 'managerfirstname', 'managersurname', 'pwhash'))
+        self.assertEqual(test, "<User 'surname'>")
+
+    def test_JobTitle(self):
+        jobtitle = JobTitle('title')
+        self.assertEqual(jobtitle.title,'title')
+
+        test = repr(JobTitle('title'))
+        self.assertEqual(test,"<Job_Title 'title'>")
+
+    def test_TrillRoleGroup(self):
+        trillrolegroup = TrillRoleGroup('groupname')
+        self.assertEqual(trillrolegroup.groupname,'groupname')
+
+        test = repr(TrillRoleGroup('groupname'))
+        self.assertEqual(test,"<Trill_Role_Group 'groupname'>")
+
+    def test_SkillGroup(self):
+        skillgroup = SkillGroup('skillgroupname', 1)
+        self.assertEqual(skillgroup.skillgroupname, 'skillgroupname')
+        self.assertEqual(skillgroup.skilltype, 1)
+
+        test = repr(SkillGroup('skillgroupname', 1))
+        self.assertEqual(test,"<Skill_Group 'skillgroupname'>")
+
+    def test_SkillTitle(self):
+        skilltitle = SkillTitle('skilltitlename')
+        self.assertEqual(skilltitle.skilltitlename, 'skilltitlename')
+
+        test = repr(SkillTitle('skilltitlename'))
+        self.assertEqual(test,"<Skill_Title 'skilltitlename'>")
+
+    def test_Skill(self):
+        skill = Skill('skillcode', 'skilldescription')
+        self.assertEqual(skill.skillcode, 'skillcode')
+        self.assertEqual(skill.skilldescription, 'skilldescription')
+
+        test = repr(Skill('skillcode', 'skilldescription'))
+        self.assertEqual(test,"<Skill 'skillcode'>")
+
+    def test_UserJob(self):
+        userjob = UserJob('20/12/1990', '20/12/1990')
+        self.assertEqual(userjob.startdate, '20/12/1990')
+        self.assertEqual(userjob.enddate, '20/12/1990')
+
+        test = repr(UserJob('20/12/1990', '20/12/1990'))
+        self.assertEqual(test,"<User_Job '20/12/1990'>")
+
+    def test_UserSkill(self):
+        userskill = UserSkill(2, 3, 4)
+        self.assertEqual(userskill.age, 2)
+        self.assertEqual(userskill.proficiency, 3)
+        self.assertEqual(userskill.confidence, 4)
+
+        test = repr(UserSkill(2, 3, 4))
+        self.assertEqual(test,'<User_Skill 2>')
