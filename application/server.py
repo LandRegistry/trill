@@ -50,7 +50,7 @@ class User(object):
         return False
 
     def get_id(self):
-        return self.user_id
+        return (str(self.user_id))
 
 class Skill_group(object):
     def __init__(self, name, n):
@@ -116,17 +116,19 @@ def signin():
         if form.validate():
             email = form.username.data.lower()
             password = form.password.data
-            #remember = form.remember_me.data
+            remember = form.remember_me.data
+            #print (remember)
+            
             userId = GetUserId(email)
             error = None
             if valid_user(email, password):
                 user = User(userId, email)
                 name = GetUserName(userId)
-                login_user(user)
-                session['signed'] = True
-                session['userId'] = userId
-                session['username'] = email
-                session['name'] = name
+                login_user(user, remember = remember)
+                #session['signed'] = True
+                #session['userId'] = userId
+                #session['username'] = email
+                #session['name'] = name
                 if session.get('next'):
                     next_page = session.get('next')
                     session.pop('next')
@@ -153,9 +155,9 @@ def user():
 @app.route('/signout')
 @login_required
 def signout():
-    session.pop('signed')
-    session.pop('userId')
-    session.pop('username')
+    #session.pop('signed')
+    #session.pop('userId')
+    #session.pop('username')
     logout_user()
     return redirect(url_for('home'))
 
@@ -166,22 +168,37 @@ login_manager.login_view = '/signin'
 @login_manager.user_loader
 def user_loader(userId):
     #get the user
-    email = GetEmail(userId)
+    
+    email = GetEmail(int(userId))
+    print('user loader', userId, email)
     user = User(userId, email)
+    #session['username'] = email
+    #print(session['username'])
+    
+    #populate the basic user data in the user object
+    name    = GetUserName(int(userId))
+    trill_role   = GetTrillRole(int(userId))
+    job_title    = GetJobTitle(int(userId))
+    line_manager = GetLineManager(int(userId))
+
+    user.Add_user_data(name, line_manager, job_title, trill_role)
 
     user.Set_active(True)
     return user
 
 @app.route('/home')
 def home():
+    #print ('home', current_user.name, current_user.email)
     return render_template('welcome.html')
 
 @app.route('/record', methods=['GET', 'POST'])
 @login_required
 def record():
     #get the user
-    email = (session['username'])
-    userId = GetUserId(email)
+    user = current_user
+    #print ('record', user.email, user.name, user.trill_role, user.job_title)
+    userId = GetUserId(user.email)
+    #print ('record', userId)
 
     if request.method == "POST":
 
@@ -224,15 +241,15 @@ def record():
 
     if request.method == "GET":
 
-        user = User(userId, email)
+        #user = User(userId, email)
 
         #populate the basic user data in the user object
-        name    = GetUserName(userId)
-        trill_role   = GetTrillRole(userId)
-        job_title    = GetJobTitle(userId)
-        line_manager = GetLineManager(userId)
+        #name    = GetUserName(userId)
+        #trill_role   = GetTrillRole(userId)
+        #job_title    = GetJobTitle(userId)
+        #line_manager = GetLineManager(userId)
 
-        user.Add_user_data(name, line_manager, job_title, trill_role)
+        #user.Add_user_data(name, line_manager, job_title, trill_role)
 
         #Get Skill group based on user
         GDSskillGroups  = GetUserSkillGroups(userId, 1)
@@ -438,7 +455,25 @@ def about():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    user = current_user
+    return render_template('profile.html', user_obj = user)
+
+@app.route('/change_password', methods=["GET", "POST"])
+@login_required
+def change_password():
+    form = PasswordForm()
+    if form.validate_on_submit():
+        #get the user
+        user = current_user
+        userId = GetUserId(user.email)
+        if userId:
+            #create the hash 
+            pwhash = create_hash(form.password.data)
+            #database funtion to update password
+            ChangePassword(userId, pwhash)
+            return redirect(url_for('profile'))
+
+    return render_template('change_password.html', form=form)
 
 @app.route('/reset', methods=["GET", "POST"])
 def reset():
@@ -446,7 +481,7 @@ def reset():
     if form.validate_on_submit():
         email = form.email.data.lower()
         userId = GetUserId(email)
-        #print (email, userId)
+
         if userId:
             subject = "TRILL Password Reset Request"
 
