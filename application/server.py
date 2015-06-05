@@ -461,7 +461,7 @@ def profile():
 @app.route('/change_password', methods=["GET", "POST"])
 @login_required
 def change_password():
-    message = 'After pressing the submit a new password will be created. The next time you login you will need to use your new password.'
+    message = 'After pressing submit a new password will be created. The next time you login you will need to use your new password.'
     form = PasswordForm()
     if form.validate_on_submit():
         #get the user
@@ -472,7 +472,7 @@ def change_password():
             pwhash = create_hash(form.password.data)
             #database funtion to update password
             ChangePassword(userId, pwhash)
-            return redirect(url_for('profile'))
+            return redirect(url_for('home'))
 
     return render_template('change_password.html', form=form, instruct = message)
 
@@ -519,7 +519,7 @@ def reset_with_token(token):
     except:
         abort(404)
     
-    message = 'After pressing the submit a new password will be created. You will be redirected to the login page where you can login using your new password.'
+    message = 'After pressing submit a new password will be created. You will be redirected to the login page where you can login using your new password.'
     form = PasswordForm()
 
     if form.validate_on_submit():
