@@ -1,14 +1,18 @@
 {% extends "bootstrap/base.html" %}
 
+{% block head %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,  initial-scale=1">
+{{super()}}
+{% endblock %}
+
 {% block styles %}
 {{super()}}
 <link href="{{url_for('.static', filename='main.css')}}" rel='stylesheet'>
 {% endblock %}
 
-{% block head %}
-{{super()}}
-<meta charset="utf-8">
-{% endblock %}
+
 
 {% block navbar %}
 <div class='navbar navbar-inverse navbar-fixed-top'>
