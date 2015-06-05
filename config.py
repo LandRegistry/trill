@@ -15,6 +15,14 @@ if settings == 'development':
     CONFIG_DICT['DEBUG'] = True
 elif settings == 'test':
     CONFIG_DICT['DEBUG'] = True
+    
+# email server
+#ip address; mslookup CAS2010
+MAIL_SERVER = 'cas2010.diti.lr.net'
+MAIL_PORT = 25
+MAIL_USE_TLS = True
+MAIL_USE_SSL = False
+
 
 #class Config(object):
 #    DEBUG = False

@@ -6,8 +6,16 @@ from wtforms import TextField, PasswordField, validators, HiddenField, SelectFie
 from wtforms import TextAreaField, BooleanField
 from wtforms.validators import Required, EqualTo, Optional
 from wtforms.validators import Length, Email
-    
+
 class SigninForm(Form):
-    username = TextField('Username', validators=[Required(),validators.Length(max=100, message=(u'Username'))])
-    password = PasswordField('Password', validators=[Required(),validators.Length(max=100, message=(u'Password'))])
-    #remember_me = BooleanField('Remember me', default = False)
+    username = TextField('Username', validators=[Required(),validators.Length(max=50, message=(u'Username too long'))])
+    password = PasswordField('Password', validators=[Required(),validators.Length(max=20, message=(u'Password too long'))])
+    remember_me = BooleanField('Remember me', default = False)
+    
+class EmailForm(Form):
+    email = TextField('Username', validators=[Required(), Email()])
+
+class PasswordForm(Form):
+    password = PasswordField('Password', validators=[Required(), validators.Length(max=16, min=6, message=(u'Password must be between 6 and 16 characters long')), EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Confirm', validators=[Required()])
+
