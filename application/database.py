@@ -110,8 +110,8 @@ def GetSkills(skillTitle):
 def GetSkillCategs():
     skill_categs = []
 
-    skill_categs.append('Skills')
     skill_categs.append('Knowledge')
+    skill_categs.append('Skills')
     #skill_categs.append('GDS')
 
     return skill_categs
@@ -120,12 +120,12 @@ def GetSkillforCategory(category):
     skills = []
 
     if category == ('Skills'):
-        for instance in db.session.query(Skill).order_by(Skill.skillcode).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_SKILL):
+        for instance in db.session.query(Skill).order_by(Skill.skilldescription).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_SKILL):
             #skills.append(instance)
             skills.append(str(instance.id) + " - " + instance.skilldescription)
 
     if category == ('Knowledge'):
-        for instance in db.session.query(Skill).order_by(Skill.skillcode).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_KNOWLEDGE):
+        for instance in db.session.query(Skill).order_by(Skill.skilldescription).join(SkillTitle,SkillGroup).filter(SkillGroup.skilltype == SKILL_TYPE_KNOWLEDGE):
             #skills.append(instance)
             skills.append(str(instance.id) + " - " + instance.skilldescription)
 
@@ -360,9 +360,9 @@ def SetUserSkillAge(userId,skillId,level):
     return success
 
 def ChangePassword(userId, pwhash):
-    
+
     success = False
-    
+
     try:
         for instance in db.session.query(User).filter(User.id == userId):
             instance.pwhash = pwhash
@@ -373,4 +373,3 @@ def ChangePassword(userId, pwhash):
     except:
 
         success = False
-    
