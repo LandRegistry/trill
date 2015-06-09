@@ -125,16 +125,16 @@
    <div id = 'container3' class='container well'>
      {% if users %}
        <div class="bodycontainer scrollable">
-         <table class="table table-hover table-scrollable">
+         <table class="table table-hover table-scrollable" summary="Results of skill search">
            <thead>
               <tr>
               {% if skill_value1 %}
-              <th>Name</th>
-              <th>A</th>
+              <th scope="col">Name</th>
+              <th scope="col">A</th>
                 {% if skill_value2 %}
-                  <th>B</th>
+                  <th scope="col">B</th>
                   {% if skill_value3 %}
-                    <th>C</th>
+                    <th scope="col">C</th>
                   {% endif %}
                 {% endif %}
               {% endif %}
@@ -144,7 +144,7 @@
              {% for user in users %}
                <tr>
                  {% if skill_value1 %}
-                   <td id = '{{user.id}}'>{{user.firstname}} {{user.surname}}</td>
+                   <td scope="row" id = '{{user.id}}'>{{user.firstname}} {{user.surname}}</td>
                    <td id = '{{user.id}}|a'>{{user.proficiency_a}}</td>
                  {% endif %}
                  {% if skill_value2 %}
