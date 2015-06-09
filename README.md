@@ -9,6 +9,14 @@
 
 ##How to use it:
 
+###Important note for Windows users
+
+If you are using a Windows machine, set the following option for Git BEFORE you clone the repository.
+
+```
+git config --global core.autocrlf false
+```
+
 ###Start the virtual machine.
 
 ```
