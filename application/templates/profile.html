@@ -5,22 +5,27 @@
 {% block content %}
 <div class="container">
     <div class= 'row top70'>
+
         <div id="side-panel" class="container-fluid well">
-            <h3>Your profile </h3>
-            <h5 id="name"> Name: {{user_obj.name}}</h5>
-            <h5 id="trill-role">Role: {{user_obj.trill_role}}</h5>
-            <h5 id="job-title">Job Title: {{user_obj.job_title}}</h5>
+            <h2>Your profile</h2>
+            <p id="name"> Name: {{user_obj.name}}</p>
+            <p id="trill-role">Role: {{user_obj.trill_role}}</p>
+            <p id="job-title">Job Title: {{user_obj.job_title}}</p>
             <!--<h5 id="line-manager">Line Manager: {{user_obj.line_manager}}</h5>-->
+        </div>
+
+        <div id='settings-header'>
+            <h1>Settings </h1>
         </div>
 
         <div id='center-panel2'class="container-fluid well">
             <div class = 'text-center col-xs-10 '>
-                <h3>Your Settings </h3>
-            </div>
-            <div class = 'row top70 col-xs-offset-1'>
-                <a href='/change_password'>Change your password</a>
+                <a id='pswd-link' href='/change_password'>Change your password</a>
             </div>
         </div>
+
+
+
     </div>
 </div>
 {% endblock %}

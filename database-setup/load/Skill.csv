@@ -1,134 +1,134 @@
-1,BDS.1.1,1,Understand the government's digital and technology transformation agenda and why the government is changing the way it does digital and technology projects.
-2,BDS.1.2,1,Be aware of what has happened so far with digital and technology transformation; including the launch of GOV.UK and adoption of the department 'exemplar' transformations. Recognise what this means for departments and agencies.
-3,BDS.1.3,1,Follow wider digital trends in the industry and how they may impact future government services for example; the significance of big data and  open source tools and Open Document Formats (ODF).
-4,BDS 1.4,1,Understand the stages through which services are created - from discovery; through to live - and understand how those services can be maintained over time until they are retired.
-5,BDS.1.5,1,Understand what we mean by 'digital take-up' and the techniques that can be used to increase it.
-6,BDS.1.6,1,Understand what we mean by 'digital inclusion' and 'assisted digital' and how we can help all the population use digital services in the future.
-7,BDS.2.1,2,Understand the shift from traditional methods of delivery in government to more agile methods.
-8,BDS.2.2,2,Understand that agile is a mindset (much wider than a set of tools and techniques) at the heart of which sits the concept that business people and developers must work closely together throughout the project.
-9,BDS.2.3,2,Be familiar with the principles in the Agile Manifesto and how they apply to products and services.
-10,BDS.2.4,2,Recognise that when working in an agile environment; teams need to keep focused on early and frequent delivery of outcomes that satisfy the business need.
-11,BDS.3.1,3,Work in multidisciplinary teams and be willing to support work that isn't part of your core role. Develop a shared understanding of each other's strengths and weaknesses to enable collaborative working.
-12,BDS.4.1,4,Have a strong understanding of how the design process must start with identifying and thinking about real user needs. Be familiar with how to determine user needs and measure how successfully they are met.
-13,BDS.4.2,4,Understand the value of user research and how it can best be used to understand user needs. Doing user research continuously helps teams to: 1. Concentrate on real user needs. 2. Design products and services which are prioritised based on user needs. 3. Iterate products and services in response to user feedback.
-14,BDS.4.3,4,Write user stories that detail user needs.
-15,BDS.5.1,5,Understand the GDS design principles and how they should underpin the creation of all products; services and digital interactions.
-16,BDS.6.1,6,Understand the 'Digital by Default' Service Standard and how it acts as a benchmark for the quality of government services.
-17,BDS.7.1,7,Understand that effective commercial management; including procurement where necessary; is important in delivering high quality services that improve continuously.
-18,BDS.7.2,7,Be aware of internal government procurement rules and EU procurement regulations. Understand the importance of following a robust supplier selection and evaluation process to minimise the risk of delivery delays.
-19,BDS.7.3,7,Consider the impacts of moving from large; long-term vendor contracts to multiple small and medium-sized enterprise (SME) vendors; as this is a big part of the government's transformation.
-20,BDS.7.4,7,Be aware of government procurement processes and frameworks available such as G-Cloud; Digital Services Framework and the Digital Marketplace.
-21,BDS.8.1,8,Understand open standards and open source technologies and the part they play in driving digital transformation and avoiding third party vendor 'lock-in'.
-22,BDS.9.1,9,Be aware of core security principles and be able to identify the security features that may need to be built into your service.
-23,BDS.9.2,9,Know who the security experts are within your organisation and how to contact them for consultation.
-24,BDS.10.1,10,Understand the implication of the overall Government Security Classification (GSC) approach and ensure that systems implementation take account of the GSC principles.
-25,BDS.10.2,10,Understand key principles of identity verification and how to employ the appropriate measures to assure a user's identity when they use government services.
-26,BDS.10.3,10,Be aware of the GOV.UK  Verify programme and understand how it can be utilised to meet the identity assurance needs of users; services and departments.
-27,BDS.11.1,11,Monitor the media activities of your department and GDS through online channels and social media. As a minimum you should track the names of your department and any associated ministers or high-profile staff members.
-28,BDS.11.2,11,Be engaged in online communities relevant to your field of work in order to support your work and improve your skills.
-29,BDS.11.3,11,Be aware of social media guidance for civil servants and remember three key things when engaging in social media as a civil servant: 1. Learn the rules of each social media space before engaging. 2. Abide by the Civil Service Code and ask for advice if you are not sure. 3. Remember an official account belongs to the Department not the individual.
-30,BDS.12.1,12,Communicate technical and agile concepts to non-technical people.
-31,AGI.1.1,13,Be familiar with structured programme and project management environments; such as 'waterfall' methods; but be able to retain 'agility' even in a non-agile environment. When applicable be able to apply the underpinning philosophy and principles of agile in a project situation.
-32,AGI.1.2,13,Remove blockers that hinder delivery; manage risks and dependencies within and between projects and teams.
-33,AGI.2.1,14,Work with the Product Manager to define the roadmap for any given product; breaking it down into iterations and helping to translate it into user stories.
-34,AGI.3.1,15,Deliver projects and products using the appropriate mix of agile project management methodologies.
-35,AGI.3.2,15,Use a wide range of agile frameworks; methodologies and tools and understand when to apply them such as: 1. Scrum. 2. Kanban. 3. Extreme programming. 4. Retrospectives. 5. Standups. 6. Iteration Reviews. 7. Iteration Planning. 8. Roadmap Planning. 9. Agile Workshops. 10. Agile and Lean tracking tools.
-36,AGI.4.1,16,Ensure quality is met by including the right people in the team during the 'alpha'   'beta' and 'live' phases and by ensuring each member of the team is responsible for defining and maintaining quality.
-37,AGI.5.1,17,Use agile tools and techniques (such as burndown charts; lead times; delivery rate) to track progress against delivery; current items in backlog; risks; issues and blockers in order to communicate project status to the team and stakeholders.
-38,AGI.6.1,18,Understand and focus the team on delivering value early and often iterating and continuously improving workflows where necessary.
-39,AGI.6.2,18,Drive continuous demonstrable improvements in the team and what is delivered based on data derived from actual delivery; such as: 1. Burn down and burn up charts. 2. Reducing bottlenecks. 3. Understanding velocity and delivery rates. 4. Cumulative flow diagrams. 5. Process control charts. 6. Work in progress limits. 7. Measures against project goals. 8. Outputs from retrospectives.
-40,AGI.7.1,19,Understand the concept of product backlogs and be able to assist the team in prioritising and refining user stories in the product backlog.
-41,AGI.8.1,20,Estimate iteratively and scope budgets with input from team members; stakeholders and delivery data and present it in an understandable format.
-42,AGI.9.1,21,Improve the performance of agile teams and projects through simplification and removal of duplication wherever possible.
-43,AGI.10.1,22,Bring people and views together to inform decision making.
-44,AGI.10.2,22,Weigh up risks against benefits and priorities to deliver.
-45,AGI.11.1,23,Communicate effectively and clearly even when under pressure and duress.
-46,AGI.11.2,23,Initiate and facilitate open communication between team members and stakeholders  creating a safe environment of transparency and openness.
-47,AGI.12.1,24,Engage confidently with stakeholders and communicate project information in a clear way  including when communicating difficult messages.
-48,AGI.13.1,25,Facilitate meetings and workshops with people from all levels of seniority  without bias.
-49,AGI.14.1,26,Communicate;  promote and coach the use of agile and lean methodologies to the team and relevant/interested stakeholders.
-50,AGI.15.1,27,Manage people and agile delivery to develop high-performing  self-motivated and collaborative teams.
-51,AGI.15.2,27,Matrix-manage multidisciplinary teams  offering leadership and support where needed.
-52,AGI.15.3,27,Lead the collaborative planning process; prioritising work that needs to be done against the capacity and capability of the team.
-53,AGI.16.1,28,Maintain a clear sense of direction and purpose for the team based on the project vision.
-54,AGI.16.2,28,Maintain a positive team mood and focus in difficult and challenging circumstances.
-55,OPMA.1.1,29,Understand how Operations Management supports front-end digital services and how digital skills in the 'Basic Digital Skills' skills group apply to Operations  such as being familiar with: Gov digital transformation agenda; user-centred design; agile delivery and open standards.
-56,OPMA.2.1,30,Understand how both on-premise and cloud servers work and the challenges of integrating them.
-57,OPMA.2.2,30,Have a strong understanding of cloud hosting services and the types available; in particular Platform; Infrastructure and Software As A Service (PaaS/ IaaS/ SaaS). Understand the government's 'Cloud First' policy  and why PaaS; IaaS; SaaS should be considered before other kinds of solutions.
-58,OPMA.3.1,31,Understand the activities of Service Management  to ensure 'run and maintain' of applications after they have been deployed by Development teams.
-59,OPMA.4.1,32,Ensure that appropriate identity and access management strategies are in place in proportion to Government classifications.
-60,OPMA.5.1,33,Engage with technical staff and suppliers to define the best system and platform configurations to achieve business objectives. Meet user needs and ensure configuration is always consistent;  auditable and versioned.
-61,OPMA.6.1,34,Demonstrate strong customer service skills  so that incidents are managed in a user-focussed way. In an agile environment  it is important that everyone in the team is able to confidently engage with users.
-62,OPMA.7.1,35,Define the configuration of networking in code. Automating the process such that configuration is always consistent; auditable and versioned.
-63,OPMA.8.1,36,Gather and report detailed performance data against key indicators and generate actionable improvements to the quality of services offered by the department.
-64,OPMA.9.1,37,Engage in the negotiations of Service Level and Operational Level Agreements with suppliers and stakeholders to ensure they are suitable for the service being developed.
-65,OPMA.10.1,38,Manage the email and collaboration platform in your department; including activities such as provisioning accounts; monitoring security (alongside security specialists) and capacity of systems and understand the cost implications of using the service.
-66,OPMA.11.1,39,Understand the financial position of the service. Plan and forecast  and recognise the impact of delivering the service on finance.
-67,CSRK.1.1,40,TEST DATA - please leave. ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
-68,CSRK.2.1,41,TEST DATA - please leave. 1234567890
-69,CSRK.3.1,42,TEST DATA - please leave. ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-70,CSRK.4.1,43,question and answer site for professional and enthusiast programmers. It's 100% free
-71,CSRK.5.1,44,question and answer site for professional and enthusiast programmers. It's 100% free
-72,CSRK.6.1,45,question and answer site for professional and enthusiast programmers. It's 100% free
-73,CSRK.7.1,46,question and answer site for professional and enthusiast programmers. It's 100% free
-74,CSRK.8.1,47,question and answer site for professional and enthusiast programmers. It's 100% free
-75,CSRK.9.1,48,question and answer site for professional and enthusiast programmers. It's 100% free
-76,CSRK.10.1,49,question and answer site for professional and enthusiast programmers. It's 100% free
-77,CSRK.11.1,50,question and answer site for professional and enthusiast programmers. It's 100% free
-78,CSRK.12.1,51,question and answer site for professional and enthusiast programmers. It's 100% free
-79,CSRK.13.1,52,question and answer site for professional and enthusiast programmers. It's 100% free
-80,CSRK.14.1,53,question and answer site for professional and enthusiast programmers. It's 100% free
-81,CSRK.15.1,54,question and answer site for professional and enthusiast programmers. It's 100% free
-82,CSRK.16.1,55,question and answer site for professional and enthusiast programmers. It's 100% free
-83,CSRK.17.1,56,question and answer site for professional and enthusiast programmers. It's 100% free
-84,CSRK.18.1,57,question and answer site for professional and enthusiast programmers. It's 100% free
-85,CSRK.19.1,58,question and answer site for professional and enthusiast programmers. It's 100% free
-86,CSRK.20.1,59,question and answer site for professional and enthusiast programmers. It's 100% free
-87,CSRK.21.1,60,question and answer site for professional and enthusiast programmers. It's 100% free
-88,CSRK.22.1,61,question and answer site for professional and enthusiast programmers. It's 100% free
-89,CSRK.23.1,62,question and answer site for professional and enthusiast programmers. It's 100% free
-90,CSRK.24.1,63,question and answer site for professional and enthusiast programmers. It's 100% free
-91,CSRK.25.1,64,question and answer site for professional and enthusiast programmers. It's 100% free
-92,CSRK.26.1,65,question and answer site for professional and enthusiast programmers. It's 100% free
-93,CSRK.27.1,66,question and answer site for professional and enthusiast programmers. It's 100% free
-94,CSRK.28.1,67,question and answer site for professional and enthusiast programmers. It's 100% free
-95,CSRK.29.1,68,question and answer site for professional and enthusiast programmers. It's 100% free
-96,CSRK.30.1,69,question and answer site for professional and enthusiast programmers. It's 100% free
-97,CSRK.31.1,70,question and answer site for professional and enthusiast programmers. It's 100% free
-98,CSRK.32.1,71,question and answer site for professional and enthusiast programmers. It's 100% free
-99,CSRK.33.1,72,question and answer site for professional and enthusiast programmers. It's 100% free
-100,CSRK.34.1,73,question and answer site for professional and enthusiast programmers. It's 100% free
-101,CSRK.35.1,74,question and answer site for professional and enthusiast programmers. It's 100% free
-102,I&S.1.1,75,question and answer site for professional and enthusiast programmers. It's 100% free
-103,I&S.2.1,76,question and answer site for professional and enthusiast programmers. It's 100% free
-104,I&S.3.1,77,question and answer site for professional and enthusiast programmers. It's 100% free
-105,I&S.4.1,78,question and answer site for professional and enthusiast programmers. It's 100% free
-106,I&S.5.1,79,question and answer site for professional and enthusiast programmers. It's 100% free
-107,I&S.6.1,80,question and answer site for professional and enthusiast programmers. It's 100% free
-108,I&S.7.1,81,question and answer site for professional and enthusiast programmers. It's 100% free
-109,I&S.8.1,82,question and answer site for professional and enthusiast programmers. It's 100% free
-110,I&S.9.1,83,question and answer site for professional and enthusiast programmers. It's 100% free
-111,I&S.10.1,84,question and answer site for professional and enthusiast programmers. It's 100% free
-112,I&S.11.1,85,question and answer site for professional and enthusiast programmers. It's 100% free
-113,ISO&IM.1.1,86,question and answer site for professional and enthusiast programmers. It's 100% free
-114,ISO&IM.2.1,87,question and answer site for professional and enthusiast programmers. It's 100% free
-115,ISO&IM.3.1,88,question and answer site for professional and enthusiast programmers. It's 100% free
-116,ISO&IM.4.1,89,question and answer site for professional and enthusiast programmers. It's 100% free
-117,ISO&IM.5.1,90,question and answer site for professional and enthusiast programmers. It's 100% free
-118,ISO&IM.6.1,91,question and answer site for professional and enthusiast programmers. It's 100% free
-119,ISO&IM.7.1,92,question and answer site for professional and enthusiast programmers. It's 100% free
-120,ISO&IM.8.1,93,question and answer site for professional and enthusiast programmers. It's 100% free
-121,TS.1.1,94,TEST DATA - please leave. This is test data. This is test data. This is test data. This is test data. This is test data. This is test data. This is test data.
-122,TS.2.1,95,question and answer site for professional and enthusiast programmers. It's 100% free
-123,TS.3.1,96,question and answer site for professional and enthusiast programmers. It's 100% free
-124,TS.4.1,97,question and answer site for professional and enthusiast programmers. It's 100% free
-125,TS.5.1,98,question and answer site for professional and enthusiast programmers. It's 100% free
-126,TS.6.1,99,question and answer site for professional and enthusiast programmers. It's 100% free
-127,TS.7.1,100,question and answer site for professional and enthusiast programmers. It's 100% free
-128,TS.8.1,101,question and answer site for professional and enthusiast programmers. It's 100% free
-129,TS.9.1,102,question and answer site for professional and enthusiast programmers. It's 100% free
-130,TS.10.1,103,question and answer site for professional and enthusiast programmers. It's 100% free
-131,TS.11.1,104,question and answer site for professional and enthusiast programmers. It's 100% free
-132,TS.12.1,105,question and answer site for professional and enthusiast programmers. It's 100% free
-133,TS.13.1,106,question and answer site for professional and enthusiast programmers. It's 100% free
-134,TS.14.1,107,question and answer site for professional and enthusiast programmers. It's 100% free
+1,BDS.1.1,Understand the government's digital and technology transformation agenda and why the government is changing the way it does digital and technology projects.,1
+2,BDS.1.2,Be aware of what has happened so far with digital and technology transformation; including the launch of GOV.UK and adoption of the department 'exemplar' transformations. Recognise what this means for departments and agencies.,1
+3,BDS.1.3,Follow wider digital trends in the industry and how they may impact future government services for example; the significance of big data and  open source tools and Open Document Formats (ODF).,1
+4,BDS 1.4,Understand the stages through which services are created - from discovery; through to live - and understand how those services can be maintained over time until they are retired.,1
+5,BDS.1.5,Understand what we mean by 'digital take-up' and the techniques that can be used to increase it.,1
+6,BDS.1.6,Understand what we mean by 'digital inclusion' and 'assisted digital' and how we can help all the population use digital services in the future.,1
+7,BDS.2.1,Understand the shift from traditional methods of delivery in government to more agile methods.,2
+8,BDS.2.2,Understand that agile is a mindset (much wider than a set of tools and techniques) at the heart of which sits the concept that business people and developers must work closely together throughout the project.,2
+9,BDS.2.3,Be familiar with the principles in the Agile Manifesto and how they apply to products and services.,2
+10,BDS.2.4,Recognise that when working in an agile environment; teams need to keep focused on early and frequent delivery of outcomes that satisfy the business need.,2
+11,BDS.3.1,Work in multidisciplinary teams and be willing to support work that isn't part of your core role. Develop a shared understanding of each other's strengths and weaknesses to enable collaborative working.,3
+12,BDS.4.1,Have a strong understanding of how the design process must start with identifying and thinking about real user needs. Be familiar with how to determine user needs and measure how successfully they are met.,4
+13,BDS.4.2,Understand the value of user research and how it can best be used to understand user needs. Doing user research continuously helps teams to: 1. Concentrate on real user needs. 2. Design products and services which are prioritised based on user needs. 3. Iterate products and services in response to user feedback.,4
+14,BDS.4.3,Write user stories that detail user needs.,4
+15,BDS.5.1,Understand the GDS design principles and how they should underpin the creation of all products; services and digital interactions.,5
+16,BDS.6.1,Understand the 'Digital by Default' Service Standard and how it acts as a benchmark for the quality of government services.,6
+17,BDS.7.1,Understand that effective commercial management; including procurement where necessary; is important in delivering high quality services that improve continuously.,7
+18,BDS.7.2,Be aware of internal government procurement rules and EU procurement regulations. Understand the importance of following a robust supplier selection and evaluation process to minimise the risk of delivery delays.,7
+19,BDS.7.3,Consider the impacts of moving from large; long-term vendor contracts to multiple small and medium-sized enterprise (SME) vendors; as this is a big part of the government's transformation.,7
+20,BDS.7.4,Be aware of government procurement processes and frameworks available such as G-Cloud; Digital Services Framework and the Digital Marketplace.,7
+21,BDS.8.1,Understand open standards and open source technologies and the part they play in driving digital transformation and avoiding third party vendor 'lock-in'.,8
+22,BDS.9.1,Be aware of core security principles and be able to identify the security features that may need to be built into your service.,9
+23,BDS.9.2,Know who the security experts are within your organisation and how to contact them for consultation.,9
+24,BDS.10.1,Understand the implication of the overall Government Security Classification (GSC) approach and ensure that systems implementation take account of the GSC principles.,10
+25,BDS.10.2,Understand key principles of identity verification and how to employ the appropriate measures to assure a user's identity when they use government services.,10
+26,BDS.10.3,Be aware of the GOV.UK  Verify programme and understand how it can be utilised to meet the identity assurance needs of users; services and departments.,10
+27,BDS.11.1,Monitor the media activities of your department and GDS through online channels and social media. As a minimum you should track the names of your department and any associated ministers or high-profile staff members.,11
+28,BDS.11.2,Be engaged in online communities relevant to your field of work in order to support your work and improve your skills.,11
+29,BDS.11.3,Be aware of social media guidance for civil servants and remember three key things when engaging in social media as a civil servant: 1. Learn the rules of each social media space before engaging. 2. Abide by the Civil Service Code and ask for advice if you are not sure. 3. Remember an official account belongs to the Department not the individual.,11
+30,BDS.12.1,Communicate technical and agile concepts to non-technical people.,12
+31,AGI.1.1,Be familiar with structured programme and project management environments; such as 'waterfall' methods; but be able to retain 'agility' even in a non-agile environment. When applicable be able to apply the underpinning philosophy and principles of agile in a project situation.,13
+32,AGI.1.2,Remove blockers that hinder delivery; manage risks and dependencies within and between projects and teams.,13
+33,AGI.2.1,Work with the Product Manager to define the roadmap for any given product; breaking it down into iterations and helping to translate it into user stories.,14
+34,AGI.3.1,Deliver projects and products using the appropriate mix of agile project management methodologies.,15
+35,AGI.3.2,Use a wide range of agile frameworks; methodologies and tools and understand when to apply them such as: 1. Scrum. 2. Kanban. 3. Extreme programming. 4. Retrospectives. 5. Standups. 6. Iteration Reviews. 7. Iteration Planning. 8. Roadmap Planning. 9. Agile Workshops. 10. Agile and Lean tracking tools.,15
+36,AGI.4.1,Ensure quality is met by including the right people in the team during the 'alpha'   'beta' and 'live' phases and by ensuring each member of the team is responsible for defining and maintaining quality.,16
+37,AGI.5.1,Use agile tools and techniques (such as burndown charts; lead times; delivery rate) to track progress against delivery; current items in backlog; risks; issues and blockers in order to communicate project status to the team and stakeholders.,17
+38,AGI.6.1,Understand and focus the team on delivering value early and often iterating and continuously improving workflows where necessary.,18
+39,AGI.6.2,Drive continuous demonstrable improvements in the team and what is delivered based on data derived from actual delivery; such as: 1. Burn down and burn up charts. 2. Reducing bottlenecks. 3. Understanding velocity and delivery rates. 4. Cumulative flow diagrams. 5. Process control charts. 6. Work in progress limits. 7. Measures against project goals. 8. Outputs from retrospectives.,18
+40,AGI.7.1,Understand the concept of product backlogs and be able to assist the team in prioritising and refining user stories in the product backlog.,19
+41,AGI.8.1,Estimate iteratively and scope budgets with input from team members; stakeholders and delivery data and present it in an understandable format.,20
+42,AGI.9.1,Improve the performance of agile teams and projects through simplification and removal of duplication wherever possible.,21
+43,AGI.10.1,Bring people and views together to inform decision making.,22
+44,AGI.10.2,Weigh up risks against benefits and priorities to deliver.,22
+45,AGI.11.1,Communicate effectively and clearly even when under pressure and duress.,23
+46,AGI.11.2,Initiate and facilitate open communication between team members and stakeholders  creating a safe environment of transparency and openness.,23
+47,AGI.12.1,Engage confidently with stakeholders and communicate project information in a clear way  including when communicating difficult messages.,24
+48,AGI.13.1,Facilitate meetings and workshops with people from all levels of seniority  without bias.,25
+49,AGI.14.1,Communicate;  promote and coach the use of agile and lean methodologies to the team and relevant/interested stakeholders.,26
+50,AGI.15.1,Manage people and agile delivery to develop high-performing  self-motivated and collaborative teams.,27
+51,AGI.15.2,Matrix-manage multidisciplinary teams  offering leadership and support where needed.,27
+52,AGI.15.3,Lead the collaborative planning process; prioritising work that needs to be done against the capacity and capability of the team.,27
+53,AGI.16.1,Maintain a clear sense of direction and purpose for the team based on the project vision.,28
+54,AGI.16.2,Maintain a positive team mood and focus in difficult and challenging circumstances.,28
+55,OPMA.1.1,Understand how Operations Management supports front-end digital services and how digital skills in the 'Basic Digital Skills' skills group apply to Operations  such as being familiar with: Gov digital transformation agenda; user-centred design; agile delivery and open standards.,29
+56,OPMA.2.1,Understand how both on-premise and cloud servers work and the challenges of integrating them.,30
+57,OPMA.2.2,Have a strong understanding of cloud hosting services and the types available; in particular Platform; Infrastructure and Software As A Service (PaaS/ IaaS/ SaaS). Understand the government's 'Cloud First' policy  and why PaaS; IaaS; SaaS should be considered before other kinds of solutions.,30
+58,OPMA.3.1,Understand the activities of Service Management  to ensure 'run and maintain' of applications after they have been deployed by Development teams.,31
+59,OPMA.4.1,Ensure that appropriate identity and access management strategies are in place in proportion to Government classifications.,32
+60,OPMA.5.1,Engage with technical staff and suppliers to define the best system and platform configurations to achieve business objectives. Meet user needs and ensure configuration is always consistent;  auditable and versioned.,33
+61,OPMA.6.1,Demonstrate strong customer service skills  so that incidents are managed in a user-focussed way. In an agile environment  it is important that everyone in the team is able to confidently engage with users.,34
+62,OPMA.7.1,Define the configuration of networking in code. Automating the process such that configuration is always consistent; auditable and versioned.,35
+63,OPMA.8.1,Gather and report detailed performance data against key indicators and generate actionable improvements to the quality of services offered by the department.,36
+64,OPMA.9.1,Engage in the negotiations of Service Level and Operational Level Agreements with suppliers and stakeholders to ensure they are suitable for the service being developed.,37
+65,OPMA.10.1,Manage the email and collaboration platform in your department; including activities such as provisioning accounts; monitoring security (alongside security specialists) and capacity of systems and understand the cost implications of using the service.,38
+66,OPMA.11.1,Understand the financial position of the service. Plan and forecast  and recognise the impact of delivering the service on finance.,39
+67,CSRK.1.1,TEST DATA - please leave. ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz,40
+68,CSRK.2.1,TEST DATA - please leave. 1234567890,41
+69,CSRK.3.1,TEST DATA - please leave. ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,42
+70,CSRK.4.1,question and answer site for professional and enthusiast programmers. It's 100% free,43
+71,CSRK.5.1,question and answer site for professional and enthusiast programmers. It's 100% free,44
+72,CSRK.6.1,question and answer site for professional and enthusiast programmers. It's 100% free,45
+73,CSRK.7.1,question and answer site for professional and enthusiast programmers. It's 100% free,46
+74,CSRK.8.1,question and answer site for professional and enthusiast programmers. It's 100% free,47
+75,CSRK.9.1,question and answer site for professional and enthusiast programmers. It's 100% free,48
+76,CSRK.10.1,question and answer site for professional and enthusiast programmers. It's 100% free,49
+77,CSRK.11.1,question and answer site for professional and enthusiast programmers. It's 100% free,50
+78,CSRK.12.1,question and answer site for professional and enthusiast programmers. It's 100% free,51
+79,CSRK.13.1,question and answer site for professional and enthusiast programmers. It's 100% free,52
+80,CSRK.14.1,question and answer site for professional and enthusiast programmers. It's 100% free,53
+81,CSRK.15.1,question and answer site for professional and enthusiast programmers. It's 100% free,54
+82,CSRK.16.1,question and answer site for professional and enthusiast programmers. It's 100% free,55
+83,CSRK.17.1,question and answer site for professional and enthusiast programmers. It's 100% free,56
+84,CSRK.18.1,question and answer site for professional and enthusiast programmers. It's 100% free,57
+85,CSRK.19.1,question and answer site for professional and enthusiast programmers. It's 100% free,58
+86,CSRK.20.1,question and answer site for professional and enthusiast programmers. It's 100% free,59
+87,CSRK.21.1,question and answer site for professional and enthusiast programmers. It's 100% free,60
+88,CSRK.22.1,question and answer site for professional and enthusiast programmers. It's 100% free,61
+89,CSRK.23.1,question and answer site for professional and enthusiast programmers. It's 100% free,62
+90,CSRK.24.1,question and answer site for professional and enthusiast programmers. It's 100% free,63
+91,CSRK.25.1,question and answer site for professional and enthusiast programmers. It's 100% free,64
+92,CSRK.26.1,question and answer site for professional and enthusiast programmers. It's 100% free,65
+93,CSRK.27.1,question and answer site for professional and enthusiast programmers. It's 100% free,66
+94,CSRK.28.1,question and answer site for professional and enthusiast programmers. It's 100% free,67
+95,CSRK.29.1,question and answer site for professional and enthusiast programmers. It's 100% free,68
+96,CSRK.30.1,question and answer site for professional and enthusiast programmers. It's 100% free,69
+97,CSRK.31.1,question and answer site for professional and enthusiast programmers. It's 100% free,70
+98,CSRK.32.1,question and answer site for professional and enthusiast programmers. It's 100% free,71
+99,CSRK.33.1,question and answer site for professional and enthusiast programmers. It's 100% free,72
+100,CSRK.34.1,question and answer site for professional and enthusiast programmers. It's 100% free,73
+101,CSRK.35.1,question and answer site for professional and enthusiast programmers. It's 100% free,74
+102,I&S.1.1,question and answer site for professional and enthusiast programmers. It's 100% free,75
+103,I&S.2.1,question and answer site for professional and enthusiast programmers. It's 100% free,76
+104,I&S.3.1,question and answer site for professional and enthusiast programmers. It's 100% free,77
+105,I&S.4.1,question and answer site for professional and enthusiast programmers. It's 100% free,78
+106,I&S.5.1,question and answer site for professional and enthusiast programmers. It's 100% free,79
+107,I&S.6.1,question and answer site for professional and enthusiast programmers. It's 100% free,80
+108,I&S.7.1,question and answer site for professional and enthusiast programmers. It's 100% free,81
+109,I&S.8.1,question and answer site for professional and enthusiast programmers. It's 100% free,82
+110,I&S.9.1,question and answer site for professional and enthusiast programmers. It's 100% free,83
+111,I&S.10.1,question and answer site for professional and enthusiast programmers. It's 100% free,84
+112,I&S.11.1,question and answer site for professional and enthusiast programmers. It's 100% free,85
+113,ISO&IM.1.1,question and answer site for professional and enthusiast programmers. It's 100% free,86
+114,ISO&IM.2.1,question and answer site for professional and enthusiast programmers. It's 100% free,87
+115,ISO&IM.3.1,question and answer site for professional and enthusiast programmers. It's 100% free,88
+116,ISO&IM.4.1,question and answer site for professional and enthusiast programmers. It's 100% free,89
+117,ISO&IM.5.1,question and answer site for professional and enthusiast programmers. It's 100% free,90
+118,ISO&IM.6.1,question and answer site for professional and enthusiast programmers. It's 100% free,91
+119,ISO&IM.7.1,question and answer site for professional and enthusiast programmers. It's 100% free,92
+120,ISO&IM.8.1,question and answer site for professional and enthusiast programmers. It's 100% free,93
+121,TS.1.1,TEST DATA - please leave. This is test data. This is test data. This is test data. This is test data. This is test data. This is test data. This is test data.,94
+122,TS.2.1,question and answer site for professional and enthusiast programmers. It's 100% free,95
+123,TS.3.1,question and answer site for professional and enthusiast programmers. It's 100% free,96
+124,TS.4.1,question and answer site for professional and enthusiast programmers. It's 100% free,97
+125,TS.5.1,question and answer site for professional and enthusiast programmers. It's 100% free,98
+126,TS.6.1,question and answer site for professional and enthusiast programmers. It's 100% free,99
+127,TS.7.1,question and answer site for professional and enthusiast programmers. It's 100% free,100
+128,TS.8.1,question and answer site for professional and enthusiast programmers. It's 100% free,101
+129,TS.9.1,question and answer site for professional and enthusiast programmers. It's 100% free,102
+130,TS.10.1,question and answer site for professional and enthusiast programmers. It's 100% free,103
+131,TS.11.1,question and answer site for professional and enthusiast programmers. It's 100% free,104
+132,TS.12.1,question and answer site for professional and enthusiast programmers. It's 100% free,105
+133,TS.13.1,question and answer site for professional and enthusiast programmers. It's 100% free,106
+134,TS.14.1,question and answer site for professional and enthusiast programmers. It's 100% free,107
