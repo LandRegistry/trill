@@ -36,12 +36,20 @@ html, body { height: 90%}
     {
     margin-left: 280px;
     }
+    
+#center-panel2
+    {
+    margin-left: 280px;
+    background-color: #FFFFFF;
+    }
 
-#center-panel1, #center-panel2
+#center-panel1
     {
     margin-left: 280px;
     background-color: #A4A9A6;
     }
+
+
 
 #inner-panel
     {
@@ -74,7 +82,7 @@ html, body { height: 90%}
 }
 
 #container2 {
-  background-color: #A4A9A6;
+  background-color: #DFE0D9;
 }
 
 #container3 {
