@@ -4,11 +4,22 @@
 
 {% block content %}
 <div class = 'top70'>
+
+
+
+    <div id='resource-header' class='container'>
+      <h1>Resource search</h1>
+    </div>
+
     <div id='container1' class='container well'>
+
+
+
         <div class="dropdown col-md-6">
             <form>
+                <label for='categ1'><span class="hidden">Skill category</span></label>
                 <select id='categ1' class='dropdown-toggle form-control' name='categ1' onmousedown="this.value='Skill category';" onchange='this.form.submit()'>
-                    <option selected disabled>Skill category</option>
+                  <option selected disabled>Skill category</option>
                     {% for categ in skill_report.categs %}
                     <option {% if categ in categ_value1 %}selected{% endif %}>{{categ}}</option>
                     {% endfor %}
@@ -20,8 +31,9 @@
       {% if categ_value1 %}
           <div class="dropdown col-md-6">
               <form>
+                  <label for='skill1'><span class="hidden">Description</span></label>
                   <select id='skill1' class='dropdown-toggle form-control' name='skill1'  onchange='this.form.submit()'>
-                      <option selected disabled>Skill description</option>
+                     <option selected disabled>Description</option>
                       {% for skill in skill_report.skills1 %}
                       <option {% if skill in skill_value1 %}selected{% endif %} style="width: 350px;">{{skill}}</option>
                       {% endfor %}
@@ -33,8 +45,9 @@
           {% if skill_value1 %}
               <div class="top30 dropdown col-md-6">
                   <form>
+                      <label for='categ2'><span class="hidden">Skill category</span></label>
                       <select id='categ2' class='dropdown-toggle form-control' name='categ2' onchange='this.form.submit()'>
-                          <option selected disabled>Skill category</option>
+                         <option selected disabled>Skill category</option>
                           {% for categ in skill_report.categs %}
                           <option {% if categ in categ_value2 %}selected{% endif %}>{{categ}}</option>
                           {% endfor %}
@@ -45,8 +58,9 @@
               {% if categ_value2 %}
               <div class="top30 dropdown col-md-6">
                   <form>
+                      <label for='skill2'><span class="hidden">Description</span></label>
                       <select id='skill2' class='dropdown-toggle form-control' name='skill2' onchange='this.form.submit()'>
-                          <option selected disabled>Skill description</option>
+                          <option selected disabled>Description</option>
                           {% for skill in skill_report.skills2 %}
                           <option {% if skill in skill_value2 %}selected{% endif %}>{{skill}}</option>
                           {% endfor %}
@@ -57,6 +71,7 @@
               {% if skill_value2 %}
               <div class="top30 dropdown col-md-6">
                   <form>
+                      <label for='categ3'><span class="hidden">Skill category</span></label>
                       <select id='categ3' class='dropdown-toggle form-control' name='categ3' onchange='this.form.submit()'>
                           <option selected disabled>Skill category</option>
                           {% for categ in skill_report.categs %}
@@ -69,8 +84,9 @@
               {% if categ_value3 %}
               <div class="top30 dropdown col-md-6">
                   <form>
+                      <label for='skill3'><span class="hidden">Description</span></label>
                       <select id='skill3' class='dropdown-toggle form-control' name='skill3' onchange='this.form.submit()'>
-                          <option selected disabled>Skill description</option>
+                          <option selected disabled>Description</option>
                           {% for skill in skill_report.skills3 %}
                           <option {% if skill in skill_value3 %}selected{% endif %}>{{skill}}</option>
                           {% endfor %}
@@ -85,41 +101,36 @@
     {% endif %}
   </div>
 
-<!--  <p>skill_value1 {{skill_value1}}</p>
-  <p>skill_value2 {{skill_value2}}</p>
-  <p>skill_value3 {{skill_value3}}</p>
-
-  <p>categ_value1 {{categ_value1}}</p>
-  <p>categ_value2 {{categ_value2}}</p>
-  <p>categ_value3 {{categ_value3}}</p> -->
-
-
-
   {% if skill_value1 %}
-    <div id = 'container2' class='container well well-main'>
-      <div class='row'>
-        <div class="col-xs-1"><strong>Legend</strong></div>
-        <div class="col-xs-11"><strong>Selected attribute</strong></div>
-      </div>
-
-      <div class='row'>
-        <div class="col-xs-1"><strong>A</strong></div>
-        <div class="col-xs-11">{{skill_value1}}</div>
-      </div>
-        {% if skill_value2 %}
-          <div class='row'>
-            <div class="col-xs-1"><strong>B</strong></div>
-            <div class="col-xs-11">{{skill_value2}}</div>
-          </div>
-          {% if skill_value3 %}
-            <div class='row'>
-              <div class="col-xs-1"><strong>C</strong></div>
-              <div class="col-xs-11">{{skill_value3}}</div>
-            </div>
+    <div id = 'container2' class='container well'>
+      <table class="table table-hover table-scrollable" summary="Skill search legend">
+        <thead>
+          <tr>
+            <th scope="col"><strong>Legend</strong></th>
+            <th scope="col"><strong>Selected attribute</strong></th>
+          </tr>
+        </thead>
+        <body>
+          <tr>
+            <td scope="row"><strong>A</strong></td>
+            <td>{{skill_value1}}</td>
+          </tr>
+          {% if skill_value2 %}
+            <tr>
+              <td scope="row"><strong>B</strong></td>
+              <td>{{skill_value2}}</td>
+            </tr>
+            {% if skill_value3 %}
+              <tr>
+                <td scope="row"><strong>C</strong></td>
+                <td>{{skill_value3}}</td>
+              </tr>
+            {% endif %}
           {% endif %}
-        {% endif %}
-      </div>
-    {% endif %}
+        </body>
+      </table>
+    </div>
+  {% endif %}
 
 
    <div id = 'container3' class='container well'>
@@ -159,7 +170,7 @@
          </table>
      </div>
    {% else %}
-     <h5>No results to display</h5>
+     <p id="resource-no-result"><strong>No results to display</strong></p>
    {% endif %}
  </div>
 </div>

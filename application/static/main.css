@@ -32,10 +32,24 @@ html, body { height: 90%}
 
 }
 
-#center-panel2
+#skills-header, #settings-header
     {
     margin-left: 280px;
     }
+    
+#center-panel2
+    {
+    margin-left: 280px;
+    background-color: #FFFFFF;
+    }
+
+#center-panel1
+    {
+    margin-left: 280px;
+    background-color: #A4A9A6;
+    }
+
+
 
 #inner-panel
     {
@@ -62,13 +76,13 @@ html, body { height: 90%}
   width: 35%;
 }
 
+
 #container1 {
-  padding-top: 3%;
   background-color: #A4A9A6;
 }
 
 #container2 {
-  background-color: #A4A9A6;
+  background-color: #DFE0D9;
 }
 
 #container3 {
@@ -86,3 +100,24 @@ option {
     min-width: 10px;
     vertical-align: top;
     width: 12%; }
+
+#name, #trill-role, #job-title{
+  font-size:  115%;
+}
+
+
+/*#GDS-skills, #IS-skills{
+  font-size:  115%;
+}*/
+
+#pswd-link{
+  font-size:  125%;
+}
+
+.list-group-item-heading{
+  font-size:  120%
+}
+
+.list-group-item-text{
+  font-size:  110%
+}
