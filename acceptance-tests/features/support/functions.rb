@@ -90,9 +90,9 @@ def select_skill(myXpath, mySkill)
   #select skill or knowledge from the skill group dropdown
   #sleep(10)
     sleep(1)
-    first(:xpath, myXpath).click
-    first(:xpath, myXpath).select(mySkill)
-    first(:xpath, myXpath).click
+    find(:xpath, myXpath).click
+    find(:xpath, myXpath).select(mySkill)
+    find(:xpath, myXpath).click
 
 end
 
@@ -100,9 +100,9 @@ def select_skill_description(myXpath, myDescription)
   #select skill or knowledge from the skill group dropdown
   #sleep(10)
     sleep(1)
-    first(:xpath, myXpath).click
-    first(:xpath, myXpath).select(myDescription)
-    first(:xpath, myXpath).click
+    find(:xpath, myXpath).click
+    find(:xpath, myXpath).select(myDescription)
+    find(:xpath, myXpath).click
 
 end
 
