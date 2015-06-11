@@ -13,13 +13,11 @@
 
     <div id='container1' class='container well'>
 
-
-
         <div class="dropdown col-md-6">
             <form>
                 <label for='categ1'><span class="hidden">Skill category</span></label>
                 <select id='categ1' class='dropdown-toggle form-control' name='categ1' onmousedown="this.value='Skill category';" onchange='this.form.submit()'>
-                  <option selected disabled>Skill category</option>
+                    <option {% if not categ_value1 %}selected {% endif %} disabled>Skill category</option>
                     {% for categ in skill_report.categs %}
                     <option {% if categ in categ_value1 %}selected{% endif %}>{{categ}}</option>
                     {% endfor %}
@@ -33,7 +31,7 @@
               <form>
                   <label for='skill1'><span class="hidden">Description</span></label>
                   <select id='skill1' class='dropdown-toggle form-control' name='skill1'  onchange='this.form.submit()'>
-                     <option selected disabled>Description</option>
+                    <option {% if not skill_value1 %}selected {% endif %} disabled>Description</option>
                       {% for skill in skill_report.skills1 %}
                       <option {% if skill in skill_value1 %}selected{% endif %} style="width: 350px;">{{skill}}</option>
                       {% endfor %}
@@ -47,7 +45,7 @@
                   <form>
                       <label for='categ2'><span class="hidden">Skill category</span></label>
                       <select id='categ2' class='dropdown-toggle form-control' name='categ2' onchange='this.form.submit()'>
-                         <option selected disabled>Skill category</option>
+                        <option {% if not categ_value2 %}selected {% endif %} disabled>Skill category</option>
                           {% for categ in skill_report.categs %}
                           <option {% if categ in categ_value2 %}selected{% endif %}>{{categ}}</option>
                           {% endfor %}
@@ -60,7 +58,7 @@
                   <form>
                       <label for='skill2'><span class="hidden">Description</span></label>
                       <select id='skill2' class='dropdown-toggle form-control' name='skill2' onchange='this.form.submit()'>
-                          <option selected disabled>Description</option>
+                        <option {% if not skill_value2 %}selected {% endif %} disabled>Description</option>
                           {% for skill in skill_report.skills2 %}
                           <option {% if skill in skill_value2 %}selected{% endif %}>{{skill}}</option>
                           {% endfor %}
@@ -73,7 +71,7 @@
                   <form>
                       <label for='categ3'><span class="hidden">Skill category</span></label>
                       <select id='categ3' class='dropdown-toggle form-control' name='categ3' onchange='this.form.submit()'>
-                          <option selected disabled>Skill category</option>
+                        <option {% if not categ_value3 %}selected {% endif %} disabled>Skill category</option>
                           {% for categ in skill_report.categs %}
                           <option {% if categ in categ_value3 %}selected{% endif %}>{{categ}}</option>
                           {% endfor %}
@@ -86,7 +84,7 @@
                   <form>
                       <label for='skill3'><span class="hidden">Description</span></label>
                       <select id='skill3' class='dropdown-toggle form-control' name='skill3' onchange='this.form.submit()'>
-                          <option selected disabled>Description</option>
+                         <option {% if not skill_value3 %}selected {% endif %} disabled>Description</option>
                           {% for skill in skill_report.skills3 %}
                           <option {% if skill in skill_value3 %}selected{% endif %}>{{skill}}</option>
                           {% endfor %}
@@ -103,31 +101,32 @@
 
   {% if skill_value1 %}
     <div id = 'container2' class='container well'>
-      <table class="table table-hover table-scrollable" summary="Skill search legend">
+      <table class="table table-hover table-scrollable">
+        <caption class="hidden">Skill search legend</caption>
         <thead>
           <tr>
             <th scope="col"><strong>Legend</strong></th>
             <th scope="col"><strong>Selected attribute</strong></th>
           </tr>
         </thead>
-        <body>
+        <tbody>
           <tr>
-            <td scope="row"><strong>A</strong></td>
+            <td><strong>A</strong></td>
             <td>{{skill_value1}}</td>
           </tr>
           {% if skill_value2 %}
             <tr>
-              <td scope="row"><strong>B</strong></td>
+              <td><strong>B</strong></td>
               <td>{{skill_value2}}</td>
             </tr>
             {% if skill_value3 %}
               <tr>
-                <td scope="row"><strong>C</strong></td>
+                <td><strong>C</strong></td>
                 <td>{{skill_value3}}</td>
               </tr>
             {% endif %}
           {% endif %}
-        </body>
+        </tbody>
       </table>
     </div>
   {% endif %}
@@ -136,7 +135,8 @@
    <div id = 'container3' class='container well'>
      {% if users %}
        <div class="bodycontainer scrollable">
-         <table class="table table-hover table-scrollable" summary="Results of skill search">
+         <table class="table table-hover table-scrollable">
+           <caption class="hidden">Results of skill search</caption>
            <thead>
               <tr>
               {% if skill_value1 %}
@@ -155,7 +155,7 @@
              {% for user in users %}
                <tr>
                  {% if skill_value1 %}
-                   <td scope="row" id = '{{user.id}}'>{{user.firstname}} {{user.surname}}</td>
+                   <td id = '{{user.id}}'>{{user.firstname}} {{user.surname}}</td>
                    <td id = '{{user.id}}|a'>{{user.proficiency_a}}</td>
                  {% endif %}
                  {% if skill_value2 %}
