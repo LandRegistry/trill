@@ -71,8 +71,9 @@ class Skill_title(object):
         self.skill_list.append(skill_desc)
 
 class Skill_desc(object):
-    def __init__(self, code, name, n, skill_prof, skill_conf, skill_age):
+    def __init__(self, id, code, name, n, skill_prof, skill_conf, skill_age):
         self.n = n
+        self.id = id
         self.name = name
         self.code = code
         self.prof = skill_prof
@@ -205,38 +206,42 @@ def record():
         #returns the radio button value as a | separated string
         choice = request.form
         string_0 = (choice['name1'])
+        print ('string_0:',string_0)
 
         #decode the skill type - prof_radio = proficency, conf_radio = confidence, age_radio = age
         end1 = string_0.find('|')
         skill_type = (string_0[0:end1])
+        print ('skill_type:',skill_type)
 
-        #decode the skill title
+        #decode the skill code
         string_1 = string_0[end1+1:]
         end2 = string_1.find('|')
-        skill_title = string_1[0:end2]
+        skill_id = string_1[0:end2]
+        print ('skill_id:',skill_id)
 
         #decode the skill code
         string_2 = string_1[end2+1:]
-        end3 = string_2.find('|')
-        skill_code = string_2[0:end3]
+        #end3 = string_2.find('|')
+        skill_value = string_2
+        print ('skill_value:',skill_value)
 
         #decode the skill description
-        string_3 = string_2[end3+1:]
+        #string_3 = string_2[end3+1:]
         #end4 = string_3.find('|')
-        skill_value = string_3
+        #skill_value = string_3
 
-        skill_id = GetSkillId(skill_code)
+        #skill_id = GetSkillId(skill_code)
 
         #save the skill values
         if skill_type == 'prof_radio':
             res = SetUserSkillProficiency(userId, skill_id, skill_value)
-            #print (userId, skill_id, skill_value)
+            print (userId, skill_id, skill_value)
         elif skill_type == 'conf_radio':
             res = SetUserSkillConfidence(userId, skill_id, skill_value)
-            #print (userId, skill_id, skill_value)
+            print (userId, skill_id, skill_value)
         elif skill_type == 'age_radio':
             res = SetUserSkillAge(userId, skill_id, skill_value)
-            #print (userId, skill_id, skill_value)
+            print (userId, skill_id, skill_value)
         return 'OK'
 
     if request.method == "GET":
@@ -272,9 +277,9 @@ def record():
                     s += 1
                     skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_conf = GetUserSkillConfidenceLevel(userId, skill.id)
-                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf, 0)
+                    skill_desc = Skill_desc(skill.id, skill.skillcode, skill.skilldescription, s, skill_prof, skill_conf, 0)
                     skill_title.Add_skill(skill_desc)
-
+                    
                 skill_group.Add_skill_title(skill_title)
             user.Add_gds_skill_group(skill_group)
 
@@ -299,7 +304,7 @@ def record():
                     s += 1
                     skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_age = GetUserSkillAgeLevel(userId, skill.id)
-                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
+                    skill_desc = Skill_desc(skill.id, skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
                     skill_title.Add_skill(skill_desc)
 
                 skill_group.Add_skill_title(skill_title)
@@ -326,7 +331,7 @@ def record():
                     s += 1
                     skill_prof = GetUserSkillProficiencyLevel(userId, skill.id)
                     skill_age = GetUserSkillAgeLevel(userId, skill.id)
-                    skill_desc = Skill_desc(skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
+                    skill_desc = Skill_desc(skill.id, skill.skillcode, skill.skilldescription, s, skill_prof, 0, skill_age)
                     skill_title.Add_skill(skill_desc)
 
                 skill_group.Add_skill_title(skill_title)
