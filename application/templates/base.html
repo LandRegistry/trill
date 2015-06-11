@@ -32,28 +32,10 @@ lang="en-GB"
         </div>
 
         <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
-            <!--<li>
-                <a href='/skills' data-target='#' data-toggle='dropdown'>Skills<span class='caret'></span></a>
-                <ul class='dropdown-menu'>-->
             {% if not signinpage_form %}
             <li><a href="{{ url_for('record') }}" id="Skills">Skills</a></li>
             <li><a href='/resource?state=New' id="Resource">Resource</a></li>
             {% endif %}
-                   <!-- <li><a href='/export'>Export Skills</a></li>
-                    <li class='divider'></li>
-                    <li><a href='/add_skill'>Add Skills</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href='/training' data-target='#' data-toggle='dropdown'>Training<span class='caret'></span></a>
-                <ul class='dropdown-menu'>
-                    <li><a href='/book'>Book Course</a></li>
-                    <li><a href='/bookings'>My Bookings</a></li>
-                    <li class='divider'></li>
-                    <li><a href='/add_course'>Add Courses</a></li>
-                </ul>
-            </li>-->
-            <!--<li><a href='/about'>About</a></li>-->
             {% if current_user.is_authenticated() %}
             <li><a href='/user' id="signed-in-as" data-target='#' data-toggle='dropdown'>Signed in as {{ current_user.name }}<span class='caret'></span></a>
             <ul class='dropdown-menu'>
