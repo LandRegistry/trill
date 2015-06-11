@@ -18,15 +18,15 @@ Record your skills
 
         <h1 id="skills-header">Skills entry and update</h1>
 
-        <div id='center-panel'class="container-fluid well">
+        <div id='center-panel1' class="container-fluid well">
             <h2 id='GDS-skills'>Your GDS skills are:</h2>
-            <div class="accordion" id="accordion2">
-                <div class="panel-group" id="accordion">
+            <div class="accordion" id="accordion1">
+                <div class="panel-group" id="sub-accordion1">
                     {% for group in user_obj.gds_list %}
                     <div class="panel panel-default"><!--Put each skill group in a box-->
                         <div class="panel-heading">
                             <p id="GDS-skill-group{{group.n}}" class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#GDS{{group.n}}">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#GDS{{group.n}}">
                                     <span class ="glyphicon glyphicon-chevron-down"></span> {{group.name}}</a>
                             </p>
                         </div>
@@ -35,9 +35,9 @@ Record your skills
 
                         {% for skill_title in group.title_list %}
                             {% for skill in skill_title.skill_list %}
-                                <a class="list-group-item">
-                                    <p id="skill-title{{group.n}}-{{skill_title.n}}" class="list-group-item-heading"><strong>{{skill_title.name}}</strong></p>
-                                    <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}}</p>
+                                <div class="list-group-item">
+                                    <p id="GDS|skill-title{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-heading"><strong>{{skill_title.name}}</strong></p>
+                                    <p id="GDS|skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}} </p>
 
                                    <div class = 'well well-sm'>
                                         <div class = 'container row top7'>
@@ -47,23 +47,22 @@ Record your skills
                                             <div class="col-lg-10 columns">                                               
                                                 <ul class="listNoBullet listHorizontal">
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|1" value="option1" {% if 1 == skill.prof %}checked{% endif %}></input>
-                                                        <label for="prof_radio|{{skill_title.code}}|{{skill.code}}|1" class="radio-inline"  data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - None" data-trigger="hover" data-content="No knowledge or skills">None</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|1" value="option1" {% if 1 == skill.prof %}checked{% endif %}/>
+                                                        <label for="prof_radio|{{skill.id}}|1" class="radio-inline"  data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - None" data-trigger="hover" data-content="No knowledge or skills">None</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|2"
-                                                   value="option2" {% if 2 == skill.prof %}checked{% endif %}></input>
-                                                        <label for="prof_radio|{{skill_title.name}}|{{skill.code}}|2" class="radio-inline"  data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Basic" data-trigger="hover" data-content="Knowledge & skills are basic, concepts understood but often seeks guidance, has been taught but still consolidating">Basic</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|2" value="option2" {% if 2 == skill.prof %}checked{% endif %}/>
+                                                        <label for="prof_radio|{{skill.id}}|2" class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Basic" data-trigger="hover" data-content="Knowledge & skills are basic, concepts understood but often seeks guidance, has been taught but still consolidating">Basic</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|3"
-                                                 value="option3" {% if 3 == skill.prof %}checked{% endif %}></input>
-                                                        <label for = 'prof_radio|{{skill_title.name}}|{{skill.code}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Proficient" data-trigger="hover" data-content="Has knowledge & skills and comfortable to work on own, good understanding of the concepts, seeks guidance occasionally">Proficient</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|3"
+                                                 value="option3" {% if 3 == skill.prof %}checked{% endif %}/>
+                                                        <label for = 'prof_radio|{{skill.id}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Proficient" data-trigger="hover" data-content="Has knowledge & skills and comfortable to work on own, good understanding of the concepts, seeks guidance occasionally">Proficient</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|4"
-                                                 value="option4" {% if 4 == skill.prof %}checked{% endif %}></input>
-                                                        <label for = 'prof_radio|{{skill_title.name}}|{{skill.code}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Expert" data-trigger="hover" data-content="Has knowledge & skills, deep understanding of the concepts, happy to work on own and is able to teach others. Bit of a guru!">Expert</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|4"
+                                                 value="option4" {% if 4 == skill.prof %}checked{% endif %}/>
+                                                        <label for = 'prof_radio|{{skill.id}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Expert" data-trigger="hover" data-content="Has knowledge & skills, deep understanding of the concepts, happy to work on own and is able to teach others. Bit of a guru!">Expert</label>
                                                     </li>
                                                 </ul>
                                         
@@ -77,31 +76,31 @@ Record your skills
                                             <div class="col-lg-10 columns">
                                                 <ul class="listNoBullet listHorizontal">
                                                     <li>
-                                                        <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|1"
-                                                               value="option1" {% if 1 == skill.conf %}checked {% endif %}></input>
-                                                        <label for='conf_radio|{{skill_title.name}}|{{skill.code}}|1' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - None" data-trigger="hover" data-content="No confidence or knowledge on this">None</label>
+                                                        <input type="radio" name="conf_radio_{{skill.id}}" id="conf_radio|{{skill.id}}|1"
+                                                               value="option1" {% if 1 == skill.conf %}checked {% endif %}/>
+                                                        <label for='conf_radio|{{skill.id}}|1' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - None" data-trigger="hover" data-content="No confidence or knowledge on this">None</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|2"
-                                                         value="option2" {% if 2 == skill.conf %}checked{% endif %}></input>
-                                                        <label for = 'conf_radio|{{skill_title.name}}|{{skill.code}}|2' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Low" data-trigger="hover" data-content="Some confidence but doesn't feel completely happy doing this alone, would seek support">Low</label>
+                                                        <input type="radio" name="conf_radio_{{skill.id}}" id="conf_radio|{{skill.id}}|2"
+                                                         value="option2" {% if 2 == skill.conf %}checked{% endif %}/>
+                                                        <label for = 'conf_radio|{{skill.id}}|2' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Low" data-trigger="hover" data-content="Some confidence but doesn't feel completely happy doing this alone, would seek support">Low</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|3"
-                                                         value="option3" {% if 3 == skill.conf %}checked{% endif %}></input>
-                                                        <label for = 'conf_radio|{{skill_title.name}}|{{skill.code}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Medium" data-trigger="hover" data-content="Could do this alone in the majority of cases, feels mainly positive, maybe some uncertainty or support needed">Medium</label>
+                                                        <input type="radio" name="conf_radio_{{skill.id}}" id="conf_radio|{{skill.id}}|3"
+                                                         value="option3" {% if 3 == skill.conf %}checked{% endif %}/>
+                                                        <label for = 'conf_radio|{{skill.id}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - Medium" data-trigger="hover" data-content="Could do this alone in the majority of cases, feels mainly positive, maybe some uncertainty or support needed">Medium</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="conf_radio_{{skill_title.name}}_{{skill.code}}_{{skill.name}}" id="conf_radio|{{skill_title.name}}|{{skill.code}}|4"
-                                                         value="option4" {% if 4 == skill.conf %}checked{% endif %}></input>
-                                                        <label for = 'conf_radio|{{skill_title.name}}|{{skill.code}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - High" data-trigger="hover" data-content="Very confident in carrying out this task or behaviour, very positive, no feelings of uncertainty or nervousness">High</label>
+                                                        <input type="radio" name="conf_radio_{{skill.id}}" id="conf_radio|{{skill.id}}|4"
+                                                         value="option4" {% if 4 == skill.conf %}checked{% endif %}/>
+                                                        <label for = 'conf_radio|{{skill.id}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Confidence level - High" data-trigger="hover" data-content="Very confident in carrying out this task or behaviour, very positive, no feelings of uncertainty or nervousness">High</label>
                                                     </li>
                                                 </ul>
                                             </div>
                                         
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                                 {% endfor %}
                            {% endfor %}
                         </div>
@@ -112,10 +111,10 @@ Record your skills
         </div>
 
 
-        <div id="center-panel" class="container-fluid well">
+        <div id="center-panel2" class="container-fluid well">
             <h2 id='IS-skills'>Your IS skills are: </h2>
             <div class="accordion" id="accordion2">
-                <div class="panel-group" id="accordion">
+                <div class="panel-group" id="sub-accordion2">
                     {% for group in user_obj.is_list %}
                     <div class="panel panel-default"><!--Put each skill group in a box-->
                         <div class="panel-heading">
@@ -129,9 +128,9 @@ Record your skills
 
                         {% for skill_title in group.title_list %}
                             {% for skill in skill_title.skill_list %}
-                                <a class="list-group-item">
-                                    <p id="skill-title{{group.n}}-{{skill_title.n}}" class="list-group-item-heading"><strong>{{skill_title.name}}</strong></p>
-                                    <p id="skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}}</p>
+                                <div class="list-group-item">
+                                    <p id="IS|skill-title{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-heading"><strong>{{skill_title.name}}</strong></p>
+                                    <p id="IS|skill-desc{{group.n}}-{{skill_title.n}}-{{skill.n}}" class="list-group-item-text">{{skill.code}} {{skill.name}}</p>
 
                                     <div class = 'well well-sm'>
                                         <div class = 'container row top7'>
@@ -141,22 +140,22 @@ Record your skills
                                             <div class="col-lg-10 columns">
                                                 <ul class="listNoBullet listHorizontal">
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.code}}|{{skill.code}}|1" value="option1" {% if 1 == skill.prof %}checked{% endif %}></input>
-                                                        <label for = 'prof_radio|{{skill_title.code}}|{{skill.code}}|1' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - None" data-trigger="hover" data-content="No knowledge or skills">None</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|1" value="option1" {% if 1 == skill.prof %}checked{% endif %}/>
+                                                        <label for = 'prof_radio|{{skill.id}}|1' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - None" data-trigger="hover" data-content="No knowledge or skills">None</label>
                                                 </li>
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|2" value="option2" {% if 2 == skill.prof %}checked{% endif %}></input>
-                                                        <label for = 'prof_radio|{{skill_title.name}}|{{skill.code}}|2' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Basic" data-trigger="hover" data-content="Knowledge & skills are basic, can use but often seeks guidance, has been taught but still consolidating">Basic</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|2" value="option2" {% if 2 == skill.prof %}checked{% endif %}/>
+                                                        <label for = 'prof_radio|{{skill.id}}|2' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Basic" data-trigger="hover" data-content="Knowledge & skills are basic, can use but often seeks guidance, has been taught but still consolidating">Basic</label>
 </li>
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|3"
-                                                     value="option3" {% if 3 == skill.prof %}checked{% endif %}></input>
-                                                        <label for = 'prof_radio|{{skill_title.name}}|{{skill.code}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Proficient" data-trigger="hover" data-content="Has knowledge & skills and comfortable to work on own, seeking guidance occasionally">Proficient</label>   
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|3"
+                                                     value="option3" {% if 3 == skill.prof %}checked{% endif %}/>
+                                                        <label for = 'prof_radio|{{skill.id}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Proficient" data-trigger="hover" data-content="Has knowledge & skills and comfortable to work on own, seeking guidance occasionally">Proficient</label>   
 </li>
                                                     <li>
-                                                        <input type="radio" name="prof_radio_{{skill_title.name}}_{{skill.code}}" id="prof_radio|{{skill_title.name}}|{{skill.code}}|4"
-                                                     value="option4" {% if 4 == skill.prof %}checked{% endif %}></input>
-                                                        <label for = 'prof_radio|{{skill_title.name}}|{{skill.code}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Expert" data-trigger="hover" data-content="Has knowledge & skills, happy to work on own and is able to teach others. Bit of a guru!">Expert</label>
+                                                        <input type="radio" name="prof_radio_{{skill.id}}" id="prof_radio|{{skill.id}}|4"
+                                                     value="option4" {% if 4 == skill.prof %}checked{% endif %}/>
+                                                        <label for = 'prof_radio|{{skill.id}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Proficiency level - Expert" data-trigger="hover" data-content="Has knowledge & skills, happy to work on own and is able to teach others. Bit of a guru!">Expert</label>
 </li>
 </ul>                                        
                                             </div>
@@ -169,32 +168,32 @@ Record your skills
                                             <div class="col-lg-10 columns">
                                                 <ul class="listNoBullet listHorizontal">
                                                     <li>
-                                                        <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|1"
-                                                 value="option1" {% if 1 == skill.age %}checked {% endif %}></input>
-                                                        <label for = 'age_radio|{{skill_title.name}}|{{skill.code}}|1' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - None" data-trigger="hover" data-content="No knowledge or skills">None</label>   
+                                                        <input type="radio" name="age_radio_{{skill.id}}" id="age_radio|{{skill.id}}|1"
+                                                 value="option1" {% if 1 == skill.age %}checked {% endif %}/>
+                                                        <label for = 'age_radio|{{skill.id}}|1' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - None" data-trigger="hover" data-content="No knowledge or skills">None</label>   
                                                         
                                                     </li>                                            
                                                     <li>
-                                                        <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|2"
-                                                 value="option2" {% if 2 == skill.age %}checked{% endif %}></input>
-                                                        <label for = 'age_radio|{{skill_title.name}}|{{skill.code}}|2' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 12+ months" data-trigger="hover" data-content="Would need to refresh knowledge and practice the relevant skills">12+ months</label>
+                                                        <input type="radio" name="age_radio_{{skill.id}}" id="age_radio|{{skill.id}}|2"
+                                                 value="option2" {% if 2 == skill.age %}checked{% endif %}/>
+                                                        <label for = 'age_radio|{{skill.id}}|2' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 12+ months" data-trigger="hover" data-content="Would need to refresh knowledge and practice the relevant skills">12+ months</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|3"
-                                                 value="option3" {% if 3 == skill.age %}checked{% endif %}></input>
-                                                        <label for = 'age_radio|{{skill_title.name}}|{{skill.code}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 6-12 months" data-trigger="hover" data-content="I used this skill in the last year, still fairly fresh in my mind, some skill refresh maybe needed">6-12 months</label>
+                                                        <input type="radio" name="age_radio_{{skill.id}}" id="age_radio|{{skill.id}}|3"
+                                                 value="option3" {% if 3 == skill.age %}checked{% endif %}/>
+                                                        <label for = 'age_radio|{{skill.id}}|3' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 6-12 months" data-trigger="hover" data-content="I used this skill in the last year, still fairly fresh in my mind, some skill refresh maybe needed">6-12 months</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="age_radio_{{skill_title.name}}_{{skill.code}}" id="age_radio|{{skill_title.name}}|{{skill.code}}|4"
-                                                 value="option4" {% if 4 == skill.age %}checked{% endif %}></input>
-                                                        <label for = 'age_radio|{{skill_title.name}}|{{skill.code}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 0-6 months" data-trigger="hover" data-content="Used this skill very recently, I can hit the ground running!">0-6 months</label>
+                                                        <input type="radio" name="age_radio_{{skill.id}}" id="age_radio|{{skill.id}}|4"
+                                                 value="option4" {% if 4 == skill.age %}checked{% endif %}/>
+                                                        <label for = 'age_radio|{{skill.id}}|4' class="radio-inline" data-toggle="popover" data-placement="top" data-container="body" title="Skill used within - 0-6 months" data-trigger="hover" data-content="Used this skill very recently, I can hit the ground running!">0-6 months</label>
                                                     </li>
 </ul>
                                            
                                            </div>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                                 {% endfor %}
                             {% endfor %}
                         </div>

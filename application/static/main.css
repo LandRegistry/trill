@@ -25,11 +25,16 @@ html, body { height: 90%}
 }
 
 
-#center-panel
+#center-panel1
     {
     margin-left: 280px;
     background-color: #A4A9A6;
+}
 
+#center-panel2
+    {
+    margin-left: 280px;
+    background-color: #A4A9A6;
 }
 
 #skills-header, #settings-header
