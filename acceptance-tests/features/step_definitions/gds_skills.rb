@@ -49,7 +49,7 @@ end
 Then(/^I can see the additional skill group information relevant to my role$/) do
   # pass the xpath, the epected value and the area under test
   # the check_value_include function will check then pass or raise
-  myXpath = ".//*[@id='skill-desc1-1-1']"
+  myXpath = ".//*[@id='GDS|skill-desc1-1-1']"
   myValue1 = 'BDS.1.1 Understand the government'
   myTestArea = 'GDS Additional Skills'
   check_value_include(myTestArea, myXpath, myValue1)
