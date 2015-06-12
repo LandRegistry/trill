@@ -37,7 +37,6 @@ When(/^I record my IS skills$/) do
   mySkillgroup = ".//*[@id='IS-skill-group1']/a"
   myValue1 = "//*[@id='prof_radio|67|1']"
   myValue2 = "//*[@id='prof_radio|67|4']"
-  puts ' when i record creating an expert' + 'value 1 =' + myValue1 + 'value 2 ='+myValue2
   create_skill(mySkillgroup, myValue1, myValue2)
 
 end
