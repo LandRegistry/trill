@@ -69,8 +69,8 @@ end
 
 When(/^I record my GDS skills$/) do
   mySkillgroup = ".//*[@id='GDS-skill-group1']/a"
-  myValue1 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|2']"
-  myValue2 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|4']"
+  myValue1 = "//*[@id='prof_radio|1|2']"
+  myValue2 = "//*[@id='prof_radio|1|4']"
   create_skill(mySkillgroup, myValue1, myValue2)
 
 end
@@ -116,7 +116,8 @@ Then(/^I will see all my recorded GDS skills$/) do
 
   mySkillclass = 'GDS Skills'
   mySkillgroup = "//*[@id='GDS-skill-group1']/a"
-  myValue1 = './/input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]'
+  myValue1 = './/input[@name="prof_radio_1" and @checked]'
+  #myValue1 = './/input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]'
   check_skill(mySkillclass, mySkillgroup, myValue1)
 
 end
