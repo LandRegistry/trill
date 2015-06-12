@@ -35,8 +35,8 @@ When(/^I record my IS skills$/) do
   # skill radio button that was selected
 
   mySkillgroup = ".//*[@id='IS-skill-group1']/a"
-  myValue1 = "//*[@id='prof_radio||CSRK.1.1|1']"
-  myValue2 = "//*[@id='prof_radio|xxxxxxxxxxxxxxxxxxxxxxxx|CSRK.1.1|4']"
+  myValue1 = "//*[@id='prof_radio|67|1']"
+  myValue2 = "//*[@id='prof_radio|67|4']"
   create_skill(mySkillgroup, myValue1, myValue2)
 
 end
@@ -51,7 +51,7 @@ Then(/^my IS skills will displayed$/) do
   # the radio button is checked
   mySkillclass = 'IS Skills'
   mySkillgroup = "//*[@id='IS-skill-group1']/a"
-  myValue1 = './/input[@name="prof_radio_xxxxxxxxxxxxxxxxxxxxxxxx_CSRK.1.1" and @checked]'
+  myValue1 = './/input[@name="prof_radio_67" and @checked]'
   check_skill(mySkillclass, mySkillgroup, myValue1)
 
 end
