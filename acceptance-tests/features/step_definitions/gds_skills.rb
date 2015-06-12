@@ -49,7 +49,7 @@ end
 Then(/^I can see the additional skill group information relevant to my role$/) do
   # pass the xpath, the epected value and the area under test
   # the check_value_include function will check then pass or raise
-  myXpath = ".//*[@id='skill-desc1-1-1']"
+  myXpath = ".//*[@id='GDS|skill-desc1-1-1']"
   myValue1 = 'BDS.1.1 Understand the government'
   myTestArea = 'GDS Additional Skills'
   check_value_include(myTestArea, myXpath, myValue1)
@@ -69,8 +69,8 @@ end
 
 When(/^I record my GDS skills$/) do
   mySkillgroup = ".//*[@id='GDS-skill-group1']/a"
-  myValue1 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|2']"
-  myValue2 = "//*[@id='prof_radio|Understanding the Digital transformation|BDS.1.1|4']"
+  myValue1 = "//*[@id='prof_radio|1|2']"
+  myValue2 = "//*[@id='prof_radio|1|4']"
   create_skill(mySkillgroup, myValue1, myValue2)
 
 end
@@ -85,8 +85,8 @@ Then(/^my GDS skills will be recorded$/) do
   # the coed below finds the value that matches being a radio button and being checked
   # puts find('.//input[@name="prof_radio_Customer is king_1.0_Description Customer_Focus1.0" and @checked]').value
 
-
- if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
+ if find('.//input[@name="prof_radio_1" and @checked]').value ==  @myRadioButton #'option4'
+ #if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
      #puts 'found a checked radio button'
    else
      raise "The recorded skill has not been returned"
@@ -102,7 +102,8 @@ Then(/^my GDS skills will displayed$/) do
   # the coed below finds the value that matches being a radio button and being checked
   # puts find('.//input[@name="prof_radio_Customer is king_1.0_Description Customer_Focus1.0" and @checked]').value
 
-  if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
+  if find('.//input[@name="prof_radio_1" and @checked]').value ==  @myRadioButton #'option4'
+  #if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
      #puts 'found a checked radio button'
    else
      raise "The recorded skill has not been returned"
@@ -116,7 +117,8 @@ Then(/^I will see all my recorded GDS skills$/) do
 
   mySkillclass = 'GDS Skills'
   mySkillgroup = "//*[@id='GDS-skill-group1']/a"
-  myValue1 = './/input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]'
+  myValue1 = './/input[@name="prof_radio_1" and @checked]'
+  #myValue1 = './/input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]'
   check_skill(mySkillclass, mySkillgroup, myValue1)
 
 end
