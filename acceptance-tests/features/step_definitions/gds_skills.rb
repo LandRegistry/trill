@@ -85,8 +85,8 @@ Then(/^my GDS skills will be recorded$/) do
   # the coed below finds the value that matches being a radio button and being checked
   # puts find('.//input[@name="prof_radio_Customer is king_1.0_Description Customer_Focus1.0" and @checked]').value
 
-
- if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
+ if find('.//input[@name="prof_radio_1" and @checked]').value ==  @myRadioButton #'option4'
+ #if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
      #puts 'found a checked radio button'
    else
      raise "The recorded skill has not been returned"
@@ -102,7 +102,8 @@ Then(/^my GDS skills will displayed$/) do
   # the coed below finds the value that matches being a radio button and being checked
   # puts find('.//input[@name="prof_radio_Customer is king_1.0_Description Customer_Focus1.0" and @checked]').value
 
-  if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
+  if find('.//input[@name="prof_radio_1" and @checked]').value ==  @myRadioButton #'option4'
+  #if find('.//input[@name="prof_radio_Understanding the Digital transformation_BDS.1.1_Understand the government\'s digital and technology transformation agenda and why the government is changing the way it does digital and technology projects." and @checked]').value ==  @myRadioButton #'option4'
      #puts 'found a checked radio button'
    else
      raise "The recorded skill has not been returned"
