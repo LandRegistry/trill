@@ -7,7 +7,7 @@ from application.database import *
 from application.login import valid_user, ts, create_hash
 from application.email import send_email
 
-#structure to hold DB data
+#structure to hold DB data for a user and their skills
 class User(object):
     def __init__(self, user_id, email):
         self.user_id = user_id
@@ -80,6 +80,7 @@ class Skill_desc(object):
         self.conf = skill_conf
         self.age = skill_age
 
+#structure to hold data for resource page
 class Skill_report(object):
     def __init__(self):
         self.skills1 = []
@@ -102,7 +103,6 @@ skill_value3 = ''
 @app.route('/')
 def index():
     return redirect(url_for('home'))
-    #return render_template('testpanel.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -118,7 +118,6 @@ def signin():
             email = form.username.data.lower()
             password = form.password.data
             remember = form.remember_me.data
-            #print (remember)
             
             userId = GetUserId(email)
             error = None
@@ -126,10 +125,7 @@ def signin():
                 user = User(userId, email)
                 name = GetUserName(userId)
                 login_user(user, remember = remember)
-                #session['signed'] = True
-                #session['userId'] = userId
-                #session['username'] = email
-                #session['name'] = name
+
                 if session.get('next'):
                     next_page = session.get('next')
                     session.pop('next')
@@ -137,7 +133,6 @@ def signin():
                 else:
                     return redirect(url_for('home'))
             else:
-                #form.password.errors.append('Username or password is incorrect')
                 error = 'Username or password is incorrect'
                 return render_template('signinpage.html',  signinpage_form = form, error=error)
 
@@ -156,9 +151,6 @@ def user():
 @app.route('/signout')
 @login_required
 def signout():
-    #session.pop('signed')
-    #session.pop('userId')
-    #session.pop('username')
     logout_user()
     return redirect(url_for('home'))
 
@@ -169,13 +161,9 @@ login_manager.login_view = '/signin'
 @login_manager.user_loader
 def user_loader(userId):
     #get the user
-    
     email = GetEmail(int(userId))
-    print('user loader', userId, email)
     user = User(userId, email)
-    #session['username'] = email
-    #print(session['username'])
-    
+  
     #populate the basic user data in the user object
     name    = GetUserName(int(userId))
     trill_role   = GetTrillRole(int(userId))
@@ -189,7 +177,6 @@ def user_loader(userId):
 
 @app.route('/home')
 def home():
-    #print ('home', current_user.name, current_user.email)
     return render_template('welcome.html')
 
 @app.route('/record', methods=['GET', 'POST'])
@@ -197,64 +184,36 @@ def home():
 def record():
     #get the user
     user = current_user
-    #print ('record', user.email, user.name, user.trill_role, user.job_title)
     userId = GetUserId(user.email)
-    #print ('record', userId)
 
     if request.method == "POST":
-
         #returns the radio button value as a | separated string
         choice = request.form
         string_0 = (choice['name1'])
-        print ('string_0:',string_0)
 
         #decode the skill type - prof_radio = proficency, conf_radio = confidence, age_radio = age
         end1 = string_0.find('|')
         skill_type = (string_0[0:end1])
-        print ('skill_type:',skill_type)
 
-        #decode the skill code
+        #decode the skill id
         string_1 = string_0[end1+1:]
         end2 = string_1.find('|')
         skill_id = string_1[0:end2]
-        print ('skill_id:',skill_id)
 
-        #decode the skill code
+        #decode the skill value
         string_2 = string_1[end2+1:]
-        #end3 = string_2.find('|')
         skill_value = string_2
-        print ('skill_value:',skill_value)
-
-        #decode the skill description
-        #string_3 = string_2[end3+1:]
-        #end4 = string_3.find('|')
-        #skill_value = string_3
-
-        #skill_id = GetSkillId(skill_code)
 
         #save the skill values
         if skill_type == 'prof_radio':
             res = SetUserSkillProficiency(userId, skill_id, skill_value)
-            print (userId, skill_id, skill_value)
         elif skill_type == 'conf_radio':
             res = SetUserSkillConfidence(userId, skill_id, skill_value)
-            print (userId, skill_id, skill_value)
         elif skill_type == 'age_radio':
             res = SetUserSkillAge(userId, skill_id, skill_value)
-            print (userId, skill_id, skill_value)
         return 'OK'
 
     if request.method == "GET":
-
-        #user = User(userId, email)
-
-        #populate the basic user data in the user object
-        #name    = GetUserName(userId)
-        #trill_role   = GetTrillRole(userId)
-        #job_title    = GetJobTitle(userId)
-        #line_manager = GetLineManager(userId)
-
-        #user.Add_user_data(name, line_manager, job_title, trill_role)
 
         #Get Skill group based on user
         GDSskillGroups  = GetUserSkillGroups(userId, 1)
@@ -369,7 +328,6 @@ def resource():
         skill3 = ''
         users = ''
 
-
     #process if category box 1 in hit
     if 'categ1' in request.args:
         #get the value selected
@@ -402,7 +360,6 @@ def resource():
             skill_value2 =''
             skill_value3 =''
             categ_value3 = ''
-
 
     elif 'categ3' in request.args:
         categ_value3 = request.args['categ3']
